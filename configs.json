@@ -1,0 +1,549 @@
+{
+    "//": "dagger demo configs",
+    "options": {
+        "//": "dagger options",
+        "commentNode": false,
+        "directiveAttribute": false,
+        "moduleLog": true,
+        "routerLog": true,
+        "integrity": false
+    },
+    "rootSelectors": ["title", "body"],
+    "routing": {
+        "default": "/overview/introduction",
+        "scenarios": {
+            "tailable": true,
+            "constants": {
+                "title": "default, should be overwritten"
+            },
+            "modules": {
+                "languages": {
+                    "type": "namespace",
+                    "base": "./languages/",
+                    "content": {
+                        "en-us": "./en-us.json",
+                        "zh-cn": "./zh-cn.json"
+                    }
+                },
+                "menus": "./menus.json",
+                "index": {
+                    "uri": "./index.js",
+                    "anonymous": true
+                },
+                "demo": {
+                    "content": "",
+                    "type": "string"
+                }
+            },
+            "children": [{
+                "path": "blocked"
+            }, {
+                "path": "overview",
+                "children": [{
+                    "path": "introduction",
+                    "constants": {
+                        "title": "overview.introduction",
+                        "template": "overview_introduction"
+                    },
+                    "modules": {
+                        "overview_introduction": "./overview/introduction.html"
+                    }
+                }, {
+                    "path": "version",
+                    "constants": {
+                        "title": "overview.version",
+                        "template": "overview_version"
+                    },
+                    "modules": {
+                        "overview_version": "./overview/version.html"
+                    }
+                }]
+            }, {
+                "path": "directive",
+                "children": [{
+                    "path": "introduction",
+                    "constants": {
+                        "title": "directive.introduction",
+                        "template": "directive_introduction"
+                    },
+                    "modules": {
+                        "directive_introduction": "./directive/introduction.html"
+                    }
+                }, {
+                    "path": "raw",
+                    "constants": {
+                        "title": "directive.raw",
+                        "template": "directive_raw"
+                    },
+                    "modules": {
+                        "directive_raw": "./directive/raw.html",
+                        "demo": {
+                            "uri": "./directive/raw_demo.html",
+                            "type": "string"
+                        }
+                    }
+                }, {
+                    "path": "lifeCycle",
+                    "constants": {
+                        "title": "directive.lifeCycle",
+                        "template": "directive_life-Cycle"
+                    },
+                    "modules": {
+                        "directive_lifeCycle": "./directive/lifeCycle.html",
+                        "demo": {
+                            "uri": "./directive/lifeCycle_demo.html",
+                            "type": "string"
+                        }
+                    }
+                }, {
+                    "path": "loading",
+                    "constants": {
+                        "title": "directive.loading",
+                        "template": "directive_loading"
+                    },
+                    "modules": {
+                        "directive_loading": "./directive/loading.html",
+                        "demo": {
+                            "uri": "./directive/loading_demo.html",
+                            "type": "string"
+                        }
+                    }
+                }, {
+                    "path": "loaded",
+                    "constants": {
+                        "title": "directive.loaded",
+                        "template": "directive_loaded"
+                    },
+                    "modules": {
+                        "directive_loaded": "./directive/loaded.html",
+                        "demo": {
+                            "uri": "./directive/loaded_demo.html",
+                            "type": "string"
+                        }
+                    }
+                }, {
+                    "path": "unloading",
+                    "constants": {
+                        "title": "directive.unloading",
+                        "template": "directive_unloading"
+                    },
+                    "modules": {
+                        "directive_unloading": "./directive/unloading.html",
+                        "demo": {
+                            "uri": "./directive/unloading_demo.html",
+                            "type": "string"
+                        }
+                    }
+                }, {
+                    "path": "unloaded",
+                    "constants": {
+                        "title": "directive.unloaded",
+                        "template": "directive_unloaded"
+                    },
+                    "modules": {
+                        "directive_unloaded": "./directive/unloaded.html",
+                        "demo": {
+                            "uri": "./directive/unloaded_demo.html",
+                            "type": "string"
+                        }
+                    }
+                }, {
+                    "path": "sentry",
+                    "constants": {
+                        "title": "directive.sentry",
+                        "template": "directive_sentry"
+                    },
+                    "modules": {
+                        "directive_sentry": "./directive/sentry.html",
+                        "demo": {
+                            "uri": "./directive/sentry_demo.html",
+                            "type": "string"
+                        }
+                    }
+                }, {
+                    "path": "controller",
+                    "constants": {
+                        "title": "directive.controller",
+                        "template": "directive_controller"
+                    },
+                    "modules": {
+                        "directive_controller": "./directive/controller.html"
+                    }
+                }, {
+                    "path": "checked",
+                    "constants": {
+                        "title": "directive.checked",
+                        "template": "directive_checked"
+                    },
+                    "modules": {
+                        "directive_checked": "./directive/checked.html",
+                        "demo": {
+                            "uri": "./directive/checked_demo.html",
+                            "type": "string"
+                        }
+                    }
+                }, {
+                    "path": "class",
+                    "constants": {
+                        "title": "directive.class",
+                        "template": "directive_class"
+                    },
+                    "modules": {
+                        "directive_class": "./directive/class.html",
+                        "demo": {
+                            "uri": "./directive/class_demo.html",
+                            "type": "string"
+                        }
+                    }
+                }, {
+                    "path": "each",
+                    "constants": {
+                        "title": "directive.each",
+                        "template": "directive_each"
+                    },
+                    "modules": {
+                        "directive_each": "./directive/each.html",
+                        "demo": {
+                            "uri": "./directive/each_demo.html",
+                            "type": "string"
+                        }
+                    }
+                }, {
+                    "path": "enabled",
+                    "constants": {
+                        "title": "directive.enabled",
+                        "template": "directive_enabled"
+                    },
+                    "modules": {
+                        "directive_enabled": "./directive/enabled.html",
+                        "demo": {
+                            "uri": "./directive/enabled_demo.html",
+                            "type": "string"
+                        }
+                    }
+                }, {
+                    "path": "exist",
+                    "constants": {
+                        "title": "directive.exist",
+                        "template": "directive_exist"
+                    },
+                    "modules": {
+                        "directive_exist": "./directive/exist.html",
+                        "demo": {
+                            "uri": "./directive/exist_demo.html",
+                            "type": "string"
+                        }
+                    }
+                }, {
+                    "path": "file",
+                    "constants": {
+                        "title": "directive.file",
+                        "template": "directive_file"
+                    },
+                    "modules": {
+                        "directive_file": "./directive/file.html",
+                        "demo": {
+                            "uri": "./directive/file_demo.html",
+                            "type": "string"
+                        }
+                    }
+                }, {
+                    "path": "focus",
+                    "constants": {
+                        "title": "directive.focus",
+                        "template": "directive_focus"
+                    },
+                    "modules": {
+                        "directive_focus": "./directive/focus.html",
+                        "demo": {
+                            "uri": "./directive/focus_demo.html",
+                            "type": "string"
+                        }
+                    }
+                }, {
+                    "path": "html",
+                    "constants": {
+                        "title": "directive.html",
+                        "template": "directive_html"
+                    },
+                    "modules": {
+                        "directive_html": "./directive/html.html",
+                        "demo": {
+                            "uri": "./directive/html_demo.html",
+                            "type": "string"
+                        }
+                    }
+                }, {
+                    "path": "selected",
+                    "constants": {
+                        "title": "directive.selected",
+                        "template": "directive_selected"
+                    },
+                    "modules": {
+                        "directive_selected": "./directive/selected.html",
+                        "demo": {
+                            "uri": "./directive/selected_demo.html",
+                            "type": "string"
+                        }
+                    }
+                }, {
+                    "path": "style",
+                    "constants": {
+                        "title": "directive.style",
+                        "template": "directive_style"
+                    },
+                    "modules": {
+                        "directive_style": "./directive/style.html",
+                        "demo": {
+                            "uri": "./directive/style_demo.html",
+                            "type": "string"
+                        }
+                    }
+                }, {
+                    "path": "text",
+                    "constants": {
+                        "title": "directive.text",
+                        "template": "directive_text"
+                    },
+                    "modules": {
+                        "directive_text": "./directive/text.html",
+                        "demo": {
+                            "uri": "./directive/text_demo.html",
+                            "type": "string"
+                        }
+                    }
+                }, {
+                    "path": "value",
+                    "constants": {
+                        "title": "directive.value",
+                        "template": "directive_value"
+                    },
+                    "modules": {
+                        "directive_value": "./directive/value.html",
+                        "demo": {
+                            "uri": "./directive/value_demo.html",
+                            "type": "string"
+                        }
+                    }
+                }, {
+                    "path": "watch",
+                    "constants": {
+                        "title": "directive.watch",
+                        "template": "directive_watch"
+                    },
+                    "modules": {
+                        "directive_watch": "./directive/watch.html",
+                        "demo": {
+                            "uri": "./directive/watch_demo.html",
+                            "type": "string"
+                        }
+                    }
+                }, {
+                    "path": "boolean",
+                    "constants": {
+                        "title": "directive.boolean",
+                        "template": "directive_boolean"
+                    },
+                    "modules": {
+                        "directive_boolean": "./directive/boolean.html",
+                        "demo": {
+                            "uri": "./directive/boolean_demo.html",
+                            "type": "string"
+                        }
+                    }
+                }, {
+                    "path": "general",
+                    "constants": {
+                        "title": "directive.general",
+                        "template": "directive_general"
+                    },
+                    "modules": {
+                        "directive_general": "./directive/general.html",
+                        "demo": {
+                            "uri": "./directive/general_demo.html",
+                            "type": "string"
+                        }
+                    }
+                }, {
+                    "path": "eventHandler",
+                    "constants": {
+                        "title": "directive.eventHandler",
+                        "template": "directive_event-handler"
+                    },
+                    "modules": {
+                        "directive_eventHandler": "./directive/eventHandler.html",
+                        "demo": {
+                            "uri": "./directive/eventHandler_demo.html",
+                            "type": "string"
+                        }
+                    }
+                }, {
+                    "path": "decorator",
+                    "constants": {
+                        "title": "directive.decorator",
+                        "template": "directive_decorator"
+                    },
+                    "modules": {
+                        "directive_decorator": "./directive/decorator.html",
+                        "demo": {
+                            "uri": "./directive/decorator_demo.html",
+                            "type": "string"
+                        }
+                    }
+                }]
+            }, {
+                "path": "module",
+                "constants": {
+                    "type": "module"
+                },
+                "children": [{
+                    "path": "introduction",
+                    "constants": {
+                        "title": "module.introduction",
+                        "template": "module_introduction"
+                    },
+                    "modules": {
+                        "module_introduction": "./module/introduction.html",
+                        "demo": {
+                            "uri": "./module/introduction_demo.json",
+                            "type": "string"
+                        }
+                    }
+                }, {
+                    "path": "template",
+                    "constants": {
+                        "title": "module.template",
+                        "template": "module_template"
+                    },
+                    "modules": {
+                        "module_template": "./module/template.html",
+                        "demo": {
+                            "uri": "./module/template_demo.json",
+                            "type": "string"
+                        }
+                    }
+                }, {
+                    "path": "script",
+                    "constants": {
+                        "title": "module.script",
+                        "template": "module_script"
+                    },
+                    "modules": {
+                        "module_script": "./module/script.html",
+                        "demo": {
+                            "uri": "./module/script_demo.json",
+                            "type": "string"
+                        }
+                    }
+                }, {
+                    "path": "style",
+                    "constants": {
+                        "title": "module.style",
+                        "template": "module_style"
+                    },
+                    "modules": {
+                        "module_style": "./module/style.html",
+                        "demo": {
+                            "uri": "./module/style_demo.json",
+                            "type": "string"
+                        }
+                    }
+                }, {
+                    "path": "json",
+                    "constants": {
+                        "title": "module.json",
+                        "template": "module_json"
+                    },
+                    "modules": {
+                        "module_json": "./module/json.html",
+                        "demo": {
+                            "uri": "./module/json_demo.json",
+                            "type": "string"
+                        }
+                    }
+                }, {
+                    "path": "string",
+                    "constants": {
+                        "title": "module.string",
+                        "template": "module_string"
+                    },
+                    "modules": {
+                        "module_string": "./module/string.html",
+                        "demo": {
+                            "uri": "./module/string_demo.json",
+                            "type": "string"
+                        }
+                    }
+                }, {
+                    "path": "namespace",
+                    "constants": {
+                        "title": "module.namespace",
+                        "template": "module_namespace"
+                    },
+                    "modules": {
+                        "module_namespace": "./module/namespace.html",
+                        "demo": {
+                            "uri": "./module/namespace_demo.json",
+                            "type": "string"
+                        }
+                    }
+                }]
+            }, {
+                "path": "router",
+                "children": [{
+                    "path": "introduction",
+                    "constants": {
+                        "title": "router.introduction",
+                        "template": "router_introduction"
+                    },
+                    "modules": {
+                        "router_introduction": "./router/introduction.html",
+                        "demo": {
+                            "uri": "./router/introduction_demo.html",
+                            "type": "string"
+                        }
+                    }
+                }, {
+                    "path": "structure",
+                    "constants": {
+                        "title": "router.structure",
+                        "template": "router_structure",
+                        "type": "router"
+                    },
+                    "modules": {
+                        "router_structure": "./router/structure.html",
+                        "demo": {
+                            "uri": "./router/structure_demo.json",
+                            "type": "string"
+                        }
+                    }
+                }]
+            }, {
+                "path": "api",
+                "children": [{
+                    "path": "introduction",
+                    "constants": {
+                        "title": "api.introduction",
+                        "template": "api_introduction"
+                    },
+                    "modules": {
+                        "api_introduction": "./api/introduction.html"
+                    }
+                }]
+            }, {
+                "path": "miscellaneous",
+                "children": [{
+                    "path": "introduction",
+                    "constants": {
+                        "title": "miscellaneous.introduction",
+                        "template": "miscellaneous_introduction"
+                    },
+                    "modules": {
+                        "miscellaneous_introduction": "./miscellaneous/introduction.html"
+                    }
+                }, {
+                }]
+            }]
+        }
+    }
+}

@@ -1,0 +1,38 @@
+<html>
+    <head>
+        <script type="dagger/configs">
+            {
+                "template": "#inner_template1",
+                "style": "#inner_style1",
+                "script": "#inner_script1",
+                "json": "#inner_json1",
+                "string": "#inner_string1"
+            }
+        </script>
+        <style id="inner_style1" type="dagger/style">
+            div {
+                margin: 20px;
+            }
+        </style>
+        <template id="inner_template1">
+            <div $loading="{ data: {} }">
+                <span>${ data.value }</span>
+            </div>
+        </template>
+        <script id="inner_script1" type="dagger/script">
+            export const method1 = content => console.log(content);
+        </script>
+        <script id="inner_json1" type="dagger/json">
+            {
+                "number": 1,
+                "array": ["a", "b"],
+                "Object": {
+                    "string": "hello dagger!"
+                }
+            }
+        </script>
+        <script id="inner_string1" type="dagger/string">
+            I'm a plain string.
+        </script>
+    </head>
+</html>

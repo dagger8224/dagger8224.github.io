@@ -1,0 +1,18 @@
+{
+    "external_namespace": "./module/demo/namespace.html",
+    "inline_namespace1": {
+        "base": "./module/demo/",
+        "content": {
+            "template": "./template.html",
+            "script": "./script.js",
+            "json": "./json.json"
+        },
+        "type": "namespace"
+    },
+    "inline_namespace2": {
+        "content": {
+            "style": "./module/demo/style.css"
+        },
+        "type": "namespace"
+    }
+}

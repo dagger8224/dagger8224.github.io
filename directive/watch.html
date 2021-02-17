@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <script type="dagger/configs">
+    {
+      "template": {
+          "uri": "#template",
+          "style": "style"
+      },
+      "style": "#style"
+    }
+  </script>
+  <template id="template">
+    <h2>${ $['directive.watch'] }</h2>
+    <div class="content">
+      <template $each="$['directive.watch.sections']">
+        <h3 class="question">${ item.question }</h3>
+        <div class="answer" $html="item.answer"></div>
+      </template>
+    </div>
+  </template>
+  <style id="style" type="dagger/style">
+    h3::before {
+        content: "😕";
+        margin-right: 10px;
+    }
+    .answer::before {
+        content: "😄";
+        margin-right: 10px;
+    }
+  </style>
+</html>

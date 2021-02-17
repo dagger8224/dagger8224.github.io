@@ -1,0 +1,527 @@
+{
+    "languages": {
+        "en-us": "English",
+        "zh-cn": "中文（简体）"
+    },
+    "viewOnGithub": "在Github上查看",
+    "overview": "概览",
+    "introduction": "介绍",
+    "string": "字符串",
+    "directive": "指令",
+    "lifeCycle": "生命周期指令",
+    "eventHandler": "事件处理",
+    "index": "目录",
+    "decorator": "指令修饰符",
+    "decorators": "指令修饰符：",
+    "controller": "控制指令",
+    "general": "一般指令",
+    "boolean": "布尔指令",
+    "module": "模块",
+    "script": "脚本",
+    "style": "样式",
+    "namespace": "名空间",
+    "template": "模板",
+    "router": "路由",
+    "structure": "结构",
+    "miscellaneous": "杂项",
+    "configs": "配置",
+    "validator": "验证器",
+    "version": "版本信息",
+    "period": "。",
+    "try": "亲自试一试：",
+    "run": "运行",
+    "reset": "重置",
+    "view": "查看执行结果：",
+    "rootScope": "根作用域",
+    "overview.introduction": "概览/介绍",
+    "overview.introduction.sections": [{
+        "question": "dagger.js是什么",
+        "answer": "<span>dagger.js是一个基于html的开源（<a target='_blank' href='https://opensource.org/licenses/MIT'>MIT</a>）web前端技术框架。在dagger.js的帮助下，你可以轻松地使用原生javaScript语法构建网站（无论是单页应用还是简单的动态页面）或者可复用模块。</span>"
+    }, {
+        "question": "dagger.js适合哪些开发者",
+        "answer": "<span>无论你是一个有经验的专业开发人员或者是对web前端领域感兴趣的业余爱好者，只要具有基础的<a target='_blank' href='https://developer.mozilla.org/zh-CN/docs/Web/HTML'>html</a>/<a target='_blank' href='https://developer.mozilla.org/zh-CN/docs/Web/JavaScript'>javaScript</a>/<a target='_blank' href='https://developer.mozilla.org/zh-CN/docs/Web/CSS'>css</a>背景知识，都可以在短时间内理解和掌握dagger.js。dagger.js基于<a href='directive/introduction'>指令</a>表达式和<a href='miscellaneous/introduction'>配置项</a>声明方式工作，在大多数业务场景下，使用者无需调用任何框架<a href='api/introduction'>api</a>即可完成开发任务。</span>"
+    }, {
+        "question": "如何使用dagger.js",
+        "answer": "<span>dagger.js是一个轻量而完备的客户端运行时框架，没有对第三方代码或者构建工具的依赖，只需如下简单配置步骤即可快速搭建开发环境，进行业务逻辑开发：<div class=\"sub-answer\">1. 在html页面中通过script标签引入dagger.js：<br/><span style='font-style: italic; background-color: #eeeeee;'>&lt;script type=\"module\" crossorigin=\"anonymous\" src=\"https://cdn.jsdelivr.net/npm/@peakman/dagger.js/dagger.js\" defer&gt;&lt;/script&gt;</span><br/>2. 在页面head标签下插入<a href='miscellaneous/introduction'>根配置项</a>标签，定义各<a href='router/introduction'>路由场景</a>和渲染每个场景所需的<a href='module/introduction'>模块</a>描述信息<br/>3. 在DOM标签上通过<a href='directive/introduction'>指令</a>声明页面元素与数据模型之间的交互关系</div></span>"
+    }, {
+        "question": "如何学习dagger.js",
+        "answer": "<span>本网站提供了dagger.js语法教程对应的示例代码，实际上，dagger.js的<a target='_blank' href='https://github.com/dagger8224/dagger8224.github.io'>文档代码</a>本身就是一个典型的综合示例。不必担心，dagger.js相当易于学习和使用。现在让我们开始dagger.js的<a href='directive/introduction'>体验之旅</a>吧。</span>"
+    }],
+    "overview.version": "概览/版本信息",
+    "overview.version.content": "dagger.js的最新版本是 ",
+    "overview.version.files": "<span>在<a target='_blank' href='https://www.npmjs.com/package/@peakman/dagger.js'>发布包</a>中包含4个不同的文件，请根据你的工作场景进行选择：</span>",
+    "dagger.js": "这是无压缩的开发版本，包含运行时防卫断言，适合在开发环境下使用",
+    "dagger.min.js": "这是压缩后的开发版本，包含运行时防卫断言，适合在开发环境下使用",
+    "dagger.release.js": "这是无压缩的发布版本，移除了运行时防卫断言以提升性能，适合在生产环境下使用",
+    "dagger.release.min.js": "这是压缩后的发布版本，移除了运行时防卫断言以提升性能，适合在生产环境下使用",
+    "compatibility": "兼容性",
+    "compatibility.content": "<span>dagger.js与支持<a target='_blank' href='https://262.ecma-international.org/6.0/'>ECMA2015</a>及以上版本的浏览器兼容。</span>",
+    "directive.introduction": "指令/介绍",
+    "directive.introduction.sections": [{
+        "question": "什么是指令",
+        "answer": "<span>指令是dagger.js中的一个重要概念。形式上，指令是定义在DOM元素上的特殊<a target='_blank' href='https://developer.mozilla.org/zh-CN/docs/Web/HTML/Attributes'>属性</a>（带有特定前缀标记）。在运行时当中，指令会被转换为特定作用域下的表达式，并与所关联的DOM元素产生动态交互。在后续的教程中，我们会结合实例讲解各指令的具体使用方法。</span>"
+    }, {
+        "question": "指令分为哪些种类",
+        "answer": "<span>指令共分为四种：<a href='directive/raw'>元指令</a>（以符号“@”作为前缀，如“@raw”），<a href='directive/lifeCycle'>生命周期指令</a>（以符号“$”作为前缀，如“$loading”），<a href='directive/controller'>控制指令</a>（以符号“$”作为前缀，如“$value”）以及<a href='directive/eventHandler'>事件指令</a>（以符号“+”作为前缀，如“+click”）。</span>"
+    }, {
+        "question": "指令的结构",
+        "answer": "<span>一个典型的指令由</span><span class='format'> “ 前缀 + 名称 + 修饰符（可选）+ 表达式 ” </span><span>组成。<a href='directive/decorator'>修饰符</a>是一组由\"#\"分割的键值对，用于进一步定制指令的行为。元指令只包含</span><span class='format'> “ 前缀 + 名称 ” </span><span>，不支持修饰符和表达式。</span>"
+    }, {
+        "question": "指令的触发来源",
+        "answer": "<span>元指令由框架在解析html模板时调用。事件指令由用户操作或者系统事件触发调用。生命周期指令由框架在元素的创建和销毁时调用。控制指令在元素的生命周期内随着表达式所依赖数据的变化可能多次触发调用。</span>"
+    }, {
+        "question": "指令表达式的限制",
+        "answer": "<span>任何合法的单一javaScript语句都可以作为指令表达式的内容（不要在语句前添加return），包含同步、异步函数，也可以直接声明成一个对象字面量。如果需要在指令中使用内联的复合语句，请将语句拆解为多个逗号表达式或者包裹为立即执行函数。事实上，对于复杂的业务逻辑，更合适的方法是将逻辑封装在<a href='module/script'>script</a>模块当中，仅仅将表达式作为调用的入口。</span>"
+    }, {
+        "question": "指令表达式中变量的定义域",
+        "answer": "<span>指令表达式工作在其所在的运行时作用域下。除顶层的javaScript<a target='_blank' href='https://developer.mozilla.org/en-US/docs/Glossary/Global_scope'>全局作用域</a>和次顶层的dagger.js<a href='miscellaneous/introduction'>根作用域</a>之外，每一个元素都可以通过<a href='directive/loading'>$loading</a>生命周期指令动态创建上下文作用域。不同层级的变量作用域自顶向下构成一棵运行时作用域树。每个指令表达式可以访问其所在层级或者祖先层级所定义的作用域变量。</span>"
+    }, {
+        "question": "指令是必须的还是可选的",
+        "answer": "<span>所有的指令都是可选的，一个没有声明任何指令的元素被称为平凡元素。</span>"
+    }],
+    "directive.raw": "指令/@raw",
+    "directive.raw.sections": [{
+        "question": "@raw指令的作用效果",
+        "answer": "<span>@raw是当前版本中定义的唯一一个元指令，dagger.js不会对具有@raw指令的元素及其子节点进行解析，节点中所有的指令都将退化为普通属性。为无需解析的节点添加@raw指令可以提升页面响应性能。</span>"
+    }, {
+        "question": "可应用@raw指令的元素",
+        "answer": "<span>任何DOM元素都可以使用@raw指令。</span>"
+    }],
+    "directive.lifeCycle": "指令/生命周期",
+    "directive.lifeCycle.sections": [{
+        "question": "什么是生命周期指令",
+        "answer": "<span>生命周期指令是一组在关联元素的创建、销毁或者连接状态发生变化时触发的指令。</span>"
+    }, {
+        "question": "生命周期指令列表",
+        "answer": "<span><a href='directive/loading'>$loading</a><a href='directive/loaded'>$loaded</a><a href='directive/unloading'>$unloading</a><a href='directive/unloaded'>$unloaded</a><a href='directive/sentry'>$sentry</a></span>"
+    }, {
+        "question": "创建元素时生命周期指令的执行顺序",
+        "answer": "<span>父级$loading -> 子级$loading -> 子级$loaded -> 父级$loaded</span>"
+    }, {
+        "question": "销毁元素时生命周期指令的执行顺序",
+        "answer": "<span>（全局$sentry判定） -> 父级$unloading -> 子级$unloading -> 子级$unloaded -> 父级$unloaded</span>"
+    }, {
+        "question": "可应用生命周期指令的元素",
+        "answer": "<span>任何DOM元素都可以使用生命周期指令。</span>"
+    }],
+    "directive.loading": "指令/$loading",
+    "directive.loading.sections": [{
+        "question": "$loading指令的作用",
+        "answer": "<span>$loading指令在关联元素创建完成之前由框架触发调用，主要用于在当前上下文创建一个新的变量作用域。</span>"
+    }, {
+        "question": "$loading指令表达式的返回值",
+        "answer": "<span>如果指令表达式的返回值是一个平凡对象（不包括数组等广义对象），则在指令表达式执行结束后将根据返回值的字段内容在当前上下文创建一个新的运行时作用域，该作用域定义的变量可以在当前元素的其余指令（除<a href='directive/each'>$each</a>和<a href='directive/exist'>$exist</a>指令外）和子元素的所有指令中访问。内部层级创建的作用域变量会覆盖同名的外部作用域变量。</span>"
+    }],
+    "directive.loaded": "指令/$loaded",
+    "directive.loaded.sections": [{
+        "question": "$loaded指令的作用",
+        "answer": "<span>$loaded指令在关联元素创建完成之后（如果关联元素是&lt;html&gt;标签，则在每次路由跳转完成之后）由框架触发调用，用于对关联元素或者作用域变量进行初始化操作。$loaded指令表达式中可以使用指向关联元素的上下文参数$node（参数名称可以在<a href='directive/decorator'>指令修饰符</a>中定制修改）。</span>"
+    }, {
+        "question": "$loaded指令表达式的返回值",
+        "answer": "<span>$loaded指令的返回值无意义。</span>"
+    }],
+    "directive.unloading": "指令/$unloading",
+    "directive.unloading.sections": [{
+        "question": "$unloading指令的作用",
+        "answer": "<span>$unloading指令在关联元素移除之前（如果关联元素是&lt;html&gt;标签，则在每次路由跳转完成之前）由框架触发调用，用于对关联元素或者作用域变量进行清理操作。$unloading指令表达式中可以使用指向关联元素的上下文参数$node（参数名称可以在<a href='directive/decorator'>指令修饰符</a>中定制修改）。</span>"
+    }, {
+        "question": "$unloading指令表达式的返回值",
+        "answer": "<span>$unloading指令的返回值无意义。</span>"
+    }],
+    "directive.unloaded": "指令/$unloaded",
+    "directive.unloaded.sections": [{
+        "question": "$unloaded指令的作用",
+        "answer": "<span>$unloaded指令在关联元素移除之后（如果关联元素是&lt;html&gt;标签，则在每次路由跳转完成之前）由框架触发调用，用于对关联元素或者作用域变量进行清理操作。$unloaded指令表达式中可以使用指向已移除的关联元素的上下文参数$node（参数名称可以在<a href='directive/decorator'>指令修饰符</a>中定制修改）。</span>"
+    }, {
+        "question": "$unloaded指令表达式的返回值",
+        "answer": "<span>$unloaded指令的返回值无意义。</span>"
+    }],
+    "directive.sentry": "指令/$sentry",
+    "directive.sentry.sections": [{
+        "question": "$sentry指令的作用",
+        "answer": "<span>每个$sentry指令会注册为一个全局的回调方法，当页面试图进行路由跳转时会触发回调方法执行，根据表达式的执行结果判断是否继续进行路由跳转。$sentry指令表达式中可以使用指向目标<a href='router/introduction'>路由</a>对象的上下文参数$nextRouter（参数名称可以在<a href='directive/decorator'>指令修饰符</a>中定制修改）。</span>"
+    }, {
+        "question": "$sentry指令表达式的返回值",
+        "answer": "<span>当任意一个$sentry表达式的返回值为true或等效值时，路由跳转过程将终止。</span>"
+    }],
+    "directive.controller": "指令/控制指令",
+    "directive.controller.sections": [{
+        "question": "什么是控制指令",
+        "answer": "<span>控制指令（控制器）是元素属性的扩展，为元素添加了动态响应能力。某些控制指令进一步提供了关联元素和作用域变量之间的双向数据绑定功能。</span>"
+    }, {
+        "question": "控制指令列表",
+        "answer": "<a href='directive/checked'>$checked</a><a href='directive/class'>$class</a><a href='directive/each'>$each</a><a href='directive/exist'>$exist</a><a href='directive/file'>$file</a><a href='directive/focus'>$focus</a><a href='directive/html'>$html</a><a href='directive/selected'>$selected</a><a href='directive/style'>$style</a><a href='directive/text'>$text</a><a href='directive/value'>$value</a><a href='directive/watch'>$watch</a><a href='directive/boolean'>布尔指令</a><a href='directive/general'>一般指令</a>"
+    }, {
+        "question": "双向绑定控制指令列表",
+        "answer": "<a href='directive/checked'>$checked</a><a href='directive/file'>$file</a><a href='directive/selected'>$selected</a><a href='directive/value'>$value</a>"
+    }, {
+        "question": "控制指令表达式的返回值",
+        "answer": "<span>除$watch指令外，控制指令表达式的返回值将对关联元素的属性或行为产生特定的影响。</span>"
+    }, {
+        "question": "控制指令表达式的触发时机",
+        "answer": "<span>除$each和$exist指令外，控制指令表达式将在关联元素的$loading指令之后（如果有），$loaded指令执行之前（如果有）由框架触发。如果指令表达式中依赖变量的值发生变化，则在关联元素的生存期内控制指令可能会多次触发更新。如果一个元素上定义了多个控制指令，其首次触发的先后顺序将与在元素上的声明顺序一致。</span>"
+    }, {
+        "question": "控制指令的适用元素",
+        "answer": "<span>除去文档中特别说明的情况之外，控制指令可应用于除html标签外的所有元素。</span>"
+    }],
+    "directive.checked": "指令/$checked",
+    "directive.checked.sections": [{
+        "question": "$checked指令的作用",
+        "answer": "<span>$checked指令用于绑定关联元素的选中状态，适用$checked指令的元素包括单选和多选类型的输入框，以及下拉选择框的选项元素。对于其余元素类型，$checked指令将退化为<a href='directive/general'>一般指令</a>。</span>"
+    }, {
+        "question": "$checked指令表达式的返回值",
+        "answer": "<span>当$checked指令表达式的返回值为true或者等效值时，代表关联元素处于选中状态，否则关联元素将取消选中状态。当该指令表达式的内容是合法的左操作数时，用户对关联元素的操作将导致表达式变量同步变化，实现双向数据绑定。</span>"
+    }, {
+        "question": "$checked指令与checked/selected属性的关系",
+        "answer": "<span>当关联元素上声明$checked指令之后，元素上的checked/selected属性声明将失效。</span>"
+    }],
+    "directive.class": "指令/$class",
+    "directive.class.sections": [{
+        "question": "$class指令的作用",
+        "answer": "<span>$class指令用于绑定关联元素的class属性。</span>"
+    }, {
+        "question": "$class指令表达式的返回值",
+        "answer": "<span>当$class指令表达式的返回值为字符串时，字符串的内容将被识别为class名。当返回值为数组时，每一个数组成员将被转换为字符串后作为class名。当返回值为对象时，将所有值为true或者等效值的字段名作为class名。其余情况下，返回值将转换为字符串处理。对于嵌套的数组和对象不会进行递归处理。</span>"
+    }, {
+        "question": "$class指令与class属性的关系",
+        "answer": "<span>$class指令表达式的计算结果将与内置的class属性内容融合后作为最终计算后的class名。</span>"
+    }],
+    "directive.each": "指令/$each",
+    "directive.each.sections": [{
+        "question": "$each指令的作用",
+        "answer": "<span>$each指令用于循环渲染具有相同视图模板的数组，对象，或者其他可迭代变量。</span>"
+    }, {
+        "question": "$each指令表达式的返回值",
+        "answer": "<span>当$each指令表达式返回一个可迭代数据结构时，框架会以其关联元素作为模板循环渲染多个元素实例，并基于该数据的子项字段结构为每个元素实例创建一个新的变量作用域，并定义item/index/key三个变量，分别对应于子项数据本身，迭代索引和子项数据在父级数据中的字段名，这些变量名可以使用<a href='directive/decorator'>指令修饰符</a>进行修改。</span>"
+    }, {
+        "question": "$each指令关联元素上的其他指令",
+        "answer": "<span>$each关联元素上声明的其他指令在复制出的子级元素实例作用域下各创建一个独立的实例。</span>"
+    }],
+    "directive.exist": "指令/$exist",
+    "directive.exist.sections": [{
+        "question": "$exist指令的作用",
+        "answer": "<span>$exist指令用于切换关联元素的存在状态。</span>"
+    }, {
+        "question": "$exist指令表达式的返回值",
+        "answer": "<span>当指令表达式返回true或者其他等效值时关联元素将被创建，否则将被销毁。</span>"
+    }, {
+        "question": "$exist指令与生命周期的关系",
+        "answer": "<span>每当$exist表达式的返回值状态切换时，对应的生命周期方法将会被触发（创建过程$loading/$loaded指令执行，销毁过程$unloading/$unloaded指令执行）。</span>"
+    }],
+    "directive.file": "指令/$file",
+    "directive.file.sections": [{
+        "question": "$file指令的作用",
+        "answer": "<span>$file指令用于绑定用户选择的本地文件。</span>"
+    }, {
+        "question": "$file指令表达式的返回值",
+        "answer": "<span>当$file指令表达式的内容是合法的左操作数时，用户使用关联元素进行文件选择操作之后，表达式变量将指向保存选中文件信息的File（单文件选择器）或者FileList（多文件选择器）。</span>"
+    }, {
+        "question": "$file指令的使用限制",
+        "answer": "<span>$file指令只对类型为file的input元素生效。</span>"
+    }],
+    "directive.focus": "指令/$focus",
+    "directive.focus.sections": [{
+        "question": "$focus指令的作用",
+        "answer": "<span>$focus指令用于为关联元素设置焦点。</span>"
+    }, {
+        "question": "$focus指令表达式的返回值",
+        "answer": "<span>当指令表达式返回true或者其他等效值时关联元素将获取焦点。</span>"
+    }, {
+        "question": "$focus指令与autofocus属性的关系",
+        "answer": "<span>当关联元素上声明$focus指令之后，元素上的autofocus属性声明将失效。</span>"
+    }],
+    "directive.html": "指令/$html",
+    "directive.html.sections": [{
+        "question": "$html指令的作用",
+        "answer": "<span>$html指令用于在关联元素下动态创建子级html片段。当关联元素上声明$html指令之后，模板中静态声明的子级html内容将被$html表达式内容替换。$html指令通常与<a href='router/introduction'>路由配置项</a>结合使用。</span>"
+    }, {
+        "question": "$html指令表达式的返回值",
+        "answer": "<span>指令表达式的返回值内容将作为关联元素的子级html，子级html上声明的指令将在其关联元素创建后生效，其变量作用域继承自父级元素的作用域链。</span>"
+    }],
+    "directive.selected": "指令/$selected",
+    "directive.selected.sections": [{
+        "question": "$selected指令的作用",
+        "answer": "<span>$selected指令用于绑定关联元素的选中值，适用$selected指令的元素包括单选和多选类型的输入框，以及下拉选择框元素。对于其余元素类型，$checked指令将退化为<a href='directive/general'>一般指令</a>。</span>"
+    }, {
+        "question": "$selected指令表达式的返回值",
+        "answer": "<span>当$selected指令表达式的返回值与关联元素的value相等（单选按钮或者单选框的选项）或者包含关联元素的value（复选框或者多选框的选项），则对应元素处于选中状态，否则关联元素将取消选中状态。当该指令表达式的内容是合法的左操作数时，用户对关联元素的操作将导致表达式变量同步变化，实现双向数据绑定。</span>"
+    }, {
+        "question": "$selected指令与checked/selected属性的关系",
+        "answer": "<span>当关联元素上声明$selected指令之后，元素上的checked/selected属性声明将失效。</span>"
+    }, {
+        "question": "$selected指令与$checked指令的关系",
+        "answer": "<span>$selected指令绑定到选中项的值，$checked指令绑定的是关联元素的选中状态。对选项组同时声明$selected指令混合$checked指令可能导致元素选中状态与绑定数据不一致。</span>"
+    }],
+    "directive.style": "指令/$style",
+    "directive.style.sections": [{
+        "question": "$style指令的作用",
+        "answer": "<span>$style指令用于绑定关联元素的style属性。</span>"
+    }, {
+        "question": "$style指令表达式的返回值",
+        "answer": "<span>1. 当$style指令表达式的返回值为字符串时，字符串的内容将被识别为style属性。当返回值为数组时，每一个数组成员将被转换为字符串后拼接为style属性。<br/>2. 当返回值为对象时，将对象内容的键值对拼接为style属性。<br/>3. 其余情况下，返回值将转换为字符串处理。对于嵌套的数组和对象不会进行递归处理。</span>"
+    }, {
+        "question": "$style指令与style属性的关系",
+        "answer": "<span>$style指令表达式的计算结果将与内置的style属性内容融合后作为最终计算后的style属性内容。</span>"
+    }],
+    "directive.text": "指令/$text",
+    "directive.text.sections": [{
+        "question": "$text指令的作用",
+        "answer": "<span>$text指令用于在关联元素下动态创建文本内容。当关联元素上声明$text指令之后，元素的子级内容将被替换。</span>"
+    }, {
+        "question": "$text指令表达式的返回值",
+        "answer": "<span>指令表达式的返回值内容将作为关联元素下的文本内容。</span>"
+    }, {
+        "question": "$text指令表达式的内联使用方法",
+        "answer": "<span>写成字符串模板形式的标签内文本内容会被框架识别为隐式的$text表达式进行求值。</span>"
+    }],
+    "directive.value": "指令/$value",
+    "directive.value.sections": [{
+        "question": "$value指令的作用",
+        "answer": "<span>$value指令用于绑定到关联元素的value属性。</span>"
+    }, {
+        "question": "$value指令表达式的返回值",
+        "answer": "<span>$value指令表达式的返回值内容将作为关联元素的value属性。适用$value指令的元素包括input，textarea以及选择框下的选项标签。当该指令表达式的内容是合法的左操作数时，用户对关联元素的操作将导致表达式变量同步变化，实现双向数据绑定。<br/>请注意对于<a href='directive/selected'>$selected</a>指令，如果在关联元素上声明了$value指令，则绑定到$selected变量的是$value指令表达式返回的真实对象，而不是转换后为字符串后的value属性。</span>"
+    }, {
+        "question": "$value指令与value属性的关系",
+        "answer": "<span>当关联元素上声明$value指令之后，元素的value属性声明将失效。</span>"
+    }, {
+        "question": "$value指令的使用限制",
+        "answer": "<span>$value指令不能应用在类型为file的input元素上。</span>"
+    }],
+    "directive.boolean": "指令/布尔指令",
+    "directive.boolean.sections": [{
+        "question": "布尔指令的作用",
+        "answer": "<span>布尔指令用于对关联元素的<a target='_blank' href='https://developer.mozilla.org/zh-CN/docs/Web/HTML/Attributes#%E5%B8%83%E5%B0%94%E5%80%BC%E5%B1%9E%E6%80%A7'>布尔值属性</a>进行绑定。指令的名称与元素属性名相同。例如，$disabled将用来设定关联元素的disabled属性。</span>"
+    }, {
+        "question": "布尔指令表达式的返回值",
+        "answer": "<span>布尔指令表达式的返回值将转换为布尔值后绑定到元素的属性上，当转换后的返回值为true时，在关联元素上添加同名的布尔属性，否则移除同名布尔属性。</span>"
+    }, {
+        "question": "布尔指令与同名布尔属性的关系",
+        "answer": "<span>当关联元素上声明名为xxx的布尔指令之后，元素的xxx布尔属性声明将失效。</span>"
+    }, {
+        "question": "布尔指令列表",
+        "answer": "<span>autocapitalize, autocomplete, contenteditable, controls, disabled, draggable, loop, multiple, muted, open, preload, readonly, required, reversed, spellcheck, translate, wrap</span>"
+    }],
+    "directive.general": "指令/一般指令",
+    "directive.general.sections": [{
+        "question": "一般指令的作用",
+        "answer": "<span>一般指令用于对关联元素的通用属性进行绑定。指令的名称与元素属性名相同。例如，$id将用来设定元素的id属性。</span>"
+    }, {
+        "question": "一般指令表达式的返回值",
+        "answer": "<span>一般指令表达式的返回值将转换为字符串后赋值给元素的同名属性。</span>"
+    }, {
+        "question": "一般指令与同名属性的关系",
+        "answer": "<span>当关联元素上声明名为xxx指令之后，元素的xxx属性声明将失效。</span>"
+    }, {
+        "question": "一般指令的使用限制",
+        "answer": "<span>请注意，部分控制的指令的行为依赖于其关联元素上的特定属性声明，例如，$checked/$selected指令的行为与input元素的类型属性有直接关系。在这种情况下，将type声明为一般控制指令可能会导致$checked/$selected指令出现非预期的行为。通常来说，在可能的情况下优先使用静态属性信息描述而不是一般指令更有利于降低业务代码的复杂性，提升运行时性能。</span>"
+    }],
+    "directive.watch": "指令/$watch",
+    "directive.watch.sections": [{
+        "question": "$watch的作用",
+        "answer": "<span>$watch指令用于在依赖变量的值发生变化时动态执行业务逻辑。</span>"
+    }, {
+        "question": "$watch指令表达式的返回值",
+        "answer": "<span>$watch指令表达式的返回值无意义。</span>"
+    }, {
+        "question": "$watch指令的使用限制",
+        "answer": "<span>与其他控制指令不同，同一个元素上可以声明多个修饰符不同的$watch指令，每个$watch指令独立工作。</span>"
+    }],
+    "directive.eventHandler": "指令/事件处理",
+    "directive.eventHandler.sections": [{
+        "question": "事件处理指令的作用",
+        "answer": "<span>事件处理指令用于代理关联元素上的同名事件监听方法，例如，“+click”指令将注册一个关联元素上click事件的监听器。事件处理指令表达式中可以使用指向被触发事件的上下文参数$event（参数名称可以在<a href='directive/decorator'>指令修饰符</a>中定制修改）。</span>"
+    }, {
+        "question": "事件处理指令与事件属性的关系",
+        "answer": "<span>可以在元素上同时声明事件处理指令和事件属性。二者的差别是，事件处理指令表达式工作在关联元素的上下文变量作用域链上，而内置的事件属性只能访问全局作用域下定义的变量。</span>"
+    }, {
+        "question": "事件处理指令的使用限制",
+        "answer": "<span>同一个元素上可以声明多个对相同事件的处理指令（修饰符不同），指令的默认监听目标是其关联元素，也可以通过target修饰符显式指定监听目标。非实体元素（<a href='module/template'>模板</a>模块等）不能作为事件监听目标。</span>"
+    }],
+    "directive.decorator": "指令/修饰符",
+    "directive.decorator.sections": [{
+        "question": "指令修饰符的作用",
+        "answer": "<span>修饰符是指令的可选组成部分，用于进一步定制指令的工作方式。元指令不支持修饰符。</span>"
+    }, {
+        "question": "指令修饰符的构成",
+        "answer": "<span>在一个指令上可以同时声明由“#”分割的多个指令修饰符。完整的指令修饰符是由“:”分隔的键值对，其中修饰符值可以缺省，除特殊说明的修饰符之外，缺省值为true。例如，在$value#trim#number:false=\"value\"这个指令声明中指定了trim == true和number == false两个修饰符。</span>"
+    }, {
+        "question": "预定义的通用指令修饰符",
+        "answer": "<span>指令默认工作在非敏感模式下，即在某个指令表达式的执行过程中，变量更新后不会立即触发对此变量有依赖的其他指令表达式执行，而是把这些指令表达式加入待执行队列中，在当前指令表达式执行完毕后再执行。<br/>用户可以使用sensitive(:true)修饰符将指令设置为敏感模式，在此模式下，变量更新将立即触发依赖表达式的执行，在其执行完毕后再返回当前工作栈继续执行后续语句。</span>"
+    }, {
+        "question": "预定义的生命周期指令修饰符",
+        "answer": "<span>“<a href='directive/sentry'>$sentry</a>”生命周期指令支持预定义修饰符next，用于指定回调方法中指向目标<a href='router/introduction'>路由</a>对象的变量名称，缺省变量名为“$nextRouter”；“<a href='directive/loaded'>$loaded</a>”，“<a href='directive/unloading'>$unloading</a>”，“<a href='directive/unloaded'>$unloaded</a>”生命周期指令支持预定义修饰符node，用于指定回调方法中指向关联元素的变量名称，缺省变量名为“$node”。</span>"
+    }, {
+        "question": "预定义的控制指令修饰符",
+        "answer": "<span>$value指令支持如下预定义修饰符：<div class=\"sub-answer\">1. number，用于将用户输入字符串转换为数字格式；<br/>2. trim，用于去除用户输入字符串的首尾空白字符；<br/>3. input，框架默认在输入框失去焦点后将用户输入字符串更新到指令表达式的返回值上（监听change事件），声明该修饰符将改为监听输入框的input事件，在用户输入任意字符后立刻触发表达式更新。</div>$each指令支持如下预定义修饰符：<div class=\"sub-answer\">1. item，用于指定复制元素作用域下的切片变量名称（缺省变量名为item），例如item:slice将切片变量命名为slice；<br/>2. index，用于指定切片变量在父级变量中的索引变量名称（缺省变量名为index，类型为数字）；<br/>3. key，用于指定切片变量在父级变量中的字段名称（缺省变量名为key，类型为字符串）。</div>$checked指令支持预定义修饰符scope，用于指定选项组的父级元素选择器（默认为指令关联元素的父元素）。<br/>$focus指令支持预定义修饰符prevent，用于指定<a target='_blank' href='https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLElement/focus'>是否将获取焦点的元素滚动到当前浏览器视窗中</a>。</span>"
+    }, {
+        "question": "预定义的事件处理指令修饰符",
+        "answer": "<span>事件处理指令支持如下几个预定义修饰符：<div class=\"sub-answer\">1. target，用于指定事件监听的目标对象，例如，+resize#target:window将为window对象添加resize事件的监听方法；<br/>2. event，用于指定事件监听方法中指向被触发事件对象的变量名（缺省为$event）；<br/>3. current，用于指明事件的触发目标元素必须是事件监听的目标元素本身；<br/>4. modifier，用于指明事件触发时需要满足的<a target='_blank' href='https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/getModifierState'>辅助键开启状态</a>（Ctrl/Alt/Shift/Command/大写锁定键等）。modifier修饰符的值可以是单个字符串或者字符串数组，如果修饰符的值为字符串数组，则数组中指定的辅助键全部处于开启状态时才执行事件处理方法；<br/>5. code，用于指明键盘事件触发时<a target='_blank' href='https://developer.mozilla.org/zh-CN/docs/Web/API/KeyboardEvent/code'>event.code</a>要匹配的正则表达式或者正则表达式数组。如果修饰符的值为正则表达式数组，则数组中指定的正则表达式全部匹配时才执行事件处理方法；<br/>6. key，事件触发时<a target='_blank' href='https://developer.mozilla.org/zh-cn/docs/Web/API/KeyboardEvent/key'>event.key</a>（键盘事件）或者<a target='_blank' href='https://developer.mozilla.org/zh-cn/docs/Web/API/MouseEvent/buttons'>event.buttons</a>（鼠标事件）要匹配的正则表达式或者正则表达式数组。如果修饰符的值为正则表达式数组，则数组中指定的正则表达式全部匹配时才执行事件处理方法。鼠标按钮枚举键值包括Left/Right/Middle/Back/Forward；<br/>7. prevent，指定该修饰符的事件处理指令将调用<a target='_blank' href='https://developer.mozilla.org/zh-cn/docs/Web/API/Event/preventDefault'>event.preventDefault</a>方法；<br/>8. stop，指定该修饰符的事件处理指令将调用<a target='_blank' href='https://developer.mozilla.org/zh-cn/docs/Web/API/Event/stopPropagation'>event.stopPropagation</a>方法；<br/>9. stopImmediate，指定该修饰符的事件处理指令将调用<a target='_blank' href='https://developer.mozilla.org/zh-cn/docs/Web/API/Event/stopImmediatePropagation'>event.stopImmediatePropagation</a>方法；<br/>10. capture/once/passive，用于设定事件监听器的<a target='_blank' href='https://developer.mozilla.org/zh-CN/docs/Web/API/EventTarget/addEventListener'>选项</a>。</div></span>"
+    }, {
+        "question": "指令修饰符的使用限制",
+        "answer": "<span>受限于DOM标签属性的解析规则和dagger.js的语法定义，部分特殊字符不能直接用作修饰符内容，否则将导致解析失败或者得到非预期的处理结果。<br/>具体地说，在指令修饰符中使用“<”，“>”，“:”，“#”，“\\”，“\/”，空格以及大写字母等字符时需要进行<a target='_blank' href='https://developer.mozilla.org/zh-cn/docs/Web/JavaScript/Reference/Global_Objects/encodeURIComponent'>encodeURIComponent</a>。对于大写字母，一个更便捷标记方式是在字母前加上“-”符号前缀，例如，+click#modifier:['-Caps-Lock','-Shift']将在鼠标点击时检查辅助键“CapsLock”和“Shift”的开启状态。<br/>请注意框架在解析修饰符时会先对具有“-”前缀的字母进行大写转换后再解码，因此，修饰符“-Caps-Lock”将解码为“CapsLock”，而“%2dCaps%2dLock”将解码为“-caps-lock”.</span>"
+    }],
+    "module.introduction": "模块/介绍",
+    "module.introduction.sections": [{
+        "question": "什么是模块",
+        "answer": "<span>在实际开发场景中，视图模板、脚本、样式表的复用性是一个普遍需求。dagger.js支持通过配置项声明的方式灵活定义可复用模块。不同层级的模块共同组成了一棵全局的模块资源树。</span>"
+    }, {
+        "question": "模块的定义方式",
+        "answer": "<span>模块由键值对定义。其中键名是资源树中的模块资源名，典型的资源值是包含模块资源定位标识，类别和内容等相关信息字段的对象。<br/>配置项值也支持其他的变体：<div class=\"sub-answer\">1. 如果配置项只包含资源定位标识，可以简写为字符串形式；<br/>2. 如果需要针对不同的使用场景指定不同的资源配置，可以将配置项值定义为一个数组，数组子项中包含可选的<a target='_blank' href='https://developer.mozilla.org/zh-CN/docs/Web/API/Window/matchMedia'>媒体查询条件</a>字段media或者条件表达式字段condition，框架会根据media和condition表达式的计算结果筛选出首个符合条件的配置项再进行解析。</div></span>"
+    }, {
+        "question": "模块的资源定位方式",
+        "answer": "<span>模块的资源定位方式根据配置项字段和内容的不同可分为内联、外联、嵌入和别名四种。<br/>一个有效的模块配置项必须包含content字段或者uri字段（如果资源配置项值是字符串将识别为uri字段）。<div class=\"sub-answer\">1. 如果配置项值中指定了content字段，则content字段的值将作为当前模块的内容文本（内联方式），在此模式下，需要在配置项中设置type字段（枚举值，包含“json/namespace/script/style/string/template”等6种）显式指定当前模块的类别。<br/>2. 如果配置项中未定义content字段，则框架将根据uri字段的内容判断资源定位方式：<div class=\"sub-answer\">a. 如果uri的内容是合法的资源路径（匹配正则表达式“/^[$a-zA-Z_]{1}[\\w-$]*(\\.[$a-zA-Z_]{1}[\\w-$]*)*$/”，例如“module._script1”），则该路径所指向模块的解析后内容将作为当前模块的内容（别名方式），在此模式下，模块类别可由目标模块的类别推断获得；<br/>b. 如果uri的内容是远程资源路径（匹配正则表达式“/^(http:\\/\\/|https:\\/\\/|\\/|\\.\\/|\\.\\.\\/)/i”，例如“https://script.location.com/script.js”或者“./template.html”），则框架将发起fetch请求从远程服务器加载资源（外联方式），在此模式下，模块类型可由请求响应值的<a target='_blank' href='https://developer.mozilla.org/zh-cn/docs/Web/HTTP/Headers/Content-Type'>Content-Type</a>推断获得；不匹配资源路径或者远程url的uri值将被识别为<a target='_blank' href='https://developer.mozilla.org/zh-cn/docs/Web/API/Document/querySelector'>元素选择器</a>从当前<a href='module/namespace'>名空间下</a>查找资源的内容（嵌入方式），在此模式下，模块类别可由内容所在元素的type属性推断获得。<br/>c. 除字符串外，uri字段值还可以设置为包含多个远程资源定位的字符串数组，若如此做，框架将在解析时依次尝试加载数组中声明的资源定位直到成功返回有效结果。</div></div></span>"
+    }, {
+        "question": "模块配置项中的其他可选通用字段",
+        "answer": "<span>1. “base”（字符串），用于指定当前模块及其子模块（如果有）中远程资源相对路径的base值；<br/>2. “candidates” （对象数组），用于指定备选配置内容，框架将从数组中筛选出首个满足media/condition字段表达式条件的子项，融合到当前配置项下再进行解析；<br/>3. “integrity”（字符串），用于对远程资源内容进行<a target='_blank' href='https://developer.mozilla.org/zh-CN/docs/Web/Security/%E5%AD%90%E8%B5%84%E6%BA%90%E5%AE%8C%E6%95%B4%E6%80%A7'>sha256子资源完整性校验</a>；4. “prefetch”（字符串），声明当前模块为预加载的，主要用于在不阻塞当前<a href='router/introduction'>路由场景</a>视图渲染的前提下提前加载耗时较长的模块资源内容。框架在解析时将“prefetch”内容转换为正则表达式与当前的hash path匹配，预加载模块将只阻塞满足匹配条件的路由场景视图渲染。</span>"
+    }, {
+        "question": "模块类别列表",
+        "answer": "<span class='list'><a href='module/template'>模板</a><a href='module/script'>脚本</a><a href='module/style'>样式</a><a href='module/json'>json</a><a href='module/string'>字符串</a><a href='module/namespace'>名空间</a></span>"
+    }, {
+        "question": "合并声明多个相同类别的模块配置项",
+        "answer": "<span>可使用“@”符号加模块类别名称作为键值同时定义多个同类别的模块。例如，“@namespace: { a: {...}, b: {...} }”将同时声明a和b两个类别为名空间的模块。</span>"
+    }, {
+        "question": "模块配置项在哪里定义",
+        "answer": "<span>模块资源树的根节点定义在页面<a href='router/introduction'>路由配置项</a>下的“modules”字段下，子级模块配置项在父级模块配置项中嵌套定义。</span>"
+    }, {
+        "question": "模块资源的访问方式",
+        "answer": "<span>当前<a href='router/introduction'>路由场景</a>下声明的全局模块资源树可以通过<a href='miscellaneous/introduction'>根作用域</a>下的“$modules”对象访问，出于使用便捷性的考虑，“$modules”下的模块也支持匿名方式访问，例如，既可以使用“$modules.script”也可以使用“script”访问当前路由下声明的名为“script”的模块。</span>"
+    }, {
+        "question": "模块加载与页面渲染的时序关系",
+        "answer": "<span>当页面加载或者发生页面内路由切换时将触发当前路由场景下声明的全部模块递归加载和解析，资源树创建完毕后进行路由视图渲染。已经加载过的模块会在运行时缓存，页面内路由切换时不会重新加载解析。</span>"
+    }, {
+        "question": "模块的使用限制",
+        "answer": "<span>模块内容是只读的，不允许在运行时进行修改。合法的模块名称可以由“$”，“-”，“_”，大小写字母和数字组成，首字符不能是数字。</span>"
+    }],
+    "module.template": "模块/模板",
+    "module.template.sections": [{
+        "question": "什么是模板",
+        "answer": "<span>模板是由html标签（包括原生DOM元素和其他模板模块）组合成的视图模块。</span>"
+    }, {
+        "question": "模板的类别推断规则",
+        "answer": "<span>对于未指定类别的模块，如果资源内容的容器是template标签（嵌入方式），或者远程请求响应头的<a target='_blank' href='https://developer.mozilla.org/zh-cn/docs/Web/HTTP/Headers/Content-Type'>Content-Type</a>包含“text/html”且资源文档的根节点不是html标签（否则将被识别为名空间类别），则模块类别将被推断为模板。</span>"
+    }, {
+        "question": "模板模块的配置项字段",
+        "answer": "<span>除模块的通用配置项字段外，模板模块还支持style字段（字符串或者字符串数组），用于指定在当前模板中生效的作用域样式模块的相对路径。</span>"
+    }, {
+        "question": "模板的使用限制",
+        "answer": "<span>1. 框架不支持对包含递归或者循环引用结构的模板进行解析，如果需要使用此类模板结构可以结合带有判断条件的“<a href='directive/html'>$html</a>”指令实现。<br/>2. 受限于html标签的解析规则和兼容性考虑，模板路径中不能包含“$”和“-”符号。如果模板路径中包含大写字符，作为html标签使用时需要在字符前增加“-”前缀进行转义，例如，标签名“&lt;my-module.-template&gt;”将会被框架转义为模板路径“myModule.Template”。<br/>3. 模板标签在解析时会进行内容替换，不对应真实的DOM元素，因此不能作为<a href='directive/eventHandler'>事件处理指令</a>的目标。</span>"
+    }],
+    "module.namespace": "模块/名空间",
+    "module.namespace.sections": [{
+        "question": "什么是名空间模块",
+        "answer": "<span>名空间模块是由其他子级模块组成的模块集合。每个名空间构成一个新的模块作用域，在名空间内部访问其子级模块中定义的变量或者方法时，既可以使用<a href='miscellaneous/introduction'>根作用域</a>下的“$modules”对象通过绝对路径方式访问，也可以使用当前名空间模块作用域下的相对路径访问。</span>"
+    }, {
+        "question": "名空间模块的类别推断规则",
+        "answer": "<span>对于未指定类别的模块，如果资源内容的容器是类型为“dagger/configs”的style标签（嵌入方式），或者远程请求响应头的<a target='_blank' href='https://developer.mozilla.org/zh-cn/docs/Web/HTTP/Headers/Content-Type'>Content-Type</a>包含“text/html”且资源内容是完整的html文档（否则将被识别为模板类别），则模块类别将被推断为名空间。</span>"
+    }, {
+        "question": "名空间模块的配置项字段",
+        "answer": "<span>除模块的通用配置项字段外，名空间模块还支持形式为字符串数组的“customTags”字段，用于指定当前名空间下的自定义标签名。框架在解析时遇到非标准的html标签时会进行检查，如果标签名在当前名空间的“customTags”内则按照普通标签处理，否则将作为<a href='module/template'>模板</a>模块名进行查找和内容替换。</span>"
+    }, {
+        "question": "名空间模块的使用限制",
+        "answer": "<span>名空间模块资源加载后将根据资源模板<a href='miscellaneous/introduction'>配置项</a>递归解析子级模块，各级名空间模块之间不能出现循环引用。</span>"
+    }],
+    "module.style": "模块/样式",
+    "module.style.sections": [{
+        "question": "什么是样式模块",
+        "answer": "<span>样式模块是一组可复用的样式片段。</span>"
+    }, {
+        "question": "样式模块的类别推断规则",
+        "answer": "<span>对于未指定类别的模块，如果资源内容的容器是类型为“dagger/style”的style标签（嵌入方式），或者远程请求响应头的<a target='_blank' href='https://developer.mozilla.org/zh-cn/docs/Web/HTTP/Headers/Content-Type'>Content-Type</a>包含“text/css”，则模块类别将被推断为样式。</span>"
+    }, {
+        "question": "样式模块的配置项字段",
+        "answer": "<span>除模块的通用配置项字段外，样式模块还支持scoped字段，scoped为true（默认值）代表样式作用域为其关联<a href='module/template'>模板</a>，scoped为false代表样式作用域为全局页面。</span>"
+    }, {
+        "question": "样式模块的使用限制",
+        "answer": "<span>样式模块路径中不能包含“$”符号。</span>"
+    }],
+    "module.script": "模块/脚本",
+    "module.script.sections": [{
+        "question": "什么是脚本模块",
+        "answer": "<span>脚本模块是一组可复用的javaScript代码片段。</span>"
+    }, {
+        "question": "脚本模块的类别推断规则",
+        "answer": "<span>对于未指定类别的模块，如果资源内容的容器是类型为“dagger/script”的script标签（嵌入方式），或者远程请求响应头的<a target='_blank' href='https://developer.mozilla.org/zh-cn/docs/Web/HTTP/Headers/Content-Type'>Content-Type</a>包含“application/javascript”、“javascript/esm”或者“text/javascript”，则模块类别将被推断为脚本。</span>"
+    }, {
+        "question": "脚本模块的配置项字段",
+        "answer": "<span>除模块的通用配置项字段外，脚本模块还支持：<div class=\"sub-answer\">1. 形式为表达式字符串的converter字段，用于对解析后的es module进行进一步转换。例如“converter: '{ b: $module.a }'”将解析后的代码模块中的a方法重命名为b；<br/>2. anonymous字段，anonymous为true代表当前的脚本的使用方式是匿名的（默认为非匿名方式），例如，在指令中使用非匿名脚本script下的func方法需要写成script.func，而对于匿名脚本直接调用func即可。</div></span>"
+    }, {
+        "question": "脚本模块的使用限制",
+        "answer": "<span>脚本模块基于标准的<a target='_blank' href='https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/import'>import</a>/<a target='_blank' href='https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/export'>export</a>语法规范实现。技术上，在脚本模块代码中也可以import其他<a target='_blank' href='https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Modules'>javaScript脚本</a>，如果import的url是相对路径，请在url外部增加BASE标识，框架将在解析时对url路径进行宏替换。例如，模块代码要import './script.js'需要写成import 'BASE(./script.js)'。</span>"
+    }],
+    "module.string": "模块/字符串",
+    "module.string.sections": [{
+        "question": "什么是字符串模块",
+        "answer": "<span>字符串模块是一组可复用的字符串资源。</span>"
+    }, {
+        "question": "字符串模块的类别推断规则",
+        "answer": "<span>对于未指定类别的模块，如果不能识别为其他预定义类别的模块将推断为字符串类别。</span>"
+    }],
+    "module.json": "模块/json",
+    "module.json.sections": [{
+        "question": "什么是json模块",
+        "answer": "<span>json模块是一个可复用的JSON结构，解析后将转换为一个javaScript对象。</span>"
+    }, {
+        "question": "json模块的类别推断规则",
+        "answer": "<span>对于未指定类别的模块，如果资源内容的容器是类型为“dagger/json”的script标签（嵌入方式），或者远程请求响应头的<a target='_blank' href='https://developer.mozilla.org/zh-cn/docs/Web/HTTP/Headers/Content-Type'>Content-Type</a>包含“application/json”，则模块类别将被推断为json。</span>"
+    }, {
+        "question": "json模块的配置项字段",
+        "answer": "<span>除模块的通用配置项字段外，json模块还支持：<div class=\"sub-answer\">1. 形式为表达式字符串的converter字段，用于对解析后的对象进行进一步转换。例如“converter: '{ b: $module.a }'”将解析后的对象中的字段a重命名为b；<br/>2. anonymous字段，anonymous为true代表当前对象的访问方式是匿名的（默认为非匿名方式），例如，在指令中使用非匿名对象object下的name字段需要写成object.name，而对于匿名对象直接使用name即可。</div></span>"
+    }],
+    "router.introduction": "路由/介绍",
+    "router.introduction.sections": [{
+        "question": "什么是路由管理器",
+        "answer": "<span>dagger.js内置了基于url <a target='_blank' href='https://developer.mozilla.org/zh-CN/docs/Web/API/Location/hash'>hash</a>实现的页面内路由状态管理器，路由映射规则由配置项定义。本质上，路由配置项是渲染当前页面场景（对应于特定hash值）所需资源（<a href='module/introduction'>模块</a>等）的描述信息。</span>"
+    }, {
+        "question": "路由配置项的定义方式",
+        "answer": "<span>路由配置项由页面根<a href='miscellaneous/introduction'>配置项</a>下的“routing”字段定义。</span>"
+    }, {
+        "question": "路由跳转方式",
+        "answer": "<span>点击“href”属性指向hash值（由“./”或者“/”开头的相对路径链接将被识别为url路径而非hash）的链接标签，或者在javaScript代码中使用语句“location.hash = 'xxx';”均可触发页面hash状态变化，当路由管理器查找到与目标hash匹配的路由配置项时将加载和解析配置项中声明的资源模块并初始化上下文作用域，结合“<a href='directive/html'>$html</a>”指令进行页面渲染。<br/>请注意路由切换时将触发全局的<a href='directive/sentry'>$sentry</a>检查，不满足条件的跳转将被阻塞。</span>"
+    }],
+    "router.structure": "路由/结构",
+    "router.structure.sections": [{
+        "question": "全局路由配置项字段",
+        "answer": "<span>路由支持以下全局配置项字段：<div class=\"sub-answer\">1. “aliases”（可选，对象类型），用于指定路由别名。当发生页面内路由跳转时，将优先进行别名匹配。例如，“aliases: { '/alias1': '/router', '/alias2': '/router' }”将为路由“router”声明两个别名“alias1”和“alias2”，当目标hash值是“alias1”或者“alias2”时命中别名匹配，路由管理器将加载“router”配置项的内容并进行后续处理。匹配路由别名不会导致路由再次跳转；<br/>2. “redirects”（可选，对象类型），用于指定路由跳转关系。当发生页面内路由跳转时，如果目标路径命中了“redirects”配置项，则将根据匹配结果发生再次跳转（hash路径发生变化）。例如，设有“redirects: { '/router1': '/router2' }”，当页面路由切换到“router1”时发生了跳转匹配，页面hash将继续跳转到“router2”再进行路由匹配，此时页面的hash值切换为“router2”；<br/>3. “default”（可选，字符串类型），用于指定默认路由匹配项对应的路径，当页面hash无法匹配任何已定义路由时将匹配默认路由。例如，“default: '/default'”设定无效路径匹配到路径“/default”对应的路径配置项。匹配默认路由不会导致路由再次跳转；<br/>4. “hashPrefix”（可选，字符串类型，默认值为“#”），用于指定url hash路径的前缀；<br/>5. “overrideRelativeLinks”（可选，布尔类型，默认值为true），用于指定是否优先将链接中的相对路径url匹配为hash。如果关闭该选项，则按照浏览器默认的<a target='_blank' href='https://developer.mozilla.org/zh-CN/docs/Learn/Common_questions/What_is_a_URL'>url路径匹配规则</a>进行处理。</div></span>"
+    }, {
+        "question": "scenarios配置项字段和匹配规则",
+        "answer": "<span>“scenarios”（对象类型）字段用于描述路由场景的拓扑结构。页面的整体路由是一个由多个路由场景节点拼接成的树状结构，每个场景节点定义了路径匹配规则和渲染视图所需的静态资源（变量，模块等）的描述信息。<br/>当页面加载或者发生路由切换时，目标hash路径将被分解为由“/”分割的多个分量，每个路径分量与路由树中的节点按顺序进行匹配，如果每个路径分量都能与一棵连续路由子树上的对应节点匹配成功且最后一个路径分量匹配到的路由节点是“tailable”的，则视为路由匹配成功，否则将跳转到“default”字段对应的hash路径重新进行匹配。<br/>每个路由场景节点包括如下预定义字段：<div class=\"sub-answer\">1. “path”（可选，字符串或者对象类型，默认为空字符串），用于声明当前路由场景的名称和匹配规则。如果path字段值为字符串，则将path值作为场景名称，同时将值转换为正则表达式内容与对应路径分量进行匹配。如果path值为对象，则对象中键值对的键名将作为场景名称，值转换为正则表达式内容与对应路径分量进行匹配；<br/>2. “modules”（可选，对象类型），用于声明渲染当前路由场景视图需要的<a href='module/introduction'>模块</a>配置项。如果多个路由节点上声明了相同名称的模块配置项，则子级节点上的模块声明具有更高的优先级；<br/>3. “constants”（可选，对象类型），用于声明渲染当前路由场景视图需要的常量数据，如果多个路由节点上声明了相同名称的常量数据，则子级节点上的常量声明具有更高的优先级；<br/>4. “variables”（可选，对象类型），用于声明渲染当前路由场景视图需要的变量数据，变量数据的值可以由页面hash的同名<a target='_blank' href='https://developer.mozilla.org/zh-CN/docs/Web/API/URL/searchParams'>查询参数</a>重新赋值。如果多个路由节点上声明了相同名称的变量数据，则子级节点上的变量声明具有更高的优先级；<br/>5. “children” （可选，数组类型），用于声明当前场景节点的直接子节点数组，未定义“children”字段的节点是路由树的叶节点；<br/>6. “tailable”（可选，布尔类型，对于叶节点默认值为true，非叶节点默认值为false），用于指定当前路由场景是否可以作为路由匹配过程的终止结点。</div></span>"
+    }, {
+        "question": "运行时路由对象$router",
+        "answer": "<span>在路由与页面hash路径成功匹配后，框架将在运行时<a href='miscellaneous/introduction'>根作用域</a>下创建只读的“$router”变量，“$router”包含如下字段：<div class=\"sub-answer\">1. “hash”（字符串类型），记录当前场景下完整的hash值，包括路径和查询参数；<br/>2. “hashPrefix”（字符串类型），记录hash路径前缀；<br/>3. “path”（字符串类型），记录hash值的路径部分；<br/>4. “paths”（字符串数组），记录hash路径拆分后的各个分量（根路径为空字符串）；<br/>5. “query”（字符串类型），记录hash值的查询参数字符串部分；<br/>6. “queries”（对象类型），每个键值对记录hash值中的一组查询参数；<br/>7. “scenarios”（对象类型），记录场景名称与hash路径分量的映射关系；<br/>8. “schemes”（对象类型），记录当前场景下声明的变量与常量值。相同路由层级下的常量声明优先级高于同名的变量声明；<br/>9. “identity”（<a target='_blank' href='https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Symbol'>Symbol</a>类型），每次路由切换后框架会创建一个唯一的“identity”作为当前路由场景的身份标识，可以在<a href='directive/controller'>控制指令</a>中对“$router.identity”进行依赖以确保路由更新后指令表达式被触发。</div></span>"
+    }],
+    "api.introduction": "API/介绍",
+    "api.introduction.sections": [{
+        "question": "框架提供的API接口",
+        "answer": "<span>在当前版本中，框架仅针对特殊使用场景提供了少量的API接口，封装在window.$dagger只读对象下。</span>"
+    }, {
+        "question": "$dagger.runtime接口",
+        "answer": "<span>dagger.js在载入之后，会在页面的head标签下查找类型为“dagger/configs”的script标签内容作为页面的根<a href='miscellaneous/introduction'>配置项</a>，并在文档的“DOMContentLoaded”事件触发后进行当前<a href='router/introduction'>路由场景</a>下的资源初始化和视图渲染。<br/>除默认的自动初始化方式外，用户也可以根据需要手动调用$dagger对象下的runtime方法手动进行运行时初始化（此模式下不要在页面head中声明类型为\"dagger/configs\"的script标签以避免重复初始化），runtime方法接收一个对象作为参数，对象的字段内容与根<a href='miscellaneous/introduction'>配置项</a>的内容一致。</span>"
+    }, {
+        "question": "$dagger.register接口",
+        "answer": "<span>dagger.js内置了对“Object/Array/Date/Map/Set/WeakMap/WeakSet”等原生javaScript对象实例方法的响应式支持，用户也可以使用$dagger.register接口对自定义类方法进行注册，注册后的类方法将具有运行时响应性，可以在<a href='directive/controller'>控制指令</a>表达式中进行动态依赖。<br/>调用$dagger.register接口需要提供两个必选参数，第一个参数是要注册的类对象本身，第二个参数是包含要注册的类对象<a target='_blank' href='https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Inheritance_and_the_prototype_chain'>原型</a>方法名称的字符串数组。</span>"
+    }, {
+        "question": "$dagger.version字段",
+        "answer": "<span>$dagger.version字段是指向当前dagger.js版本信息的字符串。</span>"
+    }],
+    "miscellaneous.introduction": "杂项/介绍",
+    "miscellaneous.introduction.sections": [{
+        "question": "根作用域",
+        "answer": "<span>dagger.js的根作用域是定义在运行时闭包最顶层的变量作用域，页面中所有元素上的指令表达式均可使用根作用域下的变量与方法。根作用域对象包括<a href='router/structure'>路由</a>对象“$router”，当前路由场景下的<a href='module/introduction'>模块</a>资源树对象“$modules”，以及在debug模式下进行数据校验用的“$validator”方法。</span>"
+    }, {
+        "question": "验证器",
+        "answer": "<span>验证器是一个javaScript方法，支持如下几个调用参数：<div class=\"sub-answer\">1. “data”，用于指定要进行验证的变量数据；<br/>2. “path”，用于指定被校验数据在当前作用域下的访问路径或者名称；<br/>3. “validators”，验证对象，包含三个调用预定义字段：<div class=\"sub-answer\">a. “type”，验证变量所属的类型对象或者类型对象数组；<br/>b. “assert”，断言方法，接受data作为参数，返回true代表断言成功，false代表断言失败；<br/>c. “required”，为true代表要求待验证对象必须为有效值（不能是null，undefined或者NaN）。</div></div></span>"
+    }, {
+        "question": "预定义class名称dg-cloak",
+        "answer": "<span>“dg-cloak”是dagger.js预定义的class名称，用于隐藏未渲染完成的DOM元素，框架在关联元素及其指令实例化完成后将自动移除“dg-cloak”声明。<br/>尽管dagger.js在运行时会创建动态的样式表确保这个class名称正常工作，仍然建议使用者在项目页面的head标签下手动插入如下样式标签以避免页面渲染过程中出现闪动：</span><br/><span style='font-style: italic; background-color: #eeeeee;'>&lt;style&gt;[dg-cloak] { display: none !important; }&lt;/style&gt;。</span>"
+    }, {
+        "question": "根配置项",
+        "answer": "<span>页面的根配置项通常声明为页面head标签下类型为“dagger/configs”的script标签（支持内联或外联内容），在手动初始化模式下，根配置项是$dagger.runtime接口方法的参数。根配置项支持如下字段：<div class=\"sub-answer\">1. “rootSelectors”（字符串数组），用于指定框架解析的根节点所对应的元素选择器，默认为['title', 'body']，页面的html标签不能作为解析的根元素；<br/>2. “customTags”，用于指定全局的<a href='module/namespace'>自定义标签</a>；<br/>3. “routing”，用于指定页面的<a href='router/structure'>路由配置项</a>；<br/>4. “options”，用于设定框架的运行时开关选项（均为布尔值），包括：<div class=\"sub-answer\">a. “commentNode”（默认值为false，值为false则模板解析过程将忽略注释节点）；<br/>b. “directiveAttribute”（默认值为false，值为true则指令初始化后将在关联元素上添加对应的debug属性）；<br/>c. “moduleLog”（默认值为false，值为true则模块加载过程中将在控制台打印相关日志）；<br/>d. “routerLog”（默认值为false，值为true则路由跳转时将在控制台打印相关日志）；<br/>e. “integrity”（默认值为true，值为true则在远程模块加载时进行<a target='_blank' href='https://developer.mozilla.org/zh-CN/docs/Web/Security/%E5%AD%90%E8%B5%84%E6%BA%90%E5%AE%8C%E6%95%B4%E6%80%A7'>sha256子资源完整性校验</a>）。</div></div></span>"
+    }, {
+        "question": "debug版本和release版本的差别",
+        "answer": "<span>在release版本中，根配置项options只支持“commentNode”和“integrity”字段，验证器定义为空函数，另外移除了debug版本下的运行时断言以提升响应性能。</span>"
+    }, {
+        "question": "工程化方案",
+        "answer": "<span>dagger.js采用分布式模块复用技术方案，各<a href='module/introduction'>类型</a>模块基于原生语法实现，使用者很容易（尽管并非必须）利用现代前端开发技术链路上的其他<a target='_blank' href='https://developer.mozilla.org/en-US/docs/Learn/Tools_and_testing/Understanding_client-side_tools/Introducing_complete_toolchain'>实用工具</a>以获取更佳的开发体验，提升开发效率。</span>"
+    }]
+}

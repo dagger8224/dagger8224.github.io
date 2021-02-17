@@ -1,0 +1,13 @@
+<div $loading="{ number: 0, string: '', log: '' }">
+    <span $loaded#node:element="string = `I'm a ${ element.tagName }.`">${ string }</span>
+    <br/>
+    <input $value#number#trim#input="number">
+    <span>${ number }</span>
+    <br/>
+    <button +click#sensitive#event:my%45vent="log = '', number++, log += `, the ${ myEvent.target.tagName } was clicked!`" $watch="log = `number is: ${ number }`">handler use decorators</button>
+    <br/>
+    <span>${ log }</span>
+    <div +click="alert('button\'s parent is clicked!')">
+        <button +click#modifier:['-Caps-Lock','-Shift']#stop="alert('button is clicked!')">alert with modifier key</button>
+    </div>
+</div>

@@ -1,0 +1,6 @@
+<div id="eventHandler-demo" $loading="{ array: ['a', 'b', 'c'], log: '' }">
+    <style>#eventHandler-demo button { margin-right: 20px; min-width: 40px; cursor: pointer; }</style>
+    <button +click="log = ''">clear log</button>
+    <button $each="array" +mouseover="log += item" +click#1="alert(item)" +click="log += `${ item } is clicked!`">${ item }</button>
+    <span +resize#target:window="log += $event.target">${ log }</span>
+</div>

@@ -1,0 +1,41 @@
+{
+    "scenarios": {
+        "tailable": true,
+        "constants": {
+            "title": "I'm defined as a constant of root router"
+        },
+        "variables": {
+            "data": "default value of data defined as variable"
+        },
+        "modules": {
+            "@template": {
+                "content": "<div>hello dagger!</div>"
+            }
+        },
+        "children": [{
+            "path": "path1",
+            "constants": {
+                "title": "I'm defined as a constant of router 'path1'"
+            },
+            "modules": {
+                "script": "./module/demo/script.js"
+            }
+        }, {
+            "path": {
+                "path2": "^[a-z]+$"
+            },
+            "constants": {
+                "title": "I'm defined as a constant of router 'path2'"
+            },
+            "children": [{
+                "path": "path3",
+                "constants": {
+                    "title": "I'm defined as a constant of router 'path3'"
+                },
+                "modules": {
+                    "script": "./module/demo/style.css"
+                }
+            }]
+        }]
+    }
+}

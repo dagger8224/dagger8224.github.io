@@ -1,0 +1,29 @@
+<div $loading="{ checkedArray1: [true], checkedArray2: [false, true, true], checkedArray3: [false, true, true], checkedArray4: [false, true, true] }">
+    <span>${ JSON.stringify(checkedArray1) }</span>
+    <br/>
+    <input type="checkbox" name="checkbox-group" $checked="checkedArray1[0]">1st checkbox</input>
+    <input type="checkbox" name="checkbox-group" $checked="checkedArray1[1]">2nd checkbox</input>
+    <input type="checkbox" name="checkbox-group" $checked="checkedArray1[2]">3rd checkbox</input>
+    <br/>
+    <span>${ JSON.stringify(checkedArray2) }</span>
+    <br/>
+    <input type="radio" name="radio-group" $checked="checkedArray2[0]">1st radio</input>
+    <input type="radio" name="radio-group" $checked="checkedArray2[1]">2nd radio</input>
+    <input type="radio" name="radio-group" $checked="checkedArray2[2]">3rd radio</input>
+    <br/>
+    <span>${ JSON.stringify(checkedArray3) }</span>
+    <br/>
+    <select>
+        <option $checked="checkedArray3[0]">1st option</option>
+        <option $checked="checkedArray3[1]">2nd option</option>
+        <option $checked="checkedArray3[2]">3rd option</option>
+    </select>
+    <br/>
+    <span>${ JSON.stringify(checkedArray4) }</span>
+    <br/>
+    <select multiple>
+        <option $checked="checkedArray4[0]">1st option</option>
+        <option $checked="checkedArray4[1]">2nd option</option>
+        <option $checked="checkedArray4[2]">3rd option</option>
+    </select>
+</div>

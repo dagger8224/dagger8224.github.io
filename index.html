@@ -1,83 +1,67 @@
 <!DOCTYPE html>
-<html>
+<html $loading="onLoad(languages)" $loaded="onLoaded($router, demo), html = demo;" $sentry#next:$target-router="$targetRouter.path == '/blocked'" $unloading="console.log($router, 'unloading')" $unloaded="console.log($router, 'unloaded')">
   <head>
     <meta charset="UTF-8">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="dagger.js">
+    <meta property="og:description" content="A lightweight runtime web frontend javaScript framework">
+    <meta property="og:url" content="https://daggerjs.org">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="dagger.js">
+    <meta name="twitter:description" content="A lightweight runtime web frontend javaScript framework">
     <link rel="icon" href="data:image/svg+xml,%3csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22%3e%3ctext y=%22.9em%22 font-size=%2280%22%3e🗡️%3c/text%3e%3c/svg%3e">
     <link rel="preload" href="./configs.json" as="fetch" crossorigin="anonymous">
     <!--<link rel="stylesheet" href="css.css" media="print" onload="media = 'all'">-->
     <style>[dg-cloak] { display: none !important; }</style>
-    <script type="module" integrity1="sha256-j36ZDu6LWjub1P/IAX9LlsRFNkLSt4Pcrd8/xRfPpFc=" crossorigin="anonymous" src="http://dagger.core.com:8280/dagger.js" defer></script>
+    <link rel="stylesheet" href="./index.css">
+    <script type="module" integrity1="sha256-j36ZDu6LWjub1P/IAX9LlsRFNkLSt4Pcrd8/xRfPpFc=" crossorigin="anonymous" src="./src/dagger.js" defer></script>
     <script type="dagger/configs" integrity1="CV7omJ8n3bMRVSdloGsIeJTnvfc6By4UTXna5C+7CHw=" src="./configs.json"></script>
-    <title $text="`${ $router.schemes.title } demo`">loading...</title>
-    <template id="index_template">
-        <custom_tag1>This is custom tag1 defined in "index" namespace.</custom_tag1>
-        <div id="plain-previous-sibling"></div>
-        <div id="plain-wrapper">
-            <div id="index" $loading="content">
-                <a $each#item:slice="array" $href="`controllers/${ slice.path }${ slice.query ? `?${ slice.query }` : '' }`" $title="`${ slice.path } demo`">${ index + 1 }. ${ slice.path } demo</a>
-                <br/>
-            </div>
-        </div>
-        <div id="plain-next-sibling"></div>
-    </template>
-    <template id="component">
-        <div class="component">${ component }</div>
-    </template>
-    <template id="prefix">
-        <div class="prefix-raw">prefix</div>
-        <div class="prefix-plain">prefix-${ item }</div>
-        <div $class="`prefix-${ item }`">prefix-${ item }</div>
-        <suffix $each="'string'" $exist="item > 'n'"></suffix>
-    </template>
-    <template id="suffix">
-        <div $class="`suffix-${ item }`">suffix-${ item }</div>
-    </template>
-    <script id="root_test_script" type="dagger/script">
-        export const test = () => alert('root_test_script');
+    <script src="https://cdn.jsdelivr.net/npm/monaco-editor@0.21.2/min/vs/loader.min.js"></script>
+    <script>
+        require.config({ paths: { 'vs': 'https://cdn.jsdelivr.net/npm/monaco-editor@0.21.2/min/vs' }});
+        require(['vs/editor/editor.main'], () => (window.$editor = monaco.editor.create(document.querySelector('#codeContainer'), {
+            minimap: { enabled: false },
+            automaticLayout: true,
+            formatOnPaste: true,
+            formatOnType: true,
+            wordWrap: 'on',
+            theme: 'vs-dark'
+        })));
     </script>
-    <script id="index_test_script" type="dagger/script">
-        export const test = () => alert('index_test_script');
-    </script>
-    <script id="script" type="dagger/script">
-        export const clear = () => console.clear();
-    </script>
-    <style id="index_style" type="dagger/style">
-        a {
-            display: inline-block;
-            padding: 10px;
-        }
-    </style>
-    <style>
-      body {
-        display: block !important;
-        border: 10px solid blue;
-      }
-    </style>
+    <title $text="$[$router.schemes.title] || $router.schemes.title">loading...</title>
   </head>
   <body dg-cloak>
-    <!--<div class="raw"></div>
-    <div $class="'connected'">${ Math.PI }</div>
-    <br/>-->
-    <!--<prefix $each="[1, 2, 4]" $exist="(() => { setTimeout(() => {item = 3}, 1000); return item > 2; })()"></prefix>-->
-    <!--<prefix $each="[1, 2, 4]" $exist="item > 1"></prefix>
-    <component></component>
-    <br/>
-    <div @raw id="root-raw" $loading="{}"></div>
-    <div class="root-each" $each="'string'">
-      <div @raw $loading="1234"></div>
-    </div>-->
-    <span class="raw">Please click the following links to see directives demo:</span>
-    <a $exist="true" href="mailto://dagger8224@gmail.com">mail to author</a>
-    <br/>
-    <component></component>
-    <custom_tag0>This is global custom tag0.</custom_tag0>
-    <!--<directive></directive>
-    <template $html="'<directive></directive>'"></template>
-    <template $html="(() => '<directive></directive>')($router.identity)"></template>-->
-    <div class="mountPoint1" $loading="{ item: 'default-item' }" $html="(() => `<${ $router.schemes.template }></${ $router.schemes.template }>`)($router.identity)" watch="console.clear($router.schemes.template)"></div>
-    <span>This the end!</span>
+    <div id="header">
+      <h1>🗡️ dagger.js</h1>
+      <a id="github-link" href="https://github.com/dagger8224/dagger.js">${ $.viewOnGithub }</a>
+      <select id="language-select" $selected="language" +change="localStorage.setItem('language', language) || ($ = languages[language])">
+        <option $each="$.languages" $text="item" $value="key"></option>
+      </select>
+    </div>
+    <div id="navigator">
+      <h3>${ $.index }</h3>
+      <ul $each#item:topic="menus" $loading="{ className: '' }" $class="className">
+        <div +click="className = className ? '' : 'hidden'">
+          <span class="prefix">${ className ? '+' : '-' }</span><span>${ $[topic.text] || topic.text }</span>
+        </div>
+        <li $each#item:section="topic.sections" +click="location.href = `#/${ section.href }`" $class="{active: Object.is(`/${ section.href }`, $router.path), 'sub-directive': section.text.startsWith('$')}">${ $[section.text] || section.text }</li>
+      </ul>
+    </div>
+    <div id="content" $sentry="document.querySelector('html').scrollTop = 0;">
+      <template $html="`<${ $router.schemes.template }></${ $router.schemes.template }>`"></template>
+      <div id="editor" $style="(() => `display: ${ demo ? 'block' : 'none' }`)($router.identity)">
+        <span id="try-it">${ $.try }</span>
+        <div id="codeContainer"></div>
+        <button id="run" +click="html = '', queueMicrotask(() => (html = window.$editor.getValue()));">${ $.run }</button>
+        <button id="reset" +click="onLoaded($router, demo), html = '', queueMicrotask(() => (html = demo));">${ $.reset }</button>
+        <br/>
+        <span id="view-result">${ $.view }</span>
+        <div id="result" $html="updateResult($router, html)"></div>
+      </div>
+    </div>
+    <div id="footer"></div>
   </body>
 </html>

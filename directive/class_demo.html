@@ -1,0 +1,33 @@
+<div $loading="{ index: 0, selectedClass: null, classes: ['className1 className2', ['className3', 'className4'], { className5: true, className6: false }, 1234, null] }">
+    <style>
+        .default-class {
+            border: 1px solid #aaaaaa;
+            width: 400px;
+            height: 200px;
+            margin: 40px;
+        }
+        div.default-class::after {
+            content: "["attr(class)"]";
+        }
+        div.className1 {
+            border-width: 2px;
+        }
+        div.className2 {
+            border-style: dashed;
+        }
+        div.className3 {
+            border-color: blue;
+        }
+        div.className4 {
+            width: 300px;
+        }
+        div.className5 {
+            height: 100px;
+        }
+        div.className6 {
+            border-color: red;
+        }
+    </style>
+    <button +click="selectedClass = classes[(index++) % 5];">change selectedClass</button>
+    <div class="default-class" $class="selectedClass">I'm a DIV with classNames: </div>
+</div>

@@ -1,0 +1,6 @@
+<div $loading="{ exist: true, index: 0, log: '' }">
+    <button +click="log = '', exist = !exist;">click me</button>
+    <br/>
+    <span>${ log }</span>
+    <span $exist="exist" $unloading="$node && (log = `The node ${ $node.tagName } is unloading ${ ++index } times, the state is '${ $node.isConnected ? 'connected' : 'disconnected' }'.`);">I'm a span</span>
+</div>

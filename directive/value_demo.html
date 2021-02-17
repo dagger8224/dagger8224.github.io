@@ -1,0 +1,13 @@
+<div $loading="{ value: 'string', array: [1, 2, 3], object: { m: 2, n: 3 }, selected: null, date: new Date() }">
+    <input $value="value"><label>the text input value: ${ value }</label>
+    <br/>
+    <textarea $value="value"></textarea>
+    <br/>
+    <input type="datetime-local" $value="date"><label>the datetime input value: ${ date }</label>
+    <br/>
+    <span>the selected value is: ${ JSON.stringify(selected) }, the type is: ${ typeof selected }</span>
+    <select $selected="selected">
+        <option $value="array">array</option>
+        <option $value="object">object</option>
+    </select>
+</div>

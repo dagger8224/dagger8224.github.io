@@ -1,0 +1,36 @@
+{
+    "string1": "./module/demo/string.txt",
+    "string2": [{
+        "media": "(resolution: 10dppx)",
+        "uri": "#string-invalid-media"
+    }, {
+        "condition": false,
+        "uri": ["#string-invalid-condition"]
+    }, {
+        "uri": ["./module/demo/string_not_exist", "./module/demo/string.txt"]
+    }],
+    "template": {
+        "candidates": [{
+            "condition": false,
+            "uri": "./module/demo/template_not_exist.html"
+        }, {
+            "condition": true,
+            "content": "<span>hello dagger</span>"
+        }],
+        "type": "template"
+    },
+    "script": {
+        "content": "export const onClick = () => alert('I\\'m clicked!');",
+        "type": "script"
+    },
+    "@json": {
+        "json1": {
+            "content": {
+                "a": 1
+            }
+        },
+        "json2": {
+            "content": { "b": 2 }
+        }
+    }
+}

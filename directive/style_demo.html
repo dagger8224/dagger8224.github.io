@@ -1,0 +1,4 @@
+<div $loading="{ index: 0, style: '', styles: ['color: blue; border-color: green; margin-left: 20px;', ['color: green', 'border-width: 4px'], { 'border-style': 'dashed', 'color': 'red' }] }">
+    <button +click="style = styles[(index++) % 4]">change style</button>
+    <div style="border: 1px solid #aaaaaa; width: 300px; height: 200px; margin: 40px;" $style="style">I'm a DIV</div>
+</div>

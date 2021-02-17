@@ -1,0 +1,9 @@
+<div $loading="{ exist: true, logs: [] }">
+    <button +click="logs.length = 0, exist = !exist;">click me</button>
+    <br/>
+    <pre>${ logs.join('\r\n') }</pre>
+    <div $exist="exist" $loading="logs.push('outer loading')" $loaded="logs.push('outer loaded')" $unloading="logs.push('outer unloading')" $unloaded="logs.push('outer unloaded')">
+        <div $loading="logs.push('inner1 loading')" $loaded="logs.push('inner1 loaded')" $unloading="logs.push('inner1 unloading')" $unloaded="logs.push('inner1 unloaded')"></div>
+        <div $loading="logs.push('inner2 loading')" $loaded="logs.push('inner2 loaded')" $unloading="logs.push('inner2 unloading')" $unloaded="logs.push('inner2 unloaded')"></div>
+    </div>
+</div>

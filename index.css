@@ -1,0 +1,165 @@
+body {
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    color: #333333;
+    background-color: #fdfcf8;
+    font-family: arial, sans-serif;
+    font-size: 18px;
+    line-height: 1.75;
+    overflow: auto;
+}
+#header {
+    position: fixed;
+    width: 100%;
+    height: 70px;
+    top: 0;
+    background-color: #f4f4f4;
+    z-index: 1000;
+}
+#header h1 {
+    display: inline-block;
+    position: absolute;
+    left: 50px;
+    margin: 0;
+}
+#github-link {
+    position: absolute;
+    right: 230px;
+    top: 20px;
+}
+#language-select {
+    position: absolute;
+    right: 50px;
+    top: 20px;
+    width: 150px;
+    font-size: 18px;
+}
+#navigator {
+    position: fixed;
+    width: 240px;
+    top: 70px;
+    left: 0;
+    bottom: 0;
+    border-right: 2px solid #f4f4f4;
+    overflow-y: auto;
+    background-color: #fdfcf8;
+}
+#navigator ul {
+    padding: 0;
+    cursor: pointer;
+}
+#navigator ul span {
+    font-weight: bold;
+}
+#navigator ul span.prefix {
+    font-size: 20px;
+    margin-right: 6px;
+}
+#navigator ul li {
+    list-style-type: none;
+}
+#navigator ul.hidden li {
+    display: none;
+}
+#navigator ul li.active {
+    background-color: #eeeeee;
+    font-style: italic;
+    font-weight: 600;
+}
+#navigator ul div:hover, #navigator ul li:hover {
+    background-color: #cccccc;
+}
+#content {
+    text-align: left;
+    min-width: 700px;
+    padding: 40px 0;
+    margin: 70px 150px 100px 300px;
+}
+#content .section {
+    margin-bottom: 10px;
+}
+#content h2 {
+    margin-bottom: 40px;
+}
+#editor {
+    margin-top: 30px;
+}
+#try-it::before {
+    content: "✍️";
+    margin-right: 10px;
+}
+#run, #reset {
+    margin: 22px;
+    cursor: pointer;
+    width: 60px;
+    height: 30px;
+}
+#reset {
+    margin-left: 0;
+}
+#codeContainer, #result {
+    height: 300px;
+    margin: 20px;
+    border-radius: 3px;
+    overflow: hidden;
+}
+#view-result::before {
+    content: "👀";
+    margin-right: 10px;
+}
+.monaco-editor, #result {
+    padding: 15px 0;
+    box-sizing: border-box;
+}
+#result {
+    padding: 15px;
+    border: 1px solid #aaaaaa;
+    overflow-y: auto;
+}
+#footer {
+}
+.question::before, .answer::before{
+    display: inline-block;
+    width: 25px;
+}
+.question::before, .answer::before, #view-result::before, #try-it::before {
+    font-size: 22px;
+}
+h3.question {
+    margin: 10px 0;
+}
+.answer {
+    position: relative;
+    padding-left: 35px;
+}
+.answer::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.answer+h3.question {
+    margin-top: 30px;
+}
+.sub-answer {
+    padding-left: 20px;
+}
+#navigator {
+    text-align: left;
+}
+#navigator>h3 {
+    padding-left: 20px;
+}
+#navigator ul>div {
+    padding-left: 35px;
+}
+#navigator ul>li{
+    padding-left: 45px;
+}
+#navigator ul>li.sub-directive{
+    padding-left: 60px;
+}
+a:hover,button:hover {
+    opacity: 0.7;
+}

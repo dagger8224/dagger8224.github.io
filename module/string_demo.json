@@ -1,0 +1,7 @@
+{
+    "external_string": "./module/demo/string.txt",
+    "inline_string": {
+        "content": "I'm an inline string.",
+        "type": "string"
+    }
+}

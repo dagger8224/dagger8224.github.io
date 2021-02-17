@@ -1,0 +1,7 @@
+{
+    "external_script": "./module/demo/script.js",
+    "inline_script": {
+        "content": "export const method = () => alert('hello dagger!')",
+        "type": "script"
+    }
+}
