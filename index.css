@@ -184,6 +184,7 @@ a:hover,button:hover {
     /* body and menu */
     #navigator.closed-menu {
         height: 70px;
+        overflow: hidden;
     }
     #navigator {
         /* height: 90px; */
