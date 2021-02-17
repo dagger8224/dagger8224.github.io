@@ -9,9 +9,11 @@ body {
     font-size: 18px;
     line-height: 1.75;
     overflow: auto;
+    position: relative;
+    min-width: 375px;
 }
 #header {
-    position: fixed;
+    position: absolute;
     width: 100%;
     height: 70px;
     top: 0;
@@ -37,7 +39,8 @@ body {
     font-size: 18px;
 }
 #navigator {
-    position: fixed;
+    position: absolute;
+    z-index: 100;
     width: 240px;
     top: 70px;
     left: 0;
@@ -74,8 +77,8 @@ body {
 #content {
     text-align: left;
     min-width: 700px;
-    padding: 40px 0;
-    margin: 70px 150px 100px 300px;
+    padding: 110px 0;
+    margin: 0px 150px 0px 300px;
 }
 #content .section {
     margin-bottom: 10px;
@@ -162,4 +165,80 @@ h3.question {
 }
 a:hover,button:hover {
     opacity: 0.7;
+}
+.bottom-switcher {
+    text-align: center;
+    position: absolute;
+    top: 50px;
+    cursor: pointer;
+    width: 100%;
+    display: none;
+}
+.bottom-switcher>span {
+    color: #0921EA;
+    display: inline-block;
+    transform: rotate(90deg);
+    user-select: none;
+}
+@media screen and (max-width: 1100px) {
+    /* body and menu */
+    #navigator.closed-menu {
+        height: 70px;
+    }
+    #navigator {
+        /* height: 90px; */
+        width: 100%;
+    }
+    #navigator>h3 {
+        padding-left: calc(45% + 20px);
+    }
+    #navigator ul>div {
+        padding-left: calc(45% + 35px);
+    }
+    #navigator ul>li{
+        padding-left: calc(45% + 45px);
+    }
+    #navigator ul>li.sub-directive{
+        padding-left: calc(45% + 60px);
+    }
+    .bottom-switcher {
+        display: block;
+    }
+    /* content */
+    #content {
+        min-width: auto;
+        padding: 110px 0 40px;
+        margin: 0px 15px 0px 30px;
+        box-sizing: border-box;
+        word-break: break-all;
+    }
+}
+@media screen and (max-width: 700px) {
+    /* menu */
+    #navigator>h3 {
+        padding-left: calc(35% + 20px);
+    }
+    #navigator ul>div {
+        padding-left: calc(35% + 35px);
+    }
+    #navigator ul>li{
+        padding-left: calc(35% + 45px);
+    }
+    #navigator ul>li.sub-directive{
+        padding-left: calc(35% + 60px);
+    }
+    /* header */
+    #header {
+        min-width: 300px;
+        height: 140px;
+    }
+    #github-link, #language-select {
+        top: 90px;
+    }
+    #content {
+        padding-top: 180px;
+    }
+    #navigator {
+        top: 140px;
+    }
 }
