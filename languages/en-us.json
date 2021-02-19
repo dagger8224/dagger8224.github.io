@@ -12,6 +12,8 @@
     "directive": "Directive",
     "index": "Index",
     "version": "Version",
+    "next": "Next",
+    "previous": "Prev",
     "overview.introduction": "Overview/introduction",
     "overview.introduction.sections": [{
         "question": "What is dagger.js",

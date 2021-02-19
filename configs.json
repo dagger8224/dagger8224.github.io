@@ -43,7 +43,9 @@
                     "path": "introduction",
                     "constants": {
                         "title": "overview.introduction",
-                        "template": "overview_introduction"
+                        "template": "overview_introduction",
+                        "previousLink": "",
+                        "nextLink": "overview/version"
                     },
                     "modules": {
                         "overview_introduction": "./overview/introduction.html"
@@ -52,7 +54,9 @@
                     "path": "version",
                     "constants": {
                         "title": "overview.version",
-                        "template": "overview_version"
+                        "template": "overview_version",
+                        "previousLink": "overview/introduction",
+                        "nextLink": "directive/introduction"
                     },
                     "modules": {
                         "overview_version": "./overview/version.html"
@@ -64,7 +68,9 @@
                     "path": "introduction",
                     "constants": {
                         "title": "directive.introduction",
-                        "template": "directive_introduction"
+                        "template": "directive_introduction",
+                        "previousLink": "overview/version",
+                        "nextLink": "directive/raw"
                     },
                     "modules": {
                         "directive_introduction": "./directive/introduction.html"
@@ -73,7 +79,9 @@
                     "path": "raw",
                     "constants": {
                         "title": "directive.raw",
-                        "template": "directive_raw"
+                        "template": "directive_raw",
+                        "previousLink": "directive/introduction",
+                        "nextLink": "directive/lifeCycle"
                     },
                     "modules": {
                         "directive_raw": "./directive/raw.html",
@@ -86,7 +94,9 @@
                     "path": "lifeCycle",
                     "constants": {
                         "title": "directive.lifeCycle",
-                        "template": "directive_life-Cycle"
+                        "template": "directive_life-Cycle",
+                        "previousLink": "directive/raw",
+                        "nextLink": "directive/loading"
                     },
                     "modules": {
                         "directive_lifeCycle": "./directive/lifeCycle.html",
@@ -99,7 +109,9 @@
                     "path": "loading",
                     "constants": {
                         "title": "directive.loading",
-                        "template": "directive_loading"
+                        "template": "directive_loading",
+                        "previousLink": "directive/lifeCycle",
+                        "nextLink": "directive/loaded"
                     },
                     "modules": {
                         "directive_loading": "./directive/loading.html",
@@ -112,7 +124,9 @@
                     "path": "loaded",
                     "constants": {
                         "title": "directive.loaded",
-                        "template": "directive_loaded"
+                        "template": "directive_loaded",
+                        "previousLink": "directive/loading",
+                        "nextLink": "directive/unloading"
                     },
                     "modules": {
                         "directive_loaded": "./directive/loaded.html",
@@ -125,7 +139,9 @@
                     "path": "unloading",
                     "constants": {
                         "title": "directive.unloading",
-                        "template": "directive_unloading"
+                        "template": "directive_unloading",
+                        "previousLink": "directive/loaded",
+                        "nextLink": "directive/unloaded"
                     },
                     "modules": {
                         "directive_unloading": "./directive/unloading.html",
@@ -138,7 +154,9 @@
                     "path": "unloaded",
                     "constants": {
                         "title": "directive.unloaded",
-                        "template": "directive_unloaded"
+                        "template": "directive_unloaded",
+                        "previousLink": "directive/unloading",
+                        "nextLink": "directive/sentry"
                     },
                     "modules": {
                         "directive_unloaded": "./directive/unloaded.html",
@@ -151,7 +169,9 @@
                     "path": "sentry",
                     "constants": {
                         "title": "directive.sentry",
-                        "template": "directive_sentry"
+                        "template": "directive_sentry",
+                        "previousLink": "directive/unloaded",
+                        "nextLink": "directive/controller"
                     },
                     "modules": {
                         "directive_sentry": "./directive/sentry.html",
@@ -164,7 +184,9 @@
                     "path": "controller",
                     "constants": {
                         "title": "directive.controller",
-                        "template": "directive_controller"
+                        "template": "directive_controller",
+                        "previousLink": "directive/sentry",
+                        "nextLink": "directive/checked"
                     },
                     "modules": {
                         "directive_controller": "./directive/controller.html"
@@ -173,7 +195,9 @@
                     "path": "checked",
                     "constants": {
                         "title": "directive.checked",
-                        "template": "directive_checked"
+                        "template": "directive_checked",
+                        "previousLink": "directive/controller",
+                        "nextLink": "directive/class"
                     },
                     "modules": {
                         "directive_checked": "./directive/checked.html",
@@ -186,7 +210,9 @@
                     "path": "class",
                     "constants": {
                         "title": "directive.class",
-                        "template": "directive_class"
+                        "template": "directive_class",
+                        "previousLink": "directive/checked",
+                        "nextLink": "directive/each"
                     },
                     "modules": {
                         "directive_class": "./directive/class.html",
@@ -199,7 +225,9 @@
                     "path": "each",
                     "constants": {
                         "title": "directive.each",
-                        "template": "directive_each"
+                        "template": "directive_each",
+                        "previousLink": "directive/class",
+                        "nextLink": "directive/exist"
                     },
                     "modules": {
                         "directive_each": "./directive/each.html",
@@ -209,23 +237,12 @@
                         }
                     }
                 }, {
-                    "path": "enabled",
-                    "constants": {
-                        "title": "directive.enabled",
-                        "template": "directive_enabled"
-                    },
-                    "modules": {
-                        "directive_enabled": "./directive/enabled.html",
-                        "demo": {
-                            "uri": "./directive/enabled_demo.html",
-                            "type": "string"
-                        }
-                    }
-                }, {
                     "path": "exist",
                     "constants": {
                         "title": "directive.exist",
-                        "template": "directive_exist"
+                        "template": "directive_exist",
+                        "previousLink": "directive/each",
+                        "nextLink": "directive/file"
                     },
                     "modules": {
                         "directive_exist": "./directive/exist.html",
@@ -238,7 +255,9 @@
                     "path": "file",
                     "constants": {
                         "title": "directive.file",
-                        "template": "directive_file"
+                        "template": "directive_file",
+                        "previousLink": "directive/exist",
+                        "nextLink": "directive/focus"
                     },
                     "modules": {
                         "directive_file": "./directive/file.html",
@@ -251,7 +270,9 @@
                     "path": "focus",
                     "constants": {
                         "title": "directive.focus",
-                        "template": "directive_focus"
+                        "template": "directive_focus",
+                        "previousLink": "directive/file",
+                        "nextLink": "directive/html"
                     },
                     "modules": {
                         "directive_focus": "./directive/focus.html",
@@ -264,7 +285,9 @@
                     "path": "html",
                     "constants": {
                         "title": "directive.html",
-                        "template": "directive_html"
+                        "template": "directive_html",
+                        "previousLink": "directive/focus",
+                        "nextLink": "directive/selected"
                     },
                     "modules": {
                         "directive_html": "./directive/html.html",
@@ -277,7 +300,9 @@
                     "path": "selected",
                     "constants": {
                         "title": "directive.selected",
-                        "template": "directive_selected"
+                        "template": "directive_selected",
+                        "previousLink": "directive/html",
+                        "nextLink": "directive/style"
                     },
                     "modules": {
                         "directive_selected": "./directive/selected.html",
@@ -290,7 +315,9 @@
                     "path": "style",
                     "constants": {
                         "title": "directive.style",
-                        "template": "directive_style"
+                        "template": "directive_style",
+                        "previousLink": "directive/selected",
+                        "nextLink": "directive/text"
                     },
                     "modules": {
                         "directive_style": "./directive/style.html",
@@ -303,7 +330,9 @@
                     "path": "text",
                     "constants": {
                         "title": "directive.text",
-                        "template": "directive_text"
+                        "template": "directive_text",
+                        "previousLink": "directive/style",
+                        "nextLink": "directive/value"
                     },
                     "modules": {
                         "directive_text": "./directive/text.html",
@@ -316,7 +345,9 @@
                     "path": "value",
                     "constants": {
                         "title": "directive.value",
-                        "template": "directive_value"
+                        "template": "directive_value",
+                        "previousLink": "directive/text",
+                        "nextLink": "directive/watch"
                     },
                     "modules": {
                         "directive_value": "./directive/value.html",
@@ -329,7 +360,9 @@
                     "path": "watch",
                     "constants": {
                         "title": "directive.watch",
-                        "template": "directive_watch"
+                        "template": "directive_watch",
+                        "previousLink": "directive/value",
+                        "nextLink": "directive/boolean"
                     },
                     "modules": {
                         "directive_watch": "./directive/watch.html",
@@ -342,7 +375,9 @@
                     "path": "boolean",
                     "constants": {
                         "title": "directive.boolean",
-                        "template": "directive_boolean"
+                        "template": "directive_boolean",
+                        "previousLink": "directive/watch",
+                        "nextLink": "directive/general"
                     },
                     "modules": {
                         "directive_boolean": "./directive/boolean.html",
@@ -355,7 +390,9 @@
                     "path": "general",
                     "constants": {
                         "title": "directive.general",
-                        "template": "directive_general"
+                        "template": "directive_general",
+                        "previousLink": "directive/boolean",
+                        "nextLink": "directive/eventHandler"
                     },
                     "modules": {
                         "directive_general": "./directive/general.html",
@@ -368,7 +405,9 @@
                     "path": "eventHandler",
                     "constants": {
                         "title": "directive.eventHandler",
-                        "template": "directive_event-handler"
+                        "template": "directive_event-handler",
+                        "previousLink": "directive/general",
+                        "nextLink": "directive/decorator"
                     },
                     "modules": {
                         "directive_eventHandler": "./directive/eventHandler.html",
@@ -381,7 +420,9 @@
                     "path": "decorator",
                     "constants": {
                         "title": "directive.decorator",
-                        "template": "directive_decorator"
+                        "template": "directive_decorator",
+                        "previousLink": "directive/eventHandler",
+                        "nextLink": "module/introduction"
                     },
                     "modules": {
                         "directive_decorator": "./directive/decorator.html",
@@ -400,7 +441,9 @@
                     "path": "introduction",
                     "constants": {
                         "title": "module.introduction",
-                        "template": "module_introduction"
+                        "template": "module_introduction",
+                        "previousLink": "directive/decorator",
+                        "nextLink": "module/template"
                     },
                     "modules": {
                         "module_introduction": "./module/introduction.html",
@@ -413,7 +456,9 @@
                     "path": "template",
                     "constants": {
                         "title": "module.template",
-                        "template": "module_template"
+                        "template": "module_template",
+                        "previousLink": "module/introduction",
+                        "nextLink": "module/script"
                     },
                     "modules": {
                         "module_template": "./module/template.html",
@@ -426,7 +471,9 @@
                     "path": "script",
                     "constants": {
                         "title": "module.script",
-                        "template": "module_script"
+                        "template": "module_script",
+                        "previousLink": "module/template",
+                        "nextLink": "module/style"
                     },
                     "modules": {
                         "module_script": "./module/script.html",
@@ -439,7 +486,9 @@
                     "path": "style",
                     "constants": {
                         "title": "module.style",
-                        "template": "module_style"
+                        "template": "module_style",
+                        "previousLink": "module/script",
+                        "nextLink": "module/json"
                     },
                     "modules": {
                         "module_style": "./module/style.html",
@@ -452,7 +501,9 @@
                     "path": "json",
                     "constants": {
                         "title": "module.json",
-                        "template": "module_json"
+                        "template": "module_json",
+                        "previousLink": "module/style",
+                        "nextLink": "module/string"
                     },
                     "modules": {
                         "module_json": "./module/json.html",
@@ -465,7 +516,9 @@
                     "path": "string",
                     "constants": {
                         "title": "module.string",
-                        "template": "module_string"
+                        "template": "module_string",
+                        "previousLink": "module/json",
+                        "nextLink": "module/namespace"
                     },
                     "modules": {
                         "module_string": "./module/string.html",
@@ -478,7 +531,9 @@
                     "path": "namespace",
                     "constants": {
                         "title": "module.namespace",
-                        "template": "module_namespace"
+                        "template": "module_namespace",
+                        "previousLink": "module/string",
+                        "nextLink": "router/introduction"
                     },
                     "modules": {
                         "module_namespace": "./module/namespace.html",
@@ -494,7 +549,9 @@
                     "path": "introduction",
                     "constants": {
                         "title": "router.introduction",
-                        "template": "router_introduction"
+                        "template": "router_introduction",
+                        "previousLink": "module/namespace",
+                        "nextLink": "router/structure"
                     },
                     "modules": {
                         "router_introduction": "./router/introduction.html",
@@ -508,7 +565,9 @@
                     "constants": {
                         "title": "router.structure",
                         "template": "router_structure",
-                        "type": "router"
+                        "type": "router",
+                        "previousLink": "router/introduction",
+                        "nextLink": "api/introduction"
                     },
                     "modules": {
                         "router_structure": "./router/structure.html",
@@ -524,7 +583,9 @@
                     "path": "introduction",
                     "constants": {
                         "title": "api.introduction",
-                        "template": "api_introduction"
+                        "template": "api_introduction",
+                        "previousLink": "router/structure",
+                        "nextLink": "miscellaneous/introduction"
                     },
                     "modules": {
                         "api_introduction": "./api/introduction.html"
@@ -536,12 +597,13 @@
                     "path": "introduction",
                     "constants": {
                         "title": "miscellaneous.introduction",
-                        "template": "miscellaneous_introduction"
+                        "template": "miscellaneous_introduction",
+                        "previousLink": "api/introduction",
+                        "nextLink": ""
                     },
                     "modules": {
                         "miscellaneous_introduction": "./miscellaneous/introduction.html"
                     }
-                }, {
                 }]
             }]
         }
