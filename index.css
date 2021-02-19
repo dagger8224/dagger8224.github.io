@@ -224,8 +224,8 @@ a:hover,button:hover {
     /* content */
     #content {
         min-width: auto;
-        padding: 110px 15px 40px 30px;;
-        word-break: break-all;
+        padding: 110px 15px 40px 30px;
+        word-break: break-word;
     }
     #footer {
         left: 0;
