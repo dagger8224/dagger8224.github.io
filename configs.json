@@ -11,6 +11,9 @@
     "rootSelectors": ["title", "body"],
     "routing": {
         "default": "/overview/introduction",
+        "redirects": {
+            "/": "overview/introduction"
+        },
         "scenarios": {
             "tailable": true,
             "constants": {
