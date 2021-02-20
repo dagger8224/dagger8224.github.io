@@ -46,6 +46,9 @@
         "question": "如何使用dagger.js",
         "answer": "<span>dagger.js是一个轻量而完备的客户端运行时框架，没有对第三方代码或者构建工具的依赖，只需如下简单配置步骤即可快速搭建开发环境，进行业务逻辑开发：<div class=\"sub-answer\">1. 在html页面中通过script标签引入dagger.js：<br/><span style='font-style: italic; background-color: #eeeeee;'>&lt;script type=\"module\" crossorigin=\"anonymous\" src=\"https://cdn.jsdelivr.net/npm/@peakman/dagger.js/dagger.js\" defer&gt;&lt;/script&gt;</span><br/>2. 在页面head标签下插入<a href='miscellaneous/introduction'>根配置项</a>标签，定义各<a href='router/introduction'>路由场景</a>和渲染每个场景所需的<a href='module/introduction'>模块</a>描述信息<br/>3. 在DOM标签上通过<a href='directive/introduction'>指令</a>声明页面元素与数据模型之间的交互关系</div></span>"
     }, {
+        "question": "查看在线示例",
+        "answer": "<span><a target='_blank' href='https://codepen.io/dagger8224/pen/XWNagBY?editors=1000'>codepen</span>"
+    }, {
         "question": "如何学习dagger.js",
         "answer": "<span>本网站提供了dagger.js语法教程对应的示例代码，实际上，dagger.js的<a target='_blank' href='https://github.com/dagger8224/dagger8224.github.io'>文档代码</a>本身就是一个典型的综合示例。不必担心，dagger.js相当易于学习和使用。现在让我们开始dagger.js的<a href='directive/introduction'>体验之旅</a>吧。</span>"
     }],
