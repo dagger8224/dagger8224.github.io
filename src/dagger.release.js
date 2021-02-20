@@ -1071,14 +1071,15 @@ export default ((daggerOptions = { integrity: true }, rootNodeContexts = null, r
         ignoreHashChange = false;
         return;
     }
-    hash.startsWith('/') || (hash = `/${ hash }`);
+    const slash = '/';
+    hash.startsWith(slash) || (hash = `${ slash }${ hash }`);
     const { aliases, hashPrefix, redirects } = routerOptions, [path = '', query = ''] = hash.split('?'), redirectPath = aliases[path] || redirects[path];
     if (redirectPath) {
         hash = query ? `${ redirectPath }?${ query }` : redirectPath;
         aliases[path] || history.replaceState({ path: hash }, hash, `${ hashPrefix }${ hash }`);
         return hashChangeResolver(hash);
     }
-    const scenarios = {}, paths = path.split('/');
+    const scenarios = {}, paths = is(path, slash) ? [''] : path.split(slash);
     routers = [];
     if (!rootRouter.match(routers, scenarios, paths)) { return hashChangeResolver(routerOptions.default); }
     resolvedRouters = routers.slice().reverse();

@@ -1185,7 +1185,8 @@ export default ((daggerOptions = { integrity: true }, rootNodeContexts = null, r
         ignoreHashChange = false;
         return;
     }
-    hash.startsWith('/') || (hash = `/${ hash }`);
+    const slash = '/';
+    hash.startsWith(slash) || (hash = `${ slash }${ hash }`);
     const { aliases, hashPrefix, redirects } = routerOptions, [path = '', query = ''] = hash.split('?'), redirectPath = aliases[path] || redirects[path];
     if (redirectPath) {
         daggerOptions.routerLog && logger(`router redirected from "${ path }" to "${ redirectPath }"`);
@@ -1193,7 +1194,7 @@ export default ((daggerOptions = { integrity: true }, rootNodeContexts = null, r
         aliases[path] || history.replaceState({ path: hash }, hash, `${ hashPrefix }${ hash }`);
         return hashChangeResolver(hash);
     }
-    const scenarios = {}, paths = path.split('/');
+    const scenarios = {}, paths = is(path, slash) ? [''] : path.split(slash);
     routers = [];
     if (!rootRouter.match(routers, scenarios, paths)) {
         asserter(`The router "${ path }" is invalid`, routerOptions.default);
