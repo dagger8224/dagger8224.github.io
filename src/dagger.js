@@ -1156,7 +1156,7 @@ export default ((daggerOptions = { integrity: true }, rootNodeContexts = null, r
     daggerOptions.routerLog && logger(`router changed from "${ rootScope.$router.path || '[root]' }" to "${ nextRouter.path }"`);
     templateCache.clear();
     const rootModules = Object.assign({}, ...resolvedRouters.map(router => router.modules));
-    forEach(Object.keys(rootModules), key => isInstanceOf(rootModules[key], ModuleProfile) || (rootModules[key] = routers.find(router => router.resolveModule(key)).modules[key]));
+    forEach(Object.keys(rootModules), key => isInstanceOf(rootModules[key], ModuleProfile) || (rootModules[key] = routers.find(router => router.resolveModule(key, base)).modules[key]));
     const rootModuleProfile = new ModuleProfile({ content: rootModules, customTags, type: ModuleProfile.resolvedType.namespace }, base), resolver = rootModuleProfile.resolve().then(() => rootModuleProfileResolver(rootModuleProfile, Topology.resolveScope(nextRouter)));
     window.$ModuleProfile = content => new ModuleProfile({ content, type: 'namespace' }, '', '__demo__', rootModuleProfile); // TODO: demo only
     window.$Router = Router; // TODO: demo only

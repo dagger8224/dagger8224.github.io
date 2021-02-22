@@ -1050,7 +1050,7 @@ export default ((daggerOptions = { integrity: true }, rootNodeContexts = null, r
 }) => () => {
     templateCache.clear();
     const rootModules = Object.assign({}, ...resolvedRouters.map(router => router.modules));
-    forEach(Object.keys(rootModules), key => isInstanceOf(rootModules[key], ModuleProfile) || (rootModules[key] = routers.find(router => router.resolveModule(key)).modules[key]));
+    forEach(Object.keys(rootModules), key => isInstanceOf(rootModules[key], ModuleProfile) || (rootModules[key] = routers.find(router => router.resolveModule(key, base)).modules[key]));
     const rootModuleProfile = new ModuleProfile({ content: rootModules, customTags, type: ModuleProfile.resolvedType.namespace }, base), resolver = rootModuleProfile.resolve().then(() => rootModuleProfileResolver(rootModuleProfile, Topology.resolveScope(nextRouter)));
     if (htmlNodeContext) {
         const { unloading, unloaded } = htmlNodeContext.closures.directives || {};
