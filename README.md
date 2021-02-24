@@ -12,7 +12,7 @@ server { # homepage
     gzip_types text/plain application/json text/css application/javascript application/xml application/x-javascript text/xml application/xml+rss text/javascript application/vnd.ms-fontobject application/x-font-ttf font/opentype image/svg+xml image/x-icon;  
     location / {  
         root /;  
-        rewrite ^/(.*)$ ***<your-install-location>***/$1 break;  
+        rewrite ^/(.*)$ <***your-install-location***>/$1 break;  
     }  
 }
 
