@@ -3,7 +3,8 @@ export const onLoad = language_packages => {
     return {
         language,
         $: language_packages[language],
-        html: ''
+        html: '',
+        isLoading: true
     };
 };
 

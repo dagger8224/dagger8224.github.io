@@ -38,7 +38,7 @@
     "overview.introduction": "概览/介绍",
     "overview.introduction.sections": [{
         "question": "dagger.js是什么",
-        "answer": "<span>dagger.js是一个基于html的开源（<a target='_blank' href='https://opensource.org/licenses/MIT'>MIT</a>）web前端技术框架。在dagger.js的帮助下，你可以轻松地使用原生javaScript语法构建网站（无论是单页应用还是简单的动态页面）或者可复用模块。</span>"
+        "answer": "<span>dagger.js是一个基于html的开源（<a target='_blank' href='https://opensource.org/licenses/MIT'>MIT</a>）web前端技术框架。在dagger.js的帮助下，你可以轻松地使用原生javaScript语法构建网站（无论是单页应用还是简单的动态页面）或者可复用<a href='module/introduction'>模块</a>。</span>"
     }, {
         "question": "dagger.js适合哪些开发者",
         "answer": "<span>无论你是一个有经验的专业开发人员或者是对web前端领域感兴趣的业余爱好者，只要具有基础的<a target='_blank' href='https://developer.mozilla.org/zh-CN/docs/Web/HTML'>html</a>/<a target='_blank' href='https://developer.mozilla.org/zh-CN/docs/Web/JavaScript'>javaScript</a>/<a target='_blank' href='https://developer.mozilla.org/zh-CN/docs/Web/CSS'>css</a>背景知识，都可以在短时间内理解和掌握dagger.js。dagger.js基于<a href='directive/introduction'>指令</a>表达式和<a href='miscellaneous/introduction'>配置项</a>声明方式工作，在大多数业务场景下，使用者无需调用任何框架<a href='api/introduction'>api</a>即可完成开发任务。</span>"

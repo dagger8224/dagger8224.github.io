@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html $loading="onLoad(languages)" $loaded="onLoaded($router, demo), html = demo;" $sentry#next:$target-router="$targetRouter.path == '/blocked'" $unloading="console.log($router, 'unloading')" $unloaded="console.log($router, 'unloaded')">
+<html $loading="onLoad(languages)" $loaded="onLoaded($router, demo), html = demo, isLoading = false;" $sentry#next:$target-router="$targetRouter.path == '/blocked'" $unloading="isLoading = true;" $unloaded="console.log($router, 'unloaded')">
   <head>
     <meta charset="UTF-8">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -34,6 +34,9 @@
     <title $text="$[$router.schemes.title] || $router.schemes.title">loading...</title>
   </head>
   <body dg-cloak $loading="{ isMenuClosed: true }">
+    <div id="loading-background" $style="`display: ${ isLoading ? 'block' : 'none' }`">
+      <img src="./static/loading.gif">
+    </div>
     <div id="header">
       <h1>🗡️ dagger.js</h1>
       <a id="github-link" href="https://github.com/dagger8224/dagger.js">${ $.viewOnGithub }</a>
