@@ -282,9 +282,6 @@
     }, {
         "question": "The relationship between boolean directive and boolean attribute with the same name",
         "answer": "<span>For the element declared boolean directive, the builtin boolean attribute with the same name is ignored.</span>"
-    }, {
-        "question": "The list of boolean directives",
-        "answer": "<span>autocapitalize, autocomplete, contenteditable, controls, disabled, draggable, loop, multiple, muted, open, preload, readonly, required, reversed, spellcheck, translate, wrap</span>"
     }],
     "directive.general": "Directive/general",
     "directive.general.sections": [{

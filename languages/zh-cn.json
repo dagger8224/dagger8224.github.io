@@ -303,9 +303,6 @@
     }, {
         "question": "布尔指令与同名布尔属性的关系",
         "answer": "<span>当关联元素上声明名为xxx的布尔指令之后，元素的xxx布尔属性声明将失效。</span>"
-    }, {
-        "question": "布尔指令列表",
-        "answer": "<span>autocapitalize, autocomplete, contenteditable, controls, disabled, draggable, loop, multiple, muted, open, preload, readonly, required, reversed, spellcheck, translate, wrap</span>"
     }],
     "directive.general": "指令/一般指令",
     "directive.general.sections": [{
