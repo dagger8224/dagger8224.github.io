@@ -1,8 +1,6 @@
-<div $loading="{ enabled: true, readonly: false, contenteditable: false }">
-    <button +click="enabled = !enabled">toggle enabled: ${enabled}</button>
-    <button +click="readonly = !readonly">toggle readonly: ${readonly}</button>
-    <button +click="contenteditable = !contenteditable">toggle contenteditable: ${contenteditable}</button>
-    <br/>    
+<div $loading="{ enabled: true, readonly: false }">
+    <button +click="enabled = !enabled">toggle enabled: ${ enabled }</button>
+    <button +click="readonly = !readonly">toggle readonly: ${ readonly }</button>
+    <br/>
     <input placeholder="input here" disabled readonly $disabled="!enabled" $readonly="readonly">
-    <div $contenteditable="contenteditable">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sint quasi aperiam, repellat veritatis molestiae labore, eveniet, non nostrum autem eos neque optio nemo atque ab. Similique voluptas minima dolorum molestiae?</div>
 </div>
