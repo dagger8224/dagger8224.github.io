@@ -1,7 +1,7 @@
-<div $loading="{ exist: true, log: '', node: null }">
+<div $loading="{ exist: false, log: '', node: null }">
     <a href="directive/introduction">redirect to "directive/introduction"</a>
     <br/>
-    <button +click="log = exist ? 'the related element of \'$sentry\' directive is removed, nothing could block you' : '', exist = !exist;">remove sentry</button>
+    <button +click="log = exist ? 'the related element of \'$sentry\' directive is removed, nothing could block you' : '', exist = !exist;">toggle sentry element</button>
     <br/>
     <span $style="`color: ${ exist ? 'red' : 'green' }`">${ log }</span>
     <br/>
