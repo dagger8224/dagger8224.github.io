@@ -9,7 +9,7 @@
 *  </copyright>
 *  ***********************************************************************/
 
-export default ((daggerOptions = { integrity: true }, rootNodeContexts = null, rootNodeProfiles = [], emptier = () => Object.create(null), forEach = (iterators, processor) => {
+export default ((daggerOptions = { integrity: true }, rootNodeProfiles = [], emptier = () => Object.create(null), forEach = (iterators, processor) => {
     if (!iterators) { return; }
     const length = iterators.length || 0;
     for (let index = 0; index < length; ++index) { processor(iterators[index], index); }
@@ -623,6 +623,7 @@ export default ((daggerOptions = { integrity: true }, rootNodeContexts = null, r
     constructor (profile, closures = {}, parent = null, index = -1, sliceScope = null, scopes = parent ? parent.scopes : [rootScope, htmlScope], parentNode = null) {
         this.profile = profile;
         this.scopes = scopes;
+        this.baseScopes = scopes;
         if (parent) {
             this.parent = parent, this.parentNode = parentNode || parent.node || parent.parentNode;
             parent.children[index] = this;
@@ -702,6 +703,7 @@ export default ((daggerOptions = { integrity: true }, rootNodeContexts = null, r
         delete this.node;
         unloaded && unloaded.processor(node);
         this.baseClosures && (this.closures = this.baseClosures);
+        this.scopes = this.baseScopes;
     }
     initialize () {
         if (!this.profile) { return; }
@@ -712,7 +714,7 @@ export default ((daggerOptions = { integrity: true }, rootNodeContexts = null, r
         }
         if (is(node.tagName, 'HTML')) {
             htmlScope = this.scopes[2] || Topology.resolveScope({});
-            rootNodeContexts = rootNodeProfiles.map(nodeProfile => new NodeContext(nodeProfile, functionResolver(closureResolver(nodeProfile.closures, 2))(rootScope, htmlScope)));
+            rootNodeProfiles.map(nodeProfile => new NodeContext(nodeProfile, functionResolver(closureResolver(nodeProfile.closures, 2))(rootScope, htmlScope)));
             loaded && loaded.processor();
         } else {
             child && (this.childrenController = new Controller(this, child));
