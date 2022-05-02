@@ -1,6 +1,6 @@
-<div $loading="{ exist: true, index: 0, log: '' }">
+<div +loading="{ exist: true, index: 0, log: '' }">
     <button +click="log = '', exist = !exist;">click me</button>
     <br/>
     <span>${ log }</span>
-    <span $exist="exist" $unloaded="$node && (log = `The node ${ $node.tagName } is unloaded ${ ++index } times, the state is '${ $node.isConnected ? 'connected' : 'disconnected' }'.`);">I'm a span</span>
+    <span $exist="exist" +unloaded="$node && (log = `The node ${ $node.tagName } is unloaded ${ ++index } times, the state is '${ $node.isConnected ? 'connected' : 'disconnected' }'.`);">I'm a span</span>
 </div>

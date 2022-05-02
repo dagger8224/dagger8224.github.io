@@ -1,6 +1,6 @@
-<div $loading="{ logs: [] }">
+<div +loading="{ logs: [] }">
     <pre>${ logs.join('\r\n') }</pre>
-    <div $loading="logs.push('outer loading now')" $loaded="logs.push(`The outer node ${ $node.tagName } is loaded and '${ $node.isConnected ? 'connected' : 'disconnected' }'`);">
-        <span $loading="logs.push('inner loading now')"  $loaded="logs.push(`The inner node ${ $node.tagName } is loaded and '${ $node.isConnected ? 'connected' : 'disconnected' }'`);"></span>
+    <div +loading="logs.push('outer loading now')" +loaded="logs.push(`The outer node ${ $node.tagName } is loaded and '${ $node.isConnected ? 'connected' : 'disconnected' }'`);">
+        <span +loading="logs.push('inner loading now')"  +loaded="logs.push(`The inner node ${ $node.tagName } is loaded and '${ $node.isConnected ? 'connected' : 'disconnected' }'`);"></span>
     </div>
 </div>

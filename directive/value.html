@@ -6,12 +6,16 @@
           "uri": "#template",
           "style": "style"
       },
-      "style": "#style"
+      "style": "#style",
+      "demo": {
+          "uri": "./value_demo.html",
+          "type": "string"
+      }
     }
   </script>
   <template id="template">
     <h2>${ $['directive.value'] }</h2>
-    <div class="content">
+    <div class="content" +loading="defaultHtml = html = $module.demo">
       <template $each="$['directive.value.sections']">
         <h3 class="question">${ item.question }</h3>
         <div class="answer" $html="item.answer"></div>

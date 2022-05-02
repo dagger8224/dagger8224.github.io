@@ -11,7 +11,7 @@
   </script>
   <template id="template">
     <h2>${ $['api.introduction'] }</h2>
-    <div class="content">
+    <div class="content" +loading="defaultHtml = html = $module.demo">
       <template $each="$['api.introduction.sections']">
         <h3 class="question">${ item.question }</h3>
         <div class="answer" $html="item.answer"></div>

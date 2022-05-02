@@ -1,4 +1,4 @@
-<div $loading="{ file: null, files: null }">
+<div +loading="{ file: null, files: null }">
     <input type="file" $file="file" accept=".txt,.js,.zip">single file selector (*.txt, *.js, *.zip)</input>
     <div $exist="file">name: ${ file.name }, type: ${ file.type }, size: ${ file.size }, lastModified: ${ file.lastModified }</div>
     <br/>

@@ -19,19 +19,19 @@
         "text": "lifeCycle",
         "href": "directive/lifeCycle"
     }, {
-        "text": "$loading",
+        "text": "+loading",
         "href": "directive/loading"
     }, {
-        "text": "$loaded",
+        "text": "+loaded",
         "href": "directive/loaded"
     }, {
-        "text": "$unloading",
+        "text": "+unloading",
         "href": "directive/unloading"
     }, {
-        "text": "$unloaded",
+        "text": "+unloaded",
         "href": "directive/unloaded"
     }, {
-        "text": "$sentry",
+        "text": "+sentry",
         "href": "directive/sentry"
     }, {
         "text": "controller",

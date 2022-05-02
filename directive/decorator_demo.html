@@ -1,5 +1,5 @@
-<div $loading="{ number: 0, string: '', log: '' }">
-    <span $loaded#node:element="string = `I'm a ${ element.tagName }.`">${ string }</span>
+<div +loading="{ number: 0, string: '', log: '' }">
+    <span +loaded="string = `I'm a ${ $node.tagName }.`">${ string }</span>
     <br/>
     <input $value#number#trim#input="number">
     <span>${ number }</span>

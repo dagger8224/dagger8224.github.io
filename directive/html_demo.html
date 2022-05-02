@@ -1,8 +1,8 @@
-<div $loading="{ index: 0, html: 'I\'m plain text.', htmlArray: ['<span +click=\'alert(\`hello dagger!\`)\'>dynamic span</span>', '<button +click=\'alert(html)\'>dynamic button</button>'] }">
+<div +loading="{ index: 0, html: 'I\'m plain text.', htmlArray: ['<span +click=\'alert(\`hello dagger!\`)\'>dynamic span</span>', '<button +click=\'alert(html)\'>dynamic button</button>'] }">
     <button +click="html = htmlArray[(index++) % 2]">change html</button>
     <div><strong>html:</strong></div>
     <div $html="html">
-        <span $loading="alert('You should never see me')">I will be replace by the $html directive.</span>
+        <span +loading="alert('You should never see me')">I will be replace by the $html directive.</span>
     </div>
     <div><strong>htmlArray:</strong></div>
     <div $each="[0, 1]" $html="htmlArray[index]"></div>

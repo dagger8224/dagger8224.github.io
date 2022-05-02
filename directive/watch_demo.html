@@ -1,4 +1,4 @@
-<div $loading="{ a: 1, b: 2, c: 3 }">
+<div +loading="{ a: 1, b: 2, c: 3 }">
     <input $value#number#input="a"> + <input $value#number#input="b"> = <span $watch="c = a + b;">${ c }</span>
     <br/>
     <span>The expression is: "${ a } + ${ b } = ${ c }"</span>

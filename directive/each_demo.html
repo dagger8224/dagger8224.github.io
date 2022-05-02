@@ -1,4 +1,4 @@
-<div $loading="{ array1: ['a', 'b'], array2: { name: 'Tony', age: 35 }, array3: '123', index: 0 }">
+<div +loading="{ array1: ['a', 'b'], array2: { name: 'Tony', age: 35 }, array3: '123', index: 0 }">
     <button +click="array1.push(String.fromCharCode('c'.charCodeAt(0) + (index++)))">push to array1</button>
     <div $each="array1">
         <span>This is item "${ item }" of array1, with index ${ index } and key "${ key }".</span>

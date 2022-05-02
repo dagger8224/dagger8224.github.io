@@ -4,17 +4,17 @@
         "media": "(resolution: 10dppx)",
         "uri": "#string-invalid-media"
     }, {
-        "condition": false,
+        "match": false,
         "uri": ["#string-invalid-condition"]
     }, {
         "uri": ["./module/demo/string_not_exist", "./module/demo/string.txt"]
     }],
     "template": {
         "candidates": [{
-            "condition": false,
+            "match": false,
             "uri": "./module/demo/template_not_exist.html"
         }, {
-            "condition": true,
+            "match": true,
             "content": "<span>hello dagger</span>"
         }],
         "type": "template"

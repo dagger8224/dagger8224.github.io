@@ -23,6 +23,7 @@
                 "languages": {
                     "type": "namespace",
                     "base": "./languages/",
+                    "explicit": true,
                     "content": {
                         "en-us": "./en-us.json",
                         "zh-cn": "./zh-cn.json"
@@ -51,7 +52,11 @@
                         "nextLink": "overview/version"
                     },
                     "modules": {
-                        "overview_introduction": "./overview/introduction.html"
+                        "overview_introduction": "./overview/introduction.html",
+                        "teees": {
+                            "content": { "a": 124 },
+                            "type": "string"
+                        }
                     }
                 }, {
                     "path": "version",
@@ -87,11 +92,7 @@
                         "nextLink": "directive/lifeCycle"
                     },
                     "modules": {
-                        "directive_raw": "./directive/raw.html",
-                        "demo": {
-                            "uri": "./directive/raw_demo.html",
-                            "type": "string"
-                        }
+                        "directive_raw": "./directive/raw.html"
                     }
                 }, {
                     "path": "lifeCycle",
@@ -102,11 +103,7 @@
                         "nextLink": "directive/loading"
                     },
                     "modules": {
-                        "directive_lifeCycle": "./directive/lifeCycle.html",
-                        "demo": {
-                            "uri": "./directive/lifeCycle_demo.html",
-                            "type": "string"
-                        }
+                        "directive_lifeCycle": "./directive/lifeCycle.html"
                     }
                 }, {
                     "path": "loading",
@@ -117,11 +114,7 @@
                         "nextLink": "directive/loaded"
                     },
                     "modules": {
-                        "directive_loading": "./directive/loading.html",
-                        "demo": {
-                            "uri": "./directive/loading_demo.html",
-                            "type": "string"
-                        }
+                        "directive_loading": "./directive/loading.html"
                     }
                 }, {
                     "path": "loaded",
@@ -132,11 +125,7 @@
                         "nextLink": "directive/unloading"
                     },
                     "modules": {
-                        "directive_loaded": "./directive/loaded.html",
-                        "demo": {
-                            "uri": "./directive/loaded_demo.html",
-                            "type": "string"
-                        }
+                        "directive_loaded": "./directive/loaded.html"
                     }
                 }, {
                     "path": "unloading",
@@ -147,11 +136,7 @@
                         "nextLink": "directive/unloaded"
                     },
                     "modules": {
-                        "directive_unloading": "./directive/unloading.html",
-                        "demo": {
-                            "uri": "./directive/unloading_demo.html",
-                            "type": "string"
-                        }
+                        "directive_unloading": "./directive/unloading.html"
                     }
                 }, {
                     "path": "unloaded",
@@ -162,11 +147,7 @@
                         "nextLink": "directive/sentry"
                     },
                     "modules": {
-                        "directive_unloaded": "./directive/unloaded.html",
-                        "demo": {
-                            "uri": "./directive/unloaded_demo.html",
-                            "type": "string"
-                        }
+                        "directive_unloaded": "./directive/unloaded.html"
                     }
                 }, {
                     "path": "sentry",
@@ -177,11 +158,7 @@
                         "nextLink": "directive/controller"
                     },
                     "modules": {
-                        "directive_sentry": "./directive/sentry.html",
-                        "demo": {
-                            "uri": "./directive/sentry_demo.html",
-                            "type": "string"
-                        }
+                        "directive_sentry": "./directive/sentry.html"
                     }
                 }, {
                     "path": "controller",
@@ -203,11 +180,7 @@
                         "nextLink": "directive/class"
                     },
                     "modules": {
-                        "directive_checked": "./directive/checked.html",
-                        "demo": {
-                            "uri": "./directive/checked_demo.html",
-                            "type": "string"
-                        }
+                        "directive_checked": "./directive/checked.html"
                     }
                 }, {
                     "path": "class",
@@ -218,11 +191,7 @@
                         "nextLink": "directive/each"
                     },
                     "modules": {
-                        "directive_class": "./directive/class.html",
-                        "demo": {
-                            "uri": "./directive/class_demo.html",
-                            "type": "string"
-                        }
+                        "directive_class": "./directive/class.html"
                     }
                 }, {
                     "path": "each",
@@ -233,11 +202,7 @@
                         "nextLink": "directive/exist"
                     },
                     "modules": {
-                        "directive_each": "./directive/each.html",
-                        "demo": {
-                            "uri": "./directive/each_demo.html",
-                            "type": "string"
-                        }
+                        "directive_each": "./directive/each.html"
                     }
                 }, {
                     "path": "exist",
@@ -248,11 +213,7 @@
                         "nextLink": "directive/file"
                     },
                     "modules": {
-                        "directive_exist": "./directive/exist.html",
-                        "demo": {
-                            "uri": "./directive/exist_demo.html",
-                            "type": "string"
-                        }
+                        "directive_exist": "./directive/exist.html"
                     }
                 }, {
                     "path": "file",
@@ -263,11 +224,7 @@
                         "nextLink": "directive/focus"
                     },
                     "modules": {
-                        "directive_file": "./directive/file.html",
-                        "demo": {
-                            "uri": "./directive/file_demo.html",
-                            "type": "string"
-                        }
+                        "directive_file": "./directive/file.html"
                     }
                 }, {
                     "path": "focus",
@@ -278,11 +235,7 @@
                         "nextLink": "directive/html"
                     },
                     "modules": {
-                        "directive_focus": "./directive/focus.html",
-                        "demo": {
-                            "uri": "./directive/focus_demo.html",
-                            "type": "string"
-                        }
+                        "directive_focus": "./directive/focus.html"
                     }
                 }, {
                     "path": "html",
@@ -293,11 +246,7 @@
                         "nextLink": "directive/selected"
                     },
                     "modules": {
-                        "directive_html": "./directive/html.html",
-                        "demo": {
-                            "uri": "./directive/html_demo.html",
-                            "type": "string"
-                        }
+                        "directive_html": "./directive/html.html"
                     }
                 }, {
                     "path": "selected",
@@ -308,11 +257,7 @@
                         "nextLink": "directive/style"
                     },
                     "modules": {
-                        "directive_selected": "./directive/selected.html",
-                        "demo": {
-                            "uri": "./directive/selected_demo.html",
-                            "type": "string"
-                        }
+                        "directive_selected": "./directive/selected.html"
                     }
                 }, {
                     "path": "style",
@@ -323,11 +268,7 @@
                         "nextLink": "directive/text"
                     },
                     "modules": {
-                        "directive_style": "./directive/style.html",
-                        "demo": {
-                            "uri": "./directive/style_demo.html",
-                            "type": "string"
-                        }
+                        "directive_style": "./directive/style.html"
                     }
                 }, {
                     "path": "text",
@@ -338,11 +279,7 @@
                         "nextLink": "directive/value"
                     },
                     "modules": {
-                        "directive_text": "./directive/text.html",
-                        "demo": {
-                            "uri": "./directive/text_demo.html",
-                            "type": "string"
-                        }
+                        "directive_text": "./directive/text.html"
                     }
                 }, {
                     "path": "value",
@@ -353,11 +290,7 @@
                         "nextLink": "directive/watch"
                     },
                     "modules": {
-                        "directive_value": "./directive/value.html",
-                        "demo": {
-                            "uri": "./directive/value_demo.html",
-                            "type": "string"
-                        }
+                        "directive_value": "./directive/value.html"
                     }
                 }, {
                     "path": "watch",
@@ -368,11 +301,7 @@
                         "nextLink": "directive/boolean"
                     },
                     "modules": {
-                        "directive_watch": "./directive/watch.html",
-                        "demo": {
-                            "uri": "./directive/watch_demo.html",
-                            "type": "string"
-                        }
+                        "directive_watch": "./directive/watch.html"
                     }
                 }, {
                     "path": "boolean",
@@ -383,11 +312,7 @@
                         "nextLink": "directive/general"
                     },
                     "modules": {
-                        "directive_boolean": "./directive/boolean.html",
-                        "demo": {
-                            "uri": "./directive/boolean_demo.html",
-                            "type": "string"
-                        }
+                        "directive_boolean": "./directive/boolean.html"
                     }
                 }, {
                     "path": "general",
@@ -398,11 +323,7 @@
                         "nextLink": "directive/eventHandler"
                     },
                     "modules": {
-                        "directive_general": "./directive/general.html",
-                        "demo": {
-                            "uri": "./directive/general_demo.html",
-                            "type": "string"
-                        }
+                        "directive_general": "./directive/general.html"
                     }
                 }, {
                     "path": "eventHandler",
@@ -413,11 +334,7 @@
                         "nextLink": "directive/decorator"
                     },
                     "modules": {
-                        "directive_eventHandler": "./directive/eventHandler.html",
-                        "demo": {
-                            "uri": "./directive/eventHandler_demo.html",
-                            "type": "string"
-                        }
+                        "directive_eventHandler": "./directive/eventHandler.html"
                     }
                 }, {
                     "path": "decorator",
@@ -428,11 +345,7 @@
                         "nextLink": "module/introduction"
                     },
                     "modules": {
-                        "directive_decorator": "./directive/decorator.html",
-                        "demo": {
-                            "uri": "./directive/decorator_demo.html",
-                            "type": "string"
-                        }
+                        "directive_decorator": "./directive/decorator.html"
                     }
                 }]
             }, {
@@ -449,11 +362,7 @@
                         "nextLink": "module/template"
                     },
                     "modules": {
-                        "module_introduction": "./module/introduction.html",
-                        "demo": {
-                            "uri": "./module/introduction_demo.json",
-                            "type": "string"
-                        }
+                        "module_introduction": "./module/introduction.html"
                     }
                 }, {
                     "path": "template",
@@ -464,11 +373,7 @@
                         "nextLink": "module/script"
                     },
                     "modules": {
-                        "module_template": "./module/template.html",
-                        "demo": {
-                            "uri": "./module/template_demo.json",
-                            "type": "string"
-                        }
+                        "module_template": "./module/template.html"
                     }
                 }, {
                     "path": "script",
@@ -479,11 +384,7 @@
                         "nextLink": "module/style"
                     },
                     "modules": {
-                        "module_script": "./module/script.html",
-                        "demo": {
-                            "uri": "./module/script_demo.json",
-                            "type": "string"
-                        }
+                        "module_script": "./module/script.html"
                     }
                 }, {
                     "path": "style",
@@ -494,11 +395,7 @@
                         "nextLink": "module/json"
                     },
                     "modules": {
-                        "module_style": "./module/style.html",
-                        "demo": {
-                            "uri": "./module/style_demo.json",
-                            "type": "string"
-                        }
+                        "module_style": "./module/style.html"
                     }
                 }, {
                     "path": "json",
@@ -509,11 +406,7 @@
                         "nextLink": "module/string"
                     },
                     "modules": {
-                        "module_json": "./module/json.html",
-                        "demo": {
-                            "uri": "./module/json_demo.json",
-                            "type": "string"
-                        }
+                        "module_json": "./module/json.html"
                     }
                 }, {
                     "path": "string",
@@ -524,11 +417,7 @@
                         "nextLink": "module/namespace"
                     },
                     "modules": {
-                        "module_string": "./module/string.html",
-                        "demo": {
-                            "uri": "./module/string_demo.json",
-                            "type": "string"
-                        }
+                        "module_string": "./module/string.html"
                     }
                 }, {
                     "path": "namespace",
@@ -539,11 +428,7 @@
                         "nextLink": "router/introduction"
                     },
                     "modules": {
-                        "module_namespace": "./module/namespace.html",
-                        "demo": {
-                            "uri": "./module/namespace_demo.json",
-                            "type": "string"
-                        }
+                        "module_namespace": "./module/namespace.html"
                     }
                 }]
             }, {
@@ -557,11 +442,7 @@
                         "nextLink": "router/structure"
                     },
                     "modules": {
-                        "router_introduction": "./router/introduction.html",
-                        "demo": {
-                            "uri": "./router/introduction_demo.html",
-                            "type": "string"
-                        }
+                        "router_introduction": "./router/introduction.html"
                     }
                 }, {
                     "path": "structure",
@@ -573,11 +454,7 @@
                         "nextLink": "api/introduction"
                     },
                     "modules": {
-                        "router_structure": "./router/structure.html",
-                        "demo": {
-                            "uri": "./router/structure_demo.json",
-                            "type": "string"
-                        }
+                        "router_structure": "./router/structure.html"
                     }
                 }]
             }, {

@@ -1,7 +1,7 @@
 # dagger8224.github.io
-this is the homepage project for ***dagger.js***
+This is the homepage project for ***dagger.js*** (with Microsoft monaco editor v0.31.1 embedded for performance consideration)
 
-Please find the nginx configs to start up this site locally:
+Please refer to the following nginx configs to setup the homepage locally:
 
 server { # homepage  
     listen 8286;  

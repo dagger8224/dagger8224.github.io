@@ -1,6 +1,6 @@
-<div $loading="{ exist: true, log: '' }">
+<div +loading="{ exist: true, log: '' }">
     <button +click="exist = !exist, log = '';">toggle exist</button>
     <pre>${ log }</pre>
-    <div $exist="exist" $loading="log += 'loading...'" $loaded="log += 'loaded!'" $unloading="log += 'unloading...'" $unloaded="log += 'unloaded!'">I'm a DIV</div>
+    <div $exist="exist" +loading="log += 'loading...'" +loaded="log += 'loaded!'" +unloading="log += 'unloading...'" +unloaded="log += 'unloaded!'">I'm a DIV</div>
     <div>I'm another DIV</div>
 </div>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html $loading="onLoad(languages)" $loaded="onLoaded($router, demo), html = demo, isLoading = false;" $sentry#next:$target-router="$targetRouter.path == '/blocked'" $unloading="isLoading = true;" $unloaded="console.log($router, 'unloaded')">
+<html +loading="console.log('loading'), onLoading(languages)" +loaded="console.log('loaded'), onLoaded($scope)">
   <head>
     <meta charset="UTF-8">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -17,11 +17,11 @@
     <!--<link rel="stylesheet" href="css.css" media="print" onload="media = 'all'">-->
     <style>[dg-cloak] { display: none !important; }</style>
     <link rel="stylesheet" href="./index.css">
-    <script type="module" crossorigin="anonymous" src="./src/dagger.js" defer></script>
+    <script type="module" crossorigin="anonymous" src="./framework/dagger.release.js" defer></script>
     <script type="dagger/configs" src="./configs.json"></script>
-    <script src="https://cdn.jsdelivr.net/npm/monaco-editor@0.21.2/min/vs/loader.min.js"></script>
+    <script src="./vs/loader.min.js"></script>
     <script>
-        require.config({ paths: { 'vs': 'https://cdn.jsdelivr.net/npm/monaco-editor@0.21.2/min/vs' }});
+        require.config({ paths: { 'vs': './vs' }});
         require(['vs/editor/editor.main'], () => (window.$editor = monaco.editor.create(document.querySelector('#codeContainer'), {
             minimap: { enabled: false },
             automaticLayout: true,
@@ -33,7 +33,7 @@
     </script>
     <title $text="$[$router.schemes.title] || $router.schemes.title">loading...</title>
   </head>
-  <body dg-cloak $loading="{ isMenuClosed: true }">
+  <body dg-cloak +loading="{ isMenuClosed: true }" +sentry="sentry($scope, $nextRouter)" $watch#router="console.log('watch router', $module, $router), isLoading = false">
     <div id="loading-background" $style="`display: ${ isLoading ? 'block' : 'none' }`">
       <img src="./static/loading.gif">
     </div>
@@ -46,7 +46,7 @@
     </div>
     <div id="navigator" $class="{ 'closed-menu': isMenuClosed }" +resize#target:window="document.querySelector('#navigator').scrollTo(0, 0);" $watch="isMenuClosed, document.querySelector('#navigator').scrollTo(0, 0)">
       <h3>${ $.index }</h3>
-      <ul $each#item:topic="menus" $loading="{ className: ''}" $class="className">
+      <ul $each#item:topic="menus" +loading="{ className: ''}" $class="className">
         <div +click="className = className ? '' : 'hidden'">
           <span class="prefix">${ className ? '+' : '-' }</span><span>${ $[topic.text] || topic.text }</span>
         </div>
@@ -54,13 +54,13 @@
       </ul>
       <div class="bottom-switcher button" +click="isMenuClosed = !isMenuClosed"><span>${ isMenuClosed ? "》" : "《" }</span></div>
     </div>
-    <div id="content" $watch=" $router.identity, document.querySelector('#content').scrollTo(0, 0);">
+    <div id="content" $watch#router="$node.scrollTo(0, 0);">
       <template $html="`<${ $router.schemes.template }></${ $router.schemes.template }>`"></template>
-      <div id="editor" $style="(() => `display: ${ demo ? 'block' : 'none' }`)($router.identity)">
+      <div id="editor" $style="`display: ${ html ? 'block' : 'none' }`" $watch="html, require(['vs/editor/editor.main'], () => window.$editor.setValue(html))">
         <span id="try-it">${ $.try }</span>
         <div id="codeContainer"></div>
-        <button id="run" +click="html = '', queueMicrotask(() => (html = window.$editor.getValue()));">${ $.run }</button>
-        <button id="reset" +click="onLoaded($router, demo), html = '', queueMicrotask(() => (html = demo));">${ $.reset }</button>
+        <button id="run" +click="html = window.$editor.getValue()">${ $.run }</button>
+        <button id="reset" +click="html = defaultHtml">${ $.reset }</button>
         <br/>
         <span id="view-result">${ $.view }</span>
         <div id="result" $html="updateResult($router, html)"></div>

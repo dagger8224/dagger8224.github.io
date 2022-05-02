@@ -6,12 +6,16 @@
           "uri": "#template",
           "style": "style"
       },
-      "style": "#style"
+      "style": "#style",
+      "demo": {
+          "uri": "./focus_demo.html",
+          "type": "string"
+      }
     }
   </script>
   <template id="template">
     <h2>${ $['directive.focus'] }</h2>
-    <div class="content">
+    <div class="content" +loading="defaultHtml = html = $module.demo">
       <template $each="$['directive.focus.sections']">
         <h3 class="question">${ item.question }</h3>
         <div class="answer" $html="item.answer"></div>
