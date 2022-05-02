@@ -60,7 +60,7 @@
         <span id="try-it">${ $.try }</span>
         <div id="codeContainer"></div>
         <button id="run" +click="html = window.$editor.getValue()">${ $.run }</button>
-        <button id="reset" +click="html = defaultHtml">${ $.reset }</button>
+        <button id="reset" +click="html = 'loading...', queueMicrotask(() => (html = defaultHtml))">${ $.reset }</button>
         <br/>
         <span id="view-result">${ $.view }</span>
         <div id="result" $html="updateResult($router, html)"></div>
