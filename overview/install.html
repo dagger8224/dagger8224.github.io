@@ -58,9 +58,9 @@
         <div class="answer">
           <span>dagger.js是一个客户端运行时框架，无需编译过程，没有对第三方代码或者构建工具的依赖。在项目入口页面的head标签内插入以下几个标签即可开始在你的项目中使用dagger.js：</span>
           <div class="margin">1. 通过一个type为“module”的script标签引入dagger.js （示例中采用cdn地址，你也可以使用托管在自己服务器或者其他发布渠道上的dagger.js访问地址来代替）：<br/><span class="code">&lt;script type="module" crossorigin="anonymous" src="https://cdn.jsdelivr.net/npm/@peakman/dagger.js@0.9.10/dagger.js" defer&gt;&lt;/script&gt;</span></div>
-          <div class="margin">2. 通过一个type为“dagger/configs”的script标签引入<a href="module/introduction">模块配置项</a>，定义渲染页面需要的模块资源。一个最简单的模块配置项是如下的空标签（未定义任何路由和模块）：<br/><span class="code">&lt;script type="dagger/configs"&gt;&lt;/script&gt;</span><div>关于配置项的更多详细内容将在后续的<a href="module/introduction">模块</a>和<a href="router/introduction">路由</a>章节中进行讲解。</div></div>
-          <div class="margin">3. 插入一个可选的style标签，用于隐藏尚未渲染完成的页面模板：<br/><span class="code">&lt;style&gt;[dg-cloak] { display: none !important; }&lt;/script&gt;</span></div>
-          <div>添加上述标签之后，一个最基本的dagger.js页面就完成了（参见下面代码窗口中的html部分）。接下来我们将结合具体的实例继续了解dagger.js。</div>
+          <div class="margin">2. 通过一个type为“dagger/configs”的script标签引入<a href="module/introduction">模块配置项</a>，定义渲染页面所需的模块资源。一个最简单的模块配置项是如下的空标签（未定义任何路由和模块）：<br/><span class="code">&lt;script type="dagger/configs"&gt;&lt;/script&gt;</span><div>关于配置项的更多详细内容将在后续的<a href="module/introduction">模块</a>和<a href="router/introduction">路由</a>章节中进行讲解。</div></div>
+          <div class="margin">3. 插入一个style标签（可选），用于隐藏尚未渲染完成的页面模板：<br/><span class="code">&lt;style&gt;[dg-cloak] { display: none !important; }&lt;/style&gt;</span></div>
+          <div>添加好上述标签之后，一个最基本的dagger.js页面就完成了（参见下面代码窗口中的html部分）。接下来我们将结合具体的实例继续了解dagger.js。</div>
           <iframe src="https://codepen.io/dagger8224/pen/ZErWBpB?editors=1000"></iframe>
         </div>
       </div>
@@ -69,7 +69,7 @@
       <div class="section">
         <h2>${ $['overview.version'] }</h2>
         <span>${ $['overview.version.content'] }</span>
-        <span class="bold">"0.9.6"</span>
+        <span class="bold">"0.9.10"</span>
         <span>${ $.period || '.' }</span>
       </div>
       <div class="section">

@@ -15,7 +15,7 @@
   </script>
   <template id="template">
     <h2>${ $['directive.sentry'] }</h2>
-    <div class="content" +loading="defaultHtml = html = $module.demo">
+    <div class="content">
       <template $each="$['directive.sentry.sections']">
         <h3 class="question">${ item.question }</h3>
         <div class="answer" $html="item.answer"></div>

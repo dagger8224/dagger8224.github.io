@@ -25,7 +25,7 @@
     </template>
     <template $exist="language == 'en-us'">
       <h2>${ $['overview.introduction'] }</h2>
-      <div class="content" +loading="defaultHtml = html = $module.demo">
+      <div class="content">
         <template $each="$['overview.introduction.sections']">
           <h3 class="question">${ item.question }</h3>
           <div class="answer" $html="item.answer"></div>
