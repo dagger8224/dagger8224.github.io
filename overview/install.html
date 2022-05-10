@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+  <script type="dagger/configs">
+    {
+      "template": "#template"
+    }
+  </script>
+  <template id="template">
+    <template $exist="language == 'zh-cn'">
+      <h2>概览/安装</h2>
+      <div class="content">
+        <h3 class="question">版本信息</h3>
+        <div class="answer">
+          <span>dagger.js的最新版本是<a target="_blank" href="https://www.npmjs.com/package/@peakman/dagger.js">V0.9.10</a>，程序发布包中包含4个不同的文件：</span>
+          <table>
+            <thead>
+              <tr>
+                <th>文件名</th>
+                <th>代码压缩</th>
+                <th>运行时代码检查</th>
+                <th>适用环境</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><a target="_blank" href="https://cdn.jsdelivr.net/npm/@peakman/dagger.js@0.9.10/dagger.js">dagger.js</a></td>
+                <td>❌</td>
+                <td>✔️</td>
+                <td>开发</td>
+              </tr>
+              <tr>
+                <td><a target="_blank" href="https://cdn.jsdelivr.net/npm/@peakman/dagger.js@0.9.10/dagger.min.js">dagger.min.js</a></td>
+                <td>✔️</td>
+                <td>✔️</td>
+                <td>开发</td>
+              </tr>
+              <tr>
+                <td><a target="_blank" href="https://cdn.jsdelivr.net/npm/@peakman/dagger.js@0.9.10/dagger.release.js">dagger.release.js</a></td>
+                <td>❌</td>
+                <td>❌</td>
+                <td>发布</td>
+              </tr>
+              <tr>
+                <td><a target="_blank" href="https://cdn.jsdelivr.net/npm/@peakman/dagger.js@0.9.10/dagger.release.min.js">dagger.release.min.js</a></td>
+                <td>✔️</td>
+                <td>❌</td>
+                <td>发布</td>
+              </tr>
+            </tbody>
+          </table>
+          <div>可以在本地命令行工具中执行以下命令来下载托管在npm上的最新版本：<br/><span class="code">npm install @peakman/dagger.js</span></div>
+        </div>
+        <h3 class="question">浏览器兼容性</h3>
+        <div class="answer">
+          <span>dagger.js与支持<a target="_blank" href="https://262.ecma-international.org/6.0/">ECMA2015</a>及以上版本的浏览器兼容。</span>
+        </div>
+        <h3 class="question">如何在页面中引入dagger.js</h3>
+        <div class="answer">
+          <span>dagger.js是一个客户端运行时框架，无需编译过程，没有对第三方代码或者构建工具的依赖。在项目入口页面的head标签内插入以下几个标签即可开始在你的项目中使用dagger.js：</span>
+          <div class="margin">1. 通过一个type为“module”的script标签引入dagger.js （示例中采用cdn地址，你也可以使用托管在自己服务器或者其他发布渠道上的dagger.js访问地址来代替）：<br/><span class="code">&lt;script type="module" crossorigin="anonymous" src="https://cdn.jsdelivr.net/npm/@peakman/dagger.js@0.9.10/dagger.js" defer&gt;&lt;/script&gt;</span></div>
+          <div class="margin">2. 通过一个type为“dagger/configs”的script标签引入<a href="module/introduction">模块配置项</a>，定义渲染页面需要的模块资源。一个最简单的模块配置项是如下的空标签（未定义任何路由和模块）：<br/><span class="code">&lt;script type="dagger/configs"&gt;&lt;/script&gt;</span><div>关于配置项的更多详细内容将在后续的<a href="module/introduction">模块</a>和<a href="router/introduction">路由</a>章节中进行讲解。</div></div>
+          <div class="margin">3. 插入一个可选的style标签，用于隐藏尚未渲染完成的页面模板：<br/><span class="code">&lt;style&gt;[dg-cloak] { display: none !important; }&lt;/script&gt;</span></div>
+          <div>添加上述标签之后，一个最基本的dagger.js页面就完成了（参见下面代码窗口中的html部分）。接下来我们将结合具体的实例继续了解dagger.js。</div>
+          <iframe src="https://codepen.io/dagger8224/pen/ZErWBpB?editors=1000"></iframe>
+        </div>
+      </div>
+    </template>
+    <template $exist="language == 'en-us'">
+      <div class="section">
+        <h2>${ $['overview.version'] }</h2>
+        <span>${ $['overview.version.content'] }</span>
+        <span class="bold">"0.9.6"</span>
+        <span>${ $.period || '.' }</span>
+      </div>
+      <div class="section">
+        <div $html="$['overview.version.files']"></div>
+        1. 
+        <a class="bold margin" target="_blank" href="https://cdn.jsdelivr.net/npm/@peakman/dagger.js@0.9.10/dagger.js">dagger.js</a>
+        <div style="display: inline-block;" $html="$['dagger.js']"></div>
+        <br/>
+        2. 
+        <a class="bold margin" target="_blank" href="https://cdn.jsdelivr.net/npm/@peakman/dagger.js@0.9.10/dagger.min.js">dagger.min.js</a>
+        <div style="display: inline-block;" $html="$['dagger.min.js']"></div>
+        <br/>
+        3. 
+        <a class="bold margin" target="_blank" href="https://cdn.jsdelivr.net/npm/@peakman/dagger.js@0.9.10/dagger.release.js">dagger.release.js</a>
+        
+        <div style="display: inline-block;" $html="$['dagger.release.js']"></div>
+        <br/>
+        4. 
+        <a class="bold margin" target="_blank" href="https://cdn.jsdelivr.net/npm/@peakman/dagger.js@0.9.10/dagger.release.min.js">dagger.release.min.js</a>
+        <div style="display: inline-block;" $html="$['dagger.release.min.js']"></div>
+      </div>
+      <div class="section">
+        <h3>${ $.compatibility }</h3>
+        <div $html="$['compatibility.content']"></div>
+      </div>
+    </template>
+  </template>
+</html>

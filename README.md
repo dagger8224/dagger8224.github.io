@@ -1,5 +1,5 @@
 # dagger8224.github.io
-This is the homepage project for ***dagger.js*** (with Microsoft monaco editor v0.31.1 embedded for performance consideration)
+This is the homepage project for ***dagger.js***
 
 Please refer to the following nginx configs to setup the homepage locally:
 
@@ -15,4 +15,3 @@ server { # homepage
         rewrite ^/(.*)$ <***your-install-location***>/$1 break;  
     }  
 }
-

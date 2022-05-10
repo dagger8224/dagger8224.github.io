@@ -4,17 +4,17 @@
         "text": "introduction",
         "href": "overview/introduction"
     }, {
-        "text": "version",
-        "href": "overview/version"
+        "text": "install",
+        "href": "overview/install"
+    }, {
+        "text": "Hello dagger",
+        "href": "overview/hello_dagger"
     }]
 }, {
     "text": "directive",
     "sections": [{
         "text": "introduction",
         "href": "directive/introduction"
-    }, {
-        "text": "@raw",
-        "href": "directive/raw"
     }, {
         "text": "lifeCycle",
         "href": "directive/lifeCycle"
@@ -84,6 +84,9 @@
     }, {
         "text": "decorator",
         "href": "directive/decorator"
+    }, {
+        "text": "@raw",
+        "href": "directive/raw"
     }]
 }, {
     "text": "module",

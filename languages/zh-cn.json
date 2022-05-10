@@ -5,6 +5,7 @@
     },
     "viewOnGithub": "在Github上查看",
     "overview": "概览",
+    "install": "安装",
     "introduction": "介绍",
     "string": "字符串",
     "directive": "指令",
@@ -35,54 +36,24 @@
     "reset": "重置",
     "view": "查看执行结果：",
     "rootScope": "根作用域",
-    "overview.introduction": "概览/介绍",
-    "overview.introduction.sections": [{
-        "question": "dagger.js是什么",
-        "answer": "<span>dagger.js是一个基于html的开源（<a target='_blank' href='https://opensource.org/licenses/MIT'>MIT</a>）web前端技术框架。在dagger.js的帮助下，你可以轻松地使用原生javaScript语法构建网站（无论是单页应用还是简单的动态页面）或者可复用<a href='module/introduction'>模块</a>。</span>"
-    }, {
-        "question": "dagger.js适合哪些开发者",
-        "answer": "<span>无论你是一个有经验的专业开发人员或者是对web前端领域感兴趣的业余爱好者，只要具有基础的<a target='_blank' href='https://developer.mozilla.org/zh-CN/docs/Web/HTML'>html</a>/<a target='_blank' href='https://developer.mozilla.org/zh-CN/docs/Web/JavaScript'>javaScript</a>/<a target='_blank' href='https://developer.mozilla.org/zh-CN/docs/Web/CSS'>css</a>背景知识，都可以在短时间内理解和掌握dagger.js。dagger.js基于<a href='directive/introduction'>指令</a>表达式和<a href='miscellaneous/introduction'>配置项</a>声明方式工作，在大多数业务场景下，使用者无需调用任何框架<a href='api/introduction'>api</a>即可完成开发任务。</span>"
-    }, {
-        "question": "如何使用dagger.js",
-        "answer": "<span>dagger.js是一个轻量而完备的客户端运行时框架，没有对第三方代码或者构建工具的依赖，只需如下简单配置步骤即可快速搭建开发环境，进行业务逻辑开发：<div class=\"sub-answer\">1. 在html页面中通过script标签引入dagger.js：<br/><span style='font-style: italic; background-color: #eeeeee;'>&lt;script type=\"module\" integrity=\"sha256-WWzLwa7l4nbNl7Fbum80foH4n67RpD2hFXPApnbqnNc=\" crossorigin=\"anonymous\" src=\"https://cdn.jsdelivr.net/npm/@peakman/dagger.js@0.9.5/dagger.js\" defer&gt;&lt;/script&gt;</span><br/>2. 在页面head标签下插入<a href='miscellaneous/introduction'>根配置项</a>标签，定义各<a href='router/introduction'>路由场景</a>和渲染每个场景所需的<a href='module/introduction'>模块</a>描述信息<br/>3. 在DOM标签上通过<a href='directive/introduction'>指令</a>声明页面元素与数据模型之间的交互关系</div></span>"
-    }, {
-        "question": "查看在线示例",
-        "answer": "<span class='demo'><a target='_blank' href='https://www.w3schools.com/code/tryit.asp?filename=GOO8DTQ95MS7'>w3school</a><a target='_blank' href='https://codepen.io/dagger8224/pen/XWNagBY?editors=1000'>codepen</a></span>"
-    }, {
-        "question": "如何学习dagger.js",
-        "answer": "<span>本网站提供了dagger.js语法教程对应的示例代码，实际上，dagger.js的<a target='_blank' href='https://github.com/dagger8224/dagger8224.github.io'>文档代码</a>本身就是一个典型的综合示例。不必担心，dagger.js相当易于学习和使用。现在让我们开始dagger.js的<a href='directive/introduction'>体验之旅</a>吧。</span>"
-    }],
-    "overview.version": "概览/版本信息",
-    "overview.version.content": "dagger.js的最新版本是 ",
-    "overview.version.files": "<span>在<a target='_blank' href='https://www.npmjs.com/package/@peakman/dagger.js'>发布包</a>中包含4个不同的文件，请根据你的工作场景进行选择：</span>",
-    "dagger.js": "这是无压缩的开发版本，包含运行时防卫断言，适合在开发环境下使用",
-    "dagger.min.js": "这是压缩后的开发版本，包含运行时防卫断言，适合在开发环境下使用",
-    "dagger.release.js": "这是无压缩的发布版本，移除了运行时防卫断言以提升性能，适合在生产环境下使用",
-    "dagger.release.min.js": "这是压缩后的发布版本，移除了运行时防卫断言以提升性能，适合在生产环境下使用",
-    "compatibility": "兼容性",
-    "compatibility.content": "<span>dagger.js与支持<a target='_blank' href='https://262.ecma-international.org/6.0/'>ECMA2015</a>及以上版本的浏览器兼容。</span>",
-    "directive.introduction": "指令/介绍",
     "directive.introduction.sections": [{
-        "question": "什么是指令",
-        "answer": "<span>指令是dagger.js中的一个重要概念。形式上，指令是定义在DOM元素上的特殊<a target='_blank' href='https://developer.mozilla.org/zh-CN/docs/Web/HTML/Attributes'>属性</a>（带有特定前缀标记）。在运行时当中，指令会被转换为特定作用域下的表达式，并与所关联的DOM元素产生动态交互。在后续的教程中，我们会结合实例讲解各指令的具体使用方法。</span>"
-    }, {
-        "question": "指令分为哪些种类",
-        "answer": "<span>指令共分为四种：<a href='directive/raw'>元指令</a>（以符号“@”作为前缀，如“@raw”），<a href='directive/lifeCycle'>生命周期指令</a>（以符号“$”作为前缀，如“+loading”），<a href='directive/controller'>控制指令</a>（以符号“$”作为前缀，如“$value”）以及<a href='directive/eventHandler'>事件指令</a>（以符号“+”作为前缀，如“+click”）。</span>"
+        "question": "指令是必须的还是可选的",
+        "answer": "<span>所有的指令都是可选的，在dagger.js当中，一个没有声明任何指令的DOM元素被称为平凡元素。</span>"
     }, {
         "question": "指令的结构",
-        "answer": "<span>一个典型的指令由</span><span class='format'> “ 前缀 + 名称 + 修饰符（可选）+ 表达式 ” </span><span>组成。<a href='directive/decorator'>修饰符</a>是一组由\"#\"分割的键值对，用于进一步定制指令的行为。元指令只包含</span><span class='format'> “ 前缀 + 名称 ” </span><span>，不支持修饰符和表达式。</span>"
+        "answer": "<span>一个典型的指令由</span><span class='format'> “ 前缀 + 名称 + <a href='directive/decorator'>修饰符</a>（可选）+ 表达式 ” </span><span>四部分组成（例如，$value#input=\"expression\"定义了一个<a href='directive/controller'>控制指令</a>，其中$是指令前缀，value是指令名称，#input是指令修饰符，expression是指令表达式）。作为对照，一个普通的原生指令通常由一组键值对或单独的键名构成（例如id=\"root\"，value=\"1\"，checked，readonly等）。</span>"
     }, {
-        "question": "指令的触发来源",
-        "answer": "<span>元指令由框架在解析html模板时调用。事件指令由用户操作或者系统事件触发调用。生命周期指令由框架在元素的创建和销毁时调用。控制指令在元素的生命周期内随着表达式所依赖数据的变化可能多次触发调用。</span>"
+        "question": "指令的种类",
+        "answer": "<span>指令分为四种：<a href='directive/raw'>元指令</a>（以符号“@”作为前缀，如“@raw”），<a href='directive/controller'>控制指令</a>（以符号“$”作为前缀，如“$value”），<a href='directive/lifeCycle'>生命周期指令</a>（以符号“+”作为前缀，如“+loading”），以及<a href='directive/eventHandler'>事件指令</a>（以符号“+”作为前缀，如“+click”）。请注意，生命周期指令可以视为一种特殊的系统事件指令。</span>"
     }, {
-        "question": "指令表达式的限制",
-        "answer": "<span>任何合法的单一javaScript语句都可以作为指令表达式的内容（不要在语句前添加return），包含同步、异步函数，也可以直接声明成一个对象字面量。如果需要在指令中使用内联的复合语句，请将语句拆解为多个逗号表达式或者包裹为立即执行函数。事实上，对于复杂的业务逻辑，更合适的方法是将逻辑封装在<a href='module/script'>script</a>模块当中，仅仅将表达式作为调用的入口。</span>"
+        "question": "指令的触发条件",
+        "answer": "<span>元指令由框架在解析html模板时调用；控制指令在元素的生命周期内随着表达式所依赖数据的变化可能多次触发调用；事件指令由用户操作或者系统事件触发调用；生命周期指令由框架在元素的创建和销毁时调用。</span>"
     }, {
-        "question": "指令表达式中变量的定义域",
-        "answer": "<span>指令表达式工作在其所在的运行时作用域下。除顶层的javaScript<a target='_blank' href='https://developer.mozilla.org/en-US/docs/Glossary/Global_scope'>全局作用域</a>和次顶层的dagger.js<a href='miscellaneous/introduction'>根作用域</a>之外，每一个元素都可以通过<a href='directive/loading'>+loading</a>生命周期指令动态创建上下文作用域。不同层级的变量作用域自顶向下构成一棵运行时作用域树。每个指令表达式可以访问其所在层级或者祖先层级所定义的作用域变量。</span>"
+        "question": "指令表达式的结构",
+        "answer": "<span>任何合法的单一javaScript语句都可以作为指令表达式的内容（不要在语句前添加return，可以采用逗号分割），语句的执行结果将作为指令表达式的返回值。在实际开发中，对于复杂的业务代码，更合适的方法是将逻辑封装在<a href='module/script'>script</a>模块导出的函数当中，而仅仅将指令表达式作为这些函数调用的入口。</span>"
     }, {
-        "question": "指令是必须的还是可选的",
-        "answer": "<span>所有的指令都是可选的，一个没有声明任何指令的元素被称为平凡元素。</span>"
+        "question": "指令表达式的调用参数",
+        "answer": "<span>指令表达式的调用参数由框架提供，包括作用域对象“<a href='directive/scope'>$scope</a>”，模块对象“<a href='directive/module'>$module</a>”，节点对象“<a href='directive/node'>$node</a>”，以及事件对象“<a href='directive/event'>$event</a>”（$event参数仅在事件指令表达式中提供）。各参数的结构和使用方法详见对应章节中的描述。</span>"
     }],
     "directive.raw": "指令/@raw",
     "directive.raw.sections": [{

@@ -1,13 +1,6 @@
 {
     "//": "dagger demo configs",
-    "options": {
-        "//": "dagger options",
-        "commentNode": false,
-        "directiveAttribute": false,
-        "moduleLog": true,
-        "routerLog": true,
-        "integrity": false
-    },
+    "integrity": false,
     "rootSelectors": ["title", "body"],
     "routing": {
         "default": "/overview/introduction",
@@ -30,14 +23,7 @@
                     }
                 },
                 "menus": "./menus.json",
-                "index": {
-                    "uri": "./index.js",
-                    "anonymous": true
-                },
-                "demo": {
-                    "content": "",
-                    "type": "string"
-                }
+                "index": "./index.js"
             },
             "children": [{
                 "path": "blocked"
@@ -49,7 +35,7 @@
                         "title": "overview.introduction",
                         "template": "overview_introduction",
                         "previousLink": "",
-                        "nextLink": "overview/version"
+                        "nextLink": "overview/install"
                     },
                     "modules": {
                         "overview_introduction": "./overview/introduction.html",
@@ -59,15 +45,26 @@
                         }
                     }
                 }, {
-                    "path": "version",
+                    "path": "install",
                     "constants": {
-                        "title": "overview.version",
-                        "template": "overview_version",
+                        "title": "overview.install",
+                        "template": "overview_install",
                         "previousLink": "overview/introduction",
+                        "nextLink": "overview/hello_dagger"
+                    },
+                    "modules": {
+                        "overview_install": "./overview/install.html"
+                    }
+                }, {
+                    "path": "hello_dagger",
+                    "constants": {
+                        "title": "overview.hello_dagger",
+                        "template": "overview_hello_dagger",
+                        "previousLink": "overview/install",
                         "nextLink": "directive/introduction"
                     },
                     "modules": {
-                        "overview_version": "./overview/version.html"
+                        "overview_hello_dagger": "./overview/hello_dagger.html"
                     }
                 }]
             }, {
@@ -77,29 +74,18 @@
                     "constants": {
                         "title": "directive.introduction",
                         "template": "directive_introduction",
-                        "previousLink": "overview/version",
-                        "nextLink": "directive/raw"
-                    },
-                    "modules": {
-                        "directive_introduction": "./directive/introduction.html"
-                    }
-                }, {
-                    "path": "raw",
-                    "constants": {
-                        "title": "directive.raw",
-                        "template": "directive_raw",
-                        "previousLink": "directive/introduction",
+                        "previousLink": "overview/hello_dagger",
                         "nextLink": "directive/lifeCycle"
                     },
                     "modules": {
-                        "directive_raw": "./directive/raw.html"
+                        "directive_introduction": "./directive/introduction.html"
                     }
                 }, {
                     "path": "lifeCycle",
                     "constants": {
                         "title": "directive.lifeCycle",
                         "template": "directive_life-Cycle",
-                        "previousLink": "directive/raw",
+                        "previousLink": "directive/introduction",
                         "nextLink": "directive/loading"
                     },
                     "modules": {
@@ -342,10 +328,21 @@
                         "title": "directive.decorator",
                         "template": "directive_decorator",
                         "previousLink": "directive/eventHandler",
-                        "nextLink": "module/introduction"
+                        "nextLink": "directive/raw"
                     },
                     "modules": {
                         "directive_decorator": "./directive/decorator.html"
+                    }
+                }, {
+                    "path": "raw",
+                    "constants": {
+                        "title": "directive.raw",
+                        "template": "directive_raw",
+                        "previousLink": "directive/decorator",
+                        "nextLink": "module/introduction"
+                    },
+                    "modules": {
+                        "directive_raw": "./directive/raw.html"
                     }
                 }]
             }, {

@@ -9,19 +9,19 @@
  *  </copyright>
  *  ***********************************************************************/
 
-export default ((context = Symbol('context'), currentController = null, daggerOptions = { integrity: true }, directiveObjects = [], dispatchSource = { bubble: 'bubble', self: 'self', mutation: 'mutation' }, rootNamespace = null, rootNodeProfiles = [], rootScope = null, emptier = () => Object.create(null), processorCaches = emptier(), styleModuleSet = new Set(), forEach = (iterators, processor) => {
+export default ((context = Symbol('context'), currentController = null, daggerOptions = { integrity: true, customTags: null, rootSelectors: ['title', 'body'], routing: { aliases: {}, default: '', hashPrefix: '#', overrideRelativeLinks: true, redirects: {}, scenarios: {} } }, directiveObjects = [], dispatchSource = { bubble: 'bubble', self: 'self', mutation: 'mutation' }, rootNamespace = null, rootNodeProfiles = [], rootScope = null, emptier = () => Object.create(null), processorCaches = emptier(), styleModuleSet = new Set(), forEach = (iterators, processor) => {
     if (!iterators) { return; }
     const length = iterators.length || 0;
     for (let index = 0; index < length; ++index) { processor(iterators[index], index); }
 }, hashTableResolver = (...array) => {
     const hashTable = emptier();
     return forEach(array, key => (hashTable[key] = true)) || hashTable;
-}, emptyObject = emptier(), head = document.head, htmlNodeContext = null, meta = Symbol('meta'), promisor = Promise.resolve(), resolvedType = { json: 'json', namespace: 'namespace', script: 'script', style: 'style', string: 'string', template: 'template' }, routerTopology = null, sentrySet = new Set(), templateCacheMap = new WeakMap(), textNode = document.createTextNode(''), configResolver = ((defaultConfigContent = { template: { uri: ['#template'], type: resolvedType.template, style: 'style', optional: true }, script: { uri: ['script[type="dagger/script"]'], type: resolvedType.script, optional: true }, style: { uri: ['style[type="dagger/style"]'], type: resolvedType.style, optional: true } }, configExtender = (base, content, extendsDefaultConfig) => ({ base, content: extendsDefaultConfig ? Object.assign({}, defaultConfigContent, content) : content })) => (baseElement, base) => {
+}, emptyObject = emptier(), htmlNodeContext = null, meta = Symbol('meta'), promisor = Promise.resolve(), resolvedType = { json: 'json', namespace: 'namespace', script: 'script', style: 'style', string: 'string', template: 'template' }, routerTopology = null, sentrySet = new Set(), templateCacheMap = new WeakMap(), textNode = document.createTextNode(''), configResolver = ((defaultConfigContent = { template: { uri: ['#template'], type: resolvedType.template, style: 'style', optional: true }, script: { uri: ['script[type="dagger/script"]'], type: resolvedType.script, optional: true }, style: { uri: ['style[type="dagger/style"]'], type: resolvedType.style, optional: true } }, configExtender = (base, content, extendsDefaultConfig) => ({ base, content: extendsDefaultConfig ? Object.assign({}, defaultConfigContent, content) : content })) => (baseElement, base) => {
     const configContainer = querySelector(baseElement, 'script[type="dagger/configs"]');
     if (configContainer) {
         const src = configContainer.getAttribute('src'), extendsDefaultConfig = configContainer.hasAttribute('extends');
         configContainer.hasAttribute('base') && (base = new URL(configContainer.getAttribute('base') || '', base).href);
-        return src ? remoteResourceResolver(new URL(src, base), configContainer.integrity).then(({ content }) => configExtender(base, JSON.parse(content), extendsDefaultConfig)) : configExtender(base, JSON.parse(configContainer.textContent), extendsDefaultConfig);
+        return src ? remoteResourceResolver(new URL(src, base), configContainer.integrity).then(({ content }) => configExtender(base, JSON.parse(content), extendsDefaultConfig)) : configExtender(base, configContainer.textContent.trim() ? JSON.parse(configContainer.textContent) : {}, extendsDefaultConfig);
     }
     return { base, content: defaultConfigContent };
 })(), functionResolver = expression => processorCaches[expression] || (processorCaches[expression] = new Function(`return ${ expression };`)()), isString = object => Object.is(typeof object, 'string'), ownKeys = target => Reflect.ownKeys(target).filter(key => !Object.is(key, meta)), serializer = ([resolver, ...nextResolvers], token = { stop: false }) => {
@@ -159,7 +159,7 @@ export default ((context = Symbol('context'), currentController = null, daggerOp
 }, styleResolver = (content, name, disabled) => {
     const style = document.createElement('style');
     content && (style.textContent = content);
-    head.appendChild(style);
+    document.head.appendChild(style);
     style.disabled = disabled;
     style.setAttribute('name', name);
     return style;
@@ -169,7 +169,7 @@ export default ((context = Symbol('context'), currentController = null, daggerOp
         if (parent) {
             this.parent = parent, this.path = parent.path ? `${ parent.path }.${ name }` : name, this.baseElement = parent.baseElement;
         } else {
-            this.path = name, this.baseElement = head;
+            this.path = name, this.baseElement = document;
         }
         const { integrity, uri, type } = config;
         let isTypeValid = resolvedType[type];
@@ -726,7 +726,7 @@ export default ((context = Symbol('context'), currentController = null, daggerOp
             observer: null,
             updater: name && (nodeUpdater[name] || (node && Object.is(typeof node[name], 'boolean') && nodeUpdater.$boolean) || generalUpdater)
         };
-        // subscribable && node && Object.is(name, 'selected') && Object.is(node.tagName, 'SELECT') && (controller.observer = new MutationObserver(() => this.updateController(controller, true))).observe(node, { childList: true });
+        subscribable && node && Object.is(name, 'selected') && Object.is(node.tagName, 'SELECT') && (controller.observer = new MutationObserver(() => this.updateController(controller, true))).observe(node, { childList: true });
         this.updateController(controller, true);
         return subscribable && controller;
     }
@@ -839,7 +839,7 @@ export default ((context = Symbol('context'), currentController = null, daggerOp
         }
     })();
     return NodeContext;
-})(), NodeProfile = ((directiveType = { '$': 'controller', '+': 'event' }, interactiveDirectiveNames = hashTableResolver('checked', 'file', 'focus', 'result', 'selected', 'value'), lifeCycleDirectiveNames = hashTableResolver('loading', 'loaded', 'sentry', 'unloading', 'unloaded'), rawElementNames = hashTableResolver('STYLE', 'SCRIPT'), caseResolver = content => content.trim().replace(/-[a-z]/g, string => string[1].toUpperCase()).replace(/-[A-Z]/g, string => `-${ string[1].toLowerCase() }`), dataBinder = (directives, value, fields, event) => directives.eventHandlers.push(directiveResolver(`Object.is(${ value }, _$data_) || (${ value } = _$data_)`, Object.assign({ event }, fields), '$node, _$data_')), decoratorsResolver = expression => ((safeDataResolver = expression => { try { return expression ? (window[expression] || functionResolver(expression)) : expression; } catch (error) { return expression; } }) => {
+})(), NodeProfile = ((directiveType = { '$': 'controller', '+': 'event' }, interactiveDirectiveNames = hashTableResolver('checked', 'file', 'focus', 'result', 'selected', 'value'), lifeCycleDirectiveNames = hashTableResolver('loading', 'loaded', 'sentry', 'unloading', 'unloaded'), rawElementNames = hashTableResolver('STYLE', 'SCRIPT'), caseResolver = content => content.includes('-') ? content.trim().replace(/-[a-z]/g, string => string[1].toUpperCase()).replace(/-[A-Z]/g, string => `-${ string[1].toLowerCase() }`) : content, dataBinder = (directives, value, fields, event) => directives.eventHandlers.push(directiveResolver(`Object.is(${ value }, _$data_) || (${ value } = _$data_)`, Object.assign({ event }, fields), '$node, _$data_')), decoratorsResolver = expression => ((safeDataResolver = expression => { try { return expression ? (window[expression] || functionResolver(expression)) : expression; } catch (error) { return expression; } }) => {
     const [name, ...rawDecorators] = caseResolver(expression).split('#'), decorators = emptier();
     forEach(rawDecorators.filter(decorator => decorator), decorator => {
         const [name, value] = decorator.split(':').map(content => decodeURIComponent(content));
@@ -853,7 +853,7 @@ export default ((context = Symbol('context'), currentController = null, daggerOp
     processor || directiveObjects.push(directive);
     return directive;
 })(), templateResolver = (tagName, namespace) => { // TODO: assert namespace
-    let isVirtualElement = false, promise = (namespace || {}).promise;
+    let isVirtualElement = !namespace, promise = (namespace || {}).promise;
     if (namespace && !(namespace.customTagSet && namespace.customTagSet.has(tagName))) {
         promise = namespace.fetch(tagName);
         if (promise) {
@@ -950,6 +950,7 @@ export default ((context = Symbol('context'), currentController = null, daggerOp
             } else if (Object.is(name, 'exist')) {
                 directives.exist = directive;
                 this.resolveLandmark(node);
+                this.unique = false;
             } else if (Object.is(name, 'html') || Object.is(name, 'text')) {
                 directives.child = directive;
             } else {
@@ -1052,7 +1053,7 @@ export default ((context = Symbol('context'), currentController = null, daggerOp
         }
         forEach(ownKeys(this.children), key => this.children[key].update((newValue || emptyObject)[key], dispatchSource.mutation));
     }
-}, runtime = ((base = '', customTags = null, currentStyleSet = null, routers = null, resolvedRouters = null, rootRouter = null, routerOptions = { aliases: {}, default: '', hashPrefix: '#', overrideRelativeLinks: true, redirects: {}, scenarios: {} }, styleModules = { '': styleModuleSet }, relativeLinkResolver = ((tagNames = hashTableResolver('A', 'AREA')) => event => {
+}, runtime = ((base = '', currentStyleSet = null, routers = null, resolvedRouters = null, rootRouter = null, routerOptions = null, styleModules = { '': styleModuleSet }, relativeLinkResolver = ((tagNames = hashTableResolver('A', 'AREA')) => event => {
     const node = event.target;
     if (!tagNames[node.tagName] || !node.hasAttribute('href')) { return; }
     const href = node.getAttribute('href').trim(), hashPrefix = routerOptions.hashPrefix;
@@ -1075,9 +1076,7 @@ export default ((context = Symbol('context'), currentController = null, daggerOp
     styleModuleSet = styleModules[nextRouter.path] || (styleModules[nextRouter.path] = new Set());
     const rootModules = Object.assign(emptier(), ...resolvedRouters.map(router => router.modules));
     forEach(Object.keys(rootModules), key => (rootModules[key] instanceof ModuleProfile) || (rootModules[key] = routers.find(router => router.resolveModule(key, base)).modules[key]));
-    rootNamespace = new ModuleProfile({ content: rootModules, customTags, type: resolvedType.namespace }, base);
-    window.$ModuleProfile = content => new ModuleProfile({ content, type: 'namespace' }, '', '__demo__', rootNamespace); // TODO: demo only
-    window.$Router = Router; // TODO: demo only
+    rootNamespace = new ModuleProfile({ content: rootModules, customTags: daggerOptions.customTags, type: resolvedType.namespace }, base);
     return rootNamespace.resolve().then(() => rootNamespaceResolver(nextRouter));
 })()) => (hash = location.hash.replace(routerOptions.hashPrefix, '')) => {
     const slash = '/';
@@ -1158,22 +1157,22 @@ export default ((context = Symbol('context'), currentController = null, daggerOp
     register(Date, ['setDate', 'setFullYear', 'setHours', 'setMilliseconds', 'setMinutes', 'setMonth', 'setSeconds', 'setTime', 'setUTCDate', 'setUTCFullYear', 'setUTCHours', 'setUTCMilliseconds', 'setUTCMinutes', 'setUTCMonth', 'setUTCSeconds', 'setYear']) || register(Map, mapMethodNames) || register(Set, setMethodNames) || register(WeakMap, mapMethodNames) || register(WeakSet, setMethodNames);
     JSON.stringify = processorWrapper(JSON.stringify);
     forEach(['concat', 'copyWithin', 'fill', 'find', 'findIndex', 'lastIndexOf', 'pop', 'push', 'reverse', 'shift', 'unshift', 'slice', 'sort', 'splice', 'includes', 'indexOf', 'join', 'keys', 'entries', 'values', 'forEach', 'filter', 'flat', 'flatMap', 'map', 'every', 'some', 'reduce', 'reduceRight', 'toLocaleString', 'toString', 'at'], key => (Array.prototype[key] = processorWrapper(Array.prototype[key])));
-    const runtime = (configs = {}) => {
-        const { options = {}, rootSelectors = ['title', 'body'], routing = {} } = configs;
-        Object.assign(daggerOptions, options);
-        Object.assign(routerOptions, routing);
+    const runtime = (configs = { base: document.baseURI, content: {} }) => { // TODO: base
+        const content = configs.content;
+        content.routing ? Object.assign(daggerOptions.routing, content.routing) : (daggerOptions.routing.scenarios = { modules: content });
+        routerOptions = daggerOptions.routing;
         const { overrideRelativeLinks, scenarios } = routerOptions, rootModules = emptier();
         overrideRelativeLinks && document.body.addEventListener('click', relativeLinkResolver, true);
         document.body.addEventListener('reset', resetEventHandler);
-        ({ base, customTags } = configs), rootRouter = new Router(scenarios), rootRouter.initialize();
-        forEach(Object.keys(rootRouter.modules), key => (rootModules[key] = rootRouter.resolveModule(key, base)));
-        rootNamespace = Reflect.construct(ModuleProfile, [{ content: rootModules, type: resolvedType.namespace }, base]);
+        base = configs.base, rootRouter = new Router(scenarios), rootRouter.initialize();
+        forEach(Object.keys(rootRouter.modules || {}), key => (rootModules[key] = rootRouter.resolveModule(key, base)));
+        rootNamespace = Reflect.construct(ModuleProfile, [{ content: rootModules, customTags: daggerOptions.customTags, type: resolvedType.namespace }, base]);
         rootNamespace.resolve().then(() => styleModuleSet.forEach(style => (style.disabled = false)) || serializer([new NodeContext(new NodeProfile(document.documentElement)).promise, () => {
-            forEach([...new Set(rootSelectors.map(rootSelector => [...querySelector(document, rootSelector, true)]).flat())], rootNode => Reflect.construct(NodeProfile, [rootNode, [], rootNodeProfiles, null, true]));
+            forEach([...new Set(daggerOptions.rootSelectors.map(rootSelector => [...querySelector(document, rootSelector, true)]).flat())], rootNode => Reflect.construct(NodeProfile, [rootNode, [], rootNodeProfiles, null, true]));
             window.addEventListener('hashchange', () => hashChangeResolver());
             hashChangeResolver();
         }]));
     };
     window.$dagger = Object.freeze(Object.assign(emptier(), { register, runtime, version: '1.0.0 - RC' }));
     return runtime;
-})()) => head.querySelector('script[type="dagger/configs"]') ? document.addEventListener('DOMContentLoaded', () => serializer([configResolver(head, document.baseURI), ({ base, content }) => runtime(Object.assign({ base }, content))])) : runtime)();
+})()) => document.querySelector('script[type="dagger/configs"]') ? document.addEventListener('DOMContentLoaded', () => serializer([configResolver(document, document.baseURI), configs => runtime(configs)])) : runtime)();

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html +loading="console.log('loading'), onLoading(languages)" +loaded="console.log('loaded'), onLoaded($scope)">
+<html +loading="onLoading(languages)">
   <head>
     <meta charset="UTF-8">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -19,18 +19,6 @@
     <link rel="stylesheet" href="./index.css">
     <script type="module" crossorigin="anonymous" src="./framework/dagger.release.js" defer></script>
     <script type="dagger/configs" src="./configs.json"></script>
-    <script src="./vs/loader.min.js"></script>
-    <script>
-        require.config({ paths: { 'vs': './vs' }});
-        require(['vs/editor/editor.main'], () => (window.$editor = monaco.editor.create(document.querySelector('#codeContainer'), {
-            minimap: { enabled: false },
-            automaticLayout: true,
-            formatOnPaste: true,
-            formatOnType: true,
-            wordWrap: 'on',
-            theme: 'vs-dark'
-        })));
-    </script>
     <title $text="$[$router.schemes.title] || $router.schemes.title">loading...</title>
   </head>
   <body dg-cloak +loading="{ isMenuClosed: true }" +sentry="sentry($scope, $nextRouter)" $watch#router="console.log('watch router', $module, $router), isLoading = false">
@@ -54,17 +42,8 @@
       </ul>
       <div class="bottom-switcher button" +click="isMenuClosed = !isMenuClosed"><span>${ isMenuClosed ? "》" : "《" }</span></div>
     </div>
-    <div id="content" $watch#router="$node.scrollTo(0, 0);">
+    <div id="content">
       <template $html="`<${ $router.schemes.template }></${ $router.schemes.template }>`"></template>
-      <div id="editor" $style="`display: ${ html ? 'block' : 'none' }`" $watch="html, require(['vs/editor/editor.main'], () => window.$editor.setValue(html))">
-        <span id="try-it">${ $.try }</span>
-        <div id="codeContainer"></div>
-        <button id="run" +click="html = window.$editor.getValue()">${ $.run }</button>
-        <button id="reset" +click="html = 'loading...', queueMicrotask(() => (html = defaultHtml))">${ $.reset }</button>
-        <br/>
-        <span id="view-result">${ $.view }</span>
-        <div id="result" $html="updateResult($router, html)"></div>
-      </div>
     </div>
     <div id="footer">
       <a $exist="$router.schemes.previousLink" $href="$router.schemes.previousLink">${ $.previous }</a>
