@@ -40,7 +40,7 @@
           </tr>
         </tbody>
       </table>
-      <div>你可以在本地命令行工具中执行以下命令来下载托管在npm上的最新版本：<br/><span class="code">npm install @peakman/dagger.js</span></div>
+      <div>你可以在本地命令行工具中执行以下命令来下载托管在npm上的最新版本：<div class="code">npm install @peakman/dagger.js</div></div>
     </div>
     <h3 class="question">浏览器兼容性</h3>
     <div class="answer">
@@ -48,10 +48,10 @@
     </div>
     <h3 class="question">如何在页面中引入dagger.js</h3>
     <div class="answer">
-      <span>dagger.js是一个客户端运行时框架，无需编译过程，也没有对第三方代码或者构建工具的依赖。在项目入口页面的head标签内插入以下几个标签即可开始在你的项目中使用dagger.js：</span>
-      <div class="margin">1. 通过一个type为“module”的script标签引入dagger.js：<br/><span class="code">&lt;script type="module" crossorigin="anonymous" src="https://cdn.jsdelivr.net/npm/@peakman/dagger.js@0.9.10/dagger.release.js" defer&gt;&lt;/script&gt;</span></div>
-      <div class="margin">2. 通过一个type为“dagger/configs”的script标签引入<a href="module/introduction">模块配置项</a>，定义渲染页面所需的模块资源。一个最简单的模块配置项是如下的空标签（未定义任何路由和模块）：<br/><span class="code">&lt;script type="dagger/configs"&gt;&lt;/script&gt;</span><div>关于配置项的更多详细内容将在后续的<a href="module/introduction">模块</a>和<a href="router/introduction">路由</a>章节中进行讲解。</div></div>
-      <div class="margin">3. 插入一个style标签（可选），用于隐藏尚未渲染完成的页面模板：<br/><span class="code">&lt;style&gt;[dg-cloak] { display: none !important; }&lt;/style&gt;</span></div>
+      <span>dagger.js是一个客户端运行时框架，无需编译过程，也没有对第三方代码或者构建工具的依赖。只需在项目入口页面的head标签内插入下列标签即可开始使用dagger.js：</span>
+      <div class="margin">1. 通过一个type为“module”的script标签引入dagger.js：<div class="code">&lt;script type="module" crossorigin="anonymous" src="https://cdn.jsdelivr.net/npm/@peakman/dagger.js@0.9.10/dagger.release.js" defer&gt;&lt;/script&gt;</div></div>
+      <div class="margin">2. 通过一个type为“dagger/configs”的script标签引入<a href="module/introduction">模块配置项</a>，定义渲染页面所需的模块资源。一个最简单的模块配置项是如下的空标签（未定义任何路由和模块）：<div class="code">&lt;script type="dagger/configs"&gt;&lt;/script&gt;</div><div>关于配置项的更多详细内容将在后续的<a href="module/introduction">模块</a>和<a href="router/introduction">路由</a>章节中进行讲解。</div></div>
+      <div class="margin">3. 插入一个style标签（可选），用于隐藏尚未渲染完成的页面模板：<div class="code">&lt;style&gt;[dg-cloak] { display: none !important; }&lt;/style&gt;</div></div>
       <div>完成了！现在我们已经得到了一个空的dagger.js页面（参见下面代码窗口中的html内容）。接下来我们将结合具体的实例继续了解dagger.js。</div>
       <iframe height="300" style="width: 100%;" scrolling="no" title="[dagger-demo] the empty entry page" src="https://codepen.io/dagger8224/embed/ZErWBpB?default-tab=html&editable=true&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
         See the Pen <a href="https://codepen.io/dagger8224/pen/ZErWBpB">
