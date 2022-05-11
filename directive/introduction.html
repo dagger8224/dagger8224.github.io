@@ -1,30 +1,16 @@
-<!DOCTYPE html>
-<html>
-  <script type="dagger/configs">
-    {
-      "template": {
-          "uri": "#template",
-          "style": "style"
-      },
-      "style": "#style"
-    }
-  </script>
-  <template id="template">
-    <template $exist="language == 'zh-cn'">
-      <h2>指令/介绍</h2>
-      <div class="content">
-        <h3 class="question">什么是指令</h3>
-        <div class="answer">如果你曾经使用过<a target="_blank" href="https://angularjs.org/">AngularJS</a>，<a target="_blank" href="https://v3.cn.vuejs.org/">Vue.js</a>或者其他类似的框架，那么对于指令的概念应该并不陌生。如果你没有了解过这些框架也无需担心，指令的概念并不难于理解。你可以把指令看做是一个语义化的函数。在dagger.js中，指令是用户代码的执行入口。形式上，指令是在DOM元素上声明的具有特定结构的<a target="_blank" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Attributes">属性</a>，指令表达式（属性值）的内容将最终解析为一个回调函数，由框架在满足触发条件时触发调用。在后续的教程中，我们会结合实例讲解各类型指令的具体定义方式和使用方法。</div>
-      </div>
+<template $exist="language == 'zh-cn'">
+  <h2>${ $['directive.introduction'] }</h2>
+  <div class="content">
+    <h3 class="question">什么是指令</h3>
+    <div class="answer">你可以把指令理解为一个回调函数，由框架在满足条件时触发调用。在dagger.js中，指令是用户代码执行的唯一入口。</div>
+  </div>
+</template>
+<template $exist="language == 'en-us'">
+  <h2>${ $['directive.introduction'] }</h2>
+  <div class="content">
+    <template $each="$['directive.introduction.sections']">
+      <h3 class="question">${ item.question }</h3>
+      <div class="answer" $html="item.answer"></div>
     </template>
-    <template $exist="language == 'en-us'">
-      <h2>${ $['directive.introduction'] }</h2>
-      <div class="content">
-        <template $each="$['directive.introduction.sections']">
-          <h3 class="question">${ item.question }</h3>
-          <div class="answer" $html="item.answer"></div>
-        </template>
-      </div>
-    </template>
-  </template>
-</html>
+  </div>
+</template>

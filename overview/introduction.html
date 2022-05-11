@@ -1,36 +1,27 @@
-<!DOCTYPE html>
-<html>
-  <script type="dagger/configs">
-    {
-      "template": "#template"
-    }
-  </script>
-  <template id="template">
-    <template $exist="language == 'zh-cn'">
-      <h2>概览/介绍</h2>
-      <div class="content">
-        <h3 class="question">dagger.js是什么</h3>
-        <div class="answer">
-          <span>dagger.js是一个基于html的开源（<a target="_blank" href="https://opensource.org/licenses/MIT">MIT</a>）web前端技术框架。在dagger.js的帮助下，你可以轻松地使用原生javaScript语法构建网站（无论是单页应用还是简单的动态页面）。</span>
-        </div>
-        <h3 class="question">dagger.js适合哪些开发者</h3>
-        <div class="answer">
-          <span>无论你是一个有经验的专业开发人员还是对web前端开发领域感兴趣的业余爱好者，只要有原生<a target="_blank" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML">html</a>/<a target="_blank" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript">javaScript</a>/<a target="_blank" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS">css</a>背景知识作为基础，都可以在短时间内理解和掌握dagger.js。</span>
-        </div>
-        <h3 class="question">学习路线</h3>
-        <div class="answer">
-          <span>dagger.js中的核心概念包括：<a href="directive/introduction">指令</a>，<a href="scope/introduction">作用域</a>，<a href="module/introduction">模块</a>，<a href="router/introduction">路由</a>。同时，框架也提供了少量的<a href="api/introduction">api方法</a>（dagger.js以声明方式工作，在大多数业务场景下，开发者不需要调用这些api即可完成开发任务）。本文档围绕以上概念组织章节结构，在每个章节内都提供了与内容关联的使用示例。现在让我们开始dagger.js的体验之旅吧。</span>
-        </div>
-      </div>
+
+<template $exist="language == 'zh-cn'">
+  <h2>${ $['overview.introduction'] }</h2>
+  <div class="content">
+    <h3 class="question">dagger.js是什么</h3>
+    <div class="answer">
+      <span>dagger.js是一个基于html的开源（<a target="_blank" href="https://opensource.org/licenses/MIT">MIT</a>）web前端技术框架。在dagger.js的帮助下，你可以轻松地使用原生javaScript语法构建网站（无论是单页应用还是简单的动态页面）。</span>
+    </div>
+    <h3 class="question">dagger.js适合哪些开发者</h3>
+    <div class="answer">
+      <span>无论你是一个有经验的专业开发人员还是对web前端开发领域感兴趣的业余爱好者，只要有原生<a target="_blank" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML">html</a>/<a target="_blank" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript">javaScript</a>/<a target="_blank" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS">css</a>背景知识作为基础，都可以在短时间内理解和掌握dagger.js。</span>
+    </div>
+    <h3 class="question">学习路线</h3>
+    <div class="answer">
+      <span>dagger.js中的核心概念包括：<a href="directive/introduction">指令</a>，<a href="scope/introduction">作用域</a>，<a href="module/introduction">模块</a>，<a href="router/introduction">路由</a>。同时，框架也提供了少量的<a href="api/introduction">api方法</a>（dagger.js以声明方式工作，在大多数业务场景下，开发者不需要调用这些api即可完成开发任务）。本文档围绕以上概念组织章节结构，在每个章节内都提供了与内容关联的使用示例。现在让我们开始dagger.js的体验之旅吧。</span>
+    </div>
+  </div>
+</template>
+<template $exist="language == 'en-us'">
+  <h2>${ $['overview.introduction'] }</h2>
+  <div class="content">
+    <template $each="$['overview.introduction.sections']">
+      <h3 class="question">${ item.question }</h3>
+      <div class="answer" $html="item.answer"></div>
     </template>
-    <template $exist="language == 'en-us'">
-      <h2>${ $['overview.introduction'] }</h2>
-      <div class="content">
-        <template $each="$['overview.introduction.sections']">
-          <h3 class="question">${ item.question }</h3>
-          <div class="answer" $html="item.answer"></div>
-        </template>
-      </div>
-    </template>
-  </template>
-</html>
+  </div>
+</template>
