@@ -41,21 +41,6 @@
     "view": "查看执行结果：",
     "rootScope": "根作用域",
     "directive.introduction.sections": [{
-        "question": "指令是必须的还是可选的",
-        "answer": "<span>所有的指令都是可选的，在dagger.js当中，一个没有声明任何指令的DOM元素被称为平凡元素。</span>"
-    }, {
-        "question": "指令的结构",
-        "answer": "<span>一个典型的指令由</span><span class='format'> “ 前缀 + 名称 + <a href='directive/decorator'>修饰符</a>（可选）+ 表达式 ” </span><span>四部分组成（例如，$value#input=\"expression\"定义了一个<a href='directive/controller'>控制指令</a>，其中$是指令前缀，value是指令名称，#input是指令修饰符，expression是指令表达式）。作为对照，一个普通的原生指令通常由一组键值对或单独的键名构成（例如id=\"root\"，value=\"1\"，checked，readonly等）。</span>"
-    }, {
-        "question": "指令的种类",
-        "answer": "<span>指令分为四种：<a href='directive/raw'>元指令</a>（以符号“@”作为前缀，如“@raw”），<a href='directive/controller'>控制指令</a>（以符号“$”作为前缀，如“$value”），<a href='directive/lifeCycle'>生命周期指令</a>（以符号“+”作为前缀，如“+loading”），以及<a href='directive/eventHandler'>事件指令</a>（以符号“+”作为前缀，如“+click”）。请注意，生命周期指令可以视为一种特殊的系统事件指令。</span>"
-    }, {
-        "question": "指令的触发条件",
-        "answer": "<span>元指令由框架在解析html模板时调用；控制指令在元素的生命周期内随着表达式所依赖数据的变化可能多次触发调用；事件指令由用户操作或者系统事件触发调用；生命周期指令由框架在元素的创建和销毁时调用。</span>"
-    }, {
-        "question": "指令表达式的结构",
-        "answer": "<span>任何合法的单一javaScript语句都可以作为指令表达式的内容（不要在语句前添加return，可以采用逗号分割），语句的执行结果将作为指令表达式的返回值。在实际开发中，对于复杂的业务代码，更合适的方法是将逻辑封装在<a href='module/script'>script</a>模块导出的函数当中，而仅仅将指令表达式作为这些函数调用的入口。</span>"
-    }, {
         "question": "指令表达式的调用参数",
         "answer": "<span>指令表达式的调用参数由框架提供，包括作用域对象“<a href='directive/scope'>$scope</a>”，模块对象“<a href='directive/module'>$module</a>”，节点对象“<a href='directive/node'>$node</a>”，以及事件对象“<a href='directive/event'>$event</a>”（$event参数仅在事件指令表达式中提供）。各参数的结构和使用方法详见对应章节中的描述。</span>"
     }],

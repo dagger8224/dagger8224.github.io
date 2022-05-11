@@ -2,7 +2,59 @@
   <h2>${ $['directive.introduction'] }</h2>
   <div class="content">
     <h3 class="question">什么是指令</h3>
-    <div class="answer">你可以把指令理解为一个回调函数，由框架在满足条件时触发调用。在dagger.js中，指令是用户代码执行的唯一入口。</div>
+    <div class="answer">形式上，指令是具有特定结构的元素<a target="_blank" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Attributes">属性</a>。在运行时，指令将转化为一个回调函数，由框架在满足条件时触发调用。实际上，在dagger.js中，指令是用户代码执行的唯一入口。</div>
+    <h3 class="question">指令的结构</h3>
+    <div class="answer">一个典型的指令由“ 前缀 + 名称 + <a href="directive/decorator">修饰符</a>（可选）+ 表达式 ” 四部分组成，下面的div上定义了一个<a href="directive/controller">控制指令</a>：<div class="code">&lt;div $value#number#input="expression"&gt;&lt;/div&gt;</div>上面的指令定义中，“$”是指令前缀，“value”是指令名称，“number”和“input”是指令修饰符，“expression”是指令表达式。</div>
+    <h3 class="question">指令表达式的结构</h3>
+    <div class="answer">任何合法的单javaScript语句都可以作为指令表达式的内容（注意不要在语句前添加return，可以采用逗号分割），语句的执行结果将作为指令表达式的返回值。在实际开发中，对于复杂的业务代码，更合适的方法是将逻辑封装在<a href="module/script">script</a>模块导出的函数当中，仅仅将指令表达式作为这些函数的调用入口。</div>
+    <h3 class="question">指令的类别</h3>
+    <div class="answer">下面的表格中列举了dagger.js中四种不同种类的指令在定义和使用方式上的差别，方便读者进行直观的比较。每种指令类型的详细内容将在后续章节中进行介绍。</div>
+    <table>
+      <thead>
+        <tr>
+          <th>类别</th>
+          <th>前缀</th>
+          <th>修饰符</th>
+          <th>触发条件</th>
+          <th>触发次数</th>
+          <th>举例</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><a href="directive/lifeCycle">生命周期指令</a></td>
+          <td>+</td>
+          <td>❌</td>
+          <td>元素创建或销毁</td>
+          <td>一次</td>
+          <td class="directive"><a href="directive/loading">+loading</a></td>
+        </tr>
+        <tr>
+          <td><a href="directive/controller">控制指令</a></td>
+          <td>$</td>
+          <td>✔️</td>
+          <td>依赖数据发生变化</td>
+          <td>多次</td>
+          <td class="directive"><a href="directive/each">$each</a></td>
+        </tr>
+        <tr>
+          <td><a href="directive/eventHandler">事件指令</a></td>
+          <td>+</td>
+          <td>✔️</td>
+          <td>用户操作或系统事件</td>
+          <td>多次</td>
+          <td class="directive"><span>+click</span></td>
+        </tr>
+        <tr>
+          <td><a href="directive/meta">元指令</a></td>
+          <td>@</td>
+          <td>❌</td>
+          <td>框架对页面元素解析</td>
+          <td>一次</td>
+          <td class="directive"><a href="directive/raw">@raw</a></td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </template>
 <template $exist="language == 'en-us'">
