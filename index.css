@@ -180,9 +180,12 @@ table, th, td {
     padding: 5px;
 }
 th, td {
-    min-width: 120px;
+    min-width: 100px;
     padding: 5px 10px;
     text-align: center;
+}
+td.trigger {
+    min-width: 120px;
 }
 iframe {
     width: 100%;
