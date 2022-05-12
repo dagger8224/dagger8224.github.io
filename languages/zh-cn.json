@@ -13,6 +13,9 @@
     "string": "字符串",
     "directive": "指令",
     "directive.introduction": "指令/介绍",
+    "directive.lifeCycle": "指令/生命周期",
+    "directive.scope": "指令/作用域",
+    "directive.loading": "指令/+loading",
     "lifeCycle": "生命周期指令",
     "eventHandler": "事件处理",
     "index": "目录",
@@ -26,6 +29,7 @@
     "style": "样式",
     "namespace": "名空间",
     "template": "模板",
+    "scope": "作用域",
     "router": "路由",
     "structure": "结构",
     "miscellaneous": "杂项",
@@ -51,22 +55,6 @@
     }, {
         "question": "可应用@raw指令的元素",
         "answer": "<span>任何DOM元素都可以使用@raw指令。</span>"
-    }],
-    "directive.lifeCycle": "指令/生命周期",
-    "directive.lifeCycle.sections": [{
-        "question": "创建元素时生命周期指令的执行顺序",
-        "answer": "<span>父级+loading -> 子级+loading -> 子级+loaded -> 父级+loaded</span>"
-    }, {
-        "question": "销毁元素时生命周期指令的执行顺序",
-        "answer": "<span>（全局+sentry判定） -> 父级+unloading -> 子级+unloading -> 子级+unloaded -> 父级+unloaded</span>"
-    }],
-    "directive.loading": "指令/+loading",
-    "directive.loading.sections": [{
-        "question": "+loading指令的作用",
-        "answer": "<span>+loading指令在关联元素创建完成之前由框架触发调用，主要用于在当前上下文创建一个新的变量作用域。</span>"
-    }, {
-        "question": "+loading指令表达式的返回值",
-        "answer": "<span>如果指令表达式的返回值是一个平凡对象（不包括数组等广义对象），则在指令表达式执行结束后将根据返回值的字段内容在当前上下文创建一个新的运行时作用域，该作用域定义的变量可以在当前元素的其余指令（除<a href='directive/each'>$each</a>和<a href='directive/exist'>$exist</a>指令外）和子元素的所有指令中访问。内部层级创建的作用域变量会覆盖同名的外部作用域变量。</span>"
     }],
     "directive.loaded": "指令/+loaded",
     "directive.loaded.sections": [{

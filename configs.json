@@ -86,17 +86,28 @@
                         "title": "directive.lifeCycle",
                         "template": "directive_life-Cycle",
                         "previousLink": "directive/introduction",
-                        "nextLink": "directive/loading"
+                        "nextLink": "directive/scope"
                     },
                     "modules": {
                         "directive_lifeCycle": "./directive/lifeCycle.html"
+                    }
+                }, {
+                    "path": "scope",
+                    "constants": {
+                        "title": "directive.scope",
+                        "template": "directive_scope",
+                        "previousLink": "directive/lifeCycle",
+                        "nextLink": "directive/loading"
+                    },
+                    "modules": {
+                        "directive_scope": "./directive/scope.html"
                     }
                 }, {
                     "path": "loading",
                     "constants": {
                         "title": "directive.loading",
                         "template": "directive_loading",
-                        "previousLink": "directive/lifeCycle",
+                        "previousLink": "directive/scope",
                         "nextLink": "directive/loaded"
                     },
                     "modules": {

@@ -1,0 +1,34 @@
+<template $exist="language == 'zh-cn'">
+    <h2>${ $['directive.scope'] }</h2>
+    <div class="content">
+      <h3 class="question">什么是作用域</h3>
+      <div class="answer">在dagger.js中，作用域特指指令表达式中变量“$scope”所指向的对象。</div>
+      <h3 class="question">默认作用域</h3>
+      <div class="answer">默认作用域是由框架所创建和维护的顶层作用域对象。默认作用域对象中只包括<a href="router/introduction">路由对象$router</a>和<a href="miscellaneous/introduction">验证器$validator</a>。如果用户从未创建过作用域，那么指令中的“$scope”将指向默认作用域。</div>
+      <h3 class="question">如何创建作用域</h3>
+      <div class="answer">作用域对象可以由特定指令（<a href="directive/loading">+loading</a>和<a href="directive/each">$each</a>）创建，由用户代码创建出的作用域称为自定义作用域。指令表达式中的“$scope”永远指向其最近层级创建出的作用域对象。</div>
+      <h3 class="question">如何销毁作用域</h3>
+      <div class="answer">自定义作用域对象在其创建者的宿主元素被销毁时自动销毁。默认作用域在页面的生存期内永远不会被销毁。</div>
+      <h3 class="question">作用域的工作方式</h3>
+      <div class="answer">作用域的工作方式与<a target="_blank" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS">层叠样式表</a>非常接近。新创建的作用域对象继承自其创建前“$scope”所指向的旧作用域对象，这意味着你可以通过当前的“$scope”对象访问到定义在旧作用域上的字段值（除非它们被新作用域上的同名字段所覆盖）。</div>
+      <h3 class="question">作用域的匿名访问</h3>
+      <div class="answer">在实际开发过程中，通常可以使用匿名方式来访问作用域下的字段以使代码更加精简。例如，在指令表达式中你可以使用“fieldName”来代替“$scope.fieldName”，两种访问方式的效果是一样的。</div>
+      <h3 class="question">作用域的演示实例</h3>
+      <div class="answer">现在让我们通过下面的示例来体验下作用域的用法。</div>
+      <iframe height="300" style="width: 100%;" scrolling="no" title="[dagger-demo] $scope (the default rootScope)" src="https://codepen.io/dagger8224/embed/xxYZaPg?default-tab=html%2Cresult&editable=true&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+        See the Pen <a href="https://codepen.io/dagger8224/pen/xxYZaPg">
+        [dagger-demo] $scope (the default rootScope)</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
+        on <a href="https://codepen.io">CodePen</a>.
+      </iframe>
+    </div>
+  </template>
+  <template $exist="language == 'en-us'">
+    <h2>${ $['directive.scope'] }</h2>
+    <div class="content">
+      <template $each="$['directive.loading.sections']">
+        <h3 class="question">${ item.question }</h3>
+        <div class="answer" $html="item.answer"></div>
+      </template>
+    </div>
+  </template>
+  

@@ -1,38 +1,16 @@
-<!DOCTYPE html>
-<html>
-  <script type="dagger/configs">
-    {
-      "template": {
-          "uri": "#template",
-          "style": "style"
-      },
-      "style": "#style",
-      "demo": {
-        "uri": "./loading_demo.html",
-        "type": "string"
-      }
-    }
-  </script>
-  <template id="template">
-    <h2>${ $['directive.loading'] }</h2>
-    <div class="content">
-      <template $each="$['directive.loading.sections']">
-        <h3 class="question">${ item.question }</h3>
-        <div class="answer" $html="item.answer"></div>
-      </template>
-    </div>
-  </template>
-  <style id="style" type="dagger/style">
-    h3::before {
-        content: "😕";
-        margin-right: 10px;
-    }
-    .answer::before {
-        content: "😄";
-        margin-right: 10px;
-    }
-    span.format {
-        font-style: italic;
-    }
-  </style>
-</html>
+<template $exist="language == 'zh-cn'">
+  <h2>${ $['directive.loading'] }</h2>
+  <div class="content">
+    <h3 class="question">+loading指令的作用</h3>
+    <div class="answer">当“+loading”指令表达式的执行结果是一个<a target="_blank" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object">平凡对象</a>时，这个对象将在当前上下文创建一个新的作用域。该作用域对象可以在宿主元素上定义的的其余指令（除去<a href="directive/each">$each</a>和<a href="directive/exist">$exist</a>指令之外）和宿主元素子元素的所有指令中通过变量“$scope”进行访问。</div>
+  </div>
+</template>
+<template $exist="language == 'en-us'">
+  <h2>${ $['directive.loading'] }</h2>
+  <div class="content">
+    <template $each="$['directive.loading.sections']">
+      <h3 class="question">${ item.question }</h3>
+      <div class="answer" $html="item.answer"></div>
+    </template>
+  </div>
+</template>

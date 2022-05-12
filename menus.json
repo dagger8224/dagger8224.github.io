@@ -19,6 +19,9 @@
         "text": "lifeCycle",
         "href": "directive/lifeCycle"
     }, {
+        "text": "scope",
+        "href": "directive/scope"
+    }, {
         "text": "+loading",
         "href": "directive/loading"
     }, {
