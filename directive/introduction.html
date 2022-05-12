@@ -2,7 +2,7 @@
   <h2>${ $['directive.introduction'] }</h2>
   <div class="content">
     <h3 class="question">什么是指令</h3>
-    <div class="answer">形式上，指令是具有特定结构的元素<a target="_blank" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Attributes">属性</a>。在运行时，指令将转化为一个回调函数，由框架在满足条件时触发调用。实际上，在dagger.js中，指令是用户代码执行的唯一入口。</div>
+    <div class="answer">形式上，指令是具有特定结构的元素<a target="_blank" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Attributes">属性</a>。在运行时当中，指令将转化为一个回调函数，由框架在满足条件时触发调用。值得强调的是，在dagger.js中，指令是用户代码执行的唯一入口。</div>
     <h3 class="question">指令的结构</h3>
     <div class="answer">一个典型的指令由“ 前缀 + 名称 + <a href="directive/decorator">修饰符</a>（可选）+ 表达式 ” 四部分组成，下面的div上定义了一个<a href="directive/controller">控制指令</a>：<div class="code">&lt;div $value#number#input="expression"&gt;&lt;/div&gt;</div>上面的指令定义中，“$”是指令前缀，“value”是指令名称，“number”和“input”是指令修饰符，“expression”是指令表达式。</div>
     <h3 class="question">指令表达式的结构</h3>

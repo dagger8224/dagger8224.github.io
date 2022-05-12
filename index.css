@@ -174,8 +174,11 @@ h3::before {
 table {
     margin: 20px 0;
     max-width: 100%;
+    border: 2px solid #999999;
+    border-collapse: separate;
+    border-spacing: 0;
 }
-table, th, td {
+th, td {
     border: 1px solid #aaaaaa;
     padding: 5px;
 }
