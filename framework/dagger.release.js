@@ -1,6 +1,6 @@
 /* ************************************************************************
  *  <copyright file="dagger.release.js" company="DAGGER TEAM">
- *  Copyright (c) 2016, 2021 All Right Reserved
+ *  Copyright (c) 2016, 2022 All Right Reserved
  *
  *  THIS CODE AND INFORMATION ARE PROVIDED "AS IS" WITHOUT WARRANTY OF ANY
  *  KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE
@@ -644,13 +644,9 @@ export default ((context = Symbol('context'), currentController = null, daggerOp
             (Object.is(constructor, Object) || (!constructor && Object.is(typeof scope, 'object'))) && this.resolveScope(scope, false, root);
         }
         const { html, virtual } = this.profile;
-        if (html) {
-            this.node = html;
-        } else {
-            virtual || this.resolveNode();
-            this.resolveChildren();
-        }
+        html ? (this.node = html) : (virtual || this.resolveNode());
         this.loaded();
+        html || this.resolveChildren();
     }
     loading () {
         this.state = 'loading';
@@ -1159,7 +1155,12 @@ export default ((context = Symbol('context'), currentController = null, daggerOp
     forEach(['concat', 'copyWithin', 'fill', 'find', 'findIndex', 'lastIndexOf', 'pop', 'push', 'reverse', 'shift', 'unshift', 'slice', 'sort', 'splice', 'includes', 'indexOf', 'join', 'keys', 'entries', 'values', 'forEach', 'filter', 'flat', 'flatMap', 'map', 'every', 'some', 'reduce', 'reduceRight', 'toLocaleString', 'toString', 'at'], key => (Array.prototype[key] = processorWrapper(Array.prototype[key])));
     const runtime = (configs = { base: document.baseURI, content: {} }) => { // TODO: base
         const content = configs.content;
-        content.routing ? Object.assign(daggerOptions.routing, content.routing) : (daggerOptions.routing.scenarios = { modules: content });
+        if (content.routing) {
+            content.routing = Object.assign(daggerOptions.routing, content.routing);
+            Object.assign(daggerOptions, content);
+        } else {
+            daggerOptions.routing.scenarios = { modules: content };
+        }
         routerOptions = daggerOptions.routing;
         const { overrideRelativeLinks, scenarios } = routerOptions, rootModules = emptier();
         overrideRelativeLinks && document.body.addEventListener('click', relativeLinkResolver, true);

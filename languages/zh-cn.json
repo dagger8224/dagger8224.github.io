@@ -54,20 +54,11 @@
     }],
     "directive.lifeCycle": "指令/生命周期",
     "directive.lifeCycle.sections": [{
-        "question": "什么是生命周期指令",
-        "answer": "<span>生命周期指令是一组在关联元素的创建、销毁或者连接状态发生变化时触发的指令。</span>"
-    }, {
-        "question": "生命周期指令列表",
-        "answer": "<span><a href='directive/loading'>+loading</a><a href='directive/loaded'>+loaded</a><a href='directive/unloading'>+unloading</a><a href='directive/unloaded'>+unloaded</a><a href='directive/sentry'>+sentry</a></span>"
-    }, {
         "question": "创建元素时生命周期指令的执行顺序",
         "answer": "<span>父级+loading -> 子级+loading -> 子级+loaded -> 父级+loaded</span>"
     }, {
         "question": "销毁元素时生命周期指令的执行顺序",
         "answer": "<span>（全局+sentry判定） -> 父级+unloading -> 子级+unloading -> 子级+unloaded -> 父级+unloaded</span>"
-    }, {
-        "question": "可应用生命周期指令的元素",
-        "answer": "<span>任何DOM元素都可以使用生命周期指令。</span>"
     }],
     "directive.loading": "指令/+loading",
     "directive.loading.sections": [{

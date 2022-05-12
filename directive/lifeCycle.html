@@ -1,41 +1,30 @@
-<!DOCTYPE html>
-<html>
-  <script type="dagger/configs">
-    {
-      "template": {
-          "uri": "#template",
-          "style": "style"
-      },
-      "style": "#style",
-      "demo": {
-          "uri": "./lifeCycle_demo.html",
-          "type": "string"
-      }
-    }
-  </script>
-  <template id="template">
-    <h2>${ $['directive.lifeCycle'] }</h2>
-    <div class="content">
-      <template $each="$['directive.lifeCycle.sections']">
-        <h3 class="question">${ item.question }</h3>
-        <div class="answer" $html="item.answer"></div>
-      </template>
-    </div>
-  </template>
-  <style id="style" type="dagger/style">
-    h3::before {
-        content: "😕";
-        margin-right: 10px;
-    }
-    .answer::before {
-        content: "😄";
-        margin-right: 10px;
-    }
-    span.format {
-        font-style: italic;
-    }
-    span a {
-        margin-right: 20px;
-    }
-  </style>
-</html>
+<template $exist="language == 'zh-cn'">
+  <h2>${ $['directive.lifeCycle'] }</h2>
+  <div class="content">
+    <h3 class="question">什么是生命周期指令</h3>
+    <div class="answer">生命周期指令是在宿主元素创建或销毁阶段触发执行的一组指令的统称。</div>
+    <h3 class="question">生命周期指令列表</h3>
+    <div class="answer"><a class="margin" href="directive/loading">+loading</a><a class="margin" href="directive/loaded">+loaded</a><a class="margin" href="directive/unloading">+unloading</a><a class="margin" href="directive/unloaded">+unloaded</a><a class="margin" href="directive/sentry">+sentry</a></div>
+    <h3 class="question">哪些元素可以定义生命周期指令</h3>
+    <div class="answer">任何DOM元素都可以作为生命周期指令的宿主元素。</div>
+    <h3 class="question">生命周期指令的执行顺序</h3>
+    <div class="answer"><div>在创建阶段，宿主元素上定义的“+loading”指令将首先执行，“+loaded”指令将在“+loading”指令执行完成且宿主元素挂载到DOM树上之后执行。请注意，如果“+loading”指令的返回值是一个<a target="_blank" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>，那么“+loading”指令执行完成是指此Promise处于已兑现（fulfilled）状态之后。</div><div>在销毁阶段，宿主元素上定义的“+unloading”指令将首先执行，“+unloaded”指令将在“+unloading”指令执行完成且宿主元素从DOM树上移除之后执行。“+unloading”和“+unloaded”指令都是作为同步函数执行的。</div><div>对于具有包含关系的两个元素，在创建阶段，父级元素的“+loading”和“+loaded”指令执行完成后子级的“+loading”指令才会触发执行。销毁阶段，父级元素的“+unloading”指令执行完成后再依次执行子级元素的“+unloading”和“+unloaded”指令，最后执行父级元素的“+unloaded”指令。</div><div>“+sentry”指令在页面<a href="router/introduction">路由</a>即将发生切换时触发。</div></div>
+    <h3 class="question">生命周期指令示例</h3>
+    <div class="answer">下面我们来看一个演示生命周期指令执行顺序的例子，目前只要理解各个生命周期方法的调用顺序就好，每个指令的具体功能和用法将在后面的章节中讲解。</div>
+    <iframe height="300" style="width: 100%;" scrolling="no" title="Untitled" src="https://codepen.io/dagger8224/embed/YzeGqbJ?default-tab=html%2Cresult&editable=true&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+      See the Pen <a href="https://codepen.io/dagger8224/pen/YzeGqbJ">
+      Untitled</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
+      on <a href="https://codepen.io">CodePen</a>.
+    </iframe>
+  </div>
+</template>
+<template $exist="language == 'en-us'">
+  <h2>${ $['directive.lifeCycle'] }</h2>
+  <div class="content">
+    <template $each="$['directive.lifeCycle.sections']">
+      <h3 class="question">${ item.question }</h3>
+      <div class="answer" $html="item.answer"></div>
+    </template>
+  </div>
+</template>
+</template>
