@@ -6,17 +6,15 @@
     <h3 class="question">宿主元素与平凡元素</h3>
     <div class="answer">定义了指令的DOM元素称为该条指令的宿主元素。在一个元素上可以定义任意条指令，没有定义任何指令的元素称为平凡元素。</div>
     <h3 class="question">指令的结构</h3>
-    <div class="answer">一个典型的指令由“ 前缀 + 名称 + <a href="directive/decorator">修饰符</a>（可选）+ 表达式 ” 四部分组成，下面的input元素上定义了一个<a href="directive/controller">控制指令</a>：<div class="code">&lt;input $value#number="expression"&gt;</div>在这条指令定义中，“$”是指令前缀，“value”是指令名称，“number”是指令修饰符，“expression”是指令表达式。input元素是该指令的宿主元素。</div>
-    <h3 class="question">指令表达式</h3>
-    <div class="answer">指令等号右侧引号中的内容称为指令表达式。任何合法的单javaScript语句都可以作为指令表达式的内容（注意不要在语句前添加return，可以采用逗号分割），语句的执行结果将作为指令表达式的返回值。在实际开发中，对于复杂的业务代码，更合适的方法是将逻辑封装在<a href="module/script">script模块</a>导出的函数当中，仅仅将指令表达式作为这些函数的调用入口。为了方便表述，后文中在不会导致歧义的情况下会以指令来代称指令表达式。例如：指令的执行结果实际上指的是指令表达式的执行结果。</div>
+    <div class="answer">一个典型的指令由“ 前缀 + 名称 + <a href="directive/decorator">修饰符</a>（可选）+ 表达式 ” 四部分组成，下面的input元素上定义了一个<a href="directive/controller">控制指令</a>：<div class="code">&lt;input $value#number="expression"&gt;</div>在这条指令定义中，input元素是指令的宿主元素，“$”是指令前缀，“value”是指令名称，“number”是指令修饰符，“expression”是指令表达式。</div>
     <h3 class="question">指令的类型</h3>
-    <div class="answer">dagger.js定义了四种不同类型的指令。下面表格中列举了这些指令的差异部分，方便读者进行直观的比较。每种指令的具体定义和使用方法将在后续章节中进行讲解。</div>
+    <div class="answer">dagger.js定义了四种不同类型的指令。下面表格中列举了这些指令的差异部分，方便读者进行直观的比较：</div>
     <table>
       <thead>
         <tr>
-          <th>类别</th>
+          <th>类型</th>
           <th>前缀</th>
-          <th>修饰符</th>
+          <th>支持修饰符</th>
           <th>触发条件</th>
           <th>触发次数</th>
           <th>举例</th>
@@ -57,6 +55,8 @@
         </tr>
       </tbody>
     </table>
+    <h3 class="question">指令表达式</h3>
+    <div class="answer">指令等号右侧引号中的内容称为指令表达式。任何合法的单javaScript语句都可以作为指令表达式的内容（注意不要在语句前添加return，可以采用逗号分割）。框架会对指令表达式的执行结果进行后续处理以触发页面更新或执行其他指令。每种指令的具体定义和使用方法将在后续章节中进行讲解。</div>
   </div>
 </template>
 <template $exist="language == 'en-us'">

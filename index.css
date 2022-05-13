@@ -149,8 +149,11 @@ h3::before {
     position: relative;
     padding-left: 35px;
 }
+.answer div {
+    margin-top: 10px;
+}
 .answer .margin {
-    margin: 0 10px;
+    margin-left: 10px;
 }
 .answer::before {
     position: absolute;
