@@ -3,10 +3,10 @@
     <div class="content">
       <h3 class="question">什么是作用域</h3>
       <div class="answer">在dagger.js中，作用域特指指令表达式中变量“$scope”所指向的对象。</div>
-      <h3 class="question">自定义作用域</h3>
-      <div class="answer">作用域对象可以由特定指令（<a href="directive/loading">+loading</a>和<a href="directive/each">$each</a>）创建，由指令创建的作用域称为自定义作用域，创建了自定义作用域的指令称为该作用域的源指令。指令表达式中的“$scope”指向其最近层级元素上的源指令创建出的作用域对象（如果有）。</div>
       <h3 class="question">默认作用域</h3>
-      <div class="answer">默认作用域是由框架所创建和维护的顶层作用域对象。默认作用域对象中只包括<a href="router/introduction">路由对象$router</a>和<a href="miscellaneous/introduction">验证器$validator</a>。如果在某条指令的宿主元素或其上层元素的指令中从未创建过自定义作用域，那么指令中的“$scope”将指向默认作用域。</div>
+      <div class="answer">默认作用域是由框架所创建和维护的顶层作用域对象。默认作用域对象中只包括<a href="router/introduction">路由对象$router</a>和<a href="miscellaneous/introduction">验证器函数$validator</a>。如果在某条指令的宿主元素及其上层元素的指令中从未创建过作用域，那么指令中的“$scope”将指向默认作用域。</div>
+      <h3 class="question">自定义作用域</h3>
+      <div class="answer">作用域对象可以由特定指令（<a href="directive/loading">+loading</a>和<a href="directive/each">$each</a>）创建，由指令创建的作用域称为自定义作用域，创建了自定义作用域的指令称为该作用域的源指令。指令表达式中的“$scope”指向其最近层级元素上的源指令创建出的作用域对象。</div>
       <h3 class="question">如何销毁作用域</h3>
       <div class="answer">自定义作用域对象在其源指令的宿主元素被销毁时自动销毁。默认作用域在页面的生存期内永远不会被销毁。</div>
       <h3 class="question">作用域的工作方式</h3>
