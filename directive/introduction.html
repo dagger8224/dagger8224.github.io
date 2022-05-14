@@ -57,6 +57,8 @@
     </table>
     <h3 class="question">指令表达式</h3>
     <div class="answer">指令等号右侧引号中的内容称为指令表达式。任何合法的单javaScript语句都可以作为指令表达式的内容（注意不要在语句前添加return，可以采用逗号分割）。框架会对指令表达式的执行结果进行后续处理以触发页面更新或执行其他指令。每种指令的具体定义和使用方法将在后续章节中进行讲解。</div>
+    <h3 class="question">指令表达式中的回调参数</h3>
+    <div class="answer">指令表达式中可以使用<a href="directive/scope">作用域</a>变量“$scope”，指向指令宿主元素的变量“$node”，指向当前<a href="module/introduction">模块</a>的变量“$module”。<a href="directive/eventHandler">事件处理指令</a>中还可以使用指向当前事件对象的变量“$event”。这些变量的具体定义将在相关章节中进行讲解。</div>
   </div>
 </template>
 <template $exist="language == 'en-us'">

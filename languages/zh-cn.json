@@ -57,37 +57,9 @@
         "answer": "<span>任何DOM元素都可以使用@raw指令。</span>"
     }],
     "directive.loaded": "指令/+loaded",
-    "directive.loaded.sections": [{
-        "question": "+loaded指令的作用",
-        "answer": "<span>+loaded指令在关联元素创建完成之后（如果关联元素是&lt;html&gt;标签，则在每次路由跳转完成之后）由框架触发调用，用于对关联元素或者作用域变量进行初始化操作。+loaded指令表达式中可以使用指向关联元素的上下文参数$node（参数名称可以在<a href='directive/decorator'>指令修饰符</a>中定制修改）。</span>"
-    }, {
-        "question": "+loaded指令表达式的返回值",
-        "answer": "<span>+loaded指令的返回值无意义。</span>"
-    }],
     "directive.unloading": "指令/+unloading",
-    "directive.unloading.sections": [{
-        "question": "+unloading指令的作用",
-        "answer": "<span>+unloading指令在关联元素移除之前（如果关联元素是&lt;html&gt;标签，则在每次路由跳转完成之前）由框架触发调用，用于对关联元素或者作用域变量进行清理操作。+unloading指令表达式中可以使用指向关联元素的上下文参数$node（参数名称可以在<a href='directive/decorator'>指令修饰符</a>中定制修改）。</span>"
-    }, {
-        "question": "+unloading指令表达式的返回值",
-        "answer": "<span>+unloading指令的返回值无意义。</span>"
-    }],
     "directive.unloaded": "指令/+unloaded",
-    "directive.unloaded.sections": [{
-        "question": "+unloaded指令的作用",
-        "answer": "<span>+unloaded指令在关联元素移除之后（如果关联元素是&lt;html&gt;标签，则在每次路由跳转完成之前）由框架触发调用，用于对关联元素或者作用域变量进行清理操作。+unloaded指令表达式中可以使用指向已移除的关联元素的上下文参数$node（参数名称可以在<a href='directive/decorator'>指令修饰符</a>中定制修改）。</span>"
-    }, {
-        "question": "+unloaded指令表达式的返回值",
-        "answer": "<span>+unloaded指令的返回值无意义。</span>"
-    }],
     "directive.sentry": "指令/+sentry",
-    "directive.sentry.sections": [{
-        "question": "+sentry指令的作用",
-        "answer": "<span>每个+sentry指令会注册为一个全局的回调方法，当页面试图进行路由跳转时会触发回调方法执行，根据表达式的执行结果判断是否继续进行路由跳转。+sentry指令表达式中可以使用指向目标<a href='router/introduction'>路由</a>对象的上下文参数$nextRouter（参数名称可以在<a href='directive/decorator'>指令修饰符</a>中定制修改）。</span>"
-    }, {
-        "question": "+sentry指令表达式的返回值",
-        "answer": "<span>当任意一个+sentry表达式的返回值为true或等效值时，路由跳转过程将终止。</span>"
-    }],
     "directive.controller": "指令/控制指令",
     "directive.controller.sections": [{
         "question": "什么是控制指令",

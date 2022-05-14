@@ -791,7 +791,7 @@ export default ((context = Symbol('context'), currentController = null, daggerOp
             this.removeChildren(isRoot);
             this.scope = this.sliceScope || (this.parent || htmlNodeContext).scope;
             const unloaded = (this.directives || {}).unloaded;
-            unloaded && unloaded.processor(this.module, this.scope, this.parentNode);
+            unloaded && unloaded.processor(this.module, this.scope, null);
             this.state = 'unloaded';
         }
     }
