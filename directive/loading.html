@@ -2,7 +2,16 @@
   <h2>${ $['directive.loading'] }</h2>
   <div class="content">
     <h3 class="question">+loading指令的作用</h3>
-    <div class="answer">当“+loading”指令表达式的执行结果是一个<a target="_blank" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object">平凡对象</a>时，这个对象将在当前上下文创建一个新的作用域。该作用域对象可以在宿主元素上定义的的其余指令（除去<a href="directive/each">$each</a>和<a href="directive/exist">$exist</a>指令之外）和宿主元素子元素的所有指令中通过变量“$scope”进行访问。</div>
+    <div class="answer">当“+loading”指令表达式的执行结果是一个<a target="_blank" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object">平凡对象</a>时，dagger.js将构造此对象的<a target="_blank" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Proxy">代理对象</a>并将其设置为新的自定义作用域。如果“+loading”指令表达式的执行结果不是平凡对象，则不会创建新的自定义作用域。</div>
+    <h3 class="question">+loading指令中的$scope</h3>
+    <div class="answer">“+loading”指令表达式中所使用的作用域变量“$scope”指向的是旧作用域对象。</div>
+    <h3 class="question">+loading指令示例</h3>
+    <div class="answer">下面我们来看一个+loading指令的演示示例。</div>
+    <iframe height="300" style="width: 100%;" scrolling="no" title="[dagger-demo] +loading" src="https://codepen.io/dagger8224/embed/wvyoepB?default-tab=html%2Cresult&editable=true&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+      See the Pen <a href="https://codepen.io/dagger8224/pen/wvyoepB">
+      [dagger-demo] +loading</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
+      on <a href="https://codepen.io">CodePen</a>.
+    </iframe>
   </div>
 </template>
 <template $exist="language == 'en-us'">
