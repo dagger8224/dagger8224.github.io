@@ -61,25 +61,6 @@
     "directive.unloaded": "指令/+unloaded",
     "directive.sentry": "指令/+sentry",
     "directive.controller": "指令/控制指令",
-    "directive.controller.sections": [{
-        "question": "什么是控制指令",
-        "answer": "<span>控制指令（控制器）是元素属性的扩展，为元素添加了动态响应能力。某些控制指令进一步提供了关联元素和作用域变量之间的双向数据绑定功能。</span>"
-    }, {
-        "question": "控制指令列表",
-        "answer": "<a href='directive/checked'>$checked</a><a href='directive/class'>$class</a><a href='directive/each'>$each</a><a href='directive/exist'>$exist</a><a href='directive/file'>$file</a><a href='directive/focus'>$focus</a><a href='directive/html'>$html</a><a href='directive/selected'>$selected</a><a href='directive/style'>$style</a><a href='directive/text'>$text</a><a href='directive/value'>$value</a><a href='directive/watch'>$watch</a><a href='directive/boolean'>布尔指令</a><a href='directive/general'>一般指令</a>"
-    }, {
-        "question": "双向绑定控制指令列表",
-        "answer": "<a href='directive/checked'>$checked</a><a href='directive/file'>$file</a><a href='directive/selected'>$selected</a><a href='directive/value'>$value</a>"
-    }, {
-        "question": "控制指令表达式的返回值",
-        "answer": "<span>除$watch指令外，控制指令表达式的返回值将对关联元素的属性或行为产生特定的影响。</span>"
-    }, {
-        "question": "控制指令表达式的触发时机",
-        "answer": "<span>除$each和$exist指令外，控制指令表达式将在关联元素的+loading指令之后（如果有），+loaded指令执行之前（如果有）由框架触发。如果指令表达式中依赖变量的值发生变化，则在关联元素的生存期内控制指令可能会多次触发更新。如果一个元素上定义了多个控制指令，其首次触发的先后顺序将与在元素上的声明顺序一致。</span>"
-    }, {
-        "question": "控制指令的适用元素",
-        "answer": "<span>除去文档中特别说明的情况之外，控制指令可应用于除html标签外的所有元素。</span>"
-    }],
     "directive.checked": "指令/$checked",
     "directive.checked.sections": [{
         "question": "$checked指令的作用",
