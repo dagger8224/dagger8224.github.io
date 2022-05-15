@@ -2,11 +2,11 @@
 <div class="content">
   <template $exist="language == 'zh-cn'">
     <h3 class="question">什么是控制指令</h3>
-    <div class="answer">控制指令是当作用域下数据发生变化时由框架触发执行的一组指令的统称。</div>
+    <div class="answer">控制指令是当作用域下数据发生变化时由框架触发执行的一组指令的统称。你可以把控制指令理解为具有动态响应能力的<a target="_blank" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Attributes">元素属性</a>。</div>
     <h3 class="question">控制指令实例列表</h3>
     <div class="answer"><a class="margin" href="directive/checked">$checked</a><a class="margin" href="directive/class">$class</a><a class="margin" href="directive/each">$each</a><a class="margin" href="directive/exist">$exist</a><a class="margin" href="directive/file">$file</a><a class="margin" href="directive/focus">$focus</a><a class="margin" href="directive/html">$html</a><a class="margin" href="directive/result">$result</a><a class="margin" href="directive/selected">$selected</a><a class="margin" href="directive/style">$style</a><a class="margin" href="directive/text">$text</a><a class="margin" href="directive/value">$value</a><a class="margin" href="directive/watch">$watch</a><a class="margin" href="directive/boolean">布尔指令</a><a class="margin" href="directive/general">一般指令</a></div>
     <h3 class="question">控制指令的触发条件</h3>
-    <div class="answer">控制指令将在宿主元素的“+loaded”指令触发之后触发（<a href="directive/each">“$each”</a>和<a href="directive/exist">“$exist”</a>指令除外）.如果指令表达式中所依赖的作用域下的值发生变化，则在关联元素的生存期内控制指令可能会多次触发更新。如果一个元素上定义了多个控制指令，其首次触发的先后顺序将与在元素上的声明顺序一致。</div>
+    <div class="answer">控制指令将在宿主元素的“+loaded”指令触发之后触发（<a href="directive/each">“$each”</a>和<a href="directive/exist">“$exist”</a>指令除外）。如果指令表达式中所依赖的作用域下的值发生变化，则在关联元素的生存期内控制指令可能会多次触发更新。如果一个元素上定义了多个控制指令，其首次触发的先后顺序将与在元素上的声明顺序一致。</div>
     <h3 class="question">控制指令的宿主元素</h3>
     <div class="answer">除去文档中特别说明的情况之外，控制指令可应用于除html标签外的所有元素。</div>
   </template>
