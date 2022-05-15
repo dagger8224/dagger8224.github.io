@@ -1,35 +1,22 @@
-<!DOCTYPE html>
-<html>
-  <script type="dagger/configs">
-    {
-      "template": {
-          "uri": "#template",
-          "style": "style"
-      },
-      "style": "#style",
-      "demo": {
-          "uri": "./checked_demo.html",
-          "type": "string"
-      }
-    }
-  </script>
-  <template id="template">
-    <h2>${ $['directive.checked'] }</h2>
-    <div class="content">
-      <template $each="$['directive.checked.sections']">
-        <h3 class="question">${ item.question }</h3>
-        <div class="answer" $html="item.answer"></div>
-      </template>
-    </div>
+<h2>${ $['directive.checked'] }</h2>
+<div class="content">
+  <template $exist="language == 'zh-cn'">
+    <h3 class="question">$checked指令的作用</h3>
+    <div class="answer">“$checked”指令用于绑定宿主元素的选中状态，适用于类型为单选（radio）和多选（checkbox）的input元素，以及下拉选择框的选项（option）元素。</div>
+    <h3 class="question">$checked指令表达式的返回值</h3>
+    <div class="answer">对于radio和单选下拉框，$checked指令的执行结果是布尔类型的值，对于checkbox和多选下拉框，$checked指令的执行结果是一个内容为布尔类型值的数组。值为true代表元素处于选中状态，值为false代表元素处于取消选中状态。当该指令表达式的内容是合法的左操作数时，用户对宿主元素的操作将导致表达式变量同步变化，实现双向数据绑定。</div>
+    <h3 class="question">$checked指令示例</h3>
+    <div class="answer">下面我们来看$checked指令的演示示例。</div>
+    <iframe height="300" style="width: 100%;" scrolling="no" title="[ dagger-demo] $checked directive for radio" src="https://codepen.io/dagger8224/embed/yLvVmrx?default-tab=html%2Cresult&editable=true&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+      See the Pen <a href="https://codepen.io/dagger8224/pen/yLvVmrx">
+      [ dagger-demo] $checked directive for radio</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
+      on <a href="https://codepen.io">CodePen</a>.
+    </iframe>
   </template>
-  <style id="style" type="dagger/style">
-    h3::before {
-        content: "😕";
-        margin-right: 10px;
-    }
-    .answer::before {
-        content: "😄";
-        margin-right: 10px;
-    }
-  </style>
-</html>
+  <template $exist="language == 'en-us'">
+    <template $each="$['directive.checked.sections']">
+      <h3 class="question">${ item.question }</h3>
+      <div class="answer" $html="item.answer"></div>
+    </template>
+  </template>
+</div>

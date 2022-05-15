@@ -407,7 +407,7 @@ export default ((context = Symbol('context'), currentController = null, daggerOp
             } else {
                 isCheckbox && decorators.indeterminate && (node.indeterminate = data == null);
                 node.indeterminate || (node.checked = data);
-                isCheckbox || (data && (nodes = querySelector(decorators.scope ? querySelector(document, decorators.scope) : parentNode, `input[type="radio"][name="${ node.name }"]`, true)));
+                isCheckbox || (data && (nodes = querySelector(document, `input[type="radio"][name="${ node.name }"]`, true)));
             }
             nodes && promisor.then(() => forEach(nodes, node => node.dispatchEvent(changeEvent)));
         } else {
