@@ -1,35 +1,29 @@
-<!DOCTYPE html>
-<html>
-  <script type="dagger/configs">
-    {
-      "template": {
-          "uri": "#template",
-          "style": "style"
-      },
-      "style": "#style",
-      "demo": {
-          "uri": "./exist_demo.html",
-          "type": "string"
-      }
-    }
-  </script>
-  <template id="template">
-    <h2>${ $['directive.exist'] }</h2>
-    <div class="content">
+<h2>${ $['directive.exist'] }</h2>
+  <div class="content">
+    <template $exist="language == 'zh-cn'">
+      <h3 class="question">$exist指令的作用</h3>
+      <div class="answer">$exist指令用于切换宿主元素及其子级元素的存在状态。</div>
+      <h3 class="question">$exist指令表达式的执行结果</h3>
+      <div class="answer">当指令表达式的执行结果为true或者其他等效值时宿主元素及其子级元素将被创建，否则被销毁。</div>
+      <h3 class="question">$exist指令的触发时机</h3>
+      <div class="answer">
+        <div>与其他的控制指令不同，$exist指令是在宿主元素的创建阶段之前执行的。</div>
+        <div>每当$exist表达式的执行结果状态发生切换时，对应的生命周期方法将会被触发（创建过程“+loading/+loaded”指令执行，销毁过程“+unloading/+unloaded”指令执行）。</div>
+      </div>
+      <h3 class="question">$exist指令的示例</h3>
+      <div class="answer">下面我们来看$exist的例子：
+        <iframe height="300" style="width: 100%;" scrolling="no" title="[dagger-demo] $exist directive" src="https://codepen.io/dagger8224/embed/vYdgdVJ?default-tab=html%2Cresult&editable=true&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+          See the Pen <a href="https://codepen.io/dagger8224/pen/vYdgdVJ">
+          [dagger-demo] $exist directive</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
+          on <a href="https://codepen.io">CodePen</a>.
+        </iframe>
+      </div>
+    </template>
+    <template $exist="language == 'en-us'">
       <template $each="$['directive.exist.sections']">
         <h3 class="question">${ item.question }</h3>
         <div class="answer" $html="item.answer"></div>
       </template>
-    </div>
-  </template>
-  <style id="style" type="dagger/style">
-    h3::before {
-        content: "😕";
-        margin-right: 10px;
-    }
-    .answer::before {
-        content: "😄";
-        margin-right: 10px;
-    }
-  </style>
-</html>
+    </template>
+  </div>
+</template>

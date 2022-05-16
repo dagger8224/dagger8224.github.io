@@ -3,7 +3,7 @@
   <template $exist="language == 'zh-cn'">
     <h3 class="question">$style指令的作用</h3>
     <div class="answer">$style指令用于绑定宿主元素的style属性。</div>
-    <h3 class="question">$style指令表达式的返回值</h3>
+    <h3 class="question">$style指令表达式的执行结果</h3>
     <div class="answer">
       <div>当$style指令表达式的计算结果为字符串时，字符串的内容将被识别为style属性。示例如下：
         <iframe height="300" style="width: 100%;" scrolling="no" title="[dagger-demo] $style directive (return string)" src="https://codepen.io/dagger8224/embed/RwQKoKp?default-tab=html%2Cresult&editable=true&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
@@ -24,7 +24,7 @@
           [dagger-demo] $style directive (return object)</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
           on <a href="https://codepen.io">CodePen</a>.
         </iframe>
-      <div>其余情况下，返回值将转换为字符串处理。</div>
+      <div>其余情况下，执行结果将转换为字符串处理。</div>
     </div>
     <h3 class="question">$style指令与style属性的关系</h3>
     <div class="answer">$style指令表达式的计算结果将与宿主元素的style属性内容融合后作为最终的内联style。</div>

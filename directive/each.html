@@ -3,7 +3,12 @@
     <template $exist="language == 'zh-cn'">
       <h3 class="question">$each指令的作用</h3>
       <div class="answer">$each指令用于循环渲染具有相同视图模板的数组，对象，或者其他<a target="_blank" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Iteration_protocols">可迭代变量</a>。</div>
-      <h3 class="question">$each指令表达式的返回值</h3>
+      <h3 class="question">$each指令的宿主元素</h3>
+      <div class="answer">
+        <div>$each指令是一种特殊的控制指令，它的宿主元素实际上是其定义位置元素的“虚拟父元素”，而其他控制指令的宿主元素是以这个虚拟父元素为模板循环复制出的子元素。</div>
+        <div>由于宿主元素位于更高层级，从时序上来看，$each将先于其定义位置上所有的生命周期方法和其他控制指令执行。</div>
+      </div>
+      <h3 class="question">$each指令表达式的执行结果</h3>
       <div class="answer">
         <div>当$each指令的计算结果是一个可迭代数据结构时，框架会以其宿主元素作为模板循环渲染出多个元素实例，并基于循环体内容为每个元素实例创建一个新的作用域变量。每个作用域变量下定义了如下几个字段：</div>
         <div class="margin">“item”，循环体子项数据内容</div>
