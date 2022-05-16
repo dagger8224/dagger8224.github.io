@@ -131,12 +131,6 @@
     }],
     "directive.style": "指令/$style",
     "directive.style.sections": [{
-        "question": "$style指令的作用",
-        "answer": "<span>$style指令用于绑定宿主元素的style属性。</span>"
-    }, {
-        "question": "$style指令表达式的返回值",
-        "answer": "<span>1. 当$style指令表达式的返回值为字符串时，字符串的内容将被识别为style属性。当返回值为数组时，每一个数组成员将被转换为字符串后拼接为style属性。<br/>2. 当返回值为对象时，将对象内容的键值对拼接为style属性。<br/>3. 其余情况下，返回值将转换为字符串处理。对于嵌套的数组和对象不会进行递归处理。</span>"
-    }, {
         "question": "$style指令与style属性的关系",
         "answer": "<span>$style指令表达式的计算结果将与内置的style属性内容融合后作为最终计算后的style属性内容。</span>"
     }],

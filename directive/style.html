@@ -1,35 +1,37 @@
-<!DOCTYPE html>
-<html>
-  <script type="dagger/configs">
-    {
-      "template": {
-          "uri": "#template",
-          "style": "style"
-      },
-      "style": "#style",
-      "demo": {
-          "uri": "./style_demo.html",
-          "type": "string"
-      }
-    }
-  </script>
-  <template id="template">
-    <h2>${ $['directive.style'] }</h2>
-    <div class="content">
-      <template $each="$['directive.style.sections']">
-        <h3 class="question">${ item.question }</h3>
-        <div class="answer" $html="item.answer"></div>
-      </template>
+<h2>${ $['directive.style'] }</h2>
+<div class="content">
+  <template $exist="language == 'zh-cn'">
+    <h3 class="question">$style指令的作用</h3>
+    <div class="answer">$style指令用于绑定宿主元素的style属性。</div>
+    <h3 class="question">$style指令表达式的返回值</h3>
+    <div class="answer">
+      <div>当$style指令表达式的计算结果为字符串时，字符串的内容将被识别为style属性。示例如下：
+        <iframe height="300" style="width: 100%;" scrolling="no" title="[dagger-demo] $style directive (return string)" src="https://codepen.io/dagger8224/embed/RwQKoKp?default-tab=html%2Cresult&editable=true&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+          See the Pen <a href="https://codepen.io/dagger8224/pen/RwQKoKp">
+          [dagger-demo] $style directive (return string)</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
+          on <a href="https://codepen.io">CodePen</a>.
+        </iframe>
+      </div>
+      <div>当结果为数组时，数组成员将被转换为字符串并拼接后作为宿主元素的style属性。示例如下：</div>
+        <iframe height="300" style="width: 100%;" scrolling="no" title="Untitled" src="https://codepen.io/dagger8224/embed/NWydbwB?default-tab=html%2Cresult&editable=true&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+          See the Pen <a href="https://codepen.io/dagger8224/pen/NWydbwB">
+          Untitled</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
+          on <a href="https://codepen.io">CodePen</a>.
+        </iframe>
+      <div>当结果为对象时，将对象内容的键值对拼接为style属性。示例如下：</div>
+        <iframe height="300" style="width: 100%;" scrolling="no" title="[dagger-demo] $style directive (return object)" src="https://codepen.io/dagger8224/embed/WNMRoMa?default-tab=html%2Cresult&editable=true&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+          See the Pen <a href="https://codepen.io/dagger8224/pen/WNMRoMa">
+          [dagger-demo] $style directive (return object)</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
+          on <a href="https://codepen.io">CodePen</a>.
+        </iframe>
+      <div>其余情况下，返回值将转换为字符串处理。</div>
     </div>
+    <div class="answer"></div>
   </template>
-  <style id="style" type="dagger/style">
-    h3::before {
-        content: "😕";
-        margin-right: 10px;
-    }
-    .answer::before {
-        content: "😄";
-        margin-right: 10px;
-    }
-  </style>
-</html>
+  <template $exist="language == 'en-us'">
+    <template $each="$['directive.style.sections']">
+      <h3 class="question">${ item.question }</h3>
+      <div class="answer" $html="item.answer"></div>
+    </template>
+  </template>
+</div>
