@@ -1,35 +1,24 @@
-<!DOCTYPE html>
-<html>
-  <script type="dagger/configs">
-    {
-      "template": {
-          "uri": "#template",
-          "style": "style"
-      },
-      "style": "#style",
-      "demo": {
-          "uri": "./class_demo.html",
-          "type": "string"
-      }
-    }
-  </script>
-  <template id="template">
-    <h2>${ $['directive.class'] }</h2>
-    <div class="content">
-      <template $each="$['directive.class.sections']">
-        <h3 class="question">${ item.question }</h3>
-        <div class="answer" $html="item.answer"></div>
-      </template>
-    </div>
+<h2>${ $['directive.class'] }</h2>
+<div class="content">
+  <template $exist="language == 'zh-cn'">
+    <h3 class="question">$class指令的作用</h3>
+    <div class="answer">$class指令用于绑定宿主元素的class属性。</div>
+    <h3 class="question">$class指令表达式的返回值</h3>
+    <div class="answer">当$class指令表达式的返回值为字符串时，字符串的内容将被识别为宿主对象的className。当返回值为数组时，每一个数组成员将转换为字符串并拼接后作为宿主对象的className。当返回值为对象时，将所有值为true或者等效值的字段名作为宿主对象的className。其余情况下，返回值将转换为字符串处理。</div>
+    <h3 class="question">$class指令与class属性的关系</h3>
+    <div class="answer">$class指令表达式的计算结果将与内置的class属性内容融合后作为最终计算后的class名。</div>
+    <h3 class="question">$class指令示例</h3>
+    <div class="answer">下面我们来看$class指令的演示示例。</div>
+    <iframe height="300" style="width: 100%;" scrolling="no" title="[dagger-demo] $class directive" src="https://codepen.io/dagger8224/embed/jOZyrLP?default-tab=html%2Cresult&editable=true&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+      See the Pen <a href="https://codepen.io/dagger8224/pen/jOZyrLP">
+      [dagger-demo] $class directive</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
+      on <a href="https://codepen.io">CodePen</a>.
+    </iframe>
   </template>
-  <style id="style" type="dagger/style">
-    h3::before {
-        content: "😕";
-        margin-right: 10px;
-    }
-    .answer::before {
-        content: "😄";
-        margin-right: 10px;
-    }
-  </style>
-</html>
+  <template $exist="language == 'en-us'">
+    <template $each="$['directive.class.sections']">
+      <h3 class="question">${ item.question }</h3>
+      <div class="answer" $html="item.answer"></div>
+    </template>
+  </template>
+</div>

@@ -63,16 +63,6 @@
     "directive.controller": "指令/控制指令",
     "directive.checked": "指令/$checked",
     "directive.class": "指令/$class",
-    "directive.class.sections": [{
-        "question": "$class指令的作用",
-        "answer": "<span>$class指令用于绑定宿主元素的class属性。</span>"
-    }, {
-        "question": "$class指令表达式的返回值",
-        "answer": "<span>当$class指令表达式的返回值为字符串时，字符串的内容将被识别为class名。当返回值为数组时，每一个数组成员将被转换为字符串后作为class名。当返回值为对象时，将所有值为true或者等效值的字段名作为class名。其余情况下，返回值将转换为字符串处理。对于嵌套的数组和对象不会进行递归处理。</span>"
-    }, {
-        "question": "$class指令与class属性的关系",
-        "answer": "<span>$class指令表达式的计算结果将与内置的class属性内容融合后作为最终计算后的class名。</span>"
-    }],
     "directive.each": "指令/$each",
     "directive.each.sections": [{
         "question": "$each指令的作用",
