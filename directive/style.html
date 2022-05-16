@@ -26,7 +26,8 @@
         </iframe>
       <div>其余情况下，返回值将转换为字符串处理。</div>
     </div>
-    <div class="answer"></div>
+    <h3 class="question">$style指令与style属性的关系</h3>
+    <div class="answer">$style指令表达式的计算结果将与宿主元素的style属性内容融合后作为最终的内联style。</div>
   </template>
   <template $exist="language == 'en-us'">
     <template $each="$['directive.style.sections']">

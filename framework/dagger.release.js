@@ -456,17 +456,17 @@ export default ((context = Symbol('context'), currentController = null, daggerOp
         newMatchedArray ? newMatchedArray.push(matchedNodeContext) : originalMapSet.call(newChildrenMap, value, [matchedNodeContext]);
     }, originalMapDelete = Map.prototype.delete) => (data, node, nodeContext, { decorators }) => {
         data = data || {};
-        const dataSet = new Set(Array.isArray(data) ? data.values() : Object.values(data)), resolvedData = Object.entries(data), { children, childrenMap, profile, parentNode } = nodeContext, topologySet = data[meta];
-        topologySet && forEach(resolvedData, ([key, value]) => value && value[meta] && topologySet.forEach(topology => topology.fetch(key, value)));
-        if (!resolvedData.length) { return originalMapClear.call(childrenMap) || nodeContext.removeChildren(true); }
-        childrenMap.forEach((array, value) => dataSet.has(value) || forEach(array, nodeContext => nodeContext.destructor(true)) || originalMapDelete.call(childrenMap, value));
+        const valueSet = new Set(data.values instanceof Function ? data.values() : Object.values(data)), entries = [...(data.entries instanceof Function ? data.entries() : Object.entries(data))], { children, childrenMap, profile, parentNode } = nodeContext, topologySet = data[meta];
+        topologySet && forEach(entries, ([key, value]) => value && value[meta] && topologySet.forEach(topology => topology.fetch(key, value)));
+        if (!entries.length) { return originalMapClear.call(childrenMap) || nodeContext.removeChildren(true); }
+        childrenMap.forEach((array, value) => valueSet.has(value) || forEach(array, nodeContext => nodeContext.destructor(true)) || originalMapDelete.call(childrenMap, value));
         const newChildrenMap = new Map();
         let { item: itemName = 'item', key: keyName = 'key', index: indexName = 'index', plain } = decorators;
         Object.is(itemName, true) && (itemName = 'item');
         Object.is(keyName, true) && (keyName = 'key');
         Object.is(indexName, true) && (indexName = 'index');
-        forEach(resolvedData, ([key, value], index) => sliceResolver(index, key, value, children, childrenMap, newChildrenMap, indexName, keyName, itemName, plain, nodeContext, profile, parentNode));
-        children.length = resolvedData.length;
+        forEach(entries, ([key, value], index) => sliceResolver(index, key, value, children, childrenMap, newChildrenMap, indexName, keyName, itemName, plain, nodeContext, profile, parentNode));
+        children.length = entries.length;
         childrenMap.forEach(array => forEach(array, nodeContext => (nodeContext.parent = null, nodeContext.destructor(true))));
         nodeContext.childrenMap = newChildrenMap;
     })(),

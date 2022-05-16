@@ -1,35 +1,43 @@
-<!DOCTYPE html>
-<html>
-  <script type="dagger/configs">
-    {
-      "template": {
-          "uri": "#template",
-          "style": "style"
-      },
-      "style": "#style",
-      "demo": {
-          "uri": "./each_demo.html",
-          "type": "string"
-      }
-    }
-  </script>
-  <template id="template">
-    <h2>${ $['directive.each'] }</h2>
-    <div class="content">
+<h2>${ $['directive.each'] }</h2>
+  <div class="content">
+    <template $exist="language == 'zh-cn'">
+      <h3 class="question">$each指令的作用</h3>
+      <div class="answer">$each指令用于循环渲染具有相同视图模板的数组，对象，或者其他<a target="_blank" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Iteration_protocols">可迭代变量</a>。</div>
+      <h3 class="question">$each指令表达式的返回值</h3>
+      <div class="answer">
+        <div>当$each指令的计算结果是一个可迭代数据结构时，框架会以其宿主元素作为模板循环渲染出多个元素实例，并基于循环体内容为每个元素实例创建一个新的作用域变量。每个作用域变量下定义了如下几个字段：</div>
+        <div class="margin">“item”，循环体子项数据内容</div>
+        <div class="margin">“index”，整数类型，子项数据在循环体中的索引</div>
+        <div class="margin">“key”，字符串类型，子项数据在父级数据中的字段名</div>
+        <div>下面我们来看一个计算结果为数组的$each指令示例：
+          <iframe height="300" style="width: 100%;" scrolling="no" title="Untitled" src="https://codepen.io/dagger8224/embed/NWydpzg?default-tab=html%2Cresult&editable=true&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+            See the Pen <a href="https://codepen.io/dagger8224/pen/NWydpzg">
+            Untitled</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
+            on <a href="https://codepen.io">CodePen</a>.
+          </iframe>
+        </div>
+      </div>
+      <h3 class="question">$each指令修饰符</h3>
+      <div class="answer">上述字段名可以使用<a href="directive/decorator">指令修饰符</a>进行修改。我们来看下面的例子：
+        <iframe height="300" style="width: 100%;" scrolling="no" title="Untitled" src="https://codepen.io/dagger8224/embed/LYQxyOZ?default-tab=html%2Cresult&editable=true&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+          See the Pen <a href="https://codepen.io/dagger8224/pen/LYQxyOZ">
+          Untitled</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
+          on <a href="https://codepen.io">CodePen</a>.
+        </iframe>
+      </div>
+      <h3 class="question">$each嵌套使用示例</h3>
+      <div class="answer">不同宿主元素上定义的$each指令可以嵌套使用，下面是一个例子：
+        <iframe height="300" style="width: 100%;" scrolling="no" title="Untitled" src="https://codepen.io/dagger8224/embed/ZErLJxo?default-tab=html%2Cresult&editable=true&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+          See the Pen <a href="https://codepen.io/dagger8224/pen/ZErLJxo">
+          Untitled</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
+          on <a href="https://codepen.io">CodePen</a>.
+        </iframe>
+      </div>
+    </template>
+    <template $exist="language == 'en-us'">
       <template $each="$['directive.each.sections']">
         <h3 class="question">${ item.question }</h3>
         <div class="answer" $html="item.answer"></div>
       </template>
-    </div>
   </template>
-  <style id="style" type="dagger/style">
-    h3::before {
-        content: "😕";
-        margin-right: 10px;
-    }
-    .answer::before {
-        content: "😄";
-        margin-right: 10px;
-    }
-  </style>
-</html>
+</div>

@@ -64,16 +64,6 @@
     "directive.checked": "指令/$checked",
     "directive.class": "指令/$class",
     "directive.each": "指令/$each",
-    "directive.each.sections": [{
-        "question": "$each指令的作用",
-        "answer": "<span>$each指令用于循环渲染具有相同视图模板的数组，对象，或者其他可迭代变量。</span>"
-    }, {
-        "question": "$each指令表达式的返回值",
-        "answer": "<span>当$each指令表达式返回一个可迭代数据结构时，框架会以其宿主元素作为模板循环渲染多个元素实例，并基于该数据的子项字段结构为每个元素实例创建一个新的变量作用域，并定义item/index/key三个变量，分别对应于子项数据本身，迭代索引和子项数据在父级数据中的字段名，这些变量名可以使用<a href='directive/decorator'>指令修饰符</a>进行修改。</span>"
-    }, {
-        "question": "$each指令宿主元素上的其他指令",
-        "answer": "<span>$each宿主元素上声明的其他指令在复制出的子级元素实例作用域下各创建一个独立的实例。</span>"
-    }],
     "directive.exist": "指令/$exist",
     "directive.exist.sections": [{
         "question": "$exist指令的作用",
@@ -130,10 +120,6 @@
         "answer": "<span>$selected指令绑定到选中项的值，$checked指令绑定的是宿主元素的选中状态。对选项组同时声明$selected指令混合$checked指令可能导致元素选中状态与绑定数据不一致。</span>"
     }],
     "directive.style": "指令/$style",
-    "directive.style.sections": [{
-        "question": "$style指令与style属性的关系",
-        "answer": "<span>$style指令表达式的计算结果将与内置的style属性内容融合后作为最终计算后的style属性内容。</span>"
-    }],
     "directive.text": "指令/$text",
     "directive.text.sections": [{
         "question": "$text指令的作用",
