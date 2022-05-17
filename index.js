@@ -1,5 +1,5 @@
 export const onLoading = language_packages => {
-    const language = localStorage.getItem('language') || 'en-us';
+    const language = localStorage.getItem('language') || 'zh-cn';
     return {
         language,
         $: language_packages[language],

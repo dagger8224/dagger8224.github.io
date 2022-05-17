@@ -15,7 +15,17 @@
       <h3 class="question">如何销毁作用域</h3>
       <div class="answer">自定义作用域对象在其源指令的宿主元素被销毁时自动销毁。默认作用域在页面的生存期内永远不会被销毁。</div>
       <h3 class="question">作用域的工作方式</h3>
-      <div class="answer">dagger.js作用域的工作方式与原生javaScript<a target="_blank" href="https://developer.mozilla.org/zh-CN/docs/Glossary/Scope">作用域</a>非常接近。某一层级的源指令创建的作用域将在其宿主元素的其它指令（<a href="directive/exist">$exist</a>指令除外，在相关章节中会进行说明）及宿主元素子层级元素上的所有指令上生效。</div>
+      <div class="answer">
+        <div>dagger.js作用域的工作方式与原生javaScript<a target="_blank" href="https://developer.mozilla.org/zh-CN/docs/Glossary/Scope">作用域</a>非常接近。请记住如下两个规则：</div>
+        <div class="margin">某一层级的源指令创建的作用域将在其宿主元素的其它指令（<a href="directive/exist">$exist</a>指令除外，在相关章节中会进行说明）及宿主元素子层级元素上的所有指令上生效。</div>
+        <div class="margin">低层级源指令上创建的作用域对象继承自高层级源指令上创建的作用域。这意味着你可以通过指令中的“$scope”访问旧作用域变量上那些未被覆盖的字段。</div>
+        <div>下面的演示动画直观展示了作用域的作用规则：</div>
+        <iframe height="300" style="width: 100%;" scrolling="no" title="[dagger-demo] animation" src="https://codepen.io/dagger8224/embed/YzeNmRz?default-tab=result&editable=true&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+          See the Pen <a href="https://codepen.io/dagger8224/pen/YzeNmRz">
+          [dagger-demo] animation</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
+          on <a href="https://codepen.io">CodePen</a>.
+        </iframe>
+      </div>
       <h3 class="question">作用域的匿名访问</h3>
       <div class="answer">在实际开发过程中，可以匿名访问作用域下的字段以使代码更加精简。例如，在指令表达式中你可以使用“fieldName”来代替“$scope.fieldName”，两种访问方式的效果是一样的。</div>
       <h3 class="question">作用域的演示实例</h3>
