@@ -45,10 +45,6 @@
     "reset": "重置",
     "view": "查看执行结果：",
     "rootScope": "根作用域",
-    "directive.introduction.sections": [{
-        "question": "指令表达式的调用参数",
-        "answer": "<span>指令表达式的调用参数由框架提供，包括作用域对象“<a href='directive/scope'>$scope</a>”，模块对象“<a href='directive/module'>$module</a>”，节点对象“<a href='directive/node'>$node</a>”，以及事件对象“<a href='directive/event'>$event</a>”（$event参数仅在事件指令表达式中提供）。各参数的结构和使用方法详见对应章节中的描述。</span>"
-    }],
     "directive.raw": "指令/@raw",
     "directive.raw.sections": [{
         "question": "@raw指令的作用效果",
@@ -67,27 +63,7 @@
     "directive.each": "指令/$each",
     "directive.exist": "指令/$exist",
     "directive.file": "指令/$file",
-    "directive.file.sections": [{
-        "question": "$file指令的作用",
-        "answer": "<span>$file指令用于绑定用户选择的本地文件。</span>"
-    }, {
-        "question": "$file指令表达式的执行结果",
-        "answer": "<span>当$file指令表达式的内容是合法的左操作数时，用户使用宿主元素进行文件选择操作之后，表达式变量将指向保存选中文件信息的File（单文件选择器）或者FileList（多文件选择器）。</span>"
-    }, {
-        "question": "$file指令的使用限制",
-        "answer": "<span>$file指令只对类型为file的input元素生效。</span>"
-    }],
     "directive.focus": "指令/$focus",
-    "directive.focus.sections": [{
-        "question": "$focus指令的作用",
-        "answer": "<span>$focus指令用于为宿主元素设置焦点。</span>"
-    }, {
-        "question": "$focus指令表达式的执行结果",
-        "answer": "<span>当指令表达式返回true或者其他等效值时宿主元素将获取焦点。</span>"
-    }, {
-        "question": "$focus指令与autofocus属性的关系",
-        "answer": "<span>当宿主元素上声明$focus指令之后，元素上的autofocus属性声明将失效。</span>"
-    }],
     "directive.html": "指令/$html",
     "directive.html.sections": [{
         "question": "$html指令的作用",

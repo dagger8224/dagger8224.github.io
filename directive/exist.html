@@ -4,10 +4,13 @@
       <h3 class="question">$exist指令的作用</h3>
       <div class="answer">$exist指令用于切换宿主元素及其子级元素的存在状态。</div>
       <h3 class="question">$exist指令表达式的执行结果</h3>
-      <div class="answer">当指令表达式的执行结果为true或者其他等效值时宿主元素及其子级元素将被创建，否则被销毁。</div>
-      <h3 class="question">$exist指令的触发时机</h3>
       <div class="answer">
-        <div>与其他的控制指令不同，$exist指令是在宿主元素的创建阶段之前执行的。</div>
+        <div>当指令表达式的执行结果为true或其他等效值，且宿主元素处于未创建（或销毁）状态时，宿主元素将进入创建过程。</div>
+        <div>当指令表达式的执行结果为false或其他等效值，且宿主元素处于已创建或创建中状态时，宿主元素将被销毁。</div>
+      </div>
+      <h3 class="question">$exist指令的触发顺序</h3>
+      <div class="answer">
+        <div>$exist指令是在宿主元素的创建阶段之前执行的（但是晚于相同宿主元素上定义的“$each”指令执行）。</div>
         <div>每当$exist表达式的执行结果状态发生切换时，对应的生命周期方法将会被触发（创建过程“+loading/+loaded”指令执行，销毁过程“+unloading/+unloaded”指令执行）。</div>
       </div>
       <h3 class="question">$exist指令的示例</h3>

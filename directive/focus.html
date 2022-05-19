@@ -1,35 +1,25 @@
-<!DOCTYPE html>
-<html>
-  <script type="dagger/configs">
-    {
-      "template": {
-          "uri": "#template",
-          "style": "style"
-      },
-      "style": "#style",
-      "demo": {
-          "uri": "./focus_demo.html",
-          "type": "string"
-      }
-    }
-  </script>
-  <template id="template">
-    <h2>${ $['directive.focus'] }</h2>
-    <div class="content">
-      <template $each="$['directive.focus.sections']">
-        <h3 class="question">${ item.question }</h3>
-        <div class="answer" $html="item.answer"></div>
-      </template>
+<h2>${ $['directive.focus'] }</h2>
+<div class="content">
+  <template $exist="language == 'zh-cn'">
+    <h3 class="question">$focus指令的作用</h3>
+    <div class="answer">focus指令用于为宿主元素设置焦点。</div>
+    <h3 class="question">$focus指令表达式的执行结果</h3>
+    <div class="answer">当指令表达式返回true或者其他等效值时宿主元素将获取焦点。</div>
+    <h3 class="question">$focus指令与autofocus属性的关系</h3>
+    <div class="answer">当宿主元素上声明$focus指令之后，元素上的autofocus属性声明将失效。</div>
+    <h3 class="question">$focus指令示例</h3>
+    <div class="answer">下面我们来看$focus指令的示例。
+      <iframe height="300" style="width: 100%;" scrolling="no" title="[dagger-demo] $focus directive" src="https://codepen.io/dagger8224/embed/abqWRKx?default-tab=html%2Cresult&editable=true&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+        See the Pen <a href="https://codepen.io/dagger8224/pen/abqWRKx">
+        [dagger-demo] $focus directive</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
+        on <a href="https://codepen.io">CodePen</a>.
+      </iframe>
     </div>
   </template>
-  <style id="style" type="dagger/style">
-    h3::before {
-        content: "😕";
-        margin-right: 10px;
-    }
-    .answer::before {
-        content: "😄";
-        margin-right: 10px;
-    }
-  </style>
-</html>
+  <template $exist="language == 'en-us'">
+    <template $each="$['directive.focus.sections']">
+      <h3 class="question">${ item.question }</h3>
+      <div class="answer" $html="item.answer"></div>
+    </template>
+  </template>
+</div>
