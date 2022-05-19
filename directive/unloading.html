@@ -2,9 +2,15 @@
 <div class="content">
   <template $exist="language == 'zh-cn'">
     <h3 class="question">+unloading指令的作用</h3>
-    <div class="answer">“+unloading”指令在宿主元素从DOM树移除之前（卸载中阶段）由框架触发调用，用于对宿主元素或者作用域变量进行清理操作（清除不再需要的timerId等），其表达式计算结果无意义。</div>
+    <div class="answer">
+      <div>“+unloading”指令在宿主元素从DOM树移除之前（卸载中阶段）由框架触发调用，用于对宿主元素或者作用域变量进行清理操作（清除不再需要的timerId等）。</div>
+      <div>dagger.js不会对“+unloading”指令表达式的计算结果进行后续处理。</div>
+    </div>
     <h3 class="question">+unloading指令示例</h3>
-    <div class="answer">下面我们来看一个+unloading指令的演示示例。为了方便演示，示例中使用了目前尚未讲解到的<a target="directive/controller">控制指令“<a target="directive/exist">$exist</a>”和<a target="directive/eventHandler">事件处理指令</a>“+click”。目前您只要知道这两个指令在本例中用于切换展示span元素就可以了，这些指令的具体用法将在后续章节中讲解。</div>
+    <div class="answer">
+      <div>下面我们来看一个+unloading指令的示例。</div>
+      <div>为了方便演示，示例中使用了目前尚未讲解到的<a target="directive/controller">控制指令“<a target="directive/exist">$exist</a>”和<a target="directive/eventHandler">事件处理指令</a>“+click”。目前您只要知道这两个指令在本例中用于切换展示span元素就可以了，这些指令的具体用法将在后续章节中讲解。</div>
+    </div>
     <iframe height="300" style="width: 100%;" scrolling="no" title="[dagger-demo] +unloading directive" src="https://codepen.io/dagger8224/embed/PoQbJWQ?default-tab=html%2Cresult&editable=true&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
       See the Pen <a href="https://codepen.io/dagger8224/pen/PoQbJWQ">
       [dagger-demo] +unloading directive</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)

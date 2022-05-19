@@ -380,6 +380,8 @@ export default ((context = Symbol('context'), currentController = null, daggerOp
         if (detail) { return null; }
         if (Object.is(type, 'date') || Object.is(type, 'datetime-local')) {
             return new Date(valueAsNumber || 0);
+        } else if (Object.is(type, 'number')) {
+            return valueAsNumber;
         } else if (number) {
             return Number.parseFloat(value);
         } else if (trim) {

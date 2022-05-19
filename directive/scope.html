@@ -2,9 +2,9 @@
     <h2>${ $['directive.scope'] }</h2>
     <div class="content">
       <h3 class="question">什么是作用域</h3>
-      <div class="answer">在dagger.js中，作用域特指指令表达式中的变量“$scope”所指向的对象。</div>
-      <h3 class="question">默认作用域</h3>
-      <div class="answer"><div>默认作用域是由框架所创建和维护的顶层作用域对象。默认作用域对象中只包括<a href="router/introduction">路由对象$router</a>和<a href="miscellaneous/introduction">验证器函数$validator</a>。</div><div>如果某条指令的宿主元素及其上层元素的指令从未创建过作用域，那么该指令表达式中的“$scope”将指向默认作用域。<div>参考如下示例：</div></div></div>
+      <div class="answer">在dagger.js中，作用域特指指令表达式中回调参数“$scope”所指向的对象。</div>
+      <h3 class="question">根作用域</h3>
+      <div class="answer"><div>根作用域是由框架所创建和维护的顶层作用域对象。根作用域对象中只包括<a href="router/introduction">路由对象$router</a>和<a href="miscellaneous/introduction">验证器函数$validator</a>。</div><div>如果某条指令的宿主元素及其上层元素的指令从未创建过作用域，那么该指令表达式中的“$scope”将指向根作用域。<div>参考如下示例：</div></div></div>
       <iframe height="300" style="width: 100%;" scrolling="no" title="Untitled" src="https://codepen.io/dagger8224/embed/RwQowmb?default-tab=html%2Cresult&editable=true&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
         See the Pen <a href="https://codepen.io/dagger8224/pen/RwQowmb">
         Untitled</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
@@ -13,13 +13,13 @@
       <h3 class="question">自定义作用域</h3>
       <div class="answer"><div>可以通过<a href="directive/loading">+loading</a>和<a href="directive/each">$each</a>指令创建新的作用域对象实例。</div><div>由指令创建出的作用域称为自定义作用域，创建出自定义作用域的指令称为该作用域的源指令。</div><div>如果在某条指令的宿主元素或其上层元素的指令中创建过自定义作用域，那么该指令表达式中的“$scope”将指向其最近层级元素上的源指令所创建出的作用域对象。</div></div>
       <h3 class="question">如何销毁作用域</h3>
-      <div class="answer">自定义作用域对象在其源指令的宿主元素被销毁时自动销毁。默认作用域在页面的生存期内永远不会被销毁。</div>
+      <div class="answer">自定义作用域对象在其源指令的宿主元素被销毁时自动销毁。根作用域在页面的生存期内永远不会被销毁。</div>
       <h3 class="question">作用域的工作方式</h3>
       <div class="answer">
         <div>dagger.js作用域的工作方式与原生javaScript<a target="_blank" href="https://developer.mozilla.org/zh-CN/docs/Glossary/Scope">作用域</a>非常接近。请记住如下两个规则：</div>
-        <div class="margin">某一层级的源指令创建的作用域将在其宿主元素的其它指令（<a href="directive/exist">$exist</a>指令除外，在相关章节中会进行说明）及宿主元素子层级元素上的所有指令上生效。</div>
-        <div class="margin">低层级源指令上创建的作用域对象继承自高层级源指令上创建的作用域。这意味着您可以通过指令中的“$scope”访问旧作用域变量上那些未被覆盖的字段。</div>
-        <div>下面的演示动画直观展示了作用域的作用规则：</div>
+        <div class="margin">某一层级的源指令创建的作用域将在其宿主元素的其它指令（“<a href="directive/each">$each</a>”和“<a href="directive/exist">$exist</a>”指令除外，参见相关章节）及宿主元素子层级元素上的所有指令上生效。</div>
+        <div class="margin">低层级源指令上创建的作用域对象继承自高层级源指令上创建的作用域。这意味着您可以通过指令中的“$scope”访问上层作用域变量上那些未被覆盖的字段。</div>
+        <div>下面的演示动画直观展示了作用域的工作方式：</div>
         <iframe height="300" style="width: 100%;" scrolling="no" title="[dagger-demo] animation" src="https://codepen.io/dagger8224/embed/YzeNmRz?default-tab=result&editable=true&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
           See the Pen <a href="https://codepen.io/dagger8224/pen/YzeNmRz">
           [dagger-demo] animation</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
@@ -28,7 +28,7 @@
       </div>
       <h3 class="question">作用域的匿名访问</h3>
       <div class="answer">在实际开发过程中，可以匿名访问作用域下的字段以使代码更加精简。例如，在指令表达式中您可以使用“fieldName”来代替“$scope.fieldName”，两种访问方式的效果是一样的。</div>
-      <h3 class="question">作用域的演示实例</h3>
+      <h3 class="question">作用域示例</h3>
       <div class="answer">现在让我们通过下面的示例来体验下作用域的用法。</div>
       <iframe height="300" style="width: 100%;" scrolling="no" title="[dagger-demo] $scope (the default rootScope)" src="https://codepen.io/dagger8224/embed/xxYZaPg?default-tab=html%2Cresult&editable=true&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
         See the Pen <a href="https://codepen.io/dagger8224/pen/xxYZaPg">
