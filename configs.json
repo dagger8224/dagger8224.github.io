@@ -38,11 +38,7 @@
                         "nextLink": "overview/install"
                     },
                     "modules": {
-                        "overview_introduction": "./overview/introduction.html",
-                        "teees": {
-                            "content": { "a": 124 },
-                            "type": "string"
-                        }
+                        "overview_introduction": "./overview/introduction.html"
                     }
                 }, {
                     "path": "install",
@@ -50,21 +46,21 @@
                         "title": "overview.install",
                         "template": "overview_install",
                         "previousLink": "overview/introduction",
-                        "nextLink": "overview/hello_dagger"
+                        "nextLink": "overview/application"
                     },
                     "modules": {
                         "overview_install": "./overview/install.html"
                     }
                 }, {
-                    "path": "hello_dagger",
+                    "path": "application",
                     "constants": {
-                        "title": "overview.hello_dagger",
-                        "template": "overview_hello_dagger",
+                        "title": "overview.application",
+                        "template": "overview_application",
                         "previousLink": "overview/install",
                         "nextLink": "directive/introduction"
                     },
                     "modules": {
-                        "overview_hello_dagger": "./overview/hello_dagger.html"
+                        "overview_application": "./overview/application.html"
                     }
                 }]
             }, {
@@ -74,7 +70,7 @@
                     "constants": {
                         "title": "directive.introduction",
                         "template": "directive_introduction",
-                        "previousLink": "overview/hello_dagger",
+                        "previousLink": "overview/application",
                         "nextLink": "directive/lifeCycle"
                     },
                     "modules": {

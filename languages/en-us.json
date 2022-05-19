@@ -9,6 +9,7 @@
     "reset": "reset",
     "view": "View the result:",
     "overview": "Overview",
+    "overview.application": "Overview/application",
     "directive": "Directive",
     "index": "Index",
     "version": "Version",

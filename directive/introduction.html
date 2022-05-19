@@ -2,7 +2,9 @@
   <h2>${ $['directive.introduction'] }</h2>
   <div class="content">
     <h3 class="question">什么是指令</h3>
-    <div class="answer"><div>从技术上来说，dagger.js是一个指令驱动开发框架（DDD），指令是用户代码执行的唯一入口。如果把页面看做是一辆汽车，那么dagger.js相当于车辆的发动机，指令就是遍布车身底盘的传动齿轮。</div><div>形式上，指令是具有特定结构的<a target="_blank" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Attributes">元素属性</a>。在运行时当中，指令将转化为一个回调函数，由框架在满足条件时触发调用。</div></div>
+    <div class="answer">
+      <div>从技术上来说，dagger.js是一个指令驱动开发框架（DDD），指令是用户代码执行的唯一入口。如果把页面看做是一辆汽车，那么dagger.js相当于车辆的发动机，指令就是遍布车身底盘的传动齿轮。</div>
+      <div>形式上，指令是具有特定结构的<a target="_blank" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Attributes">元素属性</a>。在运行时当中，指令将转化为一个回调函数，由框架在满足条件时触发调用。</div></div>
     <h3 class="question">宿主元素与平凡元素</h3>
     <div class="answer">定义了指令的DOM元素称为该条指令的宿主元素。在一个元素上可以定义任意条指令，没有定义任何指令的元素称为平凡元素。</div>
     <h3 class="question">指令的结构</h3>

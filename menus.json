@@ -7,8 +7,8 @@
         "text": "install",
         "href": "overview/install"
     }, {
-        "text": "Hello dagger",
-        "href": "overview/hello_dagger"
+        "text": "application",
+        "href": "overview/application"
     }]
 }, {
     "text": "directive",
