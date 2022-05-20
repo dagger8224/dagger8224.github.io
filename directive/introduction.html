@@ -6,11 +6,18 @@
       <div>从技术上来说，dagger.js是一个指令驱动开发框架（DDD），指令是用户代码执行的唯一入口。如果把页面看做是一辆汽车，那么dagger.js相当于车辆的发动机，指令就是遍布车身底盘的传动齿轮。</div>
       <div>形式上，指令是具有特定结构的<a target="_blank" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Attributes">元素属性</a>。在运行时当中，指令将转化为一个回调函数，由框架在满足条件时触发调用。</div></div>
     <h3 class="question">宿主元素与平凡元素</h3>
-    <div class="answer">定义了指令的DOM元素称为该条指令的宿主元素。在一个元素上可以定义任意条指令，没有定义任何指令的元素称为平凡元素。</div>
+    <div class="answer">
+      <div>声明了指令的DOM元素称为该条指令的宿主元素。</div>
+      <div>在一个元素上可以声明任意条指令，没有声明任何指令的元素称为平凡元素。</div>
+    </div>
     <h3 class="question">指令的结构</h3>
-    <div class="answer">一个典型的指令由“ 前缀 + 名称 + <a href="directive/decorator">修饰符</a>（可选）+ 表达式 ” 四部分组成，下面的input元素上定义了一个<a href="directive/controller">控制指令</a>：<div class="code">&lt;input $value#number="expression"&gt;</div>在这条指令定义中，input元素是指令的宿主元素，“$”是指令前缀，“value”是指令名称，“number”是指令修饰符，“expression”是指令表达式。</div>
+    <div class="answer">一个典型的指令由“ 前缀 + 名称 + <a href="directive/decorator">修饰符</a>（可选）+ 表达式 ” 四部分组成，下面的input元素上声明了一个<a href="directive/controller">控制指令</a>：<div class="code">&lt;input $value#number="expression"&gt;</div>在上面的html片段中，input元素是指令的宿主元素，“$”是指令前缀，“value”是指令名称，“number”是指令修饰符，“expression”是指令表达式。</div>
     <h3 class="question">指令表达式</h3>
-    <div class="answer">指令等号右侧引号中的内容称为指令表达式。任何合法的单javaScript语句都可以作为指令表达式的内容（注意不要在语句前添加return，可以采用逗号分割）。框架会对指令表达式的执行结果进行后续处理以触发页面更新或执行其他指令。</div>
+    <div class="answer">
+      <div>指令等号右侧引号中的内容称为指令表达式。</div>
+      <div>任何合法的单javaScript语句都可以作为指令表达式的内容（注意不要在语句前添加return，可以采用逗号分割）。</div>
+      <div>dagger.js会对指令表达式的执行结果进行后续处理以触发页面或数据更新。</div>
+    </div>
     <h3 class="question">指令表达式中的回调参数</h3>
     <div class="answer">指令表达式中可以使用<a href="directive/scope">作用域</a>变量“$scope”，指向指令宿主元素的变量“$node”，指向当前<a href="module/introduction">模块</a>的变量“$module”。<a href="directive/eventHandler">事件处理指令</a>中还可以使用指向当前事件对象的变量“$event”。</div>
     <h3 class="question">指令的类型</h3>

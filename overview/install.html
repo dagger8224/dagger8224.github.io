@@ -3,7 +3,7 @@
   <div class="content">
     <h3 class="question">版本信息</h3>
     <div class="answer">
-      <span>dagger.js的最新版本是0.9.12，<a target="_blank" href="https://www.npmjs.com/package/@peakman/dagger.js">程序发布包</a>中包含4个不同的文件：</span>
+      <div>dagger.js的最新版本是0.9.12，<a target="_blank" href="https://www.npmjs.com/package/@peakman/dagger.js">程序发布包</a>中包含4个不同的文件：</div>
       <table>
         <thead>
           <tr>
@@ -42,17 +42,21 @@
       </table>
       <div>您也可以在本地命令行工具中执行以下命令获取托管在npm上的最新版本：<div class="code">npm install @peakman/dagger.js</div></div>
     </div>
-    <h3 class="question">浏览器兼容性</h3>
+    <h3 class="question">如何搭建dagger.js开发环境</h3>
     <div class="answer">
-      <span>dagger.js与支持<a target="_blank" href="https://262.ecma-international.org/6.0/">ECMA2015</a>及以上版本的浏览器兼容。</span>
+      <div>dagger.js使用原生javaScript编写，工作在浏览器运行时环境中。</div>
+      <div>dagger.js对您项目的源代码组织结构是非侵入的。您无需为使用它额外安装任何依赖工具，或者搭建脚手架。</div>
+      <div>启动您的本地服务，打开编辑器编写代码，在浏览器中查看执行结果。这样就可以了。</div>
     </div>
+    <h3 class="question">浏览器兼容性</h3>
+    <div class="answer">dagger.js与支持<a target="_blank" href="https://262.ecma-international.org/6.0/">ECMA2015</a>及以上版本的浏览器兼容。</div>
     <h3 class="question">如何在页面中引入dagger.js</h3>
     <div class="answer">
-      <span>dagger.js是一个客户端运行时框架，无需编译过程，也没有对第三方代码或者构建工具的依赖。您只需在项目入口页面的head标签内插入下列标签即可开始使用dagger.js：</span>
+      <div>您只需在项目入口页面的head标签内插入下列标签即可开始使用dagger.js：</div>
       <div class="margin">1. 通过一个type为“module”的script标签引入dagger.js：
         <div class="code">&lt;script type="module" crossorigin="anonymous" src="https://cdn.jsdelivr.net/npm/@peakman/dagger.js@0.9.12/dagger.release.js" defer&gt;&lt;/script&gt;</div>
       </div>
-      <div class="margin">2. 通过一个type为“dagger/configs”的script标签引入<a href="module/introduction">模块配置项</a>，定义渲染页面所需的模块资源。一个最简单的模块配置项是如下的空标签（未定义任何路由和模块）：
+      <div class="margin">2. 通过一个type为“dagger/configs”的script标签引入<a href="module/introduction">模块配置项</a>，声明渲染页面所需的模块资源。一个最简单的模块配置项是如下的空标签（未定义任何路由和模块）：
         <div class="code">&lt;script type="dagger/configs"&gt;&lt;/script&gt;</div>
         <div>关于配置项的更多详细内容将在后续的<a href="module/introduction">模块</a>和<a href="router/introduction">路由</a>章节中进行讲解。</div>
       </div>
