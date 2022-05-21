@@ -18,7 +18,7 @@
     "directive.scope": "指令/作用域",
     "directive.loading": "指令/+loading",
     "lifeCycle": "生命周期指令",
-    "eventHandler": "事件处理",
+    "eventHandler": "事件处理指令",
     "index": "目录",
     "decorator": "指令修饰符",
     "decorators": "指令修饰符：",
@@ -72,17 +72,7 @@
     "directive.boolean": "指令/布尔指令",
     "directive.general": "指令/一般指令",
     "directive.watch": "指令/$watch",
-    "directive.eventHandler": "指令/事件处理",
-    "directive.eventHandler.sections": [{
-        "question": "事件处理指令的作用",
-        "answer": "<span>事件处理指令用于代理宿主元素上的同名事件监听方法，例如，“+click”指令将注册一个宿主元素上click事件的监听器。事件处理指令表达式中可以使用指向被触发事件的上下文参数$event（参数名称可以在<a href='directive/decorator'>指令修饰符</a>中定制修改）。</span>"
-    }, {
-        "question": "事件处理指令与事件属性的关系",
-        "answer": "<span>可以在元素上同时声明事件处理指令和事件属性。二者的差别是，事件处理指令表达式工作在宿主元素的上下文变量作用域链上，而内置的事件属性只能访问全局作用域下定义的变量。</span>"
-    }, {
-        "question": "事件处理指令的使用限制",
-        "answer": "<span>同一个元素上可以声明多个对相同事件的处理指令（修饰符不同），指令的默认监听目标是其宿主元素，也可以通过target修饰符显式指定监听目标。非实体元素（<a href='module/template'>模板</a>模块等）不能作为事件监听目标。</span>"
-    }],
+    "directive.eventHandler": "指令/事件处理指令",
     "directive.decorator": "指令/修饰符",
     "directive.decorator.sections": [{
         "question": "指令修饰符的作用",
@@ -99,9 +89,6 @@
     }, {
         "question": "预定义的控制指令修饰符",
         "answer": "<span>$each指令支持如下预定义修饰符：<div class=\"sub-answer\">1. item，用于指定复制元素作用域下的切片变量名称（缺省变量名为item），例如item:slice将切片变量命名为slice；<br/>2. index，用于指定切片变量在父级变量中的索引变量名称（缺省变量名为index，类型为数字）；<br/>3. key，用于指定切片变量在父级变量中的字段名称（缺省变量名为key，类型为字符串）。</div>$checked指令支持预定义修饰符scope，用于指定选项组的父级元素选择器（默认为指令宿主元素的父元素）。<br/>$focus指令支持预定义修饰符prevent，用于指定<a target='_blank' href='https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLElement/focus'>是否将获取焦点的元素滚动到当前浏览器视窗中</a>。</span>"
-    }, {
-        "question": "预定义的事件处理指令修饰符",
-        "answer": "<span>事件处理指令支持如下几个预定义修饰符：<div class=\"sub-answer\">1. target，用于指定事件监听的目标对象，例如，+resize#target:window将为window对象添加resize事件的监听方法；<br/>2. event，用于指定事件监听方法中指向被触发事件对象的变量名（缺省为$event）；<br/>3. current，用于指明事件的触发目标元素必须是事件监听的目标元素本身；<br/>4. modifier，用于指明事件触发时需要满足的<a target='_blank' href='https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/getModifierState'>辅助键开启状态</a>（Ctrl/Alt/Shift/Command/大写锁定键等）。modifier修饰符的值可以是单个字符串或者字符串数组，如果修饰符的值为字符串数组，则数组中指定的辅助键全部处于开启状态时才执行事件处理方法；<br/>5. code，用于指明键盘事件触发时<a target='_blank' href='https://developer.mozilla.org/zh-CN/docs/Web/API/KeyboardEvent/code'>event.code</a>要匹配的正则表达式或者正则表达式数组。如果修饰符的值为正则表达式数组，则数组中指定的正则表达式全部匹配时才执行事件处理方法；<br/>6. key，事件触发时<a target='_blank' href='https://developer.mozilla.org/zh-cn/docs/Web/API/KeyboardEvent/key'>event.key</a>（键盘事件）或者<a target='_blank' href='https://developer.mozilla.org/zh-cn/docs/Web/API/MouseEvent/buttons'>event.buttons</a>（鼠标事件）要匹配的正则表达式或者正则表达式数组。如果修饰符的值为正则表达式数组，则数组中指定的正则表达式全部匹配时才执行事件处理方法。鼠标按钮枚举键值包括Left/Right/Middle/Back/Forward；<br/>7. prevent，指定该修饰符的事件处理指令将调用<a target='_blank' href='https://developer.mozilla.org/zh-cn/docs/Web/API/Event/preventDefault'>event.preventDefault</a>方法；<br/>8. stop，指定该修饰符的事件处理指令将调用<a target='_blank' href='https://developer.mozilla.org/zh-cn/docs/Web/API/Event/stopPropagation'>event.stopPropagation</a>方法；<br/>9. stopImmediate，指定该修饰符的事件处理指令将调用<a target='_blank' href='https://developer.mozilla.org/zh-cn/docs/Web/API/Event/stopImmediatePropagation'>event.stopImmediatePropagation</a>方法；<br/>10. capture/once/passive，用于设定事件监听器的<a target='_blank' href='https://developer.mozilla.org/zh-CN/docs/Web/API/EventTarget/addEventListener'>选项</a>。</div></span>"
     }, {
         "question": "指令修饰符的使用限制",
         "answer": "<span>受限于DOM标签属性的解析规则和dagger.js的语法定义，部分特殊字符不能直接用作修饰符内容，否则将导致解析失败或者得到非预期的处理结果。<br/>具体地说，在指令修饰符中使用“<”，“>”，“:”，“#”，“\\”，“\/”，空格以及大写字母等字符时需要进行<a target='_blank' href='https://developer.mozilla.org/zh-cn/docs/Web/JavaScript/Reference/Global_Objects/encodeURIComponent'>encodeURIComponent</a>。对于大写字母，一个更便捷标记方式是在字母前加上“-”符号前缀，例如，+click#modifier:['-Caps-Lock','-Shift']将在鼠标点击时检查辅助键“CapsLock”和“Shift”的开启状态。<br/>请注意框架在解析修饰符时会先对具有“-”前缀的字母进行大写转换后再解码，因此，修饰符“-Caps-Lock”将解码为“CapsLock”，而“%2dCaps%2dLock”将解码为“-caps-lock”.</span>"
