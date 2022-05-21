@@ -1,35 +1,25 @@
-<!DOCTYPE html>
-<html>
-  <script type="dagger/configs">
-    {
-      "template": {
-          "uri": "#template",
-          "style": "style"
-      },
-      "style": "#style",
-      "demo": {
-          "uri": "./watch_demo.html",
-          "type": "string"
-      }
-    }
-  </script>
-  <template id="template">
-    <h2>${ $['directive.watch'] }</h2>
-    <div class="content">
-      <template $each="$['directive.watch.sections']">
-        <h3 class="question">${ item.question }</h3>
-        <div class="answer" $html="item.answer"></div>
-      </template>
+<h2>${ $['directive.watch'] }</h2>
+<div class="content">
+  <template $exist="language == 'zh-cn'">
+    <h3 class="question">$watch指令的作用</h3>
+    <div class="answer">$watch指令用于在依赖变量的值发生变化时动态更新关联数据。</div>
+    <h3 class="question">$watch指令的执行结果</h3>
+    <div class="answer">
+      <div>框架不会对$watch指令的执行结果进行进一步处理。</div>
+      <div>在同一个宿主元素上可以声明多个$watch指令（需要使用不同的修饰符以避免重名）。我们来看下面的示例：
+        <iframe height="300" style="width: 100%;" scrolling="no" title="Untitled" src="https://codepen.io/dagger8224/embed/JjpJxzq?default-tab=html%2Cresult&editable=true&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+          See the Pen <a href="https://codepen.io/dagger8224/pen/JjpJxzq">
+          Untitled</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
+          on <a href="https://codepen.io">CodePen</a>.
+        </iframe>
+      </div>
+      <div>在上面的例子中，我们通过两个$watch指令声明了两组数据约束关系。当响应依赖项发生变化时，指令将触发执行，保证数据约束关系生效。</div>
     </div>
   </template>
-  <style id="style" type="dagger/style">
-    h3::before {
-        content: "😕";
-        margin-right: 10px;
-    }
-    .answer::before {
-        content: "😄";
-        margin-right: 10px;
-    }
-  </style>
-</html>
+  <template $exist="language == 'en-us'">
+    <template $each="$['directive.watch.sections']">
+      <h3 class="question">${ item.question }</h3>
+      <div class="answer" $html="item.answer"></div>
+    </template>
+  </template>
+</div>

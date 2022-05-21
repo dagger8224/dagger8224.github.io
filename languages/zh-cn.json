@@ -65,53 +65,10 @@
     "directive.file": "指令/$file",
     "directive.focus": "指令/$focus",
     "directive.html": "指令/$html",
-    "directive.html.sections": [{
-        "question": "$html指令的作用",
-        "answer": "<span>$html指令用于在宿主元素下动态创建子级html片段。当宿主元素上声明$html指令之后，模板中静态声明的子级html内容将被$html表达式内容替换。$html指令通常与<a href='router/introduction'>路由配置项</a>结合使用。</span>"
-    }, {
-        "question": "$html指令表达式的执行结果",
-        "answer": "<span>指令表达式的执行结果内容将作为宿主元素的子级html，子级html上声明的指令将在其宿主元素创建后生效，其变量作用域继承自父级元素的作用域链。</span>"
-    }],
     "directive.selected": "指令/$selected",
-    "directive.selected.sections": [{
-        "question": "$selected指令的作用",
-        "answer": "<span>$selected指令用于绑定宿主元素的选中值，适用$selected指令的元素包括单选和多选类型的输入框，以及下拉选择框元素。对于其余元素类型，$checked指令将退化为<a href='directive/general'>一般指令</a>。</span>"
-    }, {
-        "question": "$selected指令表达式的执行结果",
-        "answer": "<span>当$selected指令表达式的执行结果与宿主元素的value相等（单选按钮或者单选框的选项）或者包含宿主元素的value（复选框或者多选框的选项），则对应元素处于选中状态，否则宿主元素将取消选中状态。当该指令表达式的内容是合法的左操作数时，用户对宿主元素的操作将导致表达式变量同步变化，实现双向数据绑定。</span>"
-    }, {
-        "question": "$selected指令与checked/selected属性的关系",
-        "answer": "<span>当宿主元素上声明$selected指令之后，元素上的checked/selected属性声明将失效。</span>"
-    }, {
-        "question": "$selected指令与$checked指令的关系",
-        "answer": "<span>$selected指令绑定到选中项的值，$checked指令绑定的是宿主元素的选中状态。对选项组同时声明$selected指令混合$checked指令可能导致元素选中状态与绑定数据不一致。</span>"
-    }],
     "directive.style": "指令/$style",
     "directive.text": "指令/$text",
-    "directive.text.sections": [{
-        "question": "$text指令的作用",
-        "answer": "<span>$text指令用于在宿主元素下动态创建文本内容。当宿主元素上声明$text指令之后，元素的子级内容将被替换。</span>"
-    }, {
-        "question": "$text指令表达式的执行结果",
-        "answer": "<span>指令表达式的执行结果内容将作为宿主元素下的文本内容。</span>"
-    }, {
-        "question": "$text指令表达式的内联使用方法",
-        "answer": "<span>写成字符串模板形式的标签内文本内容会被框架识别为隐式的$text表达式进行求值。</span>"
-    }],
     "directive.value": "指令/$value",
-    "directive.value.sections": [{
-        "question": "$value指令的作用",
-        "answer": "<span>$value指令用于绑定到宿主元素的value属性。</span>"
-    }, {
-        "question": "$value指令表达式的执行结果",
-        "answer": "<span>$value指令表达式的执行结果内容将作为宿主元素的value属性。适用$value指令的元素包括input，textarea以及选择框下的选项标签。当该指令表达式的内容是合法的左操作数时，用户对宿主元素的操作将导致表达式变量同步变化，实现双向数据绑定。<br/>请注意对于<a href='directive/selected'>$selected</a>指令，如果在宿主元素上声明了$value指令，则绑定到$selected变量的是$value指令表达式返回的真实对象，而不是转换后为字符串后的value属性。</span>"
-    }, {
-        "question": "$value指令与value属性的关系",
-        "answer": "<span>当宿主元素上声明$value指令之后，元素的value属性声明将失效。</span>"
-    }, {
-        "question": "$value指令的使用限制",
-        "answer": "<span>$value指令不能应用在类型为file的input元素上。</span>"
-    }],
     "directive.boolean": "指令/布尔指令",
     "directive.boolean.sections": [{
         "question": "布尔指令的作用",
@@ -138,16 +95,6 @@
         "answer": "<span>请注意，部分控制的指令的行为依赖于其宿主元素上的特定属性声明，例如，$checked/$selected指令的行为与input元素的类型属性有直接关系。在这种情况下，将type声明为一般控制指令可能会导致$checked/$selected指令出现非预期的行为。通常来说，在可能的情况下优先使用静态属性信息描述而不是一般指令更有利于降低业务代码的复杂性，提升运行时性能。</span>"
     }],
     "directive.watch": "指令/$watch",
-    "directive.watch.sections": [{
-        "question": "$watch的作用",
-        "answer": "<span>$watch指令用于在依赖变量的值发生变化时动态执行业务逻辑。</span>"
-    }, {
-        "question": "$watch指令表达式的执行结果",
-        "answer": "<span>$watch指令表达式的执行结果无意义。</span>"
-    }, {
-        "question": "$watch指令的使用限制",
-        "answer": "<span>与其他控制指令不同，同一个元素上可以声明多个修饰符不同的$watch指令，每个$watch指令独立工作。</span>"
-    }],
     "directive.eventHandler": "指令/事件处理",
     "directive.eventHandler.sections": [{
         "question": "事件处理指令的作用",
@@ -174,7 +121,7 @@
         "answer": "<span>“<a href='directive/sentry'>+sentry</a>”生命周期指令支持预定义修饰符next，用于指定回调方法中指向目标<a href='router/introduction'>路由</a>对象的变量名称，缺省变量名为“$nextRouter”；“<a href='directive/loaded'>+loaded</a>”，“<a href='directive/unloading'>+unloading</a>”，“<a href='directive/unloaded'>+unloaded</a>”生命周期指令支持预定义修饰符node，用于指定回调方法中指向宿主元素的变量名称，缺省变量名为“$node”。</span>"
     }, {
         "question": "预定义的控制指令修饰符",
-        "answer": "<span>$value指令支持如下预定义修饰符：<div class=\"sub-answer\">1. number，用于将用户输入字符串转换为数字格式；<br/>2. trim，用于去除用户输入字符串的首尾空白字符；<br/>3. input，框架默认在输入框失去焦点后将用户输入字符串更新到指令表达式的执行结果上（监听change事件），声明该修饰符将改为监听输入框的input事件，在用户输入任意字符后立刻触发表达式更新。</div>$each指令支持如下预定义修饰符：<div class=\"sub-answer\">1. item，用于指定复制元素作用域下的切片变量名称（缺省变量名为item），例如item:slice将切片变量命名为slice；<br/>2. index，用于指定切片变量在父级变量中的索引变量名称（缺省变量名为index，类型为数字）；<br/>3. key，用于指定切片变量在父级变量中的字段名称（缺省变量名为key，类型为字符串）。</div>$checked指令支持预定义修饰符scope，用于指定选项组的父级元素选择器（默认为指令宿主元素的父元素）。<br/>$focus指令支持预定义修饰符prevent，用于指定<a target='_blank' href='https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLElement/focus'>是否将获取焦点的元素滚动到当前浏览器视窗中</a>。</span>"
+        "answer": "<span>$each指令支持如下预定义修饰符：<div class=\"sub-answer\">1. item，用于指定复制元素作用域下的切片变量名称（缺省变量名为item），例如item:slice将切片变量命名为slice；<br/>2. index，用于指定切片变量在父级变量中的索引变量名称（缺省变量名为index，类型为数字）；<br/>3. key，用于指定切片变量在父级变量中的字段名称（缺省变量名为key，类型为字符串）。</div>$checked指令支持预定义修饰符scope，用于指定选项组的父级元素选择器（默认为指令宿主元素的父元素）。<br/>$focus指令支持预定义修饰符prevent，用于指定<a target='_blank' href='https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLElement/focus'>是否将获取焦点的元素滚动到当前浏览器视窗中</a>。</span>"
     }, {
         "question": "预定义的事件处理指令修饰符",
         "answer": "<span>事件处理指令支持如下几个预定义修饰符：<div class=\"sub-answer\">1. target，用于指定事件监听的目标对象，例如，+resize#target:window将为window对象添加resize事件的监听方法；<br/>2. event，用于指定事件监听方法中指向被触发事件对象的变量名（缺省为$event）；<br/>3. current，用于指明事件的触发目标元素必须是事件监听的目标元素本身；<br/>4. modifier，用于指明事件触发时需要满足的<a target='_blank' href='https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/getModifierState'>辅助键开启状态</a>（Ctrl/Alt/Shift/Command/大写锁定键等）。modifier修饰符的值可以是单个字符串或者字符串数组，如果修饰符的值为字符串数组，则数组中指定的辅助键全部处于开启状态时才执行事件处理方法；<br/>5. code，用于指明键盘事件触发时<a target='_blank' href='https://developer.mozilla.org/zh-CN/docs/Web/API/KeyboardEvent/code'>event.code</a>要匹配的正则表达式或者正则表达式数组。如果修饰符的值为正则表达式数组，则数组中指定的正则表达式全部匹配时才执行事件处理方法；<br/>6. key，事件触发时<a target='_blank' href='https://developer.mozilla.org/zh-cn/docs/Web/API/KeyboardEvent/key'>event.key</a>（键盘事件）或者<a target='_blank' href='https://developer.mozilla.org/zh-cn/docs/Web/API/MouseEvent/buttons'>event.buttons</a>（鼠标事件）要匹配的正则表达式或者正则表达式数组。如果修饰符的值为正则表达式数组，则数组中指定的正则表达式全部匹配时才执行事件处理方法。鼠标按钮枚举键值包括Left/Right/Middle/Back/Forward；<br/>7. prevent，指定该修饰符的事件处理指令将调用<a target='_blank' href='https://developer.mozilla.org/zh-cn/docs/Web/API/Event/preventDefault'>event.preventDefault</a>方法；<br/>8. stop，指定该修饰符的事件处理指令将调用<a target='_blank' href='https://developer.mozilla.org/zh-cn/docs/Web/API/Event/stopPropagation'>event.stopPropagation</a>方法；<br/>9. stopImmediate，指定该修饰符的事件处理指令将调用<a target='_blank' href='https://developer.mozilla.org/zh-cn/docs/Web/API/Event/stopImmediatePropagation'>event.stopImmediatePropagation</a>方法；<br/>10. capture/once/passive，用于设定事件监听器的<a target='_blank' href='https://developer.mozilla.org/zh-CN/docs/Web/API/EventTarget/addEventListener'>选项</a>。</div></span>"

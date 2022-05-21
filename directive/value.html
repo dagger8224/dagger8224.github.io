@@ -1,35 +1,45 @@
-<!DOCTYPE html>
-<html>
-  <script type="dagger/configs">
-    {
-      "template": {
-          "uri": "#template",
-          "style": "style"
-      },
-      "style": "#style",
-      "demo": {
-          "uri": "./value_demo.html",
-          "type": "string"
-      }
-    }
-  </script>
-  <template id="template">
-    <h2>${ $['directive.value'] }</h2>
-    <div class="content">
-      <template $each="$['directive.value.sections']">
-        <h3 class="question">${ item.question }</h3>
-        <div class="answer" $html="item.answer"></div>
-      </template>
+<h2>${ $['directive.value'] }</h2>
+<div class="content">
+  <template $exist="language == 'zh-cn'">
+    <h3 class="question">$value指令的作用</h3>
+    <div class="answer">$value指令用于绑定宿主元素的value属性。</div>
+    <h3 class="question">$value指令表达式的执行结果</h3>
+    <div class="answer">
+      <div>$value指令表达式的执行结果将作为宿主元素的value属性。适用于input，textarea以及option元素。</div>
+      <div>当$selected指令表达式的内容是合法的<a target="_blank" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators#%E5%B7%A6%E8%A1%A8%E8%BE%BE%E5%BC%8F">左表达式</a>时，用户对宿主元素的操作将导致表达式计算结果同步变化，实现作用域数据与DOM元素属性之间的的双向绑定。如果input的类型为number，则执行结果将转换为number类型。我们来看下面的示例：
+        <iframe height="300" style="width: 100%;" scrolling="no" title="Untitled" src="https://codepen.io/dagger8224/embed/zYRzeNj?default-tab=html%2Cresult&editable=true&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+          See the Pen <a href="https://codepen.io/dagger8224/pen/zYRzeNj">
+          Untitled</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
+          on <a href="https://codepen.io">CodePen</a>.
+        </iframe>
+      </div>
+      <h3 class="question">$value指令的预定义修饰符</h3>
+      <div class="answer">$value指令支持如下预定义修饰符：
+        <div class="margin">1. “number”，用于将用户输入字符串转换为数字格式。</div>
+        <div class="margin">2. “trim”，用于去除用户输入字符串的首尾空白字符。</div>
+        <div class="margin">3. “input”，框架默认在输入框失去焦点后将用户输入字符串更新到指令表达式的执行结果上（监听change事件），声明该修饰符的指令将监听输入框的input事件，在用户输入任意字符后立刻触发表达式更新。</div>
+        <div>我们来看下修饰符使用的例子：
+          <iframe height="300" style="width: 100%;" scrolling="no" title="Untitled" src="https://codepen.io/dagger8224/embed/mdXwvXy?default-tab=html%2Cresult&editable=true&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+            See the Pen <a href="https://codepen.io/dagger8224/pen/mdXwvXy">
+            Untitled</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
+            on <a href="https://codepen.io">CodePen</a>.
+          </iframe>
+        </div>
+      </div>
+    </div>
+    <h3 class="question">$value指令与$selected指令的配合使用</h3>
+    <div class="answer">如果宿主元素上同时声明了$value指令和<a href="directive/selected">$selected</a>指令，则$selected执行结果将与$value指令表达式返回的对象进行匹配。下面我们来看一个示例：
+      <iframe height="300" style="width: 100%;" scrolling="no" title="Untitled" src="https://codepen.io/dagger8224/embed/JjpJxXB?default-tab=html%2Cresult&editable=true&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+        See the Pen <a href="https://codepen.io/dagger8224/pen/JjpJxXB">
+        Untitled</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
+        on <a href="https://codepen.io">CodePen</a>.
+      </iframe>
     </div>
   </template>
-  <style id="style" type="dagger/style">
-    h3::before {
-        content: "😕";
-        margin-right: 10px;
-    }
-    .answer::before {
-        content: "😄";
-        margin-right: 10px;
-    }
-  </style>
-</html>
+  <template $exist="language == 'en-us'">
+    <template $each="$['directive.value.sections']">
+      <h3 class="question">${ item.question }</h3>
+      <div class="answer" $html="item.answer"></div>
+    </template>
+  </template>
+</div>

@@ -372,8 +372,8 @@ export default ((context = Symbol('context'), currentController = null, daggerOp
         }
         return result;
     }) => (node, decorators) => node.multiple ? [...node.files].map(file => processor(file, decorators)) : processor(node.files[0], decorators))(),
-    selected: (node, { scope }) => {
-        const { name, type, tagName } = node, isSelect = Object.is(tagName, 'SELECT'), data = [...(isSelect ? node.selectedOptions : querySelector(scope ? querySelector(document, scope) : document.body, `input[type="${ type }"][name="${ name }"]:checked`, true))].map(node => valueResolver(node)), multiple = isSelect ? node.multiple : Object.is(type, 'checkbox');
+    selected: node => {
+        const { name, type, tagName } = node, isSelect = Object.is(tagName, 'SELECT'), data = [...(isSelect ? node.selectedOptions : querySelector(document.body, `input[type="${ type }"][name="${ name }"]:checked`, true))].map(node => valueResolver(node)), multiple = isSelect ? node.multiple : Object.is(type, 'checkbox');
         return multiple ? data : data[0];
     },
     value: ({ type, value, valueAsNumber }, { number, trim }, { detail }) => {
@@ -409,7 +409,7 @@ export default ((context = Symbol('context'), currentController = null, daggerOp
             } else {
                 isCheckbox && decorators.indeterminate && (node.indeterminate = data == null);
                 node.indeterminate || (node.checked = data);
-                isCheckbox || (data && (nodes = querySelector(document, `input[type="radio"][name="${ node.name }"]`, true)));
+                isCheckbox || (data && (nodes = querySelector(document.body, `input[type="radio"][name="${ node.name }"]`, true)));
             }
             nodes && promisor.then(() => forEach(nodes, node => node.dispatchEvent(changeEvent)));
         } else {
