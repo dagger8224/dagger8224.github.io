@@ -70,30 +70,7 @@
     "directive.text": "指令/$text",
     "directive.value": "指令/$value",
     "directive.boolean": "指令/布尔指令",
-    "directive.boolean.sections": [{
-        "question": "布尔指令的作用",
-        "answer": "<span>布尔指令用于对宿主元素的<a target='_blank' href='https://developer.mozilla.org/zh-CN/docs/Web/HTML/Attributes#%E5%B8%83%E5%B0%94%E5%80%BC%E5%B1%9E%E6%80%A7'>布尔值属性</a>进行绑定。指令的名称与元素属性名相同。例如，$disabled将用来设定宿主元素的disabled属性。</span>"
-    }, {
-        "question": "布尔指令表达式的执行结果",
-        "answer": "<span>布尔指令表达式的执行结果将转换为布尔值后绑定到元素的属性上，当转换后的执行结果为true时，在宿主元素上添加同名的布尔属性，否则移除同名布尔属性。</span>"
-    }, {
-        "question": "布尔指令与同名布尔属性的关系",
-        "answer": "<span>当宿主元素上声明名为xxx的布尔指令之后，元素的xxx布尔属性声明将失效。</span>"
-    }],
     "directive.general": "指令/一般指令",
-    "directive.general.sections": [{
-        "question": "一般指令的作用",
-        "answer": "<span>一般指令用于对宿主元素的通用属性进行绑定。指令的名称与元素属性名相同。例如，$id将用来设定元素的id属性。</span>"
-    }, {
-        "question": "一般指令表达式的执行结果",
-        "answer": "<span>一般指令表达式的执行结果将转换为字符串后赋值给元素的同名属性。</span>"
-    }, {
-        "question": "一般指令与同名属性的关系",
-        "answer": "<span>当宿主元素上声明名为xxx指令之后，元素的xxx属性声明将失效。</span>"
-    }, {
-        "question": "一般指令的使用限制",
-        "answer": "<span>请注意，部分控制的指令的行为依赖于其宿主元素上的特定属性声明，例如，$checked/$selected指令的行为与input元素的类型属性有直接关系。在这种情况下，将type声明为一般控制指令可能会导致$checked/$selected指令出现非预期的行为。通常来说，在可能的情况下优先使用静态属性信息描述而不是一般指令更有利于降低业务代码的复杂性，提升运行时性能。</span>"
-    }],
     "directive.watch": "指令/$watch",
     "directive.eventHandler": "指令/事件处理",
     "directive.eventHandler.sections": [{
