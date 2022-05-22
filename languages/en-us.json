@@ -223,6 +223,7 @@
         "question": "The return value of $html directive expression",
         "answer": "<span>The return value of directive expression will be treated as the inner html of the related element. The directives declared on the html template will take effect after the child related element created, the variable scopes are inherited from the parent's scope chain.</span>"
     }],
+    "directive.result": "Directive/$result",
     "directive.selected": "Directive/$selected",
     "directive.selected.sections": [{
         "question": "The effective of $selected directive",

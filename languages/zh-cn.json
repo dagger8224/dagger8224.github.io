@@ -66,6 +66,7 @@
     "directive.file": "指令/$file",
     "directive.focus": "指令/$focus",
     "directive.html": "指令/$html",
+    "directive.result": "指令/$result",
     "directive.selected": "指令/$selected",
     "directive.style": "指令/$style",
     "directive.text": "指令/$text",

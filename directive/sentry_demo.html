@@ -1,9 +1,0 @@
-<div +loading="{ exist: false, log: '', node: null }">
-    <a href="directive/introduction">redirect to "directive/introduction"</a>
-    <br/>
-    <button +click="log = exist ? 'the related element of \'+sentry\' directive is removed, nothing could block you' : '', exist = !exist;">toggle sentry element</button>
-    <br/>
-    <span $style="`color: ${ exist ? 'red' : 'green' }`">${ log }</span>
-    <br/>
-    <span +loaded="node = $node" $exist="exist" +sentry="(log = 'checking...') && new Promise(resolved => setTimeout(() => resolved(log = `The router change is prevented by ${ node.tagName }, click the 'remove sentry' button to enable it.`, alert(log) || log), 1000));" style="color: red;">I'm a span to prevent router changing!</span>
-</div>

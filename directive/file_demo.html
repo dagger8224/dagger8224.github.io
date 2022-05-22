@@ -1,7 +1,0 @@
-<div +loading="{ file: null, files: null }">
-    <input type="file" $file="file" accept=".txt,.js,.zip">single file selector (*.txt, *.js, *.zip)</input>
-    <div $exist="file">name: ${ file.name }, type: ${ file.type }, size: ${ file.size }, lastModified: ${ file.lastModified }</div>
-    <br/>
-    <input type="file" $file="files" multiple>multiple file selector</input>
-    <div $exist="files" $each="files">${ index + 1 }. name: ${ item.name }, type: ${ item.type }, size: ${ item.size }, lastModified: ${ item.lastModified }</div>
-</div>

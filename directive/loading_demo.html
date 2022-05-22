@@ -1,6 +1,0 @@
-<div +loading="new Promise(resolved => setTimeout(() => resolved({ string: 'outer async message', object: { number: 1 } }), 1000))">
-    <span $text="`The string is '${ string }, the number is '${ object.number }'`">loading...</span>
-    <div +loading="{ string: 'inner literal message', array: [2, 3] }">
-        <span $text="`The string is '${ string }, the array is '${ JSON.stringify(array) }', the number is '${ object.number }'`">loading...</span>
-    </div>
-</div>

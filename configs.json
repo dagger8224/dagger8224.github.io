@@ -247,17 +247,28 @@
                         "title": "directive.html",
                         "template": "directive_html",
                         "previousLink": "directive/focus",
-                        "nextLink": "directive/selected"
+                        "nextLink": "directive/result"
                     },
                     "modules": {
                         "directive_html": "./directive/html.html"
+                    }
+                }, {
+                    "path": "result",
+                    "constants": {
+                        "title": "directive.result",
+                        "template": "directive_result",
+                        "previousLink": "directive/html",
+                        "nextLink": "directive/selected"
+                    },
+                    "modules": {
+                        "directive_result": "./directive/result.html"
                     }
                 }, {
                     "path": "selected",
                     "constants": {
                         "title": "directive.selected",
                         "template": "directive_selected",
-                        "previousLink": "directive/html",
+                        "previousLink": "directive/result",
                         "nextLink": "directive/style"
                     },
                     "modules": {

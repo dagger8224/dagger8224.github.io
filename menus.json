@@ -64,6 +64,9 @@
         "text": "$html",
         "href": "directive/html"
     }, {
+        "text": "$result",
+        "href": "directive/result"
+    }, {
         "text": "$selected",
         "href": "directive/selected"
     }, {
