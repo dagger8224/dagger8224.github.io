@@ -3,47 +3,49 @@
   <template $exist="language == 'zh-cn'">
     <h3 class="question">事件处理指令的作用</h3>
     <div class="answer">
-      <div>事件处理指令用于为宿主元素添加同名事件监听方法，例如，“+click”指令将为宿主元素添加一个click事件的监听器。</div>
+      <div>事件处理指令用于为宿主元素添加同名事件监听方法。</div>
       <div>事件处理指令表达式中可以使用指向当前触发事件的回调参数“$event”。</div>
     </div>
+    <h3 class="question">事件处理指令的执行结果</h3>
+    <div class="answer">dagger.js不会对事件处理指令表达式的执行结果进行进一步处理。</div>
     <h3 class="question">事件处理指令的预定义修饰符</h3>
     <div class="answer">事件处理指令支持如下几个预定义修饰符：
-      <div class="margin">1. “target”，用于指定监听目标对象（默认的监听对象是当前宿主元素）。我们来看示例：
+      <div class="margin">1. “target”，字符串或者表达式类型。用于指定监听目标对象（默认的监听对象是当前宿主元素）。我们来看示例：
         <iframe height="300" style="width: 100%;" scrolling="no" title="[dagger-demo] eventHandler (target decorator)" src="https://codepen.io/dagger8224/embed/bGLRyMB?default-tab=html%2Cresult&editable=true&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
           See the Pen <a href="https://codepen.io/dagger8224/pen/bGLRyMB">
           [dagger-demo] eventHandler (target decorator)</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
           on <a href="https://codepen.io">CodePen</a>.
         </iframe>
       </div>
-      <div class="margin">2. “current”，用于声明事件的触发元素（target）必须是事件监听的目标元素本身（currentTarget）。我们来看示例：
+      <div class="margin">2. “current”，布尔类型。用于声明事件的触发元素（target）必须是事件监听的目标元素本身（currentTarget）。我们来看示例：
         <iframe height="300" style="width: 100%;" scrolling="no" title="[dagger-demo] eventHandler (current decorator)" src="https://codepen.io/dagger8224/embed/YzeQbjK?default-tab=html%2Cresult&editable=true&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
           See the Pen <a href="https://codepen.io/dagger8224/pen/YzeQbjK">
           [dagger-demo] eventHandler (current decorator)</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
           on <a href="https://codepen.io">CodePen</a>.
         </iframe>
       </div>
-      <div class="margin">3. “prevent”，用于声明事件处理指令将阻止事件默认行为（等同于调用“<a target="_blank" href="https://developer.mozilla.org/zh-cn/docs/Web/API/Event/preventDefault">event.preventDefault</a>”方法）。我们来看示例：
+      <div class="margin">3. “prevent”，布尔类型。用于声明事件处理指令将阻止事件默认行为（等同于调用“<a target="_blank" href="https://developer.mozilla.org/zh-cn/docs/Web/API/Event/preventDefault">event.preventDefault</a>”方法）。我们来看示例：
         <iframe height="300" style="width: 100%;" scrolling="no" title="[dagger-demo] eventHandler (prevent decorator)" src="https://codepen.io/dagger8224/embed/YzeQbgP?default-tab=html%2Cresult&editable=true&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
           See the Pen <a href="https://codepen.io/dagger8224/pen/YzeQbgP">
           [dagger-demo] eventHandler (prevent decorator)</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
           on <a href="https://codepen.io">CodePen</a>.
         </iframe>
       </div>
-      <div class="margin">4. “stop”，用于声明事件处理指令将阻止事件继续传播（等同于调用“<a target="_blank" href="https://developer.mozilla.org/zh-cn/docs/Web/API/Event/stopPropagation">event.stopPropagation</a>”方法）。我们来看示例：
+      <div class="margin">4. “stop”，布尔类型。用于声明事件处理指令将阻止事件继续传播（等同于调用“<a target="_blank" href="https://developer.mozilla.org/zh-cn/docs/Web/API/Event/stopPropagation">event.stopPropagation</a>”方法）。我们来看示例：
         <iframe height="300" style="width: 100%;" scrolling="no" title="CodePen Home [dagger-demo] eventHandler (stop decorator)" src="https://codepen.io/dagger8224/embed/LYQLovw?default-tab=html%2Cresult&editable=true&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
           See the Pen <a href="https://codepen.io/dagger8224/pen/LYQLovw">
           CodePen Home [dagger-demo] eventHandler (stop decorator)</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
           on <a href="https://codepen.io">CodePen</a>.
         </iframe>
       </div>
-      <div class="margin">5. “stop-immediate”，用于声明事件处理指令将阻止监听同一事件的其他事件监听器被调用（等同于调用“<a target="_blank" href="https://developer.mozilla.org/zh-cn/docs/Web/API/Event/stopImmediatePropagation">event.stopImmediatePropagation</a>”方法）。我们来看示例：
+      <div class="margin">5. “stop-immediate”，布尔类型。用于声明事件处理指令将阻止监听同一事件的其他事件监听器被调用（等同于调用“<a target="_blank" href="https://developer.mozilla.org/zh-cn/docs/Web/API/Event/stopImmediatePropagation">event.stopImmediatePropagation</a>”方法）。我们来看示例：
         <iframe height="300" style="width: 100%;" scrolling="no" title="CodePen Home [dagger-demo] eventHandler (stop-immediate decorator)" src="https://codepen.io/dagger8224/embed/LYQLKGY?default-tab=html%2Cresult&editable=true&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
           See the Pen <a href="https://codepen.io/dagger8224/pen/LYQLKGY">
           CodePen Home [dagger-demo] eventHandler (stop-immediate decorator)</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
           on <a href="https://codepen.io">CodePen</a>.
         </iframe>
       </div>
-      <div class="margin">6. “capture/once/passive”，用于声明事件监听器的<a target="_blank" href="https://developer.mozilla.org/zh-CN/docs/Web/API/EventTarget/addEventListener">选项</a>。我们来看示例：
+      <div class="margin">6. “capture/once/passive”，布尔类型。用于声明事件监听器的<a target="_blank" href="https://developer.mozilla.org/zh-CN/docs/Web/API/EventTarget/addEventListener">选项</a>。我们来看示例：
         <iframe height="300" style="width: 100%;" scrolling="no" title="Untitled" src="https://codepen.io/dagger8224/embed/vYdZoNp?default-tab=html%2Cresult&editable=true&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
           See the Pen <a href="https://codepen.io/dagger8224/pen/vYdZoNp">
           Untitled</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
@@ -51,8 +53,8 @@
         </iframe>
       </div>
       <div class="margin">
-        <div>7. “every”，用于声明若干过滤条件，若任意条件不满足则事件监听器不会被触发。</div>
-        <div>“every”修饰符的值是一个<a target="_blank" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/RegExp">正则表达式字面量</a>数组（如果数组元素只有一个值可以省略中括号），数组当中的每一项与$event对象的“<a target="_blank" href="https://developer.mozilla.org/zh-CN/docs/Web/API/KeyboardEvent/code">code</a>/<a target="_blank" href="https://developer.mozilla.org/zh-cn/docs/Web/API/KeyboardEvent/key">key</a>/<a target="_blank" href="https://developer.mozilla.org/zh-CN/docs/Web/API/MouseEvent/button">button</a>”或<a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/getModifierState">辅助键开启状态</a>中的任何一个值相匹配则视为当前条件满足。</div>
+        <div>7. “every”，字符串或者字符串数组类型。用于声明若干过滤条件，若任意条件不满足则事件监听器不会被触发。</div>
+        <div>“every”修饰符的值是一个<a target="_blank" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/RegExp">正则表达式字面量</a>数组，数组当中的每一项与$event对象的“<a target="_blank" href="https://developer.mozilla.org/zh-CN/docs/Web/API/KeyboardEvent/code">code</a>/<a target="_blank" href="https://developer.mozilla.org/zh-cn/docs/Web/API/KeyboardEvent/key">key</a>/<a target="_blank" href="https://developer.mozilla.org/zh-CN/docs/Web/API/MouseEvent/button">button</a>”或<a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/getModifierState">辅助键开启状态</a>中的任何一个值相匹配则视为当前条件满足。</div>
         <div>您也可以在字面量过滤条件前添加“!”进行条件反向匹配。我们来看示例：
           <iframe height="300" style="width: 100%;" scrolling="no" title="[dagger-demo] eventHandler (every decorator)" src="https://codepen.io/dagger8224/embed/XWZgLEv?default-tab=html%2Cresult&editable=true&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
             See the Pen <a href="https://codepen.io/dagger8224/pen/XWZgLEv">
@@ -62,8 +64,8 @@
         </div>
       </div>
       <div class="margin">
-        <div>8. “some”，用于声明若干滤条件，若任意条件满足则事件监听器将被触发。</div>
-        <div>“some”修饰符的值是一个<a target="_blank" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/RegExp">正则表达式字面量</a>数组（如果数组元素只有一个值可以省略中括号），数组当中的每一项与$event对象的“<a target="_blank" href="https://developer.mozilla.org/zh-CN/docs/Web/API/KeyboardEvent/code">code</a>/<a target="_blank" href="https://developer.mozilla.org/zh-cn/docs/Web/API/KeyboardEvent/key">key</a>/<a target="_blank" href="https://developer.mozilla.org/zh-CN/docs/Web/API/MouseEvent/button">button</a>”或<a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/getModifierState">辅助键开启状态</a>中的任何一个值相匹配则视为当前条件满足。</div>
+        <div>8. “some”，字符串或者字符串数组类型。用于声明若干滤条件，若任意条件满足则事件监听器将被触发。</div>
+        <div>“some”修饰符的值是一个<a target="_blank" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/RegExp">正则表达式字面量</a>数组，数组当中的每一项与$event对象的“<a target="_blank" href="https://developer.mozilla.org/zh-CN/docs/Web/API/KeyboardEvent/code">code</a>/<a target="_blank" href="https://developer.mozilla.org/zh-cn/docs/Web/API/KeyboardEvent/key">key</a>/<a target="_blank" href="https://developer.mozilla.org/zh-CN/docs/Web/API/MouseEvent/button">button</a>”或<a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/getModifierState">辅助键开启状态</a>中的任何一个值相匹配则视为当前条件满足。</div>
         <div>您也可以在字面量过滤条件前添加“!”进行条件反向匹配。我们来看示例：
           <iframe height="300" style="width: 100%;" scrolling="no" title="[dagger-demo] eventHandler (some decorator)" src="https://codepen.io/dagger8224/embed/vYdJBXM?default-tab=html%2Cresult&editable=true&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
             See the Pen <a href="https://codepen.io/dagger8224/pen/vYdJBXM">

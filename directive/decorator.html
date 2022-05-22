@@ -1,35 +1,43 @@
-<!DOCTYPE html>
-<html>
-  <script type="dagger/configs">
-    {
-      "template": {
-          "uri": "#template",
-          "style": "style"
-      },
-      "style": "#style",
-      "demo": {
-          "uri": "./decorator_demo.html",
-          "type": "string"
-      }
-    }
-  </script>
-  <template id="template">
-    <h2>${ $['directive.decorator'] }</h2>
-    <div class="content">
-      <template $each="$['directive.decorator.sections']">
-        <h3 class="question">${ item.question }</h3>
-        <div class="answer" $html="item.answer"></div>
-      </template>
+<h2>${ $['directive.decorator'] }</h2>
+<div class="content">
+  <template $exist="language == 'zh-cn'">
+    <h3 class="question">指令修饰符的作用</h3>
+    <div class="answer">
+      <div>指令修饰符（后文中简称为修饰符）是指令的可选组成部分，用于对指令的工作方式进行约束声明。</div>
+      <div>修饰符由dagger.js解析和使用，在指令表达式中无法访问修饰符对象的内容。</div>
+      <div>除去<a href="directive/meta">元指令@raw</a>之外，您可以在任意指令上添加修饰符。</div>
     </div>
+    <h3 class="question">指令修饰符的结构</h3>
+    <div class="answer">
+      <div>修饰符紧跟在指令名称之后定义，中间不能添加空格。</div>
+      <div>一个完整的修饰符以符号“#”作为前缀，内容是由“:”分隔的键值对（分别称为修饰符的名字和值）：
+        <div class="code">#key:value</div>
+      </div>
+      <div>您可以使用任何合法的javaScript字面量作为修饰符的值。如果修饰符值为布尔值true，您也可以省略冒号和修饰符值内容：
+        <div class="code">#key(:true) // 括号内容为修饰符缺省值</div>
+      </div>
+      <div>在一个指令上可以同时添加多个修饰符：
+        <div class="code">$value#input#trim:false</div>
+      </div>
+    </div>
+    <h3 class="question">指令修饰符的编码</h3>
+    <div class="answer">
+      <div>受限于DOM标签属性和dagger.js的语法解析规则，部分特殊字符不能直接用作修饰符内容，否则将导致DOM解析失败或得到非预期的处理结果。</div>
+      <div>具体地说，如果您需要在指令修饰符中使用“<”，“>”，“:”，“#”，“\”，“/”，空格以及大写字母，那么要对内容进行<a target="_blank" href="https://developer.mozilla.org/zh-cn/docs/Web/JavaScript/Reference/Global_Objects/encodeURIComponent">编码</a>，dagger.js在解析时将对修饰符内容进行<a target="_blank" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/decodeURIComponent">解码</a>。</div>
+      <div>对于大写字母，一个更便捷的编码方式是在字母前加上“-”符号前缀，例如：
+        <div class="code">+click#every:['-caps-lock','-shift']</div>
+        <div>dagger.js对以上代码解码后将创建一个名为“every”，值为字符串数组“['CapsLock', 'Shift']”的修饰符对象。</div>
+        <div>请注意，dagger.js在解析修饰符时会先对具有“-”前缀的字母做大小写转换后再进行解码。因此，修饰符“-caps-lock”将解码为“CapsLock”，而“%2dcaps%2dlock”将解码为“-caps-lock”。</div>
+        <div>除修饰符外，您也可以在指令名称中使用中横线“-”作为字符大小写转换标记。在<a href="directive/boolean">布尔指令</a>中我们将看到相关用法。</div>
+      </div>
+    </div>
+    <h3 class="question">预定义指令修饰符</h3>
+    <div class="answer">dagger.js针对某些指令预定义了若干修饰符，称为预定义修饰符。不同预定义修饰符的具体内容和使用方式我们将在后文各指令实例章节中进行讲解。</div>
   </template>
-  <style id="style" type="dagger/style">
-    h3::before {
-        content: "😕";
-        margin-right: 10px;
-    }
-    .answer::before {
-        content: "😄";
-        margin-right: 10px;
-    }
-  </style>
-</html>
+  <template $exist="language == 'en-us'">
+    <template $each="$['directive.decorator.sections']">
+      <h3 class="question">${ item.question }</h3>
+      <div class="answer" $html="item.answer"></div>
+    </template>
+  </template>
+</div>

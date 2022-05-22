@@ -7,7 +7,7 @@
     <div class="answer">
       <div>布尔指令表达式的执行结果将转换为布尔值后绑定到元素的属性（property）上。</div>
       <div>当转换后的执行结果为true时，在宿主元素上添加同名的布尔属性，否则移除此布尔属性。</div>
-      <div>请注意，元素的property是小驼峰方式命名的，而指令名由全小写字符组成。为匹配含有大写字符的property，部分指令名需要进行<a href="miscellaneous/encode">转码</a>。dagger.js将中横线“-”作为大小写转码标记，为绑定宿主元素的“readOnly”属性，您需要将指令名声明为“$read-only”。</div>
+      <div>请注意，元素的property是小驼峰方式命名的，而指令名由全小写字符组成。为匹配含有大写字符的property，部分指令名需要进行<a href="directive/decorator">编码</a>。dagger.js将中横线“-”作为指令名称的字符大小写转换标记，为绑定宿主元素的“readOnly”属性，您需要将指令名声明为“$read-only”。</div>
       <div>我们来看下面的例子：
         <iframe height="300" style="width: 100%;" scrolling="no" title="[dagger-demo] boolean directive (IDL)" src="https://codepen.io/dagger8224/embed/LYQLaWp?default-tab=html%2Cresult&editable=true&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
           See the Pen <a href="https://codepen.io/dagger8224/pen/LYQLaWp">

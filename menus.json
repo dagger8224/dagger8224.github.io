@@ -16,11 +16,14 @@
         "text": "introduction",
         "href": "directive/introduction"
     }, {
-        "text": "lifeCycle",
-        "href": "directive/lifeCycle"
+        "text": "decorator",
+        "href": "directive/decorator"
     }, {
         "text": "scope",
         "href": "directive/scope"
+    }, {
+        "text": "lifeCycle",
+        "href": "directive/lifeCycle"
     }, {
         "text": "+loading",
         "href": "directive/loading"
@@ -84,9 +87,6 @@
     }, {
         "text": "eventHandler",
         "href": "directive/eventHandler"
-    }, {
-        "text": "decorator",
-        "href": "directive/decorator"
     }, {
         "text": "@raw",
         "href": "directive/raw"

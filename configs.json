@@ -71,39 +71,50 @@
                         "title": "directive.introduction",
                         "template": "directive_introduction",
                         "previousLink": "overview/application",
-                        "nextLink": "directive/lifeCycle"
+                        "nextLink": "directive/decorator"
                     },
                     "modules": {
                         "directive_introduction": "./directive/introduction.html"
                     }
                 }, {
-                    "path": "lifeCycle",
+                    "path": "decorator",
                     "constants": {
-                        "title": "directive.lifeCycle",
-                        "template": "directive_life-Cycle",
+                        "title": "directive.decorator",
+                        "template": "directive_decorator",
                         "previousLink": "directive/introduction",
                         "nextLink": "directive/scope"
                     },
                     "modules": {
-                        "directive_lifeCycle": "./directive/lifeCycle.html"
+                        "directive_decorator": "./directive/decorator.html"
                     }
                 }, {
                     "path": "scope",
                     "constants": {
                         "title": "directive.scope",
                         "template": "directive_scope",
-                        "previousLink": "directive/lifeCycle",
-                        "nextLink": "directive/loading"
+                        "previousLink": "directive/decorator",
+                        "nextLink": "directive/lifeCycle"
                     },
                     "modules": {
                         "directive_scope": "./directive/scope.html"
+                    }
+                }, {
+                    "path": "lifeCycle",
+                    "constants": {
+                        "title": "directive.lifeCycle",
+                        "template": "directive_life-Cycle",
+                        "previousLink": "directive/scope",
+                        "nextLink": "directive/loading"
+                    },
+                    "modules": {
+                        "directive_lifeCycle": "./directive/lifeCycle.html"
                     }
                 }, {
                     "path": "loading",
                     "constants": {
                         "title": "directive.loading",
                         "template": "directive_loading",
-                        "previousLink": "directive/scope",
+                        "previousLink": "directive/lifeCycle",
                         "nextLink": "directive/loaded"
                     },
                     "modules": {
@@ -328,17 +339,6 @@
                     },
                     "modules": {
                         "directive_eventHandler": "./directive/eventHandler.html"
-                    }
-                }, {
-                    "path": "decorator",
-                    "constants": {
-                        "title": "directive.decorator",
-                        "template": "directive_decorator",
-                        "previousLink": "directive/eventHandler",
-                        "nextLink": "directive/raw"
-                    },
-                    "modules": {
-                        "directive_decorator": "./directive/decorator.html"
                     }
                 }, {
                     "path": "raw",

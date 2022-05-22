@@ -8,9 +8,9 @@
       <h3 class="question">$each指令表达式的执行结果</h3>
       <div class="answer">
         <div>当$each指令的计算结果是一个可迭代数据结构时，框架会以其宿主元素（包含其子级元素）作为模板循环渲染出多个元素实例，并基于循环体内容为每个元素实例创建一个新的作用域变量。这个新的作用域变量下定义了如下几个字段：</div>
-        <div class="margin">“item”，循环体子项数据内容</div>
-        <div class="margin">“index”，整数类型，子项数据在循环体中的索引</div>
-        <div class="margin">“key”，字符串类型，子项数据在父级数据中的字段名</div>
+        <div class="margin">“item”，任意类型，指向循环体子项数据内容。</div>
+        <div class="margin">“index”，整数类型，指向子项数据在循环体中的索引。</div>
+        <div class="margin">“key”，字符串类型，指向子项数据在父级数据中的字段名。</div>
         <div>下面我们来看一个计算结果为数组的$each指令示例：
           <iframe height="300" style="width: 100%;" scrolling="no" title="Untitled" src="https://codepen.io/dagger8224/embed/NWydpzg?default-tab=html%2Cresult&editable=true&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
             See the Pen <a href="https://codepen.io/dagger8224/pen/NWydpzg">

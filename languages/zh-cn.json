@@ -45,6 +45,7 @@
     "reset": "重置",
     "view": "查看执行结果：",
     "rootScope": "根作用域",
+    "directive.decorator": "指令/修饰符",
     "directive.raw": "指令/@raw",
     "directive.raw.sections": [{
         "question": "@raw指令的作用效果",
@@ -73,26 +74,6 @@
     "directive.general": "指令/一般指令",
     "directive.watch": "指令/$watch",
     "directive.eventHandler": "指令/事件处理指令",
-    "directive.decorator": "指令/修饰符",
-    "directive.decorator.sections": [{
-        "question": "指令修饰符的作用",
-        "answer": "<span>修饰符是指令的可选组成部分，用于进一步定制指令的工作方式。元指令不支持修饰符。</span>"
-    }, {
-        "question": "指令修饰符的构成",
-        "answer": "<span>在一个指令上可以同时声明由“#”分割的多个指令修饰符。完整的指令修饰符是由“:”分隔的键值对，其中修饰符值可以缺省，除特殊说明的修饰符之外，缺省值为true。例如，在$value#trim#number:false=\"value\"这个指令声明中指定了trim == true和number == false两个修饰符。</span>"
-    }, {
-        "question": "预定义的通用指令修饰符",
-        "answer": "<span>指令默认工作在非敏感模式下，即在某个指令表达式的执行过程中，变量更新后不会立即触发对此变量有依赖的其他指令表达式执行，而是把这些指令表达式加入待执行队列中，在当前指令表达式执行完毕后再执行。<br/>用户可以使用sensitive(:true)修饰符将指令设置为敏感模式，在此模式下，变量更新将立即触发依赖表达式的执行，在其执行完毕后再返回当前工作栈继续执行后续语句。</span>"
-    }, {
-        "question": "预定义的生命周期指令修饰符",
-        "answer": "<span>“<a href='directive/sentry'>+sentry</a>”生命周期指令支持预定义修饰符next，用于指定回调方法中指向目标<a href='router/introduction'>路由</a>对象的变量名称，缺省变量名为“$nextRouter”；“<a href='directive/loaded'>+loaded</a>”，“<a href='directive/unloading'>+unloading</a>”，“<a href='directive/unloaded'>+unloaded</a>”生命周期指令支持预定义修饰符node，用于指定回调方法中指向宿主元素的变量名称，缺省变量名为“$node”。</span>"
-    }, {
-        "question": "预定义的控制指令修饰符",
-        "answer": "<span>$each指令支持如下预定义修饰符：<div class=\"sub-answer\">1. item，用于指定复制元素作用域下的切片变量名称（缺省变量名为item），例如item:slice将切片变量命名为slice；<br/>2. index，用于指定切片变量在父级变量中的索引变量名称（缺省变量名为index，类型为数字）；<br/>3. key，用于指定切片变量在父级变量中的字段名称（缺省变量名为key，类型为字符串）。</div>$checked指令支持预定义修饰符scope，用于指定选项组的父级元素选择器（默认为指令宿主元素的父元素）。<br/>$focus指令支持预定义修饰符prevent，用于指定<a target='_blank' href='https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLElement/focus'>是否将获取焦点的元素滚动到当前浏览器视窗中</a>。</span>"
-    }, {
-        "question": "指令修饰符的使用限制",
-        "answer": "<span>受限于DOM标签属性的解析规则和dagger.js的语法定义，部分特殊字符不能直接用作修饰符内容，否则将导致解析失败或者得到非预期的处理结果。<br/>具体地说，在指令修饰符中使用“<”，“>”，“:”，“#”，“\\”，“\/”，空格以及大写字母等字符时需要进行<a target='_blank' href='https://developer.mozilla.org/zh-cn/docs/Web/JavaScript/Reference/Global_Objects/encodeURIComponent'>encodeURIComponent</a>。对于大写字母，一个更便捷标记方式是在字母前加上“-”符号前缀，例如，+click#modifier:['-Caps-Lock','-Shift']将在鼠标点击时检查辅助键“CapsLock”和“Shift”的开启状态。<br/>请注意框架在解析修饰符时会先对具有“-”前缀的字母进行大写转换后再解码，因此，修饰符“-Caps-Lock”将解码为“CapsLock”，而“%2dCaps%2dLock”将解码为“-caps-lock”.</span>"
-    }],
     "module.introduction": "模块/介绍",
     "module.introduction.sections": [{
         "question": "什么是模块",

@@ -2,12 +2,15 @@
   <h2>${ $['directive.loading'] }</h2>
   <div class="content">
     <h3 class="question">+loading指令的作用</h3>
+    <div class="answer">“+loading”指令在宿主元素挂载到DOM树之前（加载中阶段）由框架触发调用，主要用于创建<a href="directive/scope">自定义作用域</a>对象。</div>
+    <h3 class="question">+loading指令的执行结果</h3>
     <div class="answer">
-      <div>“+loading”指令在宿主元素挂载到DOM树之前（加载中阶段）由框架触发调用。</div>
       <div>当“+loading”指令表达式的执行结果是一个<a target="_blank" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object">平凡对象</a>时，dagger.js将构造此对象的<a target="_blank" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Proxy">代理对象</a>并将其设置为新的自定义作用域。</div>
       <div>如果“+loading”指令表达式的执行结果是一个代理对象，dagger.js将此对象直接设置为新的自定义作用域。</div>
       <div>如果“+loading”指令表达式的执行结果不是平凡对象或代理对象，则不会创建新的自定义作用域。</div>
     </div>
+    <h3 class="question">+loading指令的预定义修饰符</h3>
+    <div class="answer">“+loading”指令支持布尔类型的预定义指令修饰符root，用于声明当前指令创建出的作用域变量直接继承自<a href="directive/scope">根作用域</a>而非其父级作用域。</div>
     <h3 class="question">+loading指令示例</h3>
     <div class="answer">下面我们来看一个+loading指令的示例。</div>
     <iframe height="300" style="width: 100%;" scrolling="no" title="[dagger-demo] +loading" src="https://codepen.io/dagger8224/embed/wvyoepB?default-tab=html%2Cresult&editable=true&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
