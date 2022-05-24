@@ -42,6 +42,7 @@
     "compatibility": "Compatibility",
     "compatibility.content": "<span>dagger.js is compatible with the browsers supporting <a target='_blank' href='https://262.ecma-international.org/6.0/'>ECMA2015</a> and later version.</span>",
     "directive.introduction": "Directive/introduction",
+    "directive.expression": "Directive/expression",
     "directive.introduction.sections": [{
         "question": "What is directive",
         "answer": "<span>directive is an important concept in dagger.js. Formally, directive is special <a target='_blank' href='https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes'>attribute</a> (with specified prefix). At runtime, directives will be converted to expressions under context scopes, and interactive with the related DOM element. In later tutorials, we will see the examples of usage for different directives.</span>"

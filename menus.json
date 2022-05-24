@@ -19,6 +19,9 @@
         "text": "decorator",
         "href": "directive/decorator"
     }, {
+        "text": "expression",
+        "href": "directive/expression"
+    }, {
         "text": "scope",
         "href": "directive/scope"
     }, {
@@ -91,8 +94,14 @@
         "text": "eventHandler",
         "href": "directive/eventHandler"
     }, {
+        "text": "meta",
+        "href": "directive/meta"
+    }, {
         "text": "@raw",
         "href": "directive/raw"
+    }, {
+        "text": "@dynamic",
+        "href": "directive/dynamic"
     }]
 }, {
     "text": "module",

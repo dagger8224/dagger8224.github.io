@@ -11,15 +11,7 @@
       <div>在一个元素上可以声明任意条指令，没有声明任何指令的元素称为平凡元素。</div>
     </div>
     <h3 class="question">指令的结构</h3>
-    <div class="answer">一个典型的指令由“ 前缀 + 名称 + <a href="directive/decorator">修饰符</a>（可选）+ 表达式 ” 四部分组成，下面的input元素上声明了一个<a href="directive/controller">控制指令</a>：<div class="code">&lt;input $value#number="expression"&gt;</div>在上面的html片段中，input元素是指令的宿主元素，“$”是指令前缀，“value”是指令名称，“number”是指令修饰符，“expression”是指令表达式。</div>
-    <h3 class="question">指令表达式</h3>
-    <div class="answer">
-      <div>指令等号右侧引号中的内容称为指令表达式。</div>
-      <div>任何合法的单javaScript语句都可以作为指令表达式的内容（注意不要在语句前添加return，可以采用逗号分割）。</div>
-      <div>dagger.js会对指令表达式的执行结果进行后续处理以触发页面或数据更新。</div>
-    </div>
-    <h3 class="question">指令表达式中的回调参数</h3>
-    <div class="answer">指令表达式中可以使用<a href="directive/scope">作用域</a>变量“$scope”，指向指令宿主元素的变量“$node”，指向当前<a href="module/introduction">模块</a>的变量“$module”。<a href="directive/eventHandler">事件处理指令</a>中还可以使用指向当前事件对象的变量“$event”。</div>
+    <div class="answer">一个典型的指令由“ 前缀 + 名称 + <a href="directive/decorator">修饰符</a>（可选）+ <a href="directive/expression">表达式</a> ” 四部分组成，下面的input元素上声明了一个<a href="directive/controller">控制指令</a>：<div class="code">&lt;input $value#number="expression"&gt;</div>在上面的html片段中，input元素是指令的宿主元素，“$”是指令前缀，“value”是指令名称，“number”是指令修饰符，“expression”是指令表达式。</div>
     <h3 class="question">指令的类型</h3>
     <div class="answer">dagger.js定义了四种不同类型的指令，每种指令的定义和使用方法将在相关章节中进行具体讲解。下面表格中列举了这些指令的差异部分，方便读者进行直观比较：</div>
     <table>

@@ -6,20 +6,18 @@
       <div class="answer">
         <div>对dagger.js来说，您所创建的入口html文件就是应用程序本身。</div>
         <div>dagger.js定义了一系列的<a href="module/introduction">模块</a>和<a href="directive/introduction">指令</a>。您可以根据需求在html文件的适当位置添加模块和指令声明，框架将在运行时解析这些声明并执行相应代码逻辑，从而为静态<a target="_blank" href="https://developer.mozilla.org/zh-CN/docs/Learn/Getting_started_with_the_web/HTML_basics">超文本标记语言</a>增加动态响应能力。</div>
-        <div>在应用程序中，所有的模块和指令声明都是非必选的。也就是说，一个普通的静态html页面同样是合法的dagger.js应用程序。</div>
+        <div>所有的模块和指令声明都是非必选的。也就是说，一个普通的静态html页面同样是合法的dagger.js应用程序。</div>
       </div>
       <h3 class="question">应用程序示例</h3>
-      <div class="answer">下面窗口中展示的是我们的第一个dagger.js应用程序实例：点击结果区域内的按钮将弹出字符串“Hello dagger!”。
+      <div class="answer">下面窗口中展示的是一个dagger.js应用程序实例：
         <iframe height="300" style="width: 100%;" scrolling="no" title="[dagger-demo] Hello dagger!" src="https://codepen.io/dagger8224/embed/abqNQre?default-tab=html%2Cresult&editable=true&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
           See the Pen <a href="https://codepen.io/dagger8224/pen/abqNQre">
           [dagger-demo] Hello dagger!</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
           on <a href="https://codepen.io">CodePen</a>.
         </iframe>
-      </div>
-      <h3 class="question">示例说明</h3>
-      <div class="answer">
+        <div>点击结果区域内的按钮将弹出字符串“Hello dagger!”。</div>
         <div>您可以修改示例代码中“+loading”指令等号右侧作用域对象的内容，查看代码对程序结果的影响。</div>
-        <div>如示例所示，在dagger.js中，您可以使用<a target="_blank" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Template_literals">模板字符串</a>语法（不需要在两端添加反引号）代替textContent来构建动态文本内容（随着数据变化响应更新）。在后文的示例中我们会频繁使用这种方式来打印示例执行结果。</div>
+        <div>如示例所示，在dagger.js中，您可以使用<a target="_blank" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Template_literals">模板字符串</a>语法（不需要在两端添加反引号）代替textContent来构建动态文本内容（随着数据变化<a href="miscellaneous/responsive">响应更新</a>）。在后文的示例中我们会频繁使用这种方式来打印示例执行结果。</div>
         <div>示例代码演示了dagger.js的核心工作流程：
           <div class="margin">div上的<a href="directive/lifeCycle">生命周期指令</a>“<a href="directive/loading">+loading</a>”构造出一个<a href="directive/scope">作用域</a>对象“$scope”。</div>
           <div class="margin">按钮上的<a href="directive/eventHandler">事件处理指令</a>“+click”在用户点击时将此作用域下“message”字段的值展示在alert弹窗当中。</div>

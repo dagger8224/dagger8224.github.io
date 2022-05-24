@@ -3,13 +3,14 @@
   <template $exist="language == 'zh-cn'">
     <h3 class="question">指令修饰符的作用</h3>
     <div class="answer">
-      <div>指令修饰符（后文中简称为修饰符）是指令的可选组成部分，用于对指令的工作方式进行约束声明。</div>
+      <div>指令修饰符（后文中简称为修饰符）用于对指令的工作方式进行约束声明。</div>
       <div>修饰符由dagger.js解析和使用，在指令表达式中无法访问修饰符对象的内容。</div>
       <div>除去<a href="directive/meta">元指令@raw</a>之外，您可以在任意指令上添加修饰符。</div>
+      <div>修饰符是指令的可选组成部分，您也可以选择先了解后文中指令实例的内容之后再回头参阅本章节。</div>
     </div>
     <h3 class="question">指令修饰符的结构</h3>
     <div class="answer">
-      <div>修饰符紧跟在指令名称之后定义，中间不能添加空格。</div>
+      <div>修饰符紧跟在指令名称之后声明，中间不能添加空格。</div>
       <div>一个完整的修饰符以符号“#”作为前缀，内容是由“:”分隔的键值对（分别称为修饰符的名字和值）：
         <div class="code">#key:value</div>
       </div>
@@ -31,8 +32,27 @@
         <div>除修饰符外，您也可以在指令名称中使用中横线“-”作为字符大小写转换标记。在<a href="directive/boolean">布尔指令</a>中我们将看到相关用法。</div>
       </div>
     </div>
-    <h3 class="question">预定义指令修饰符</h3>
-    <div class="answer">dagger.js针对某些指令预定义了若干修饰符，称为预定义修饰符。不同预定义修饰符的具体内容和使用方式我们将在后文各指令实例章节中进行讲解。</div>
+    <h3 class="question">通用预定义指令修饰符</h3>
+    <div class="answer">您可以在<a href="directive/controller">控制指令</a>和<a href="directive/eventHandler">事件处理指令</a>中使用如下几个通用的预定义修饰符：
+      <div class="margin">1. “once”，布尔类型。once值为true代表其所修饰的指令在宿主元素的整个生命周期内只执行一次。我们来看示例：
+        <iframe height="300" style="width: 100%;" scrolling="no" title="Untitled" src="https://codepen.io/dagger8224/embed/RwQZKQK?default-tab=html%2Cresult&editable=true&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+          See the Pen <a href="https://codepen.io/dagger8224/pen/RwQZKQK">
+          Untitled</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
+          on <a href="https://codepen.io">CodePen</a>.
+        </iframe>
+      </div>
+      <div class="margin">2. “name”，字符串类型。您可以使用name修饰符为控制指令和事件处理指令命名。name修饰符主要与remove修饰符配合以动态删除指令。</div>
+      <div class="margin">
+        <div>3. “remove”，字符串或者字符串数组类型。您可以使用remove字段指定一个或多个指令的名称，当前指令表达式的执行结果为true或者其等效值时，dagger.js将动态移除该指令宿主元素上由remove修饰符指定的指令。</div>
+        <div>您可以使用这个功能来移除不再需要的高频事件处理方法（如mousemove等）。我们来看一个示例：</div>
+        <iframe height="300" style="width: 100%;" scrolling="no" title="[dagger-demo] decorator (name/remove decorators)" src="https://codepen.io/dagger8224/embed/poarKmd?default-tab=html%2Cresult&editable=true&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+          See the Pen <a href="https://codepen.io/dagger8224/pen/poarKmd">
+          [dagger-demo] decorator (name/remove decorators)</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
+          on <a href="https://codepen.io">CodePen</a>.
+        </iframe>
+      </div>
+      除去上述的通用修饰符之外，dagger.js对于某些指令也定义了一些专有的预定义修饰符。这些修饰符我们将在后文的指令实例章节中进行讲解。
+    </div>
   </template>
   <template $exist="language == 'en-us'">
     <template $each="$['directive.decorator.sections']">

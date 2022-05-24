@@ -1,0 +1,36 @@
+<h2>${ $['directive.expression'] }</h2>
+<div class="content">
+  <template $exist="language == 'zh-cn'">
+    <h3 class="question">什么是指令表达式</h3>
+    <div class="answer">
+      <div>指令等号右侧引号中的内容称为指令表达式（后文中简称表达式）。</div>
+      <div>任何合法的单javaScript表达式都可以作为指令表达式的内容（注意不要在表达式中添加“return”或声明变量）：
+        <div>✔️合法的指令表达式内容示例：</div>
+        <div class="code">
+          <div>+click="alert(123)" // 可以在表达式中调用方法</div>
+          <div>+click="a = 1, b = 2" // 可以使用逗号表达式</div>
+        </div>
+        <div>❌非法的指令表达式内容示例：</div>
+        <div class="code">
+          <div>+click="a = 1; b = 2" // 分号后的内容将被忽略</div>
+          <div>+click="return 1" // 不能在表达式中添加return</div>
+          <div>+click="const a = 1" // 不能在表达式中声明变量</div>
+        </div>
+      </div>
+    </div>
+    <h3 class="question">指令表达式中的回调参数</h3>
+    <div class="answer">指令表达式中可以使用<a href="directive/scope">作用域</a>变量“$scope”，指向指令宿主元素的变量“$node”，指向当前<a href="module/introduction">模块</a>的变量“$module”。<a href="directive/eventHandler">事件处理指令</a>中还可以使用指向当前事件对象的变量“$event”。</div>
+    <h3 class="question">指令的执行结果</h3>
+    <div class="answer">
+      <div>指令表达式执行完成后返回的有效值称为指令的执行结果。</div>
+      <div>请注意，如果指令表达式的返回值是一个<a target="_blank" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>，那么指令的执行结果是指此Promise处于已兑现（fulfilled）状态之后的结果值。</div>
+      <div>dagger.js会对指令表达式的执行结果进行后续处理以触发页面或数据更新。</div>
+    </div>
+  </template>
+  <template $exist="language == 'en-us'">
+    <template $each="$['directive.checked.sections']">
+      <h3 class="question">${ item.question }</h3>
+      <div class="answer" $html="item.answer"></div>
+    </template>
+  </template>
+</div>

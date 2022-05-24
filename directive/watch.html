@@ -2,11 +2,9 @@
 <div class="content">
   <template $exist="language == 'zh-cn'">
     <h3 class="question">$watch指令的作用</h3>
-    <div class="answer">$watch指令用于在依赖变量的值发生变化时动态更新关联数据。</div>
-    <h3 class="question">$watch指令的执行结果</h3>
     <div class="answer">
-      <div>框架不会对$watch指令的执行结果进行进一步处理。</div>
-      <div>在同一个宿主元素上可以声明多个$watch指令（需要使用不同的修饰符以避免重名）。我们来看下面的示例：
+      <div>$watch指令定义了变量之间的约束关系。用于在依赖变量的值发生变化时动态更新关联数据。</div>
+      <div>在同一个宿主元素上可以声明多个$watch指令（需要使用不同的修饰符以避免名称重复）。我们来看下面的示例：
         <iframe height="300" style="width: 100%;" scrolling="no" title="Untitled" src="https://codepen.io/dagger8224/embed/JjpJxzq?default-tab=html%2Cresult&editable=true&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
           See the Pen <a href="https://codepen.io/dagger8224/pen/JjpJxzq">
           Untitled</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)

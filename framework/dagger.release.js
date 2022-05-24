@@ -564,10 +564,9 @@ export default ((context = Symbol('context'), currentController = null, daggerOp
     modifier = String(modifier);
     const positive = !modifier.startsWith('!');
     positive || (modifier = modifier.substring(1));
-    const modifierRegExp = new RegExp(modifier);
-    const result = (event.getModifierState && event.getModifierState(modifier)) || [event.code, event.key, event.button].some(value => modifierRegExp.test(value));
+    const modifierRegExp = new RegExp(modifier), result = (event.getModifierState && event.getModifierState(modifier)) || [event.code, event.key, event.button].some(value => modifierRegExp.test(value));
     return positive == result;
-}) => (event, modifiers, methodName) => (!modifiers || (Array.isArray(modifiers) || (modifiers = [modifiers]), modifiers[methodName](modifier => resolver(event, modifier)))))(), directivesRemover = (targetNames, directives, callback) => directives && forEach(directives.filter((directive, index) => (directive.index = index, directive.decorators && targetNames.includes(directive.decorators.name))).reverse(), directive => callback(directive) || directives.splice(directive.index, 1)), valueResolver = node => node && Reflect.has(node[context] || {}, 'value') ? node[context].value : node.value, NodeContext = class {
+}) => (event, modifiers, methodName) => (!modifiers || (Array.isArray(modifiers) || (modifiers = [modifiers]), modifiers[methodName](modifier => resolver(event, modifier)))))(), directivesRemover = (targetNames, directives, callback) => directives && forEach(directives.filter((directive, index) => directive && (directive.index = index, directive.decorators && targetNames.includes(directive.decorators.name))).reverse(), directive => callback(directive) || directives.splice(directive.index, 1)), valueResolver = node => node && Reflect.has(node[context] || {}, 'value') ? node[context].value : node.value, NodeContext = class {
     constructor (profile, parent = null, index = 0, sliceScope = null, plainSliceScope = false, parentNode = null) {
         this.directives = profile.directives, this.profile = profile, this.index = index, this.state = 'loaded', this.promise = this.resolver = this.parent = this.children = this.childrenMap = this.existController = this.landmark = this.upperBoundary = this.childrenController = this.controller = this.controllers = this.eventHandlers = this.scope = this.sentry = this.node = null;
         if (parent) {
@@ -702,11 +701,13 @@ export default ((context = Symbol('context'), currentController = null, daggerOp
         controller.topologySet.forEach(topology => topology.unsubscribe(controller));
         originalSetClear.call(controller.topologySet);
         controller.observer && controller.observer.disconnect();
+        Object.is(controller, this.childrenController) && (this.childrenController = null);
+        Object.is(controller, this.existController) && (this.existController = null);
     }
     removeDirectives (data, targetNames) { // TODO: assert
         if (!data) { return; }
         Array.isArray(targetNames) || (targetNames = [targetNames]);
-        directivesRemover(targetNames, this.controllers, controller => this.removeController(controller));
+        directivesRemover(targetNames, [...this.controllers, this.childrenController, this.existController], controller => this.removeController(controller));
         directivesRemover(targetNames, this.eventHandlers, ({ target, event, handler, options }) => target.removeEventListener(event, handler, options));
     }
     resolveChildren () {
@@ -778,7 +779,7 @@ export default ((context = Symbol('context'), currentController = null, daggerOp
         } else {
             this.state = 'unloading';
             if (this.profile.plain || this.childrenMap) { return this.removeChildren(isRoot); }
-            this.childrenController && (this.removeController(this.childrenController) || (this.childrenController = null));
+            this.childrenController && this.removeController(this.childrenController);
             forEach(this.controllers, controller => this.removeController(controller)) || (this.controllers = null);
             forEach(this.eventHandlers, ({ target, event, handler, options }) => target.removeEventListener(event, handler, options)) || (this.eventHandlers = null);
             if (this.sentry) {

@@ -82,17 +82,28 @@
                         "title": "directive.decorator",
                         "template": "directive_decorator",
                         "previousLink": "directive/introduction",
-                        "nextLink": "directive/scope"
+                        "nextLink": "directive/expression"
                     },
                     "modules": {
                         "directive_decorator": "./directive/decorator.html"
+                    }
+                }, {
+                    "path": "expression",
+                    "constants": {
+                        "title": "directive.expression",
+                        "template": "directive_expression",
+                        "previousLink": "directive/decorator",
+                        "nextLink": "directive/scope"
+                    },
+                    "modules": {
+                        "directive_expression": "./directive/expression.html"
                     }
                 }, {
                     "path": "scope",
                     "constants": {
                         "title": "directive.scope",
                         "template": "directive_scope",
-                        "previousLink": "directive/decorator",
+                        "previousLink": "directive/expression",
                         "nextLink": "directive/lifeCycle"
                     },
                     "modules": {
@@ -346,21 +357,43 @@
                         "title": "directive.eventHandler",
                         "template": "directive_event-handler",
                         "previousLink": "directive/general",
-                        "nextLink": "directive/decorator"
+                        "nextLink": "directive/meta"
                     },
                     "modules": {
                         "directive_eventHandler": "./directive/eventHandler.html"
+                    }
+                }, {
+                    "path": "meta",
+                    "constants": {
+                        "title": "directive.meta",
+                        "template": "directive_meta",
+                        "previousLink": "directive/eventHandler",
+                        "nextLink": "directive/raw"
+                    },
+                    "modules": {
+                        "directive_meta": "./directive/meta.html"
                     }
                 }, {
                     "path": "raw",
                     "constants": {
                         "title": "directive.raw",
                         "template": "directive_raw",
-                        "previousLink": "directive/decorator",
-                        "nextLink": "module/introduction"
+                        "previousLink": "directive/meta",
+                        "nextLink": "directive/dynamic"
                     },
                     "modules": {
                         "directive_raw": "./directive/raw.html"
+                    }
+                }, {
+                    "path": "dynamic",
+                    "constants": {
+                        "title": "directive.dynamic",
+                        "template": "directive_dynamic",
+                        "previousLink": "directive/raw",
+                        "nextLink": "module/introduction"
+                    },
+                    "modules": {
+                        "directive_dynamic": "./directive/dynamic.html"
                     }
                 }]
             }, {
@@ -373,7 +406,7 @@
                     "constants": {
                         "title": "module.introduction",
                         "template": "module_introduction",
-                        "previousLink": "directive/decorator",
+                        "previousLink": "directive/dynamic",
                         "nextLink": "module/template"
                     },
                     "modules": {

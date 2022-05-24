@@ -27,7 +27,7 @@
     </div>
     <div id="header">
       <h1>🗡️ dagger.js</h1>
-      <a id="github-link" href="https://github.com/dagger8224/dagger.js">${ $.viewOnGithub }</a>
+      <!--<a id="github-link" href="https://github.com/dagger8224/dagger.js">${ $.viewOnGithub }</a>-->
       <select id="language-select" $selected="language" +change="localStorage.setItem('language', language) || ($ = languages[language])">
         <option $each="$.languages" $text="item" $value="key"></option>
       </select>
@@ -38,7 +38,7 @@
         <div +click="className = className ? '' : 'hidden'">
           <span class="prefix">${ className ? '+' : '-' }</span><span>${ $[topic.text] || topic.text }</span>
         </div>
-        <li $each#item:section="topic.sections" +click="location.href = `#/${ section.href }`, isMenuClosed = true;" $class="{ active: Object.is(`/${ section.href }`, $router.path), 'sub-directive': section.text.startsWith('$') || section.text.startsWith('+') || ['boolean', 'general'].includes(section.text) }">${ $[section.text] || section.text }</li>
+        <li $each#item:section="topic.sections" +click="location.href = `#/${ section.href }`, isMenuClosed = true;" $class="{ active: Object.is(`/${ section.href }`, $router.path), 'sub-directive': section.text.startsWith('$') || section.text.startsWith('+') || section.text.startsWith('@') || ['boolean', 'general'].includes(section.text) }">${ $[section.text] || section.text }</li>
       </ul>
       <div class="bottom-switcher button" +click="isMenuClosed = !isMenuClosed"><span>${ isMenuClosed ? "》" : "《" }</span></div>
     </div>
