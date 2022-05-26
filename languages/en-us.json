@@ -11,6 +11,7 @@
     "overview": "Overview",
     "overview.application": "Overview/application",
     "directive": "Directive",
+    "directive.dynamic": "Directive/@directive",
     "index": "Index",
     "version": "Version",
     "next": "Next",

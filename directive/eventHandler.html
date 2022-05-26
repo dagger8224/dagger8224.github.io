@@ -6,6 +6,24 @@
       <div>事件处理指令用于为宿主元素添加同名事件监听方法。</div>
       <div>事件处理指令表达式中可以使用指向当前触发事件的回调参数“$event”。</div>
     </div>
+    <h3 class="question">事件处理指令有哪些</h3>
+    <div class="answer">
+      <div>任意的<a target="_blank" href="https://developer.mozilla.org/zh-CN/docs/Web/Events#%E6%A0%87%E5%87%86%E4%BA%8B%E4%BB%B6">DOM标准事件</a>名称都是合法的事件处理指令名。我们来看一个示例：
+        <iframe height="300" style="width: 100%;" scrolling="no" title="[dagger-demo] eventHandler directive (standard event)" src="https://codepen.io/dagger8224/embed/dydZvpX?default-tab=html%2Cresult&editable=true&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+          See the Pen <a href="https://codepen.io/dagger8224/pen/dydZvpX">
+          [dagger-demo] eventHandler directive (standard event)</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
+          on <a href="https://codepen.io">CodePen</a>.
+        </iframe>
+      </div>
+      <div>您也可以在其他字符串前添加“+”前缀构造一个<a target="_blank" href="https://developer.mozilla.org/zh-CN/docs/Web/API/CustomEvent/CustomEvent">自定义事件</a>：
+        <iframe height="300" style="width: 100%;" scrolling="no" title="[dagger-demo] eventHandler directive (custom event)" src="https://codepen.io/dagger8224/embed/QWQOpBz?default-tab=html%2Cresult&editable=true&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+          See the Pen <a href="https://codepen.io/dagger8224/pen/QWQOpBz">
+          [dagger-demo] eventHandler directive (custom event)</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
+          on <a href="https://codepen.io">CodePen</a>.
+        </iframe>
+        在dagger.js中，您可以使用自定义事件进行作用域之间的数据通信。
+      </div>
+    </div>
     <h3 class="question">事件处理指令的预定义修饰符</h3>
     <div class="answer">事件处理指令支持如下几个预定义修饰符：
       <div class="margin">1. “target”，字符串或者表达式类型。用于指定监听目标对象（默认的监听对象是当前宿主元素）。我们来看示例：

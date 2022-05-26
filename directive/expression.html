@@ -18,8 +18,13 @@
         </div>
       </div>
     </div>
-    <h3 class="question">指令表达式中的回调参数</h3>
-    <div class="answer">指令表达式中可以使用<a href="directive/scope">作用域</a>变量“$scope”，指向指令宿主元素的变量“$node”，指向当前<a href="module/introduction">模块</a>的变量“$module”。<a href="directive/eventHandler">事件处理指令</a>中还可以使用指向当前事件对象的变量“$event”。</div>
+    <h3 class="question">指令表达式的回调参数</h3>
+    <div class="answer">您可以在指令表达式中使用如下几个回调参数：
+        <div class="margin">1. “$scope”，对象类型。指向当前指令声明位置对应的<a href="directive/scope">作用域</a>变量</div>
+        <div class="margin">2. “$node”，对象类型。指向当前指令的宿主元素对象。</div>
+        <div class="margin">3. “$module”，对象类型。指向当前<a href="module/namespace">名空间</a>下定义的<a href="module/introduction">模块</a>变量</div>
+        <div class="margin">4. “$event”，对象类型。$event参数只在<a href="directive/eventHandler">事件处理指令</a>表达式中生效，指向当前被触发的事件对象。</div>
+    </div>
     <h3 class="question">指令的执行结果</h3>
     <div class="answer">
       <div>指令表达式执行完成后返回的有效值称为指令的执行结果。</div>

@@ -100,7 +100,7 @@
         "text": "@raw",
         "href": "directive/raw"
     }, {
-        "text": "@dynamic",
+        "text": "@directive",
         "href": "directive/dynamic"
     }]
 }, {

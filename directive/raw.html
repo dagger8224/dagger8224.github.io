@@ -1,35 +1,23 @@
-<!DOCTYPE html>
-<html>
-  <script type="dagger/configs">
-    {
-      "template": {
-          "uri": "#template",
-          "style": "style"
-      },
-      "style": "#style",
-      "demo": {
-          "uri": "./raw_demo.html",
-          "type": "string"
-      }
-    }
-  </script>
-  <template id="template">
-    <h2>${ $['directive.raw'] }</h2>
-    <div class="content">
-      <template $each="$['directive.raw.sections']">
-        <h3 class="question">${ item.question }</h3>
-        <div class="answer" $html="item.answer"></div>
-      </template>
+<h2>${ $['directive.raw'] }</h2>
+<div class="content">
+  <template $exist="language == 'zh-cn'">
+    <h3 class="question">@raw指令的作用</h3>
+    <div class="answer">
+      <div>dagger.js将“@raw”指令的宿主元素及其子级元素作为平凡元素处理（无论是否存在其他指令声明），不再进行进一步的解析或执行其他指令。</div>
+      <div>您可以在平凡子树的根元素上声明“@raw”指令以提升页面解析性能。我们来看例子：
+        <iframe height="300" style="width: 100%;" scrolling="no" title="[dagger-demo] @raw directive" src="https://codepen.io/dagger8224/embed/vYdWZeY?default-tab=html%2Cresult&editable=true&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+          See the Pen <a href="https://codepen.io/dagger8224/pen/vYdWZeY">
+          [dagger-demo] @raw directive</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
+          on <a href="https://codepen.io">CodePen</a>.
+        </iframe>
+      </div>
+      <div>请注意，“@raw”指令没有表达式部分，也不能添加任何修饰符，否则指令将失去作用。</div>
     </div>
   </template>
-  <style id="style" type="dagger/style">
-    h3::before {
-        content: "😕";
-        margin-right: 10px;
-    }
-    .answer::before {
-        content: "😄";
-        margin-right: 10px;
-    }
-  </style>
-</html>
+  <template $exist="language == 'en-us'">
+    <template $each="$['directive.raw.sections']">
+      <h3 class="question">${ item.question }</h3>
+      <div class="answer" $html="item.answer"></div>
+    </template>
+  </template>
+</div>

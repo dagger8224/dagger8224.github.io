@@ -1,6 +1,68 @@
 <template $exist="language == 'zh-cn'">
   <h2>${ $['directive.lifeCycle'] }</h2>
   <div class="content">
+    <h3 class="question">元素的生命周期</h3>
+    <div class="answer">
+      <div>元素是dagger.js应用程序的最小处理单元。元素的生命周期指的是一个元素从创建到销毁的整个过程。</div>
+      <div>下表列出了元素生命周期的各个阶段内将执行的指令：</div>
+      <table>
+        <thead>
+          <tr>
+            <th>阶段名称</th>
+            <th>前置条件</th>
+            <th>元素连接状态</th>
+            <th>执行指令</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td rowspan="2">解析</td>
+            <td rowspan="2">视图模板加载完成</td>
+            <td rowspan="2">未连接</td>
+            <td><a href="directive/raw">@raw</a></td>
+          </tr>
+          <tr>
+            <td><a href="directive/dynamic">@directive</a></td>
+          </tr>
+          <tr>
+            <td rowspan="2">加载前</td>
+            <td rowspan="2">宿主元素指令解析完成</td>
+            <td rowspan="2">未连接</td>
+            <td><a href="directive/each">$each</a></td>
+          </tr>
+          <tr>
+            <td><a href="directive/exist">$exist</a></td>
+          </tr>
+          <tr>
+            <td>加载中</td>
+            <td><a href="directive/each">$each</a>/<a href="directive/exist">$exist</a>未声明或执行完成</td>
+            <td>未连接</td>
+            <td><a href="directive/loading">+loading</a></td>
+          </tr>
+          <tr>
+            <td rowspan="2">加载完成</td>
+            <td rowspan="2"><a href="directive/loading">+loading</a>未声明或执行完成</td>
+            <td rowspan="2">已连接</td>
+            <td><a href="directive/loaded">+loaded</a></td>
+          </tr>
+          <tr>
+            <td><a href="directive/controller">控制指令</a></td>
+          </tr>
+          <tr>
+            <td>销毁中</td>
+            <td>当前元素即将从DOM移除</td>
+            <td>已连接</td>
+            <td><a href="directive/unloading">+unloading</a></td>
+          </tr>
+          <tr>
+            <td>已销毁</td>
+            <td><a href="directive/unloading">+unloading</a>未声明或执行完成</td>
+            <td>未连接</td>
+            <td><a href="directive/unloaded">+unloaded</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
     <h3 class="question">什么是生命周期指令</h3>
     <div class="answer">生命周期指令是在宿主元素的创建或销毁阶段触发执行的一组指令的统称。</div>
     <h3 class="question">生命周期指令列表</h3>
@@ -18,12 +80,14 @@
       “+sentry”指令在页面<a href="router/introduction">路由</a>即将发生切换时触发。
     </div>
     <h3 class="question">生命周期指令示例</h3>
-    <div class="answer">下面我们来看一个演示生命周期指令执行顺序的例子。目前只要理解各个生命周期方法的调用顺序就好，每个指令的具体功能和用法将在后面的章节中讲解。</div>
-    <iframe height="300" style="width: 100%;" scrolling="no" title="Untitled" src="https://codepen.io/dagger8224/embed/YzeGqbJ?default-tab=html%2Cresult&editable=true&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
-      See the Pen <a href="https://codepen.io/dagger8224/pen/YzeGqbJ">
-      Untitled</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
-      on <a href="https://codepen.io">CodePen</a>.
-    </iframe>
+    <div class="answer">下面我们来看一个演示生命周期指令执行顺序的例子：
+      <iframe height="300" style="width: 100%;" scrolling="no" title="Untitled" src="https://codepen.io/dagger8224/embed/YzeGqbJ?default-tab=html%2Cresult&editable=true&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+        See the Pen <a href="https://codepen.io/dagger8224/pen/YzeGqbJ">
+        Untitled</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
+        on <a href="https://codepen.io">CodePen</a>.
+      </iframe>
+      目前只要理解各个生命周期方法的调用顺序就好，每个指令的具体功能和用法将在后面的章节中讲解。
+    </div>
   </div>
 </template>
 <template $exist="language == 'en-us'">
