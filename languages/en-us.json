@@ -370,7 +370,7 @@
         "answer": "<span>The root module config is defined in the \"modules\" field of the <a href='router/introduction'>router config</a>, children module configs are declared under the parent module configs nested.</span>"
     }, {
         "question": "The way to visit module objects",
-        "answer": "<span>The global module resource tree of the current <a href='router/introduction'>routing scenarios</a> could be visited via the \"$modules\" object under the <a href='miscellaneous/introduction'>root scope</a>, which could also be visited anonymously. For instance, a module named \"script\" under \"$modules\" may referred as \"$modules.script\" or \"script\" directly.</span>"
+        "answer": "<span>The global module resource tree of the current <a href='router/introduction'>routing scenarios</a> could be visited via the \"$module\" object under the <a href='miscellaneous/introduction'>root scope</a>, which could also be visited anonymously. For instance, a module named \"script\" under \"$module\" may referred as \"$module.script\" or \"script\" directly.</span>"
     }, {
         "question": "The order of module loading and view rendering",
         "answer": "<span>The framework will load and parse the modules declared within current router scenarios at the time of page loading or router changing. The view will start rendering right after all the modules loaded. The resolved modules will be cached at runtime and won't be loaded and parsed again when router changed.</span>"
@@ -392,7 +392,7 @@
     "module.namespace": "Module/namespace",
     "module.namespace.sections": [{
         "question": "What is namespace module",
-        "answer": "<span>Namespace is a module set composed of sub modules. Each namespace constitutes a new module scope, to visit the variables or methods under the sub modules of a namespace, both the absolute way (via the \"$modules\" object under the <a href='miscellaneous/introduction'>root scope</a>) or relative way (via the relative path to the namespace) are supported.</span>"
+        "answer": "<span>Namespace is a module set composed of sub modules. Each namespace constitutes a new module scope, to visit the variables or methods under the sub modules of a namespace, both the absolute way (via the \"$module\" object under the <a href='miscellaneous/introduction'>root scope</a>) or relative way (via the relative path to the namespace) are supported.</span>"
     }, {
         "question": "The infer rule of namespace module",
         "answer": "<span>The module without specified type would be inferred as namespace module in case the <a target='_blank' href='https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Type'>Content-Type</a> of remote response contains \"text/html\" and the root element of the resource document is the html tag (otherwise will be inferred as \"template\").</span>"
@@ -489,7 +489,7 @@
     "miscellaneous.introduction": "Miscellaneous/introduction",
     "miscellaneous.introduction.sections": [{
         "question": "The root scope",
-        "answer": "<span>The root scope of dagger.js is the variable scope defined at the top level of the runtime closure, the variables and methods under the root scope can be visited within the directive expressions on any element. The root scope includes the <a href='router/structure'>routing</a> object \"$router\", the <a href='module/introduction'>module</a> resource tree object \"$modules\", and the data validation method in debug mode \"$validator\".</span>"
+        "answer": "<span>The root scope of dagger.js is the variable scope defined at the top level of the runtime closure, the variables and methods under the root scope can be visited within the directive expressions on any element. The root scope includes the <a href='router/structure'>routing</a> object \"$router\", the <a href='module/introduction'>module</a> resource tree object \"$module\", and the data validation method in debug mode \"$validator\".</span>"
     }, {
         "question": "$validator",
         "answer": "<span>\"$validator\" is a builtin javaScript method under root scope, which supports the following parameters:<div class=\"sub-answer\">1. \"data\" (any), to specify the variable data to be validated;<br/>2. \"path\" (string), to specify the path or name of the validate data;<br/>3. \"validators\", the validator content, including:<div class=\"sub-answer\">a. \"type\", used to validate the type(s) of the variable;<br/>b. \"assert\" the assert method(s), accept data as input parameter, return true as validate successfully, otherwise validate failed;<br/>c. \"required\"，be true means that the data to be validated must be a valid value (should not b null, undefined or NaN).</div></div></span>"

@@ -100,7 +100,7 @@
         "answer": "<span>模块资源树的根节点定义在页面<a href='router/introduction'>路由配置项</a>下的“modules”字段下，子级模块配置项在父级模块配置项中嵌套定义。</span>"
     }, {
         "question": "模块资源的访问方式",
-        "answer": "<span>当前<a href='router/introduction'>路由场景</a>下声明的全局模块资源树可以通过<a href='miscellaneous/introduction'>根作用域</a>下的“$modules”对象访问，出于使用便捷性的考虑，“$modules”下的模块也支持匿名方式访问，例如，既可以使用“$modules.script”也可以使用“script”访问当前路由下声明的名为“script”的模块。</span>"
+        "answer": "<span>当前<a href='router/introduction'>路由场景</a>下声明的全局模块资源树可以通过<a href='miscellaneous/introduction'>根作用域</a>下的“$module”对象访问，出于使用便捷性的考虑，“$module”下的模块也支持匿名方式访问，例如，既可以使用“$module.script”也可以使用“script”访问当前路由下声明的名为“script”的模块。</span>"
     }, {
         "question": "模块加载与页面渲染的时序关系",
         "answer": "<span>当页面加载或者发生页面内路由切换时将触发当前路由场景下声明的全部模块递归加载和解析，资源树创建完毕后进行路由视图渲染。已经加载过的模块会在运行时缓存，页面内路由切换时不会重新加载解析。</span>"
@@ -125,7 +125,7 @@
     "module.namespace": "模块/名空间",
     "module.namespace.sections": [{
         "question": "什么是名空间模块",
-        "answer": "<span>名空间模块是由其他子级模块组成的模块集合。每个名空间构成一个新的模块作用域，在名空间内部访问其子级模块中定义的变量或者方法时，既可以使用<a href='miscellaneous/introduction'>根作用域</a>下的“$modules”对象通过绝对路径方式访问，也可以使用当前名空间模块作用域下的相对路径访问。</span>"
+        "answer": "<span>名空间模块是由其他子级模块组成的模块集合。每个名空间构成一个新的模块作用域，在名空间内部访问其子级模块中定义的变量或者方法时，既可以使用<a href='miscellaneous/introduction'>根作用域</a>下的“$module”对象通过绝对路径方式访问，也可以使用当前名空间模块作用域下的相对路径访问。</span>"
     }, {
         "question": "名空间模块的类别推断规则",
         "answer": "<span>对于未指定类别的模块，如果资源内容的容器是类型为“dagger/configs”的style标签（嵌入方式），或者远程请求响应头的<a target='_blank' href='https://developer.mozilla.org/zh-cn/docs/Web/HTTP/Headers/Content-Type'>Content-Type</a>包含“text/html”且资源内容是完整的html文档（否则将被识别为模板类别），则模块类别将被推断为名空间。</span>"
@@ -222,7 +222,7 @@
     "miscellaneous.introduction": "杂项/介绍",
     "miscellaneous.introduction.sections": [{
         "question": "根作用域",
-        "answer": "<span>dagger.js的根作用域是定义在运行时闭包最顶层的变量作用域，页面中所有元素上的指令表达式均可使用根作用域下的变量与方法。根作用域对象包括<a href='router/structure'>路由</a>对象“$router”，当前路由场景下的<a href='module/introduction'>模块</a>资源树对象“$modules”，以及在debug模式下进行数据校验用的“$validator”方法。</span>"
+        "answer": "<span>dagger.js的根作用域是定义在运行时闭包最顶层的变量作用域，页面中所有元素上的指令表达式均可使用根作用域下的变量与方法。根作用域对象包括<a href='router/structure'>路由</a>对象“$router”，当前路由场景下的<a href='module/introduction'>模块</a>资源树对象“$module”，以及在debug模式下进行数据校验用的“$validator”方法。</span>"
     }, {
         "question": "验证器",
         "answer": "<span>验证器是一个javaScript方法，支持如下几个调用参数：<div class=\"sub-answer\">1. “data”，用于指定要进行验证的变量数据；<br/>2. “path”，用于指定被校验数据在当前作用域下的访问路径或者名称；<br/>3. “validators”，验证对象，包含三个调用预定义字段：<div class=\"sub-answer\">a. “type”，验证变量所属的类型对象或者类型对象数组；<br/>b. “assert”，断言方法，接受data作为参数，返回true代表断言成功，false代表断言失败；<br/>c. “required”，为true代表要求待验证对象必须为有效值（不能是null，undefined或者NaN）。</div></div></span>"
