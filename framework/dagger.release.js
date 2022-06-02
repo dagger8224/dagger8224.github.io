@@ -487,7 +487,7 @@ export default ((context = Symbol('context'), currentController = null, daggerOp
         Reflect.construct(NodeProfile, [fragment, root ? [] : profile.paths, rootNodeProfiles, null, true]);
         if (rootNodeProfiles.length) {
             processorResolver();
-            forEach(rootNodeProfiles, (nodeProfile, index) => Promise.all(nodeProfile.promises || []).then(() => nodeContext.profile && Reflect.construct(NodeContext, [nodeProfile, root ? null : nodeContext, index, null, false, (nodeProfile.landmark || nodeProfile.node).parentNode])));
+            Promise.all(rootNodeProfiles.map(nodeProfile => Promise.all(nodeProfile.promises || []))).then(() => forEach(rootNodeProfiles, (nodeProfile, index) => nodeContext.profile && Reflect.construct(NodeContext, [nodeProfile, root ? null : nodeContext, index, null, false, (nodeProfile.landmark || nodeProfile.node).parentNode])));
         }
         node ? node.appendChild(fragment) : nodeContext.parentNode.insertBefore(fragment, nodeContext.landmark);
     },
@@ -601,7 +601,10 @@ export default ((context = Symbol('context'), currentController = null, daggerOp
         }
         if (raw || plain) { // comment/raw/script/style/template
             this.resolveNode();
-            plain && this.resolveChildren();
+            if (plain) {
+                this.node.removeAttribute('dg-cloak');
+                this.resolveChildren();
+            }
         } else if (text) {
             this.resolveNode(() => (this.controller = this.resolveController(text)));
         } else {

@@ -1,35 +1,24 @@
-<!DOCTYPE html>
-<html>
-  <script type="dagger/configs">
-    {
-      "template": {
-          "uri": "#template",
-          "style": "style"
-      },
-      "style": "#style",
-      "demo": {
-          "uri": "./template_demo.json",
-          "type": "string"
-      }
-    }
-  </script>
-  <template id="template">
-    <h2>${ $['module.template'] }</h2>
-    <div class="content">
-      <template $each="$['module.template.sections']">
-        <h3 class="question">${ item.question }</h3>
-        <div class="answer" $html="item.answer"></div>
-      </template>
+<h2>${ $['module.template'] }</h2>
+<div class="content">
+  <template $exist="language == 'zh-cn'">
+    <h3 class="question">什么是模板</h3>
+    <div class="answer">模板是可复用的html片段。您可以在html中通过模块路径来声明模板实例，我们来看例子：
+      
+    </div>
+    <h3 class="question">模板模块的配置项值</h3>
+    <div class="answer">除模块的通用配置项字段外，模板模块还支持style字段（字符串或者字符串数组），用于指定在当前模板上生效的样式模块名称。我们来看例子：
+      <iframe height="300" style="width: 100%;" scrolling="no" title="Untitled" src="https://codepen.io/dagger8224/embed/yLvKEJR?default-tab=html%2Cresult&editable=true&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+        See the Pen <a href="https://codepen.io/dagger8224/pen/yLvKEJR">
+        Untitled</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
+        on <a href="https://codepen.io">CodePen</a>.
+      </iframe>
+      上例中，样式模块“style”将仅在“view_module”模板内的元素上生效。
     </div>
   </template>
-  <style id="style" type="dagger/style">
-    h3::before {
-        content: "😕";
-        margin-right: 10px;
-    }
-    .answer::before {
-        content: "😄";
-        margin-right: 10px;
-    }
-  </style>
-</html>
+  <template $exist="language == 'en-us'">
+    <template $each="$['module.template.sections']">
+      <h3 class="question">${ item.question }</h3>
+      <div class="answer" $html="item.answer"></div>
+    </template>
+  </template>
+</div>

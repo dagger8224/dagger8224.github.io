@@ -109,19 +109,6 @@
         "answer": "<span>模块内容是只读的，不允许在运行时进行修改。合法的模块名称可以由“$”，“-”，“_”，大小写字母和数字组成，首字符不能是数字。</span>"
     }],
     "module.template": "模块/模板",
-    "module.template.sections": [{
-        "question": "什么是模板",
-        "answer": "<span>模板是由html标签（包括原生DOM元素和其他模板模块）组合成的视图模块。</span>"
-    }, {
-        "question": "模板的类别推断规则",
-        "answer": "<span>对于未指定类别的模块，如果资源内容的容器是template标签（嵌入方式），或者远程请求响应头的<a target='_blank' href='https://developer.mozilla.org/zh-cn/docs/Web/HTTP/Headers/Content-Type'>Content-Type</a>包含“text/html”且资源文档的根节点不是html标签（否则将被识别为名空间类别），则模块类别将被推断为模板。</span>"
-    }, {
-        "question": "模板模块的配置项字段",
-        "answer": "<span>除模块的通用配置项字段外，模板模块还支持style字段（字符串或者字符串数组），用于指定在当前模板中生效的作用域样式模块的相对路径。</span>"
-    }, {
-        "question": "模板的使用限制",
-        "answer": "<span>1. 框架不支持对包含递归或者循环引用结构的模板进行解析，如果需要使用此类模板结构可以结合带有判断条件的“<a href='directive/html'>$html</a>”指令实现。<br/>2. 受限于html标签的解析规则和兼容性考虑，模板路径中不能包含“$”和“-”符号。如果模板路径中包含大写字符，作为html标签使用时需要在字符前增加“-”前缀进行转义，例如，标签名“&lt;my-module.-template&gt;”将会被框架转义为模板路径“myModule.Template”。<br/>3. 模板标签在解析时会进行内容替换，不对应真实的DOM元素，因此不能作为<a href='directive/eventHandler'>事件处理指令</a>的目标。</span>"
-    }],
     "module.namespace": "模块/名空间",
     "module.namespace.sections": [{
         "question": "什么是名空间模块",

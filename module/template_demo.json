@@ -1,7 +1,0 @@
-{
-    "external_template": "./module/demo/template.html",
-    "inline_template": {
-        "content": "<button>I'm a button</button>",
-        "type": "template"
-    }
-}

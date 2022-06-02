@@ -1,38 +1,173 @@
-<!DOCTYPE html>
-<html>
-  <script type="dagger/configs">
-    {
-      "template": {
-          "uri": "#template",
-          "style": "style"
-      },
-      "style": "#style",
-      "demo": {
-          "uri": "./introduction_demo.json",
-          "type": "string"
-      }
-    }
-  </script>
-  <template id="template">
-    <h2>${ $['module.introduction'] }</h2>
-    <div class="content">
-      <template $each="$['module.introduction.sections']">
-        <h3 class="question">${ item.question }</h3>
-        <div class="answer" $html="item.answer"></div>
-      </template>
+<h2>${ $['module.introduction'] }</h2>
+<div class="content">
+  <template $exist="language == 'zh-cn'">
+    <h3 class="question">什么是模块</h3>
+    <div class="answer">在dagger.js中，我们把可复用的代码片段（html模板，脚本，层叠样式表等）统称为模块。您可以在指令表达式中通过回调参数对象“$module”访问模块内容。</div>
+    <h3 class="question">模块类型列表</h3>
+    <div class="answer"><a class="margin" href="module/template">模板</a><a class="margin" href="module/script">脚本</a><a class="margin" href="module/style">样式</a><a class="margin" href="module/json">json</a><a class="margin" href="module/string">字符串</a><a class="margin" href="module/namespace">名空间</a></div>
+    <h3 class="question">如何注册模块</h3>
+    <div class="answer">
+      <div>在<a href="overview/install">安装</a>章节中我们曾经提到，项目的入口页面要添加一个类型为“dagger/configs”的script标签作为应用程序配置项（内容为json格式）。在使用模块前，您需要先在配置项中对其进行注册。一个典型的模块注册项包括如下信息：
+        <div class="margin">1. 模块名。由注册项的键指定。合法的模块名称由“$”，“-”，“_”，大小写字母和数字组成，首字符不能是数字。</div>
+        <div class="margin">2. 模块的资源加载位置。由注册项值的“uri”字段指定。</div>
+        <div class="margin">3. 模块的类型。由注册项值的“type”字段指定。</div>
+        来看一个示例：
+        <iframe height="300" style="width: 100%;" scrolling="no" title="Untitled" src="https://codepen.io/dagger8224/embed/abqqZeR?default-tab=html&editable=true&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+          See the Pen <a href="https://codepen.io/dagger8224/pen/abqqZeR">
+          Untitled</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
+          on <a href="https://codepen.io">CodePen</a>.
+        </iframe>
+        在上面的例子中，我们注册了一个名为“script1”的<a href="module/script">脚本模块</a>，其内容来自于“<a target="_blank" href="https://codepen.io/dagger8224/pen/abqqZeR.js">https://codepen.io/dagger8224/pen/abqqZeR.js</a>”。
+      </div>
+      <div>模块的uri可以是url地址（远程资源），DOM选择器（本地资源），也可以指向另一个模块的路径（引用资源）。我们来看示例：
+        <iframe height="300" style="width: 100%;" scrolling="no" title="[dagger-demo] $module (uri)" src="https://codepen.io/dagger8224/embed/zYRpYpa?default-tab=html&editable=true&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+          See the Pen <a href="https://codepen.io/dagger8224/pen/zYRpYpa">
+          [dagger-demo] $module (uri)</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
+          on <a href="https://codepen.io">CodePen</a>.
+        </iframe>
+      </div>
     </div>
+    <h3 class="question">模块类型的自动推断</h3>
+    <div class="answer">大部分情况下，您并不需要显式指定模块类型，dagger.js能够智能地根据资源内容自动进行模块类型推断。省略了“type”字段的模块配置项值可以由对象退化为指向资源位置的字符串。模块类型的具体推断规则参见下表：
+      <table>
+        <thead>
+          <tr>
+            <th>uri类别</th>
+            <th>推断依据</th>
+            <th>推断结果</th>
+            <th>示例</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td rowspan="13">远程资源</td>
+            <td>url地址后缀为“.js”</td>
+            <td rowspan="4"><a href="module/script">脚本模块</a></td>
+            <td rowspan="4"><a target="_blank" href="https://codepen.io/dagger8224/pen/bGLLjYN?editors=1010">./script.js</a></td>
+          </tr>
+          <tr>
+            <td>MIME类型为“application/javascript”</td>
+          </tr>
+          <tr>
+            <td>MIME类型为“javascript/esm”</td>
+          </tr>
+          <tr>
+            <td>MIME类型为“text/javascript”</td>
+          </tr>
+          <tr>
+            <td>url地址后缀为“.css”</td>
+            <td rowspan="2"><a href="module/style">样式模块</a></td>
+            <td rowspan="2"><a target="_blank" href="https://codepen.io/dagger8224/pen/MWQQBQJ?editors=1100">./style.css</a></td>
+          </tr>
+          <tr>
+            <td>MIME类型为“text/css”</td>
+          </tr>
+          <tr>
+            <td>url地址后缀为“.html”且资源文件内容不包含&lt;html&gt;标签</td>
+            <td rowspan="2"><a href="module/template">模板模块</a></td>
+            <td rowspan="2"><a target="_blank" href="https://codepen.io/dagger8224/pen/OJQQdgv?editors=1000">./template.html</a></td>
+          </tr>
+          <tr>
+            <td>MIME类型为“text/html”且资源文件内容不包含&lt;html&gt;标签</td>
+          </tr>
+          <tr>
+            <td>url地址后缀为“.html”且资源文件内容包含&lt;html&gt;标签</td>
+            <td rowspan="2"><a href="module/namespace">名空间模块</a></td>
+            <td rowspan="2"><a target="_blank" href="https://codepen.io/dagger8224/pen/LYQQqjb?editors=1000">./namespace.html</a></td>
+          </tr>
+          <tr>
+            <td>MIME类型为“text/html”且资源文件内容包含&lt;html&gt;标签</td>
+          </tr>
+          <tr>
+            <td>url地址后缀为“.json”</td>
+            <td rowspan="2"><a href="module/json">json模块</a></td>
+            <td rowspan="2"><a target="_blank" href="https://assets.codepen.io/5782383/demo.json">./json.json</a></td>
+          </tr>
+          <tr>
+            <td>MIME类型为“application/json”</td>
+          </tr>
+          <tr>
+            <td>不满足上述条件的远程资源</td>
+            <td><a href="module/string">字符串模块</a></td>
+            <td><a target="_blank" href="https://assets.codepen.io/5782383/string.txt">./string.txt</a></td>
+          </tr>
+          <tr>
+            <td rowspan="5">本地资源</td>
+            <td>资源容器是类型为“dagger/script”的&lt;script&gt;标签</td>
+            <td><a href="module/script">脚本模块</a></td>
+            <td><a target="_blank" href="https://codepen.io/dagger8224/pen/YzeeBLr?editors=1000">script</a></td>
+          </tr>
+          <tr>
+            <td>资源容器是类型为“dagger/style”的&lt;style&gt;标签</td>
+            <td><a href="module/style">样式模块</a></td>
+            <td><a target="_blank" href="https://codepen.io/dagger8224/pen/dyddagz?editors=1000">style</a></td>
+          </tr>
+          <tr>
+            <td>资源容器是&lt;template&gt;标签</td>
+            <td><a href="module/template">模板模块</a></td>
+            <td><a target="_blank" href="https://codepen.io/dagger8224/pen/eYVVXdB?editors=1000">template</a></td>
+          </tr>
+          <tr>
+            <td>资源容器是类型为“dagger/json”的&lt;script&gt;标签</td>
+            <td><a href="module/json">json模块</a></td>
+            <td><a target="_blank" href="https://codepen.io/dagger8224/pen/xxYYBpY?editors=1000">json</a></td>
+          </tr>
+          <tr>
+            <td>资源容器是类型为“dagger/string”的&lt;script&gt;标签</td>
+            <td><a href="module/string">string模块</a></td>
+            <td><a target="_blank" href="https://codepen.io/dagger8224/pen/bGLLPGJ?editors=1000">string</a></td>
+          </tr>
+          <tr>
+            <td rowspan="5">引用资源</td>
+            <td>被引用模块为脚本模块</td>
+            <td><a href="module/script">脚本模块</a></td>
+            <td><a target="_blank" href="https://codepen.io/dagger8224/pen/mdXXZJG?editors=1000">script</a></td>
+          </tr>
+          <tr>
+            <td>被引用模块为样式模块</td>
+            <td><a href="module/style">样式模块</a></td>
+            <td><a target="_blank" href="https://codepen.io/dagger8224/pen/vYddqGa?editors=1000">style</a></td>
+          </tr>
+          <tr>
+            <td>被引用模块为模板模块</td>
+            <td><a href="module/template">模板模块</a></td>
+            <td><a target="_blank" href="https://codepen.io/dagger8224/pen/gOvvNLq?editors=1000">template</a></td>
+          </tr>
+          <tr>
+            <td>被引用模块为json模块</td>
+            <td><a href="module/json">json模块</a></td>
+            <td><a target="_blank" href="https://codepen.io/dagger8224/pen/qBxxzxY?editors=1000">json</a></td>
+          </tr>
+          <tr>
+            <td>被引用模块为string模块</td>
+            <td><a href="module/string">string模块</a></td>
+            <td><a target="_blank" href="https://codepen.io/dagger8224/pen/rNJJEKz?editors=1000">string</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <h3 class="question">条件加载模块资源</h3>
+    <div class="answer">您可以将模块配置项值设置为一个数组，每个数组子项声明一个“match”字段作为过滤条件，dagger.js将数组中第一个匹配过滤条件的结果作为模块的配置。我们来看例子：
+      <iframe height="300" style="width: 100%;" scrolling="no" title="Untitled" src="https://codepen.io/dagger8224/embed/poaaMow?default-tab=html&editable=true&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+        See the Pen <a href="https://codepen.io/dagger8224/pen/poaaMow">
+        Untitled</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
+        on <a href="https://codepen.io">CodePen</a>.
+      </iframe>
+    </div>
+    <h3 class="question">为模块指定多个资源地址</h3>
+    <div class="answer">您可以将“uri”字段内容设置为一个数组，dagger.js会依次尝试加载列表中指定的资源，直到成功加载模块为止。我们来看例子：
+      <iframe height="300" style="width: 100%;" scrolling="no" title="Untitled" src="https://codepen.io/dagger8224/embed/bGLvbyz?default-tab=html&editable=true&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+        See the Pen <a href="https://codepen.io/dagger8224/pen/bGLvbyz">
+        Untitled</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
+        on <a href="https://codepen.io">CodePen</a>.
+      </iframe>
+    </div>
+  </div>
   </template>
-  <style id="style" type="dagger/style">
-    h3::before {
-        content: "😕";
-        margin-right: 10px;
-    }
-    .answer::before {
-        content: "😄";
-        margin-right: 10px;
-    }
-    span.list a {
-        margin-right: 20px;
-    }
-  </style>
-</html>
+  <template $exist="language == 'en-us'">
+    <template $each="$['module.introduction.sections']">
+      <h3 class="question">${ item.question }</h3>
+      <div class="answer" $html="item.answer"></div>
+    </template>
+  </template>
+</div>
