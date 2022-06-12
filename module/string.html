@@ -1,35 +1,23 @@
-<!DOCTYPE html>
-<html>
-  <script type="dagger/configs">
-    {
-      "template": {
-          "uri": "#template",
-          "style": "style"
-      },
-      "style": "#style",
-      "demo": {
-          "uri": "./string_demo.json",
-          "type": "string"
-      }
-    }
-  </script>
-  <template id="template">
-    <h2>${ $['module.string'] }</h2>
-    <div class="content">
-      <template $each="$['module.string.sections']">
-        <h3 class="question">${ item.question }</h3>
-        <div class="answer" $html="item.answer"></div>
-      </template>
+<h2>${ $['module.string'] }</h2>
+<div class="content">
+  <template $exist="language == 'zh-cn'">
+    <h3 class="question">什么是字符串模块</h3>
+    <div class="answer">
+      <div>字符串模块是可复用的字符串资源。</div>
+      <div>您可以通过显示指定模块类型为“string”的方式（避免默认类型推断）将资源内容以字符串形式加载到应用当中。我们来看例子：
+        <iframe height="300" style="width: 100%;" scrolling="no" title="[dagger-demo] string module" src="https://codepen.io/dagger8224/embed/vYdaZwp?default-tab=html%2Cresult&editable=true&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+          See the Pen <a href="https://codepen.io/dagger8224/pen/vYdaZwp">
+          [dagger-demo] string module</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
+          on <a href="https://codepen.io">CodePen</a>.
+        </iframe>
+        任何未指定类型且不匹配默认推断规则的模块也将被框架解析为字符串模块。
+      </div>
     </div>
   </template>
-  <style id="style" type="dagger/style">
-    h3::before {
-        content: "😕";
-        margin-right: 10px;
-    }
-    .answer::before {
-        content: "😄";
-        margin-right: 10px;
-    }
-  </style>
-</html>
+  <template $exist="language == 'en-us'">
+    <template $each="$['module.string.sections']">
+      <h3 class="question">${ item.question }</h3>
+      <div class="answer" $html="item.answer"></div>
+    </template>
+  </template>
+</div>

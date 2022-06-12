@@ -2,7 +2,17 @@
 <div class="content">
   <template $exist="language == 'zh-cn'">
     <h3 class="question">什么是模块</h3>
-    <div class="answer">在dagger.js中，我们把可复用的代码片段（html模板，脚本，层叠样式表等）统称为模块。您可以在指令表达式中通过回调参数对象“$module”访问模块内容。</div>
+    <div class="answer">
+      <div>在dagger.js中，我们把html模板，脚本，层叠样式表等可复用的代码片段统称为模块。</div>
+      <div>您可以在指令表达式中通过回调参数对象“$module”访问模块内容（模板和样式模块除外）。与<a href="directive/scope">作用域</a>类似，您也可以通过匿名方式访问$module下的字段：
+        <div class="code">
+          +click="$module.func($scope.value)" // 具名方式访问
+          <br>
+          +click="func($scope.value)" // 匿名方式访问
+        </div>
+        请注意，如果当前指令表达式中的“$module”和“$scope”回调参数对象下包含同名字段，请使用具名方式访问。
+      </div>
+    </div>
     <h3 class="question">模块类型列表</h3>
     <div class="answer"><a class="margin" href="module/template">模板</a><a class="margin" href="module/script">脚本</a><a class="margin" href="module/style">样式</a><a class="margin" href="module/json">json</a><a class="margin" href="module/string">字符串</a><a class="margin" href="module/namespace">名空间</a></div>
     <h3 class="question">如何注册模块</h3>
@@ -12,15 +22,15 @@
         <div class="margin">2. 模块的资源加载位置。由注册项值的“uri”字段指定。</div>
         <div class="margin">3. 模块的类型。由注册项值的“type”字段指定。</div>
         来看一个示例：
-        <iframe height="300" style="width: 100%;" scrolling="no" title="Untitled" src="https://codepen.io/dagger8224/embed/abqqZeR?default-tab=html&editable=true&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+        <iframe height="300" style="width: 100%;" scrolling="no" title="[dagger-demo] $module (external script module)" src="https://codepen.io/dagger8224/embed/abqqZeR?default-tab=html%2Cresult&editable=true&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
           See the Pen <a href="https://codepen.io/dagger8224/pen/abqqZeR">
-          Untitled</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
+          [dagger-demo] $module (external script module)</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
           on <a href="https://codepen.io">CodePen</a>.
         </iframe>
         在上面的例子中，我们注册了一个名为“script1”的<a href="module/script">脚本模块</a>，其内容来自于“<a target="_blank" href="https://codepen.io/dagger8224/pen/abqqZeR.js">https://codepen.io/dagger8224/pen/abqqZeR.js</a>”。
       </div>
       <div>模块的uri可以是url地址（远程资源），DOM选择器（本地资源），也可以指向另一个模块的路径（引用资源）。我们来看示例：
-        <iframe height="300" style="width: 100%;" scrolling="no" title="[dagger-demo] $module (uri)" src="https://codepen.io/dagger8224/embed/zYRpYpa?default-tab=html&editable=true&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+        <iframe height="300" style="width: 100%;" scrolling="no" title="[dagger-demo] $module (uri)" src="https://codepen.io/dagger8224/embed/zYRpYpa?default-tab=html%2Cresult&editable=true&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
           See the Pen <a href="https://codepen.io/dagger8224/pen/zYRpYpa">
           [dagger-demo] $module (uri)</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
           on <a href="https://codepen.io">CodePen</a>.
@@ -147,17 +157,17 @@
       </table>
     </div>
     <h3 class="question">条件加载模块资源</h3>
-    <div class="answer">您可以将模块配置项值设置为一个数组，每个数组子项声明一个“match”字段作为过滤条件，dagger.js将数组中第一个匹配过滤条件的结果作为模块的配置。我们来看例子：
-      <iframe height="300" style="width: 100%;" scrolling="no" title="Untitled" src="https://codepen.io/dagger8224/embed/poaaMow?default-tab=html&editable=true&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+    <div class="answer">您可以将模块配置项值设置为一个数组，每个数组子项声明一个“match”字段作为过滤条件（支持<a target="_blank" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Window/matchMedia">媒体查询</a>表达式），dagger.js将数组中第一个匹配过滤条件的结果作为模块的配置。我们来看例子：
+      <iframe height="300" style="width: 100%;" scrolling="no" title="[dagger-demo] $module (conditional script module)" src="https://codepen.io/dagger8224/embed/poaaMow?default-tab=html%2Cresult&editable=true&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
         See the Pen <a href="https://codepen.io/dagger8224/pen/poaaMow">
-        Untitled</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
+        [dagger-demo] $module (conditional script module)</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
         on <a href="https://codepen.io">CodePen</a>.
       </iframe>
     </div>
     <h3 class="question">为模块指定多个资源地址</h3>
     <div class="answer">您可以将“uri”字段内容设置为一个数组，dagger.js会依次尝试加载列表中指定的资源，直到成功加载模块为止。我们来看例子：
-      <iframe height="300" style="width: 100%;" scrolling="no" title="Untitled" src="https://codepen.io/dagger8224/embed/bGLvbyz?default-tab=html&editable=true&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
-        See the Pen <a href="https://codepen.io/dagger8224/pen/bGLvbyz">
+      <iframe height="300" style="width: 100%;" scrolling="no" title="Untitled" src="https://codepen.io/dagger8224/embed/BaYPpaw?default-tab=html%2Cresult&editable=true&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+        See the Pen <a href="https://codepen.io/dagger8224/pen/BaYPpaw">
         Untitled</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
         on <a href="https://codepen.io">CodePen</a>.
       </iframe>

@@ -1,18 +1,34 @@
 <h2>${ $['module.template'] }</h2>
 <div class="content">
   <template $exist="language == 'zh-cn'">
-    <h3 class="question">什么是模板</h3>
-    <div class="answer">模板是可复用的html片段。您可以在html中通过模块路径来声明模板实例，我们来看例子：
-      
+    <h3 class="question">什么是模板模块</h3>
+    <div class="answer">
+      <div>模板是可复用的html片段。模板模块由框架本身维护，不能在指令中通过“$module”变量进行访问。</div>
+      <div>在页面中使用模板非常简单，您只要像创建普通元素标签那样，把模板路径写在尖括号内就可以了。标签名为模板路径的元素称为模板元素。</div>
+      <div>模板元素上<a href="directive/scope">作用域</a>的工作方式与实体宿主元素一致。我们来看例子：
+        <iframe height="300" style="width: 100%;" scrolling="no" title="Untitled" src="https://codepen.io/dagger8224/embed/LYQBxGp?default-tab=html%2Cresult&editable=true&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+          See the Pen <a href="https://codepen.io/dagger8224/pen/LYQBxGp">
+          Untitled</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
+          on <a href="https://codepen.io">CodePen</a>.
+        </iframe>
+      </div>
+      <div>在模板元素上您可以声明<a href="directive/lifeCycle">生命周期指令</a>和<a href="directive/controller">控制指令</a>（除<a href="directive/html">$html</a>、<a href="directive/text">$text</a>、<a href="directive/class">$class</a>和<a href="directive/style">$style</a>之外），但不能使用<a href="directive/controller">事件处理指令</a>（除非使用“target”<a href="directive/decorator">指令修饰符</a>指定其他的实体元素作为事件监听器的目标元素）。</div>
+      <div>您可以在模板模块内部通过指令来创建动态内容。我们来看例子：
+        <iframe height="300" style="width: 100%;" scrolling="no" title="[dagger-demo] template module (dynamic content)" src="https://codepen.io/dagger8224/embed/qBxyRQR?default-tab=html%2Cresult&editable=true&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+          See the Pen <a href="https://codepen.io/dagger8224/pen/qBxyRQR">
+          [dagger-demo] template module (dynamic content)</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
+          on <a href="https://codepen.io">CodePen</a>.
+        </iframe>
+      </div>
     </div>
     <h3 class="question">模板模块的配置项值</h3>
-    <div class="answer">除模块的通用配置项字段外，模板模块还支持style字段（字符串或者字符串数组），用于指定在当前模板上生效的样式模块名称。我们来看例子：
+    <div class="answer">除模块的通用配置项字段外，模板模块还支持“style”字段（字符串或者字符串数组），用于指定在当前模板上生效的<a href="module/style">样式模块</a>名称。我们来看例子：
       <iframe height="300" style="width: 100%;" scrolling="no" title="Untitled" src="https://codepen.io/dagger8224/embed/yLvKEJR?default-tab=html%2Cresult&editable=true&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
         See the Pen <a href="https://codepen.io/dagger8224/pen/yLvKEJR">
         Untitled</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
         on <a href="https://codepen.io">CodePen</a>.
       </iframe>
-      上例中，样式模块“style”将仅在“view_module”模板内的元素上生效。
+      上例中，样式模块“style”将仅在“view_module”模板内的元素上生效。样式模块的更多详细内容参见<a href="module/style">相关章节</a>。
     </div>
   </template>
   <template $exist="language == 'en-us'">

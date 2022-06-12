@@ -1,35 +1,21 @@
-<!DOCTYPE html>
-<html>
-  <script type="dagger/configs">
-    {
-      "template": {
-          "uri": "#template",
-          "style": "style"
-      },
-      "style": "#style",
-      "demo": {
-          "uri": "./style_demo.json",
-          "type": "string"
-      }
-    }
-  </script>
-  <template id="template">
-    <h2>${ $['module.style'] }</h2>
-    <div class="content">
-      <template $each="$['module.style.sections']">
-        <h3 class="question">${ item.question }</h3>
-        <div class="answer" $html="item.answer"></div>
-      </template>
+<h2>${ $['module.style'] }</h2>
+<div class="content">
+  <template $exist="language == 'zh-cn'">
+    <h3 class="question">什么是样式模块</h3>
+    <div class="answer">样式模块是一组可复用的样式片段。样式模块由框架本身维护，不能在指令中通过“$module”变量进行访问。</div>
+    <h3 class="question">样式模块的配置项字段</h3>
+    <div class="answer">除模块的通用配置项字段外，样式模块还支持布尔类型的“scoped”字段，“scoped”为true（默认值）代表此样式模块仅对其关联<a href="module/template">模板模块</a>的内容生效，否则样式模块将在当前页面全局生效。我们来看例子：
+      <iframe height="300" style="width: 100%;" scrolling="no" title="[dagger-demo] template module (scoped css)" src="https://codepen.io/dagger8224/embed/vYdaxJz?default-tab=html%2Cresult&editable=true&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+        See the Pen <a href="https://codepen.io/dagger8224/pen/vYdaxJz">
+        [dagger-demo] template module (scoped css)</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
+        on <a href="https://codepen.io">CodePen</a>.
+      </iframe>
     </div>
   </template>
-  <style id="style" type="dagger/style">
-    h3::before {
-        content: "😕";
-        margin-right: 10px;
-    }
-    .answer::before {
-        content: "😄";
-        margin-right: 10px;
-    }
-  </style>
-</html>
+  <template $exist="language == 'en-us'">
+    <template $each="$['module.style.sections']">
+      <h3 class="question">${ item.question }</h3>
+      <div class="answer" $html="item.answer"></div>
+    </template>
+  </template>
+</div>

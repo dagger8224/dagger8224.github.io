@@ -112,11 +112,11 @@
         "text": "template",
         "href": "module/template"
     }, {
-        "text": "script",
-        "href": "module/script"
-    }, {
         "text": "style",
         "href": "module/style"
+    }, {
+        "text": "script",
+        "href": "module/script"
     }, {
         "text": "json",
         "href": "module/json"
