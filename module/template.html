@@ -3,8 +3,9 @@
   <template $exist="language == 'zh-cn'">
     <h3 class="question">什么是模板模块</h3>
     <div class="answer">
-      <div>模板是可复用的html片段。模板模块由框架本身维护，不能在指令中通过“$module”变量进行访问。</div>
+      <div>模板是可复用的html片段。</div>
       <div>在页面中使用模板非常简单，您只要像创建普通元素标签那样，把模板路径写在尖括号内就可以了。标签名为模板路径的元素称为模板元素。</div>
+      <div>不支持在指令表达式中通过“$module”变量访问模板模块。</div>
       <div>模板元素上<a href="directive/scope">作用域</a>的工作方式与实体宿主元素一致。我们来看例子：
         <iframe height="300" style="width: 100%;" scrolling="no" title="Untitled" src="https://codepen.io/dagger8224/embed/LYQBxGp?default-tab=html%2Cresult&editable=true&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
           See the Pen <a href="https://codepen.io/dagger8224/pen/LYQBxGp">

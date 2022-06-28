@@ -2,17 +2,7 @@
 <div class="content">
   <template $exist="language == 'zh-cn'">
     <h3 class="question">什么是模块</h3>
-    <div class="answer">
-      <div>在dagger.js中，我们把html模板，脚本，层叠样式表等可复用的代码片段统称为模块。</div>
-      <div>您可以在指令表达式中通过回调参数对象“$module”访问模块内容（模板和样式模块除外）。与<a href="directive/scope">作用域</a>类似，您也可以通过匿名方式访问$module下的字段：
-        <div class="code">
-          +click="$module.func($scope.value)" // 具名方式访问
-          <br>
-          +click="func($scope.value)" // 匿名方式访问
-        </div>
-        请注意，如果当前指令表达式中的“$module”和“$scope”回调参数对象下包含同名字段，请使用具名方式访问。
-      </div>
-    </div>
+    <div class="answer">在dagger.js中，我们把html模板，脚本，层叠样式表等可复用的代码片段统称为模块。</div>
     <h3 class="question">模块类型列表</h3>
     <div class="answer"><a class="margin" href="module/template">模板</a><a class="margin" href="module/script">脚本</a><a class="margin" href="module/style">样式</a><a class="margin" href="module/json">json</a><a class="margin" href="module/string">字符串</a><a class="margin" href="module/namespace">名空间</a></div>
     <h3 class="question">如何注册模块</h3>
@@ -37,6 +27,15 @@
         </iframe>
       </div>
     </div>
+    <h3 class="question">如何使用模块</h3>
+    <div class="answer">您可以在指令表达式中通过回调参数对象“$module”访问模块内容（<a href="module/template">模板</a>和<a href="module/style">样式</a>模块除外）。与<a href="directive/scope">作用域</a>类似，您也可以通过匿名方式访问$module下的字段：
+      <div class="code">
+        +click="$module.func($scope.value)" // 具名方式访问
+        <br>
+        +click="func(value)" // 匿名方式访问
+      </div>
+      请注意，如果当前指令表达式中的“$module”和“$scope”回调参数对象下包含同名字段，请使用具名方式访问。
+    </div>
     <h3 class="question">模块类型的自动推断</h3>
     <div class="answer">大部分情况下，您并不需要显式指定模块类型，dagger.js能够智能地根据资源内容自动进行模块类型推断。省略了“type”字段的模块配置项值可以由对象退化为指向资源位置的字符串。模块类型的具体推断规则参见下表：
       <table>
@@ -53,7 +52,7 @@
             <td rowspan="13">远程资源</td>
             <td>url地址后缀为“.js”</td>
             <td rowspan="4"><a href="module/script">脚本模块</a></td>
-            <td rowspan="4"><a target="_blank" href="https://codepen.io/dagger8224/pen/bGLLjYN?editors=1010">./script.js</a></td>
+            <td rowspan="4"><a target="_blank" href="https://codepen.io/dagger8224/pen/bGLLjYN.js">./script.js</a></td>
           </tr>
           <tr>
             <td>MIME类型为“application/javascript”</td>
@@ -67,7 +66,7 @@
           <tr>
             <td>url地址后缀为“.css”</td>
             <td rowspan="2"><a href="module/style">样式模块</a></td>
-            <td rowspan="2"><a target="_blank" href="https://codepen.io/dagger8224/pen/MWQQBQJ?editors=1100">./style.css</a></td>
+            <td rowspan="2"><a target="_blank" href="https://codepen.io/dagger8224/pen/MWQQBQJ.css">./style.css</a></td>
           </tr>
           <tr>
             <td>MIME类型为“text/css”</td>
@@ -75,7 +74,7 @@
           <tr>
             <td>url地址后缀为“.html”且资源文件内容不包含&lt;html&gt;标签</td>
             <td rowspan="2"><a href="module/template">模板模块</a></td>
-            <td rowspan="2"><a target="_blank" href="https://codepen.io/dagger8224/pen/OJQQdgv?editors=1000">./template.html</a></td>
+            <td rowspan="2"><a target="_blank" href="https://codepen.io/dagger8224/pen/OJQQdgv.html">./template.html</a></td>
           </tr>
           <tr>
             <td>MIME类型为“text/html”且资源文件内容不包含&lt;html&gt;标签</td>
@@ -83,7 +82,7 @@
           <tr>
             <td>url地址后缀为“.html”且资源文件内容包含&lt;html&gt;标签</td>
             <td rowspan="2"><a href="module/namespace">名空间模块</a></td>
-            <td rowspan="2"><a target="_blank" href="https://codepen.io/dagger8224/pen/LYQQqjb?editors=1000">./namespace.html</a></td>
+            <td rowspan="2"><a target="_blank" href="https://codepen.io/dagger8224/pen/LYQQqjb.js">./namespace.html</a></td>
           </tr>
           <tr>
             <td>MIME类型为“text/html”且资源文件内容包含&lt;html&gt;标签</td>
@@ -165,7 +164,7 @@
       </iframe>
     </div>
     <h3 class="question">为模块指定多个资源地址</h3>
-    <div class="answer">您可以将“uri”字段内容设置为一个数组，dagger.js会依次尝试加载列表中指定的资源，直到成功加载模块为止。我们来看例子：
+    <div class="answer">您可以将“uri”字段内容设置为一个数组，dagger.js会依次尝试加载列表中指定的资源，直到成功加载模块为止。您可以在生产环境中为模块资源指定多个可选地址以提升应用程序的容灾能力。我们来看例子：
       <iframe height="300" style="width: 100%;" scrolling="no" title="Untitled" src="https://codepen.io/dagger8224/embed/BaYPpaw?default-tab=html%2Cresult&editable=true&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
         See the Pen <a href="https://codepen.io/dagger8224/pen/BaYPpaw">
         Untitled</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
