@@ -4,7 +4,7 @@
     <h3 class="question">+unloaded指令的作用</h3>
     <div class="answer">
       <div>“+unloaded”指令在宿主元素从DOM树移除之后（卸载完成阶段）由框架触发调用，用于完成进一步的清理工作。</div>
-      <div>在“+unloaded”指令表达式中，“$scope”将指向其父元素的作用域。</div>
+      <div>在“+unloaded”指令表达式中，“$scope”将指向其父元素的作用域，“$node”值为null。</div>
     </div>
     <h3 class="question">+unloaded指令的执行结果</h3>
     <div class="answer">dagger.js不会对“+unloaded”指令表达式的执行结果进行进一步处理。</div>

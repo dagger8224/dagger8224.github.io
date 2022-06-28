@@ -34,7 +34,7 @@
     </div>
     <div id="navigator" $class="{ 'closed-menu': isMenuClosed }" +resize#target:window="document.querySelector('#navigator').scrollTo(0, 0);" $watch="isMenuClosed, document.querySelector('#navigator').scrollTo(0, 0)">
       <h3>${ $.index }</h3>
-      <ul $each#item:topic="menus" +loading="{ className: index ? 'hidden' : '' }" $class="className">
+      <ul $each#item:topic="menus" +loading="{ className: '' }" $class="className">
         <div +click="className = className ? '' : 'hidden'">
           <span class="prefix">${ className ? '+' : '-' }</span><span>${ $[topic.text] || topic.text }</span>
         </div>

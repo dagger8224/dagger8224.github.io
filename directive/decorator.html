@@ -4,8 +4,8 @@
     <h3 class="question">指令修饰符的作用</h3>
     <div class="answer">
       <div>指令修饰符（后文中简称为修饰符）用于对指令的工作方式进行约束声明。</div>
-      <div>修饰符由dagger.js解析和使用，在指令表达式中无法访问修饰符对象的内容。</div>
-      <div>除去<a href="directive/raw">元指令@raw</a>之外，您可以在任意指令上添加修饰符。</div>
+      <div>修饰符由框架解析和使用，在<a href="directive/expression">指令表达式</a>中无法访问修饰符对象的内容。</div>
+      <div>除去<a href="directive/raw">元指令@raw</a>之外，您可以在任意指令上声明修饰符。</div>
       <div>修饰符是指令的可选组成部分，您也可以选择先了解后文中指令实例的内容之后再回来参阅本章节。</div>
     </div>
     <h3 class="question">指令修饰符的结构</h3>
@@ -19,13 +19,17 @@
       </div>
       <div>在一个指令上可以同时添加多个修饰符：
         <div class="code">$value#input#trim:false</div>
+        上面的代码在指令“value”上声明了两个修饰符：“input”（值为true），和“trim”（值为false）。
       </div>
     </div>
     <h3 class="question">指令修饰符的编码</h3>
     <div class="answer">
-      <div>受限于DOM标签属性和dagger.js的语法解析规则，部分特殊字符不能直接用作修饰符内容，否则将导致DOM解析失败或得到非预期的处理结果。</div>
-      <div>具体地说，如果您需要在指令修饰符中使用“<”，“>”，“:”，“#”，“\”，“/”，空格以及大写字母，那么要对内容进行<a target="_blank" href="https://developer.mozilla.org/zh-cn/docs/Web/JavaScript/Reference/Global_Objects/encodeURIComponent">编码</a>，dagger.js在解析时将对修饰符内容进行<a target="_blank" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/decodeURIComponent">解码</a>。</div>
-      <div>对于大写字母，一个更便捷的编码方式是在字母前加上“-”符号前缀，例如：
+      <div>受限于DOM标签属性和指令声明的语法解析规则，部分特殊字符不能直接用作修饰符内容，否则将导致DOM解析失败或得到非预期的处理结果。</div>
+      <div>具体地说，如果您需要在指令修饰符中使用“<”，“>”，“:”，“#”，“\”，“/”，空格或者大写字母，那么要对内容进行<a target="_blank" href="https://developer.mozilla.org/zh-cn/docs/Web/JavaScript/Reference/Global_Objects/encodeURIComponent">编码</a>，dagger.js在解析时将对修饰符内容进行<a target="_blank" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/decodeURIComponent">解码</a>。例如：
+        <div class="code">+click#every:['%43aps%4cock','%53hift']</div>
+        dagger.js对以上代码解码后将创建一个名为“every”，值为字符串数组“['CapsLock', 'Shift']”的修饰符对象。
+      </div>
+      <div>对于大写字母，一个可读性更好的编码方式是在字母前加上“-”符号前缀作为转换标记，例如：
         <div class="code">+click#every:['-caps-lock','-shift']</div>
         <div>dagger.js对以上代码解码后将创建一个名为“every”，值为字符串数组“['CapsLock', 'Shift']”的修饰符对象。</div>
         <div>请注意，dagger.js在解析修饰符时会先对具有“-”前缀的字母做大小写转换后再进行解码。因此，修饰符“-caps-lock”将解码为“CapsLock”，而“%2dcaps%2dlock”将解码为“-caps-lock”。</div>

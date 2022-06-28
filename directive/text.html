@@ -8,13 +8,14 @@
     <h3 class="question">$text指令与模板字符串的关系</h3>
     <div class="answer">
       <div>在示例中我们多次使用过模板字符串来展示执行结果，您可以将它理解为其父元素上声明的一个“匿名”的$text指令。</div>
-      <div>如果宿主元素下既有动态文本内容又包含其他子元素，那么您需要使用模板字符串而不能使用$text指令。我们来看一个例子：
+      <div>如果宿主元素下既有动态文本内容又包含其他子元素，那么您需要使用模板字符串而不能使用“$text”指令（否则宿主元素子级节点将被$text指令的执行结果所覆盖）。我们来看一个例子：
         <iframe height="300" style="width: 100%;" scrolling="no" title="Untitled" src="https://codepen.io/dagger8224/embed/poawxye?default-tab=html%2Cresult&editable=true&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
           See the Pen <a href="https://codepen.io/dagger8224/pen/poawxye">
           Untitled</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
           on <a href="https://codepen.io">CodePen</a>.
         </iframe>
       </div>
+      <div>另外，请不要将$text指令用于template标签或者<a href="module/introduction">模块</a>宿主元素。</div>
     </div>
   </template>
   <template $exist="language == 'en-us'">
