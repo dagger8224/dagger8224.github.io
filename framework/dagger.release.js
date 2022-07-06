@@ -599,10 +599,8 @@ export default ((context = Symbol('context'), currentController = null, daggerOp
         }
         if (raw || plain) { // comment/raw/script/style/template
             this.resolveNode();
-            if (plain) {
-                this.node.removeAttribute('dg-cloak');
-                this.resolveChildren();
-            }
+            this.node.removeAttribute && this.node.removeAttribute('dg-cloak');
+            plain && this.resolveChildren();
         } else if (text) {
             this.resolveNode(() => (this.controller = this.resolveController(text)));
         } else {

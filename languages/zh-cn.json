@@ -78,20 +78,11 @@
     "directive.meta": "指令/元指令",
     "module.introduction": "模块/介绍",
     "module.introduction.sections": [{
-        "question": "什么是模块",
-        "answer": "<span>在实际开发场景中，视图模板、脚本、样式表的复用性是一个普遍需求。dagger.js支持通过配置项声明的方式灵活定义可复用模块。不同层级的模块共同组成了一棵全局的模块资源树。</span>"
-    }, {
         "question": "模块的定义方式",
         "answer": "<span>模块由键值对定义。其中键名是资源树中的模块资源名，典型的资源值是包含模块资源定位标识，类别和内容等相关信息字段的对象。<br/>配置项值也支持其他的变体：<div class=\"sub-answer\">1. 如果配置项只包含资源定位标识，可以简写为字符串形式；<br/>2. 如果需要针对不同的使用场景指定不同的资源配置，可以将配置项值定义为一个数组，数组子项中包含可选的<a target='_blank' href='https://developer.mozilla.org/zh-CN/docs/Web/API/Window/matchMedia'>媒体查询条件</a>字段media或者条件表达式字段condition，框架会根据media和condition表达式的计算结果筛选出首个符合条件的配置项再进行解析。</div></span>"
     }, {
         "question": "模块的资源定位方式",
         "answer": "<span>模块的资源定位方式根据配置项字段和内容的不同可分为内联、外联、嵌入和别名四种。<br/>一个有效的模块配置项必须包含content字段或者uri字段（如果资源配置项值是字符串将识别为uri字段）。<div class=\"sub-answer\">1. 如果配置项值中指定了content字段，则content字段的值将作为当前模块的内容文本（内联方式），在此模式下，需要在配置项中设置type字段（枚举值，包含“json/namespace/script/style/string/template”等6种）显式指定当前模块的类别。<br/>2. 如果配置项中未定义content字段，则框架将根据uri字段的内容判断资源定位方式：<div class=\"sub-answer\">a. 如果uri的内容是合法的资源路径（匹配正则表达式“/^[$a-zA-Z_]{1}[\\w-$]*(\\.[$a-zA-Z_]{1}[\\w-$]*)*$/”，例如“module._script1”），则该路径所指向模块的解析后内容将作为当前模块的内容（别名方式），在此模式下，模块类别可由目标模块的类别推断获得；<br/>b. 如果uri的内容是远程资源路径（匹配正则表达式“/^(http:\\/\\/|https:\\/\\/|\\/|\\.\\/|\\.\\.\\/)/i”，例如“https://script.location.com/script.js”或者“./template.html”），则框架将发起fetch请求从远程服务器加载资源（外联方式），在此模式下，模块类型可由请求响应值的<a target='_blank' href='https://developer.mozilla.org/zh-cn/docs/Web/HTTP/Headers/Content-Type'>Content-Type</a>推断获得；不匹配资源路径或者远程url的uri值将被识别为<a target='_blank' href='https://developer.mozilla.org/zh-cn/docs/Web/API/Document/querySelector'>元素选择器</a>从当前<a href='module/namespace'>名空间下</a>查找资源的内容（嵌入方式），在此模式下，模块类别可由内容所在元素的type属性推断获得。<br/>c. 除字符串外，uri字段值还可以设置为包含多个远程资源定位的字符串数组，若如此做，框架将在解析时依次尝试加载数组中声明的资源定位直到成功返回有效结果。</div></div></span>"
-    }, {
-        "question": "模块配置项中的其他可选通用字段",
-        "answer": "<span>1. “base”（字符串），用于指定当前模块及其子模块（如果有）中远程资源相对路径的base值；<br/>2. “candidates” （对象数组），用于指定备选配置内容，框架将从数组中筛选出首个满足media/condition字段表达式条件的子项，融合到当前配置项下再进行解析；<br/>3. “integrity”（字符串），用于对远程资源内容进行<a target='_blank' href='https://developer.mozilla.org/zh-CN/docs/Web/Security/%E5%AD%90%E8%B5%84%E6%BA%90%E5%AE%8C%E6%95%B4%E6%80%A7'>sha256子资源完整性校验</a>；4. “prefetch”（字符串），声明当前模块为预加载的，主要用于在不阻塞当前<a href='router/introduction'>路由场景</a>视图渲染的前提下提前加载耗时较长的模块资源内容。框架在解析时将“prefetch”内容转换为正则表达式与当前的hash path匹配，预加载模块将只阻塞满足匹配条件的路由场景视图渲染。</span>"
-    }, {
-        "question": "模块类别列表",
-        "answer": "<span class='list'><a href='module/template'>模板</a><a href='module/script'>脚本</a><a href='module/style'>样式</a><a href='module/json'>json</a><a href='module/string'>字符串</a><a href='module/namespace'>名空间</a></span>"
     }, {
         "question": "合并声明多个相同类别的模块配置项",
         "answer": "<span>可使用“@”符号加模块类别名称作为键值同时定义多个同类别的模块。例如，“@namespace: { a: {...}, b: {...} }”将同时声明a和b两个类别为名空间的模块。</span>"
