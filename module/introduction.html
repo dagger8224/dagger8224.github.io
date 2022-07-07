@@ -2,11 +2,14 @@
 <div class="content">
   <template $exist="language == 'zh-cn'">
     <h3 class="question">什么是模块</h3>
-    <div class="answer">在dagger.js中，我们把html模板，脚本，层叠样式表等可复用的代码片段统称为模块。</div>
+    <div class="answer">
+      <div>在dagger.js中，我们把html模板，脚本，层叠样式表等可复用的代码片段统称为模块。</div>
+      <div>模块内容是只读的，不允许在运行时进行修改。</div>
+    </div>
     <h3 class="question">模块类型列表</h3>
     <div class="answer"><a class="margin" href="module/template">模板</a><a class="margin" href="module/script">脚本</a><a class="margin" href="module/style">样式</a><a class="margin" href="module/json">json</a><a class="margin" href="module/string">字符串</a><a class="margin" href="module/namespace">名空间</a></div>
     <h3 class="question">模块的加载时机</h3>
-    <div class="answer">dagger.js实现了一个运行时模块管理器，所有的模块都是在浏览器运行时动态加载、解析和执行的。</div>
+    <div class="answer">dagger.js内部维护了一个运行时模块管理器，当应用程序首次加载或者页面内路由发生切换时将触发注册模块的动态加载、解析和执行。已经加载过的模块会在运行时缓存。我们将在<a href="router/introduction">路由</a>章节对模块配置项与路由配置项的对应关系进行讲解。</div>
     <h3 class="question">如何注册模块</h3>
     <div class="answer">
       <div>在<a href="overview/install">安装</a>章节中我们曾经提到，项目的入口页面要添加一个类型为“dagger/configs”的script标签作为应用程序配置项。在使用模块前，您需要先在配置项中对其进行注册。一个典型的模块注册项（内容为json格式）包括如下信息：
@@ -181,6 +184,15 @@
         on <a href="https://codepen.io">CodePen</a>.
       </iframe>
       将模块资源定义在单独的文件或者DOM容器中更利于实现复用。通常来说，您应该避免使用“content”字段指定资源内容。
+    </div>
+    <h3 class="question">合并声明多个相同类别的模块配置项</h3>
+    <div class="answer">可使用“@”符号加模块类别名称作为键值同时定义多个同类别的模块。我们来看例子：
+      <iframe height="300" style="width: 100%;" scrolling="no" title="[dagger-demo] string module" src="https://codepen.io/dagger8224/embed/MWVKLeB?default-tab=html%2Cresult&editable=true" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+        See the Pen <a href="https://codepen.io/dagger8224/pen/MWVKLeB">
+        [dagger-demo] string module</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
+        on <a href="https://codepen.io">CodePen</a>.
+      </iframe>
+      上例中声明了string1和string2两个<a href="module/string">字符串模块</a>。
     </div>
     <h3 class="question">模块配置项中的其他可选通用字段</h3>
     <div class="answer">

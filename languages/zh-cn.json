@@ -77,28 +77,6 @@
     "directive.eventHandler": "指令/事件处理指令",
     "directive.meta": "指令/元指令",
     "module.introduction": "模块/介绍",
-    "module.introduction.sections": [{
-        "question": "模块的定义方式",
-        "answer": "<span>模块由键值对定义。其中键名是资源树中的模块资源名，典型的资源值是包含模块资源定位标识，类别和内容等相关信息字段的对象。<br/>配置项值也支持其他的变体：<div class=\"sub-answer\">1. 如果配置项只包含资源定位标识，可以简写为字符串形式；<br/>2. 如果需要针对不同的使用场景指定不同的资源配置，可以将配置项值定义为一个数组，数组子项中包含可选的<a target='_blank' href='https://developer.mozilla.org/zh-CN/docs/Web/API/Window/matchMedia'>媒体查询条件</a>字段media或者条件表达式字段condition，框架会根据media和condition表达式的计算结果筛选出首个符合条件的配置项再进行解析。</div></span>"
-    }, {
-        "question": "模块的资源定位方式",
-        "answer": "<span>模块的资源定位方式根据配置项字段和内容的不同可分为内联、外联、嵌入和别名四种。<br/>一个有效的模块配置项必须包含content字段或者uri字段（如果资源配置项值是字符串将识别为uri字段）。<div class=\"sub-answer\">1. 如果配置项值中指定了content字段，则content字段的值将作为当前模块的内容文本（内联方式），在此模式下，需要在配置项中设置type字段（枚举值，包含“json/namespace/script/style/string/template”等6种）显式指定当前模块的类别。<br/>2. 如果配置项中未定义content字段，则框架将根据uri字段的内容判断资源定位方式：<div class=\"sub-answer\">a. 如果uri的内容是合法的资源路径（匹配正则表达式“/^[$a-zA-Z_]{1}[\\w-$]*(\\.[$a-zA-Z_]{1}[\\w-$]*)*$/”，例如“module._script1”），则该路径所指向模块的解析后内容将作为当前模块的内容（别名方式），在此模式下，模块类别可由目标模块的类别推断获得；<br/>b. 如果uri的内容是远程资源路径（匹配正则表达式“/^(http:\\/\\/|https:\\/\\/|\\/|\\.\\/|\\.\\.\\/)/i”，例如“https://script.location.com/script.js”或者“./template.html”），则框架将发起fetch请求从远程服务器加载资源（外联方式），在此模式下，模块类型可由请求响应值的<a target='_blank' href='https://developer.mozilla.org/zh-cn/docs/Web/HTTP/Headers/Content-Type'>Content-Type</a>推断获得；不匹配资源路径或者远程url的uri值将被识别为<a target='_blank' href='https://developer.mozilla.org/zh-cn/docs/Web/API/Document/querySelector'>元素选择器</a>从当前<a href='module/namespace'>名空间下</a>查找资源的内容（嵌入方式），在此模式下，模块类别可由内容所在元素的type属性推断获得。<br/>c. 除字符串外，uri字段值还可以设置为包含多个远程资源定位的字符串数组，若如此做，框架将在解析时依次尝试加载数组中声明的资源定位直到成功返回有效结果。</div></div></span>"
-    }, {
-        "question": "合并声明多个相同类别的模块配置项",
-        "answer": "<span>可使用“@”符号加模块类别名称作为键值同时定义多个同类别的模块。例如，“@namespace: { a: {...}, b: {...} }”将同时声明a和b两个类别为名空间的模块。</span>"
-    }, {
-        "question": "模块配置项在哪里定义",
-        "answer": "<span>模块资源树的根节点定义在页面<a href='router/introduction'>路由配置项</a>下的“modules”字段下，子级模块配置项在父级模块配置项中嵌套定义。</span>"
-    }, {
-        "question": "模块资源的访问方式",
-        "answer": "<span>当前<a href='router/introduction'>路由场景</a>下声明的全局模块资源树可以通过<a href='miscellaneous/introduction'>根作用域</a>下的“$module”对象访问，出于使用便捷性的考虑，“$module”下的模块也支持匿名方式访问，例如，既可以使用“$module.script”也可以使用“script”访问当前路由下声明的名为“script”的模块。</span>"
-    }, {
-        "question": "模块加载与页面渲染的时序关系",
-        "answer": "<span>当页面加载或者发生页面内路由切换时将触发当前路由场景下声明的全部模块递归加载和解析，资源树创建完毕后进行路由视图渲染。已经加载过的模块会在运行时缓存，页面内路由切换时不会重新加载解析。</span>"
-    }, {
-        "question": "模块的使用限制",
-        "answer": "<span>模块内容是只读的，不允许在运行时进行修改。合法的模块名称可以由“$”，“-”，“_”，大小写字母和数字组成，首字符不能是数字。</span>"
-    }],
     "module.template": "模块/模板",
     "module.namespace": "模块/名空间",
     "module.namespace.sections": [{
@@ -115,33 +93,7 @@
         "answer": "<span>名空间模块资源加载后将根据资源模板<a href='miscellaneous/introduction'>配置项</a>递归解析子级模块，各级名空间模块之间不能出现循环引用。</span>"
     }],
     "module.style": "模块/样式",
-    "module.style.sections": [{
-        "question": "什么是样式模块",
-        "answer": "<span>样式模块是一组可复用的样式片段。</span>"
-    }, {
-        "question": "样式模块的类别推断规则",
-        "answer": "<span>对于未指定类别的模块，如果资源内容的容器是类型为“dagger/style”的style标签（嵌入方式），或者远程请求响应头的<a target='_blank' href='https://developer.mozilla.org/zh-cn/docs/Web/HTTP/Headers/Content-Type'>Content-Type</a>包含“text/css”，则模块类别将被推断为样式。</span>"
-    }, {
-        "question": "样式模块的配置项字段",
-        "answer": "<span>除模块的通用配置项字段外，样式模块还支持scoped字段，scoped为true（默认值）代表样式作用域为其关联<a href='module/template'>模板</a>，scoped为false代表样式作用域为全局页面。</span>"
-    }, {
-        "question": "样式模块的使用限制",
-        "answer": "<span>样式模块路径中不能包含“$”符号。</span>"
-    }],
     "module.script": "模块/脚本",
-    "module.script.sections": [{
-        "question": "什么是脚本模块",
-        "answer": "<span>脚本模块是一组可复用的javaScript代码片段。</span>"
-    }, {
-        "question": "脚本模块的类别推断规则",
-        "answer": "<span>对于未指定类别的模块，如果资源内容的容器是类型为“dagger/script”的script标签（嵌入方式），或者远程请求响应头的<a target='_blank' href='https://developer.mozilla.org/zh-cn/docs/Web/HTTP/Headers/Content-Type'>Content-Type</a>包含“application/javascript”、“javascript/esm”或者“text/javascript”，则模块类别将被推断为脚本。</span>"
-    }, {
-        "question": "脚本模块的配置项字段",
-        "answer": "<span>除模块的通用配置项字段外，脚本模块还支持：<div class=\"sub-answer\">1. 形式为表达式字符串的converter字段，用于对解析后的es module进行进一步转换。例如“converter: '{ b: $module.a }'”将解析后的代码模块中的a方法重命名为b；<br/>2. anonymous字段，anonymous为true代表当前的脚本的使用方式是匿名的（默认为非匿名方式），例如，在指令中使用非匿名脚本script下的func方法需要写成script.func，而对于匿名脚本直接调用func即可。</div></span>"
-    }, {
-        "question": "脚本模块的使用限制",
-        "answer": "<span>脚本模块基于标准的<a target='_blank' href='https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/import'>import</a>/<a target='_blank' href='https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/export'>export</a>语法规范实现。技术上，在脚本模块代码中也可以import其他<a target='_blank' href='https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Modules'>javaScript脚本</a>，如果import的url是相对路径，请在url外部增加BASE标识，框架将在解析时对url路径进行宏替换。例如，模块代码要import './script.js'需要写成import 'BASE(./script.js)'。</span>"
-    }],
     "module.string": "模块/字符串",
     "module.string.sections": [{
         "question": "什么是字符串模块",

@@ -4,13 +4,14 @@
     <h3 class="question">什么是字符串模块</h3>
     <div class="answer">
       <div>字符串模块是可复用的字符串资源。您可以在指令表达式中通过“$module”变量访问字符串模块的内容。</div>
-      <div>您可以通过显示指定模块类型为“string”的方式（避免自动类型推断）将资源内容以字符串形式加载到应用当中。我们来看例子：
+      <div>我们来看例子：
         <iframe height="300" style="width: 100%;" scrolling="no" title="[dagger-demo] string module" src="https://codepen.io/dagger8224/embed/vYdaZwp?default-tab=html%2Cresult&editable=true&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
           See the Pen <a href="https://codepen.io/dagger8224/pen/vYdaZwp">
           [dagger-demo] string module</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
           on <a href="https://codepen.io">CodePen</a>.
         </iframe>
-        任何未指定类型且不匹配<a href="module/introduction">自动推断规则</a>的模块也将被框架解析为字符串模块。
+        <div>上例中，我们通过显示指定模块“string3”的类型为“string”避免自动类型推断规则（将“string3”推断为<a href="module/template">模板模块</a>）生效。</div>
+        <div>任何未指定类型且不匹配<a href="module/introduction">自动推断规则</a>的模块（如上例中的“string2”模块）也将被框架当做字符串模块进行解析。</div>
       </div>
     </div>
   </template>

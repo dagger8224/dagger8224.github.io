@@ -3,10 +3,6 @@
   <template $exist="language == 'zh-cn'">
     <h3 class="question">什么是json模块</h3>
     <div class="answer">json模块是json格式的可复用数据模块。您可以在指令表达式中通过“$module”变量访问json模块的内容。</div>
-    <h3 class="question">json模块的type</h3>
-    <div class="answer">
-      <div class="code">{ "type": "json" }</div>
-    </div>
     <h3 class="question">json模块的配置项字段</h3>
     <div class="answer">除模块的通用配置项字段外，json模块还支持布尔类型的“anonymous”字段。该字段的作用与<a href="module/script">脚本模块</a>配置项的同名字段相同。差别在于，json模块“anonymous”的默认值是false（具名方式），而脚本模块默认是匿名访问的。我们来看例子：
       <iframe height="300" style="width: 100%;" scrolling="no" title="[dagger-demo] json module (anonymous)" src="https://codepen.io/dagger8224/embed/dydjRev?default-tab=html%2Cresult&editable=true&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
@@ -14,6 +10,7 @@
         [dagger-demo] json module (anonymous)</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
         on <a href="https://codepen.io">CodePen</a>.
       </iframe>
+      上例中，模块“json2”声明为“anonymous”，因此在指令中可以直接访问模块下“array”字段的内容。
     </div>
     <h3 class="question">json模块与作用域的差异</h3>
     <div class="answer">json模块内容与<a href="directive/scope">作用域</a>都是对象结构，但json模块内容不具备作用域的响应依赖性，您应该将它作为静态数据（配置项）使用。</div>

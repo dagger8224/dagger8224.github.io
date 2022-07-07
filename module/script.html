@@ -4,7 +4,7 @@
     <h3 class="question">什么是脚本模块</h3>
     <div class="answer">脚本模块是一组可复用的javaScript代码片段。您可以在指令表达式中通过“$module”变量访问脚本模块的内容。</div>
     <h3 class="question">脚本模块语法</h3>
-    <div class="answer">脚本模块基于标准的<a target="_blank" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/import">import</a>/<a target="_blank" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/export">export</a>语法规范实现。如果需要，您也可以在脚本模块代码中import其他javaScript脚本。我们来看例子：
+    <div class="answer">脚本模块基于标准的<a target="_blank" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Modules">esm</a>语法规范实现。如果需要，您也可以在脚本模块代码中import其他javaScript脚本。我们来看例子：
       <iframe height="300" style="width: 100%;" scrolling="no" title="[dagger-demo] script module (import/export)" src="https://codepen.io/dagger8224/embed/vYdamoK?default-tab=html%2Cresult&editable=true&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
         See the Pen <a href="https://codepen.io/dagger8224/pen/vYdamoK">
         [dagger-demo] script module (import/export)</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
@@ -13,7 +13,7 @@
     </div>
     <h3 class="question">脚本模块的配置项字段</h3>
     <div class="answer">
-      <div>除模块的通用配置项字段外，脚本模块还支持布尔类型的“anonymous”字段。当“anonymous”为true（默认值）时，您无需显式指定模块名称即可直接在$module下访问模块中导出的方法。匿名访问方式可以让指令代码更加简洁。</div>
+      <div>除模块的通用配置项字段外，脚本模块还支持布尔类型的“anonymous”字段。当“anonymous”为true（默认值）时，您无需显式指定模块名称即可直接通过“$module”变量访问模块中导出的方法。匿名访问方式可以让指令代码更加简洁。</div>
       如果多个脚本模块下存在同名方法，为避免出现冲突，您需要将“anonymous”设置为false。我们来看例子：
       <iframe height="300" style="width: 100%;" scrolling="no" title="[dagger-demo] script module (anonymous)" src="https://codepen.io/dagger8224/embed/PoQBmZq?default-tab=html%2Cresult&editable=true&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
         See the Pen <a href="https://codepen.io/dagger8224/pen/PoQBmZq">
