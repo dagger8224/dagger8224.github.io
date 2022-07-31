@@ -1,38 +1,49 @@
-<!DOCTYPE html>
-<html>
-  <script type="dagger/configs">
-    {
-      "template": {
-          "uri": "#template",
-          "style": "style"
-      },
-      "style": "#style",
-      "demo": {
-          "uri": "./introduction_demo.html",
-          "type": "string"
-      }
-    }
-  </script>
-  <template id="template">
-    <h2>${ $['router.introduction'] }</h2>
-    <div class="content">
-      <template $each="$['router.introduction.sections']">
-        <h3 class="question">${ item.question }</h3>
-        <div class="answer" $html="item.answer"></div>
-      </template>
+<h2>${ $['router.introduction'] }</h2>
+<div class="content">
+  <template $exist="language == 'zh-cn'">
+    <h3 class="question">什么是路由管理器</h3>
+    <div class="answer">
+      dagger.js内置了基于url <a target="_blank" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Location/hash">hash</a>实现的页面内路由状态管理器。当路由管理器侦测到页面“location.hash”发生变化时，将当前hash内容与已注册路由场景进行匹配，进而触发页面视图更新（通常与“<a href="directive/html">$html</a>”指令配合工作）。
+    </div>
+    <h3 class="question">路由的注册方式</h3>
+    <div class="answer">
+      与<a href="module/introduction">模块</a>一样，路由也是通过配置项来注册的。事实上，前文示例中入口页面的配置项是一种简写方式，代表模块注册在根路由上（缺省定义）。下面我们来看一个注册路由配置项的示例：
+      <iframe height="300" style="width: 100%;" scrolling="no" title="[dagger-demo] $router (view)" src="https://codepen.io/dagger8224/embed/zYRQrwP?default-tab=html%2Cresult&editable=true" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+        See the Pen <a href="https://codepen.io/dagger8224/pen/zYRQrwP">
+        [dagger-demo] $router (view)</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
+        on <a href="https://codepen.io">CodePen</a>.
+      </iframe>
+      上例中我们可以看到，路由配置项由入口页面配置项下的“routing”字段定义，模块配置项由每个路由场景下的“modules”字段指定。这里先了解路由配置项与模块配置项之间的关系就好，在后续章节中，我们将详细介绍路由配置项下各字段的定义和使用方法。
+    </div>
+    <h3 class="question">路由跳转方式</h3>
+    <div class="answer">在dagger.js中，有两种典型的路由跳转方式：
+      <div class="margin">1. 点击“href”属性指向url hash的链接标签触发路由跳转。请注意，由“./”或者“/”开头的相对路径链接将被识别为url路径而非hash，点击此类标签将跳转至url对应的独立页面。</div>
+      <div class="margin">2. 在代码中使用语句命令式触发页面hash状态变化：
+        <div class="code">location.hash = 'targetHash';</div>
+      </div>
+      我们来看路由跳转的例子：
+      <iframe height="300" style="width: 100%;" scrolling="no" title="[dagger-demo] $router (redirect)" src="https://codepen.io/dagger8224/embed/NWYXbVv?default-tab=html%2Cresult&editable=true" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+        See the Pen <a href="https://codepen.io/dagger8224/pen/NWYXbVv">
+        [dagger-demo] $router (redirect)</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
+        on <a href="https://codepen.io">CodePen</a>.
+      </iframe>
+    </div>
+    <h3 class="question">阻塞路由跳转</h3>
+    <div class="answer">
+      在前面的章节中我们提到，生命周期指令“<a href="directive/sentry">+sentry</a>”主要用来进行路由守卫。我们来看一个通过“+sentry”指令阻止路由跳转的例子：
+      <iframe height="300" style="width: 100%;" scrolling="no" title="[dagger-demo] $router (redirect blocked by sentry)" src="https://codepen.io/dagger8224/embed/wvmpgwe?default-tab=html%2Cresult&editable=true" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+        See the Pen <a href="https://codepen.io/dagger8224/pen/wvmpgwe">
+        [dagger-demo] $router (redirect blocked by sentry)</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
+        on <a href="https://codepen.io">CodePen</a>.
+      </iframe>
+      <div>上例中，我们在根元素上声明了一个“+sentry”指令，当指令执行结果为true时页面路由跳转将被阻塞。您可以修改sentry函数的逻辑以查看指令执行结果对页面行为的影响。</div>
+      <div>请注意，如果当前页面存在多个“+sentry”指令实例，在路由跳转前每个“+sentry”实例将独立进行守卫逻辑判断，任何一个“+sentry”指令执行结果为true则此次跳转将被阻塞。</div>
     </div>
   </template>
-  <style id="style" type="dagger/style">
-    h3::before {
-        content: "😕";
-        margin-right: 10px;
-    }
-    .answer::before {
-        content: "😄";
-        margin-right: 10px;
-    }
-    span.format {
-        font-style: italic;
-    }
-  </style>
-</html>
+  <template $exist="language == 'en-us'">
+    <template $each="$['router.introduction.sections']">
+      <h3 class="question">${ item.question }</h3>
+      <div class="answer" $html="item.answer"></div>
+    </template>
+  </template>
+</div>

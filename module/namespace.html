@@ -6,7 +6,7 @@
       <div>一个可复用部件（widget）通常由<a href="module/template">模板</a>模块、<a href="module/script">脚本</a>模块和<a href="module/style">样式</a>模块等不同类型的模块共同组成。我们将由若干子模块组合成的复合模块称为名空间模块。名空间模块下可以包含任意类型和数量的子模块，包括其他的名空间模块。</div>
       <div>名空间模块配置项的“type”值为“namespace”。</div>
       <div>我们来看一个例子：
-        <iframe height="300" style="width: 100%;" scrolling="no" title="[dagger-demo] namespace module" src="https://codepen.io/dagger8224/embed/GRQBvmw?default-tab=html&editable=true" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+        <iframe height="300" style="width: 100%;" scrolling="no" title="[dagger-demo] namespace module" src="https://codepen.io/dagger8224/embed/GRQBvmw?default-tab=html%2Cresult&editable=true" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
           See the Pen <a href="https://codepen.io/dagger8224/pen/GRQBvmw">
           [dagger-demo] namespace module</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
           on <a href="https://codepen.io">CodePen</a>.
@@ -20,7 +20,7 @@
         从上面的代码中可以看到，该名空间模块资源由一个名为“template”的模板模块，一个名为“script”的脚本模块，和一个名为“style”的样式模块组成。
       </div>
       <div>如果名空间下模板模块名称为“template”，那么您也可以直接通过名空间路径创建实例，我们来看上例的简写方式：
-        <iframe height="300" style="width: 100%;" scrolling="no" title="[dagger-demo] namespace module (shortcut module path)" src="https://codepen.io/dagger8224/embed/qBopaLo?default-tab=html&editable=true" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+        <iframe height="300" style="width: 100%;" scrolling="no" title="[dagger-demo] namespace module (shortcut module path)" src="https://codepen.io/dagger8224/embed/qBopaLo?default-tab=html%2Cresult&editable=true" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
           See the Pen <a href="https://codepen.io/dagger8224/pen/qBopaLo">
           [dagger-demo] namespace module (shortcut module path)</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
           on <a href="https://codepen.io">CodePen</a>.
@@ -28,8 +28,8 @@
       </div>
     </div>
     <h3 class="question">名空间模块的配置项字段</h3>
-    <div class="answer">除模块的通用配置项字段外，脚本模块还支持布尔类型的“explicit”字段。当“explicit”为false（默认值）时，您不能通过“$module”访问名空间模块及其子级模块内容。您可以指定名空间模块配置项的“explicit”为true，将其暴露给外层名空间。我们来看例子：
-      <iframe height="300" style="width: 100%;" scrolling="no" title="[dagger-demo] namespace module (explicit)" src="https://codepen.io/dagger8224/embed/RwMxGdE?default-tab=html&editable=true" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+    <div class="answer">除模块的通用配置项字段外，脚本模块配置项还支持布尔类型的“explicit”字段。当“explicit”为false（默认值）时，不能通过“$module”访问名空间模块及其子级模块内容。您可以指定“explicit”为true将名空间模块暴露给外层名空间。我们来看例子：
+      <iframe height="300" style="width: 100%;" scrolling="no" title="[dagger-demo] namespace module (explicit)" src="https://codepen.io/dagger8224/embed/RwMxGdE?default-tab=html%2Cresult&editable=true" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
         See the Pen <a href="https://codepen.io/dagger8224/pen/RwMxGdE">
         [dagger-demo] namespace module (explicit)</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
         on <a href="https://codepen.io">CodePen</a>.

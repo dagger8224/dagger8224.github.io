@@ -91,16 +91,6 @@
         "answer": "<span>名空间模块资源加载后将根据资源模板<a href='miscellaneous/introduction'>配置项</a>递归解析子级模块，各级名空间模块之间不能出现循环引用。</span>"
     }],
     "router.introduction": "路由/介绍",
-    "router.introduction.sections": [{
-        "question": "什么是路由管理器",
-        "answer": "<span>dagger.js内置了基于url <a target='_blank' href='https://developer.mozilla.org/zh-CN/docs/Web/API/Location/hash'>hash</a>实现的页面内路由状态管理器，路由映射规则由配置项定义。本质上，路由配置项是渲染当前页面场景（对应于特定hash值）所需资源（<a href='module/introduction'>模块</a>等）的描述信息。</span>"
-    }, {
-        "question": "路由配置项的定义方式",
-        "answer": "<span>路由配置项由页面根<a href='miscellaneous/introduction'>配置项</a>下的“routing”字段定义。</span>"
-    }, {
-        "question": "路由跳转方式",
-        "answer": "<span>点击“href”属性指向hash值（由“./”或者“/”开头的相对路径链接将被识别为url路径而非hash）的链接标签，或者在javaScript代码中使用语句“location.hash = 'xxx';”均可触发页面hash状态变化，当路由管理器查找到与目标hash匹配的路由配置项时将加载和解析配置项中声明的资源模块并初始化上下文作用域，结合“<a href='directive/html'>$html</a>”指令进行页面渲染。<br/>请注意路由切换时将触发全局的<a href='directive/sentry'>+sentry</a>检查，不满足条件的跳转将被阻塞。</span>"
-    }],
     "router.structure": "路由/结构",
     "router.structure.sections": [{
         "question": "全局路由配置项字段",
