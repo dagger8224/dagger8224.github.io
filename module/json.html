@@ -2,7 +2,10 @@
 <div class="content">
   <template $exist="language == 'zh-cn'">
     <h3 class="question">什么是json模块</h3>
-    <div class="answer">json模块是json格式的可复用数据模块。您可以在指令表达式中通过“$module”变量访问json模块的内容。</div>
+    <div class="answer">
+      <div>json模块是json格式的可复用数据模块。</div>
+      <div>json模块配置项的“type”值为“json”。</div>
+      <div>您可以在指令表达式中通过“$module”变量访问json模块的内容。</div>
     <h3 class="question">json模块的配置项字段</h3>
     <div class="answer">除模块的通用配置项字段外，json模块还支持布尔类型的“anonymous”字段。该字段的作用与<a href="module/script">脚本模块</a>配置项的同名字段相同。差别在于，json模块“anonymous”的默认值是false（具名方式），而脚本模块默认是匿名访问的。我们来看例子：
       <iframe height="300" style="width: 100%;" scrolling="no" title="[dagger-demo] json module (anonymous)" src="https://codepen.io/dagger8224/embed/dydjRev?default-tab=html%2Cresult&editable=true&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">

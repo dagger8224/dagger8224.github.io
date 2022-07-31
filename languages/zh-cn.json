@@ -78,40 +78,17 @@
     "directive.meta": "指令/元指令",
     "module.introduction": "模块/介绍",
     "module.template": "模块/模板",
-    "module.namespace": "模块/名空间",
-    "module.namespace.sections": [{
-        "question": "什么是名空间模块",
-        "answer": "<span>名空间模块是由其他子级模块组成的模块集合。每个名空间构成一个新的模块作用域，在名空间内部访问其子级模块中定义的变量或者方法时，既可以使用<a href='miscellaneous/introduction'>根作用域</a>下的“$module”对象通过绝对路径方式访问，也可以使用当前名空间模块作用域下的相对路径访问。</span>"
-    }, {
-        "question": "名空间模块的类别推断规则",
-        "answer": "<span>对于未指定类别的模块，如果资源内容的容器是类型为“dagger/configs”的style标签（嵌入方式），或者远程请求响应头的<a target='_blank' href='https://developer.mozilla.org/zh-cn/docs/Web/HTTP/Headers/Content-Type'>Content-Type</a>包含“text/html”且资源内容是完整的html文档（否则将被识别为模板类别），则模块类别将被推断为名空间。</span>"
-    }, {
-        "question": "名空间模块的配置项字段",
-        "answer": "<span>除模块的通用配置项字段外，名空间模块还支持形式为字符串数组的“customTags”字段，用于指定当前名空间下的自定义标签名。框架在解析时遇到非标准的html标签时会进行检查，如果标签名在当前名空间的“customTags”内则按照普通标签处理，否则将作为<a href='module/template'>模板</a>模块名进行查找和内容替换。</span>"
-    }, {
-        "question": "名空间模块的使用限制",
-        "answer": "<span>名空间模块资源加载后将根据资源模板<a href='miscellaneous/introduction'>配置项</a>递归解析子级模块，各级名空间模块之间不能出现循环引用。</span>"
-    }],
     "module.style": "模块/样式",
     "module.script": "模块/脚本",
     "module.string": "模块/字符串",
-    "module.string.sections": [{
-        "question": "什么是字符串模块",
-        "answer": "<span>字符串模块是一组可复用的字符串资源。</span>"
-    }, {
-        "question": "字符串模块的类别推断规则",
-        "answer": "<span>对于未指定类别的模块，如果不能识别为其他预定义类别的模块将推断为字符串类别。</span>"
-    }],
     "module.json": "模块/json",
-    "module.json.sections": [{
-        "question": "什么是json模块",
-        "answer": "<span>json模块是一个可复用的JSON结构，解析后将转换为一个javaScript对象。</span>"
+    "module.namespace": "模块/名空间",
+    "module.namespace.sections": [{
+        "question": "名空间模块的类别推断规则",
+        "answer": "<span>对于未指定类别的模块，如果资源内容的容器是类型为“dagger/configs”的style标签（嵌入方式），或者远程请求响应头的<a target='_blank' href='https://developer.mozilla.org/zh-cn/docs/Web/HTTP/Headers/Content-Type'>Content-Type</a>包含“text/html”且资源内容是完整的html文档（否则将被识别为模板类别），则模块类别将被推断为名空间。</span>"
     }, {
-        "question": "json模块的类别推断规则",
-        "answer": "<span>对于未指定类别的模块，如果资源内容的容器是类型为“dagger/json”的script标签（嵌入方式），或者远程请求响应头的<a target='_blank' href='https://developer.mozilla.org/zh-cn/docs/Web/HTTP/Headers/Content-Type'>Content-Type</a>包含“application/json”，则模块类别将被推断为json。</span>"
-    }, {
-        "question": "json模块的配置项字段",
-        "answer": "<span>除模块的通用配置项字段外，json模块还支持：<div class=\"sub-answer\">1. 形式为表达式字符串的converter字段，用于对解析后的对象进行进一步转换。例如“converter: '{ b: $module.a }'”将解析后的对象中的字段a重命名为b；<br/>2. anonymous字段，anonymous为true代表当前对象的访问方式是匿名的（默认为非匿名方式），例如，在指令中使用非匿名对象object下的name字段需要写成object.name，而对于匿名对象直接使用name即可。</div></span>"
+        "question": "名空间模块的使用限制",
+        "answer": "<span>名空间模块资源加载后将根据资源模板<a href='miscellaneous/introduction'>配置项</a>递归解析子级模块，各级名空间模块之间不能出现循环引用。</span>"
     }],
     "router.introduction": "路由/介绍",
     "router.introduction.sections": [{

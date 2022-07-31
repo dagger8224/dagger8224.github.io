@@ -2,7 +2,10 @@
 <div class="content">
   <template $exist="language == 'zh-cn'">
     <h3 class="question">什么是脚本模块</h3>
-    <div class="answer">脚本模块是一组可复用的javaScript代码片段。您可以在指令表达式中通过“$module”变量访问脚本模块的内容。</div>
+    <div class="answer">
+      <div>脚本模块是一组可复用的javaScript代码片段。</div>
+      <div>脚本模块配置项的“type”值为“script”。</div>
+      <div>您可以在指令表达式中通过“$module”变量访问脚本模块的内容。</div>
     <h3 class="question">脚本模块语法</h3>
     <div class="answer">脚本模块基于标准的<a target="_blank" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Modules">esm</a>语法规范实现。如果需要，您也可以在脚本模块代码中import其他javaScript脚本。我们来看例子：
       <iframe height="300" style="width: 100%;" scrolling="no" title="[dagger-demo] script module (import/export)" src="https://codepen.io/dagger8224/embed/vYdamoK?default-tab=html%2Cresult&editable=true&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
