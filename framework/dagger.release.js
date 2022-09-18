@@ -387,7 +387,7 @@ export default ((context = Symbol('context'), currentController = null, daggerOp
         }
         return value;
     }
-}, generalUpdater = (data, node, nodeContext, { name }) => node && ((data == null) ? node.removeAttribute(name) : node.setAttribute(name, textResolver(data))), nodeUpdater = ((changeEvent = new Event('change')) => ({
+}, nameFilters = ['draggable'], generalUpdater = (data, node, nodeContext, { name }) => node && ((data == null) ? node.removeAttribute(name) : node.setAttribute(name, textResolver(data))), nodeUpdater = ((changeEvent = new Event('change')) => ({
     $boolean: (data, node, nodeContext, { name }) => node.toggleAttribute(name, !!data),
     checked: (data, node, { parentNode }, { decorators }) => {
         const { tagName, type } = node, isOption = Object.is(tagName, 'OPTION'), isCheckbox = Object.is(type, 'checkbox');
@@ -722,7 +722,7 @@ export default ((context = Symbol('context'), currentController = null, daggerOp
             processor: processor.bind(null, this.module, this.scope),
             topologySet: subscribable ? new Set() : null,
             observer: null,
-            updater: name && (nodeUpdater[name] || (node && Object.is(typeof node[name], 'boolean') && nodeUpdater.$boolean) || generalUpdater)
+            updater: name && (nodeUpdater[name] || (node && !nameFilters.includes(name) && Object.is(typeof node[name], 'boolean') && nodeUpdater.$boolean) || generalUpdater)
         };
         subscribable && node && Object.is(name, 'selected') && Object.is(node.tagName, 'SELECT') && (controller.observer = new MutationObserver(() => this.updateController(controller, true))).observe(node, { childList: true });
         this.updateController(controller, true);
