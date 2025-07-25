@@ -1,0 +1,4 @@
+{
+    "integrity": false,
+    "rootSelectors": ["title", "body"]
+}

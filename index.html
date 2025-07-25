@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html +loading="onLoading(languages)">
+<html +load="load(languages)">
   <head>
     <meta charset="UTF-8">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -13,41 +13,42 @@
     <meta name="twitter:title" content="dagger.js">
     <meta name="twitter:description" content="A lightweight runtime web frontend javaScript framework">
     <link rel="icon" href="data:image/svg+xml,%3csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22%3e%3ctext y=%22.9em%22 font-size=%2280%22%3e🗡️%3c/text%3e%3c/svg%3e">
-    <link rel="preload" href="./configs.json" as="fetch" crossorigin="anonymous">
     <!--<link rel="stylesheet" href="css.css" media="print" onload="media = 'all'">-->
     <style>[dg-cloak] { display: none !important; }</style>
     <link rel="stylesheet" href="./index.css">
-    <script type="module" crossorigin="anonymous" src="./framework/dagger.release.js" defer></script>
-    <script type="dagger/configs" src="./configs.json"></script>
-    <title $text="$[$router.schemes.title] || $router.schemes.title">loading...</title>
+    <script type="module" crossorigin="anonymous" src="./framework/dagger.js" defer></script>
+    <script type="dagger/options" src="./options.json"></script>
+    <script type="dagger/modules" src="./modules.json"></script>
+    <script type="dagger/routers" src="./routers.json"></script>
+    <title *text="$[$route.constants.title] || $route.constants.title">loading...</title>
   </head>
-  <body dg-cloak +loading="{ isMenuClosed: true }" +sentry="sentry($scope, $nextRouter)" $watch#router="console.log('watch router', $module, $router), isLoading = false">
-    <div id="loading-background" $style="`display: ${ isLoading ? 'block' : 'none' }`">
+  <body dg-cloak +load="{ isMenuClosed: true }" +sentry="sentry($scope, $nextRoute)" *watch#route="console.log('watch router', $module, $route), isLoading = false">
+    <div id="loading-background" *style="`display: ${ isLoading ? 'block' : 'none' }`">
       <img src="./static/loading.gif">
     </div>
     <div id="header">
       <h1>🗡️ dagger.js</h1>
       <a id="github-link" href="https://github.com/dagger8224/dagger.js">${ $.viewOnGithub }</a>
-      <select id="language-select" $selected="language" +change="localStorage.setItem('language', language) || ($ = languages[language])">
-        <option $each="$.languages" $text="item" $value="key"></option>
+      <select id="language-select" *value="language" +change="localStorage.setItem('language', language) || ($ = languages[language])">
+        <option *each="$.languages" *text="item" *value="key"></option>
       </select>
     </div>
-    <div id="navigator" $class="{ 'closed-menu': isMenuClosed }" +resize#target:window="document.querySelector('#navigator').scrollTo(0, 0);" $watch="isMenuClosed, document.querySelector('#navigator').scrollTo(0, 0)">
+    <div id="navigator" *class="{ 'closed-menu': isMenuClosed }" +resize#target:window="document.querySelector('#navigator').scrollTo(0, 0);" *watch="isMenuClosed, document.querySelector('#navigator').scrollTo(0, 0)">
       <h3>${ $.index }</h3>
-      <ul $each#item:topic="menus" +loading="{ className: '' }" $class="className">
+      <ul *each#item:topic="menus" +load="{ className: '' }" *class="className">
         <div +click="className = className ? '' : 'hidden'">
           <span class="prefix">${ className ? '+' : '-' }</span><span>${ $[topic.text] || topic.text }</span>
         </div>
-        <li $each#item:section="topic.sections" +click="location.href = `#/${ section.href }`, isMenuClosed = true;" $class="{ active: Object.is(`/${ section.href }`, $router.path), 'sub-directive': section.text.startsWith('$') || section.text.startsWith('+') || section.text.startsWith('@') || ['boolean', 'general'].includes(section.text) }">${ $[section.text] || section.text }</li>
+        <li *each#item:section="topic.sections" +click="location.href = `#/${ section.href }`, isMenuClosed = true;" *class="{ active: Object.is(`/${ section.href }`, $route.path), 'sub-directive': section.text.startsWith('$') || section.text.startsWith('+') || section.text.startsWith('@') || ['boolean', 'general'].includes(section.text) }">${ $[section.text] || section.text }</li>
       </ul>
       <div class="bottom-switcher button" +click="isMenuClosed = !isMenuClosed"><span>${ isMenuClosed ? "》" : "《" }</span></div>
     </div>
     <div id="content">
-      <template $html="`<${ $router.schemes.template }></${ $router.schemes.template }>`"></template>
+      <template *html="`<${ $route.constants.template }></${ $route.constants.template }>`"></template>
     </div>
     <div id="footer">
-      <a $exist="$router.schemes.previousLink" $href="$router.schemes.previousLink">${ $.previous }</a>
-      <a $exist="$router.schemes.nextLink" $href="$router.schemes.nextLink">${ $.next }</a>
+      <a *exist="$route.constants.previousLink" *href="$route.constants.previousLink">${ $.previous }</a>
+      <a *exist="$route.constants.nextLink" *href="$route.constants.nextLink">${ $.next }</a>
     </div>
   </body>
 </html>

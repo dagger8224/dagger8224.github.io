@@ -1,24 +1,24 @@
 <h2>${ $['directive.value'] }</h2>
 <div class="content">
-  <template $exist="language == 'zh-cn'">
-    <h3 class="question">$value指令的作用</h3>
-    <div class="answer">$value指令用于绑定宿主元素的value属性。</div>
-    <h3 class="question">$value指令表达式的执行结果</h3>
+  <template *exist="language == 'zhCN'">
+    <h3 class="question">*value指令的作用</h3>
+    <div class="answer">*value指令用于绑定宿主元素的value属性。</div>
+    <h3 class="question">*value指令表达式的执行结果</h3>
     <div class="answer">
-      <div>$value指令表达式的执行结果将作为宿主元素的value属性。适用于input，textarea以及option元素。</div>
-      <div>当$selected指令表达式的内容是合法的<a target="_blank" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators#%E5%B7%A6%E8%A1%A8%E8%BE%BE%E5%BC%8F">左表达式</a>时，用户对宿主元素的操作将导致表达式计算结果同步变化，实现作用域数据与DOM元素属性之间的的双向绑定。如果input元素的类型为number，则执行结果将自动转换为number类型。我们来看下面的示例：
+      <div>*value指令表达式的执行结果将作为宿主元素的value属性。适用于input，textarea以及option元素。</div>
+      <div>当*selected指令表达式的内容是合法的<a target="_blank" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators#%E5%B7%A6%E8%A1%A8%E8%BE%BE%E5%BC%8F">左表达式</a>时，用户对宿主元素的操作将导致表达式计算结果同步变化，实现作用域数据与DOM元素属性之间的的双向绑定。如果input元素的类型为number，则执行结果将自动转换为number类型。我们来看下面的示例：
         <iframe height="300" style="width: 100%;" scrolling="no" title="Untitled" src="https://codepen.io/dagger8224/embed/zYRzeNj?default-tab=html%2Cresult&editable=true&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
           See the Pen <a href="https://codepen.io/dagger8224/pen/zYRzeNj">
           Untitled</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
           on <a href="https://codepen.io">CodePen</a>.
         </iframe>
       </div>
-      <h3 class="question">$value指令的预定义修饰符</h3>
-      <div class="answer">$value指令支持如下几个预定义修饰符：
+      <h3 class="question">*value指令的预定义修饰符</h3>
+      <div class="answer">*value指令支持如下几个预定义修饰符：
         <div class="margin">1. “oneway”，布尔类型。值为true代表当前指令是单向绑定的，用户对宿主元素的操作不会更新关联的作用域数据。示例如下：
-          <iframe height="300" style="width: 100%;" scrolling="no" title="[dagger-demo] $value directive (oneway decorator)" src="https://codepen.io/dagger8224/embed/MWQvbym?default-tab=html%2Cresult&editable=true&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+          <iframe height="300" style="width: 100%;" scrolling="no" title="[dagger-demo] *value directive (oneway decorator)" src="https://codepen.io/dagger8224/embed/MWQvbym?default-tab=html%2Cresult&editable=true&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
             See the Pen <a href="https://codepen.io/dagger8224/pen/MWQvbym">
-            [dagger-demo] $value directive (oneway decorator)</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
+            [dagger-demo] *value directive (oneway decorator)</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
             on <a href="https://codepen.io">CodePen</a>.
           </iframe>
         </div>
@@ -34,8 +34,8 @@
         </div>
       </div>
     </div>
-    <h3 class="question">$value指令与$selected指令的关系</h3>
-    <div class="answer">如果宿主元素上同时声明了$value指令和<a href="directive/selected">$selected</a>指令，则$selected执行结果将与$value指令表达式返回的对象进行匹配。下面我们来看一个示例：
+    <h3 class="question">*value指令与*selected指令的关系</h3>
+    <div class="answer">如果宿主元素上同时声明了*value指令和<a href="directive/selected">*selected</a>指令，则*selected执行结果将与*value指令表达式返回的对象进行匹配。下面我们来看一个示例：
       <iframe height="300" style="width: 100%;" scrolling="no" title="Untitled" src="https://codepen.io/dagger8224/embed/JjpJxXB?default-tab=html%2Cresult&editable=true&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
         See the Pen <a href="https://codepen.io/dagger8224/pen/JjpJxXB">
         Untitled</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
@@ -43,10 +43,10 @@
       </iframe>
     </div>
   </template>
-  <template $exist="language == 'en-us'">
-    <template $each="$['directive.value.sections']">
+  <template *exist="language == 'enUS'">
+    <template *each="$['directive.value.sections']">
       <h3 class="question">${ item.question }</h3>
-      <div class="answer" $html="item.answer"></div>
+      <div class="answer" *html="item.answer"></div>
     </template>
   </template>
 </div>

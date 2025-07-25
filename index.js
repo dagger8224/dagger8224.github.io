@@ -1,5 +1,5 @@
-export const onLoading = language_packages => {
-    const language = localStorage.getItem('language') || 'zh-cn';
+export const load = language_packages => {
+    const language = localStorage.getItem('language') || 'enUS';
     return {
         language,
         $: language_packages[language],
@@ -7,8 +7,8 @@ export const onLoading = language_packages => {
     };
 };
 
-export const sentry = ($scope, $nextRouter) => {
-    const shouldBlocked = $nextRouter.path == '/blocked';
+export const sentry = ($scope, $nextRoute) => {
+    const shouldBlocked = $nextRoute.path == '/blocked';
     if (shouldBlocked) {
         console.warn('redirect is blocked by sentry directive');
         return true;

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-  <script type="dagger/configs">
+  <script type="dagger/modules">
     {
       "template": {
           "uri": "#template",
@@ -12,9 +12,9 @@
   <template id="template">
     <h2>${ $['api.introduction'] }</h2>
     <div class="content">
-      <template $each="$['api.introduction.sections']">
+      <template *each="$['api.introduction.sections']">
         <h3 class="question">${ item.question }</h3>
-        <div class="answer" $html="item.answer"></div>
+        <div class="answer" *html="item.answer"></div>
       </template>
     </div>
   </template>

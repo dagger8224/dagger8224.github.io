@@ -1,6 +1,6 @@
 <h2>${ $['module.introduction'] }</h2>
 <div class="content">
-  <template $exist="language == 'zh-cn'">
+  <template *exist="language == 'zhCN'">
     <h3 class="question">什么是模块</h3>
     <div class="answer">
       <div>在dagger.js中，我们把html模板，脚本，层叠样式表等可复用的代码片段统称为模块。</div>
@@ -12,7 +12,7 @@
     <div class="answer">dagger.js内部维护了一个运行时模块管理器，当应用程序首次加载或者页面内路由发生切换时将触发注册模块的动态加载、解析和执行。已经加载过的模块会在运行时缓存。我们将在<a href="router/introduction">路由</a>章节对模块配置项与路由配置项的对应关系进行讲解。</div>
     <h3 class="question">如何注册模块</h3>
     <div class="answer">
-      <div>在<a href="overview/install">安装</a>章节中我们曾经提到，项目的入口页面要添加一个类型为“dagger/configs”的script标签作为应用程序配置项。在使用模块前，您需要先在配置项中对其进行注册。一个典型的模块注册项（内容为json格式）包括如下信息：
+      <div>在<a href="overview/install">安装</a>章节中我们曾经提到，项目的入口页面要添加一个类型为“dagger/modules”的script标签作为应用程序配置项。在使用模块前，您需要先在配置项中对其进行注册。一个典型的模块注册项（内容为json格式）包括如下信息：
         <div class="margin">1. 模块名。由注册项的键指定。合法的模块名称（除去<a href="module/template">模板</a>模块之外）由“$”，“-”，“_”，大小写字母和数字组成，首字符不能是数字。</div>
         <div class="margin">2. 模块的资源加载位置。由注册项值的“uri”字段指定。其内容可以是url地址（远程资源），DOM选择器（本地资源），也可以是另一个模块的路径（引用资源）。</div>
         <div class="margin">3. 模块的类型。由注册项值的“type”字段指定。</div>
@@ -221,10 +221,10 @@
     </div>
   </div>
   </template>
-  <template $exist="language == 'en-us'">
-    <template $each="$['module.introduction.sections']">
+  <template *exist="language == 'enUS'">
+    <template *each="$['module.introduction.sections']">
       <h3 class="question">${ item.question }</h3>
-      <div class="answer" $html="item.answer"></div>
+      <div class="answer" *html="item.answer"></div>
     </template>
   </template>
 </div>
