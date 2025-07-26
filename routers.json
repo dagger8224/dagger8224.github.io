@@ -93,7 +93,7 @@
               "path": "lifeCycle",
               "constants": {
                 "title": "directive.lifeCycle",
-                "template": "directive_life-Cycle",
+                "template": "directive_life__Cycle",
                 "previousLink": "directive/scope",
                 "nextLink": "directive/load"
               },
