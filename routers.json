@@ -103,11 +103,11 @@
               "path": "load",
               "constants": {
                 "title": "directive.load",
-                "template": "directive_loading",
+                "template": "directive_load",
                 "previousLink": "directive/lifeCycle",
                 "nextLink": "directive/loaded"
               },
-              "modules": "directive_loading"
+              "modules": "directive_load"
             },
             {
               "path": "loaded",
@@ -127,7 +127,7 @@
                 "previousLink": "directive/loaded",
                 "nextLink": "directive/unloaded"
               },
-              "modules": "directive_unloading"
+              "modules": "directive_unload"
             },
             {
               "path": "unloaded",

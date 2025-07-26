@@ -1,10 +1,14 @@
-<h2>${ $['directive.unload'] }</h2>
+
 <div class="content">
   <template *exist="language == 'zhCN'">
+    <h2>指令 / +unload</h2>
     <h3 class="question">+unload指令的作用</h3>
     <div class="answer">“+unload”指令在宿主元素从DOM树移除之前（卸载中阶段）由框架触发调用，用于对宿主元素或者作用域变量进行清理操作（清除不再需要的定时器ID等）。</div>
     <h3 class="question">+unload指令的执行结果</h3>
-    <div class="answer">dagger.js不会对“+unload”指令表达式的执行结果进行进一步处理。请注意，与“+load”指令不同，请不要通过返回Promise的方式来延迟宿主元素的卸载过程，框架始终将“+unload”指令表达式作为同步方法执行。我们来看示例：
+    <div class="answer">
+      <div>dagger.js不会对“+unload”指令表达式的执行结果进行进一步处理。</div>
+      <div>请注意，与“+load”指令不同，请不要通过返回Promise的方式来延迟宿主元素的卸载过程，框架始终将“+unload”指令表达式作为同步方法执行。</div>
+      我们来看示例：
       <iframe height="300" style="width: 100%;" scrolling="no" title="[dagger-demo] +unload directive" src="https://codepen.io/dagger8224/embed/PoQbJWQ?default-tab=html%2Cresult&editable=true&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
         See the Pen <a href="https://codepen.io/dagger8224/pen/PoQbJWQ">
         [dagger-demo] +unload directive</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
@@ -13,10 +17,20 @@
     </div>
   </template>
   <template *exist="language == 'enUS'">
-    <template *each="$['directive.unload.sections']">
-      <h3 class="question">${ item.question }</h3>
-      <div class="answer" *html="item.answer"></div>
-    </template>
+    <h2>Directive / +unload</h2>
+    <h3 class="question">What does the +unload directive do?</h3>
+    <div class="answer">The "+unload" directive is called by the framework before the host element is removed from the DOM tree (during the unloading process). It is used to perform cleanup operations on the host element or scope variables (e.g. clear timer IDs that are no longer needed).</div>
+    <h3 class="question">What is the result of executing the +unload directive?</h3>
+    <div class="answer">
+      <div>dagger.js does not process the result of executing the "+unload" directive expression.</div>
+      <div>Please note that unlike the "+load" directive, it is impossible to delay the unloading process of the host element by returning a Promise. The "+unload" directive is always executed synchronously by the framework.</div>
+      Let's take a look at an example:
+      <iframe height="300" style="width: 100%;" scrolling="no" title="[dagger-demo] +unload directive" src="https://codepen.io/dagger8224/embed/PoQbJWQ?default-tab=html%2Cresult&editable=true&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+        See the Pen <a href="https://codepen.io/dagger8224/pen/PoQbJWQ">
+        [dagger-demo] +unload directive</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
+        on <a href="https://codepen.io">CodePen</a>.
+      </iframe>
+    </div>
   </template>
 </div>
 
