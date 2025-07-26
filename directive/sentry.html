@@ -1,6 +1,6 @@
-<h2>${ $['directive.sentry'] }</h2>
 <div class="content">
   <template *exist="language === 'zhCN'">
+    <h2>指令 / +sentry</h2>
     <h3 class="question">+sentry指令的作用</h3>
     <div class="answer">
       <div>“+sentry”指令在即将发生页面内路由跳转时由框架触发调用。</div>
@@ -11,9 +11,14 @@
     <div class="answer">“+sentry”指令示例将在<a href="router/introduction">路由</a>章节中演示。</div>
   </template>
   <template *exist="language === 'enUS'">
-    <template *each="$['directive.sentry.sections']">
-      <h3 class="question">${ item.question }</h3>
-      <div class="answer" *html="item.answer"></div>
-    </template>
+    <h2>Directive / +sentry</h2>
+    <h3 class="question">What is the usage of the +sentry directive?</h3>
+    <div class="answer">
+      <div>The "+sentry" directive is called by the framework when it is about to trigger a page-level route change.</div>
+      <div>If any "+sentry" directive expression in the current page evaluates to true or an equivalent value, the route change process will be terminated. You can use "+sentry" directives as route guards.</div>
+      <div>The "+sentry" directive expression can use the context parameter "$nextRoute" to point to the target <a href="router/introduction">route</a>.</div>
+    </div>
+    <h3 class="question">+sentry directive example</h3>
+    <div class="answer">The "+sentry" directive example will be demonstrated in the <a href="router/introduction">router</a> chapter.</div>
   </template>
 </div>
