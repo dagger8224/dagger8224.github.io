@@ -1,9 +1,9 @@
-<template *exist="language == 'zhCN'">
-  <h2>${ $['directive.lifeCycle'] }</h2>
-  <div class="content">
+<div class="content">
+  <template *exist="language == 'zhCN'">
+    <h2>指令 / 生命周期指令</h2>
     <h3 class="question">元素的生命周期</h3>
     <div class="answer">
-      <div>元素是dagger.js应用程序的最小处理单元。元素的生命周期指的是一个元素从创建到销毁的整个过程。</div>
+      <div>元素是dagger.js应用程序中的最小处理单元。元素的生命周期指的是一个元素从创建到销毁的整个过程。</div>
       <div>下表列出了元素生命周期的各个阶段内将执行的指令：</div>
       <table>
         <thead>
@@ -78,10 +78,10 @@
           [dagger-demo] lifecycle directives</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
           on <a href="https://codepen.io">CodePen</a>.
         </iframe>
-        <div>为了方便演示，示例中使用了目前尚未讲解到的<a target="directive/controller">控制指令“<a target="directive/exist">*exist</a>”和<a target="directive/eventHandler">事件处理指令</a>“+click”。目前您只要知道这两个指令在本例中用于切换*exist指令宿主元素的存在状态就可以了，这些指令的具体用法将在后续章节中讲解。</div>
+        <div>为了方便演示，示例中使用了目前尚未讲解到的<a target="directive/controller">控制指令“<a target="directive/exist">*exist</a>”。目前您只要知道这个指令用于切换其宿主元素的存在状态就可以了，其具体用法将在后续章节中讲解。</div>
       </div>
       <div>对于具有包含关系的宿主元素来说：
-        <div class="margin">在创建阶段，父级元素的“+load”指令得到执行结果后子级的“+load”指令才会触发执行。</div>
+        <div class="margin">在创建阶段，父级元素的“+load”指令执行结束后子级的“+load”指令才会触发执行。</div>
         <div class="margin">在销毁阶段，父级元素的“+unload”指令执行完成后再依次执行子级元素的“+unload”和“+unloaded”指令，最后执行父级元素的“+unloaded”指令。</div>
         我们来看一个示例：
         <iframe height="300" style="width: 100%;" scrolling="no" title="[dagger-demo] the execute order of life-cycle directives" src="https://codepen.io/dagger8224/embed/YzeGqbJ?default-tab=html%2Cresult&editable=true" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
@@ -91,16 +91,101 @@
         </iframe>
       </div>
       <div>“+sentry”指令在页面<a href="router/introduction">路由</a>即将发生切换时触发。</div>
-      目前只要理解各个生命周期方法的调用顺序就好，每个指令的具体功能和用法将在后面的章节中讲解。
+      现在只要了解各个生命周期方法的触发时机和调用顺序就好，每个指令的具体功能和用法将在后面的章节中讲解。
     </div>
-  </div>
-</template>
-<template *exist="language == 'enUS'">
-  <h2>${ $['directive.lifeCycle'] }</h2>
-  <div class="content">
-    <template *each="$['directive.lifeCycle.sections']">
-      <h3 class="question">${ item.question }</h3>
-      <div class="answer" *html="item.answer"></div>
-    </template>
-  </div>
-</template>
+  </template>
+  <template *exist="language == 'enUS'">
+    <h2>Directive / LifeCycle Directives</h2>
+    <h3 class="question">What is an element's lifeCycle?</h3>
+    <div class="answer">The lifeCycle of an element in dagger.js is the entire process of creating an element to its destruction.</div>
+    <div>The table below lists the directives that are executed at each stage of an element’s lifecycle:</div>
+      <table>
+        <thead>
+          <tr>
+            <th>Phase Name</th>
+            <th>Pre-condition</th>
+            <th>Element Connection Status</th>
+            <th>Executed Directive</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td rowspan="2">Parsing</td>
+            <td rowspan="2">View template loaded</td>
+            <td rowspan="2">Not connected</td>
+            <td><a href="directive/raw">@raw</a></td>
+          </tr>
+          <tr>
+            <td><a href="directive/dynamic">@directive</a></td>
+          </tr>
+          <tr>
+            <td rowspan="2">Before Loading</td>
+            <td rowspan="2">Host element directive parsed</td>
+            <td rowspan="2">Not connected</td>
+            <td><a href="directive/each">*each</a></td>
+          </tr>
+          <tr>
+            <td><a href="directive/exist">*exist</a></td>
+          </tr>
+          <tr>
+            <td>Loading</td>
+            <td><a href="directive/each">*each</a>/<a href="directive/exist">*exist</a> not declared or executed</td>
+            <td>Not connected</td>
+            <td><a href="directive/load">+load</a></td>
+          </tr>
+          <tr>
+            <td rowspan="2">Loading Complete</td>
+            <td rowspan="2"><a href="directive/load">+load</a> not declared or executed</td>
+            <td rowspan="2">Connected</td>
+            <td><a href="directive/loaded">+loaded</a></td>
+          </tr>
+          <tr>
+            <td><a href="directive/controller">Control Directive</a></td>
+          </tr>
+          <tr>
+            <td>Unloading</td>
+            <td>Current element is about to be removed</td>
+            <td>Connected</td>
+            <td><a href="directive/unload">+unload</a></td>
+          </tr>
+          <tr>
+            <td>Destroyed</td>
+            <td><a href="directive/unload">+unload</a> not declared or executed</td>
+            <td>Not connected</td>
+            <td><a href="directive/unloaded">+unloaded</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <h3 class="question">What are lifeCycle directives?</h3>
+    <div class="answer">LifeCycle directives are a group of directives that are triggered to execute during the creation or destruction of a host element.</div>
+    <h3 class="question">List of lifeCycle directives</h3>
+    <div class="answer"><a class="margin" href="directive/load">+load</a><a class="margin" href="directive/loaded">+loaded</a><a class="margin" href="directive/unload">+unload</a><a class="margin" href="directive/unloaded">+unloaded</a><a class="margin" href="directive/sentry">+sentry</a></div>
+    <h3 class="question">Execution order of lifeCycle directives</h3>
+    <div class="answer">
+      <div>For a host element:
+        <div class="margin">The "+load" directive is executed first, followed by the "+loaded" directive after the host element is mounted to the DOM tree. Note that if the return value of the "+load" directive is a Promise, the "+loaded" directive will be executed only after the Promise is fulfilled.</div>
+        <div class="margin">The "+unload" directive is executed first, followed by the "+unloaded" directive after the host element is removed from the DOM tree. Both "+unload" and "+unloaded" directives are executed synchronously.</div>
+        Here is an example:
+        <iframe height="300" style="width: 100%;" scrolling="no" title="[dagger-demo] lifecycle directives" src="https://codepen.io/dagger8224/embed/MWVWwVJ?default-tab=html%2Cresult&editable=true" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+          See the Pen <a href="https://codepen.io/dagger8224/pen/MWVWwVJ">
+          [dagger-demo] lifecycle directives</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
+          on <a href="https://codepen.io">CodePen</a>.
+        </iframe>
+        <div>Note that the <a target="directive/controller">control directive "<a target="directive/exist">*exist</a>" is used in the example, which is not explained yet. You just need to know that this directive is used to toggle the existence of its host element.</div>
+      </div>
+      <div>For a host element with a parent:
+        <div class="margin">The "+load" directive of the parent element is executed before the "+load" directive of the child element.</div>
+        <div class="margin">During the teardown phase, after the parent element’s "+unload" directive has finished, the child elements’ "+unload" and "+unloaded" directives are executed in sequence, and finally the parent element’s "+unloaded" directive is executed.</div>
+        Here is an example:
+        <iframe height="300" style="width: 100%;" scrolling="no" title="[dagger-demo] the execute order of life-cycle directives" src="https://codepen.io/dagger8224/embed/YzeGqbJ?default-tab=html%2Cresult&editable=true" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+          See the Pen <a href="https://codepen.io/dagger8224/pen/YzeGqbJ">
+          [dagger-demo] the execute order of life-cycle directives</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
+          on <a href="https://codepen.io">CodePen</a>.
+        </iframe>
+      </div>
+      The "+sentry" directive is triggered when the page is about to switch <a href="router/introduction">routes</a>.
+      For now, just understand when each lifecycle method is triggered and the order in which they’re called; the specific functionality and usage of each directive will be explained in later sections.
+    </div>
+  </template>
+</div>
