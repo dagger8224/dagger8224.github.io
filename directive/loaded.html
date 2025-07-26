@@ -1,6 +1,6 @@
-<h2>${ $['directive.loaded'] }</h2>
 <div class="content">
   <template *exist="language == 'zhCN'">
+    <h2>指令 / +loaded</h2>
     <h3 class="question">+loaded指令的作用</h3>
     <div class="answer">“+loaded”指令在宿主元素连接到DOM树之后（加载完成阶段）由框架触发调用，主要用于对宿主元素和作用域变量进行初始化操作。</div>
     <h3 class="question">+loaded指令的执行结果</h3>
@@ -14,9 +14,17 @@
     </iframe>
   </template>
   <template *exist="language == 'enUS'">
-    <template *each="$['directive.loaded.sections']">
-      <h3 class="question">${ item.question }</h3>
-      <div class="answer" *html="item.answer"></div>
-    </template>
+    <h2>Directive / +loaded</h2>
+    <h3 class="question">What is the +loaded directive?</h3>
+    <div class="answer">The "+loaded" directive is called by the framework after the host element is connected to the DOM tree (loading complete stage). It is mainly used to initialize the host element and scope variables.</div>
+    <h3 class="question">What is the result of the +loaded directive?</h3>
+    <div class="answer">dagger.js does not process the execution result of the "+loaded" directive expression.</div>
+    <h3 class="question">Example of +loaded directive</h3>
+    <div class="answer">Let's take a look at an example of the "+loaded" directive.</div>
+    <iframe height="300" style="width: 100%;" scrolling="no" title="[dagger-demo] +loaded directive" src="https://codepen.io/dagger8224/embed/MWQbEKR?default-tab=html%2Cresult&editable=true&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+      See the Pen <a href="https://codepen.io/dagger8224/pen/MWQbEKR">
+      [dagger-demo] +loaded directive</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
+      on <a href="https://codepen.io">CodePen</a>.
+    </iframe>
   </template>
 </div>
