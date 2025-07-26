@@ -1,9 +1,9 @@
 <template *exist="language == 'zhCN'">
-  <h2>${ $['overview.install'] }</h2>
+  <h2>概览 / 安装</h2>
   <div class="content">
     <h3 class="question">版本信息</h3>
     <div class="answer">
-      <div>dagger.js的最新版本是0.9.13，<a target="_blank" href="https://www.npmjs.com/package/@peakman/dagger.js">程序发布包</a>中包含4个不同的文件：</div>
+      <div>dagger.js的最新版本是<strong>0.9.20</strong>，<a target="_blank" href="https://www.npmjs.com/package/@peakman/dagger.js">程序发布包</a>中包含4个不同的文件：</div>
       <table>
         <thead>
           <tr>
@@ -15,25 +15,25 @@
         </thead>
         <tbody>
           <tr>
-            <td><a target="_blank" href="https://cdn.jsdelivr.net/npm/@peakman/dagger.js@0.9.13/dagger.js">dagger.js</a></td>
+            <td><a target="_blank" href="https://cdn.jsdelivr.net/npm/@peakman/dagger.js@0.9.20/dagger.js">dagger.js</a></td>
             <td>❌</td>
             <td>✔️</td>
             <td>开发</td>
           </tr>
           <tr>
-            <td><a target="_blank" href="https://cdn.jsdelivr.net/npm/@peakman/dagger.js@0.9.13/dagger.min.js">dagger.min.js</a></td>
+            <td><a target="_blank" href="https://cdn.jsdelivr.net/npm/@peakman/dagger.js@0.9.20/dagger.min.js">dagger.min.js</a></td>
             <td>✔️</td>
             <td>✔️</td>
             <td>开发</td>
           </tr>
           <tr>
-            <td><a target="_blank" href="https://cdn.jsdelivr.net/npm/@peakman/dagger.js@0.9.13/dagger.release.js">dagger.release.js</a></td>
+            <td><a target="_blank" href="https://cdn.jsdelivr.net/npm/@peakman/dagger.js@0.9.20/dagger.release.js">dagger.release.js</a></td>
             <td>❌</td>
             <td>❌</td>
             <td>发布</td>
           </tr>
           <tr>
-            <td><a target="_blank" href="https://cdn.jsdelivr.net/npm/@peakman/dagger.js@0.9.13/dagger.release.min.js">dagger.release.min.js</a></td>
+            <td><a target="_blank" href="https://cdn.jsdelivr.net/npm/@peakman/dagger.js@0.9.20/dagger.release.min.js">dagger.release.min.js</a></td>
             <td>✔️</td>
             <td>❌</td>
             <td>发布</td>
@@ -46,7 +46,7 @@
     <div class="answer">
       <div>dagger.js使用原生javaScript编写，工作在浏览器运行时环境中。</div>
       <div>dagger.js对您项目的源代码组织结构是非侵入的。您无需为使用它额外安装任何依赖工具，或者搭建脚手架。</div>
-      <div>启动您的本地服务，打开编辑器编写代码，在浏览器中查看执行结果。这样就可以了。</div>
+      <div>启动您的本地静态服务，打开编辑器编写代码，在浏览器中查看执行结果。这样就可以了。</div>
     </div>
     <h3 class="question">浏览器兼容性</h3>
     <div class="answer">dagger.js与支持<a target="_blank" href="https://262.ecma-international.org/6.0/">ECMA2015</a>及以上版本的浏览器兼容。</div>
@@ -54,9 +54,9 @@
     <div class="answer">
       <div>您只需在项目入口页面的head标签内插入下列标签即可开始使用dagger.js：</div>
       <div class="margin">1. 通过一个type为“module”的script标签引入dagger.js：
-        <div class="code">&lt;script type="module" crossorigin="anonymous" src="https://cdn.jsdelivr.net/npm/@peakman/dagger.js@0.9.13/dagger.release.js" defer&gt;&lt;/script&gt;</div>
+        <div class="code">&lt;script type="module" crossorigin="anonymous" src="https://cdn.jsdelivr.net/npm/@peakman/dagger.js@0.9.20/dagger.release.js" defer&gt;&lt;/script&gt;</div>
       </div>
-      <div class="margin">2. 通过一个type为“dagger/modules”的script标签引入<a href="module/introduction">模块配置项</a>，声明渲染页面所需的模块资源。一个最简单的模块配置项是如下的空标签（未定义任何路由和模块）：
+      <div class="margin">2. 通过一个type为“dagger/modules”的script标签引入<a href="module/introduction">模块配置项</a>，声明渲染页面所需的模块资源。一个最简单的模块配置项是如下的空标签：
         <div class="code">&lt;script type="dagger/modules"&gt;&lt;/script&gt;</div>
         <div>关于配置项的更多详细内容将在后续的<a href="module/introduction">模块</a>和<a href="router/introduction">路由</a>章节中进行讲解。</div>
       </div>
@@ -75,33 +75,78 @@
   </div>
 </template>
 <template *exist="language == 'enUS'">
-  <div class="section">
-    <h2>${ $['overview.version'] }</h2>
-    <span>${ $['overview.version.content'] }</span>
-    <span class="bold">"0.9.13"</span>
-    <span>${ $.period || '.' }</span>
-  </div>
-  <div class="section">
-    <div *html="$['overview.version.files']"></div>
-    1. 
-    <a class="bold margin" target="_blank" href="https://cdn.jsdelivr.net/npm/@peakman/dagger.js@0.9.13/dagger.js">dagger.js</a>
-    <div style="display: inline-block;" *html="$['dagger.js']"></div>
-    <br/>
-    2. 
-    <a class="bold margin" target="_blank" href="https://cdn.jsdelivr.net/npm/@peakman/dagger.js@0.9.13/dagger.min.js">dagger.min.js</a>
-    <div style="display: inline-block;" *html="$['dagger.min.js']"></div>
-    <br/>
-    3. 
-    <a class="bold margin" target="_blank" href="https://cdn.jsdelivr.net/npm/@peakman/dagger.js@0.9.13/dagger.release.js">dagger.release.js</a>
-    
-    <div style="display: inline-block;" *html="$['dagger.release.js']"></div>
-    <br/>
-    4. 
-    <a class="bold margin" target="_blank" href="https://cdn.jsdelivr.net/npm/@peakman/dagger.js@0.9.13/dagger.release.min.js">dagger.release.min.js</a>
-    <div style="display: inline-block;" *html="$['dagger.release.min.js']"></div>
-  </div>
-  <div class="section">
-    <h3>${ $.compatibility }</h3>
-    <div *html="$['compatibility.content']"></div>
+  <h2>Overview / Install</h2>
+  <div class="content">
+    <h3 class="question">Version Information</h3>
+    <div class="answer">
+      <div>The latest version of dagger.js is <strong>0.9.20</strong>. There are 4 different files in the <a target="_blank" href="https://www.npmjs.com/package/@peakman/dagger.js">release package</a>:</div>
+      <table>
+        <thead>
+          <tr>
+            <th>File Name</th>
+            <th>Code Minified</th>
+            <th>Runtime Code Check</th>
+            <th>Applicable Environment</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><a target="_blank" href="https://cdn.jsdelivr.net/npm/@peakman/dagger.js@0.9.20/dagger.js">dagger.js</a></td>
+            <td>❌</td>
+            <td>✔️</td>
+            <td>Development</td>
+          </tr>
+          <tr>
+            <td><a target="_blank" href="https://cdn.jsdelivr.net/npm/@peakman/dagger.js@0.9.20/dagger.min.js">dagger.min.js</a></td>
+            <td>✔️</td>
+            <td>✔️</td>
+            <td>Development</td>
+          </tr>
+          <tr>
+            <td><a target="_blank" href="https://cdn.jsdelivr.net/npm/@peakman/dagger.js@0.9.20/dagger.release.js">dagger.release.js</a></td>
+            <td>❌</td>
+            <td>❌</td>
+            <td>Release</td>
+          </tr>
+          <tr>
+            <td><a target="_blank" href="https://cdn.jsdelivr.net/npm/@peakman/dagger.js@0.9.20/dagger.release.min.js">dagger.release.min.js</a></td>
+            <td>✔️</td>
+            <td>❌</td>
+            <td>Release</td>
+          </tr>
+        </tbody>
+      </table>
+      <div>You can also get the latest version of dagger.js from npm by running the following command in your local command line tool: <div class="code">npm install @peakman/dagger.js</div></div>
+    </div>
+    <h3 class="question">How to Set Up a dagger.js Development Environment</h3>
+    <div class="answer">
+      <div>dagger.js is written in native JavaScript and works in the browser runtime environment.</div>
+      <div>dagger.js does not intrude on your project's source code organization structure. You do not need to install any additional tools or scaffolding to use it.</div>
+      <div>Start your local static server, open your editor to write code, and view the execution results in your browser. That's it.</div>
+    </div>
+    <h3 class="question">Browser Compatibility</h3>
+    <div class="answer">dagger.js is compatible with browsers that support <a target="_blank" href="https://262.ecma-international.org/6.0/">ECMA2015</a> and above.</div>
+    <h3 class="question">How to setup dagger.js</h3>
+    <div class="answer">
+      <div>To start using dagger.js, just insert the following tags into the head section of your entry page:</div>
+      <div class="margin">1. Include dagger.js via a script tag whose type is "module":
+        <div class="code">&lt;script type="module" crossorigin="anonymous" src="https://cdn.jsdelivr.net/npm/@peakman/dagger.js@0.9.20/dagger.release.js" defer&gt;&lt;/script&gt;</div>
+      </div>
+      <div class="margin">2. Introduce the module configuration via a script tag whose type is "dagger/modules", declaring the <a href="module/introduction">module</a> resources required to render the page. The simplest module configuration is the empty tag shown below:
+        <div class="code">&lt;script type="dagger/modules"&gt;&lt;/script&gt;</div>
+        <div>More details about the configuration options will be explained in the subsequent <a href="module/introduction">module</a> and <a href="router/introduction">router</a> sections.</div>
+      </div>
+      <div class="margin">3. Insert a style tag (optional) to hide the HTML content that has not been rendered yet:
+        <div class="code">&lt;style&gt;[dg-cloak] { display: none !important; }&lt;/style&gt;</div>
+      </div>
+      <div>That's it! You have now created your first dagger.js <a href="overview/application">application</a>:
+        <iframe height="300" style="width: 100%;" scrolling="no" title="[dagger-demo] the empty entry page" src="https://codepen.io/dagger8224/embed/ZErWBpB?default-tab=html&editable=true&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+          See the Pen <a href="https://codepen.io/dagger8224/pen/ZErWBpB">
+          [dagger-demo] the empty entry page</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
+          on <a href="https://codepen.io">CodePen</a>.
+        </iframe>
+        We will continue to learn how to add code to our application in the next section.
+      </div>
+    </div>
   </div>
 </template>
