@@ -1,6 +1,6 @@
-<h2>${ $['directive.expression'] }</h2>
 <div class="content">
   <template *exist="language == 'zhCN'">
+    <h2>指令 / 指令表达式</h2>
     <h3 class="question">什么是指令表达式</h3>
     <div class="answer">
       <div>指令等号右侧引号中的内容称为指令表达式（后文中简称表达式）。</div>
@@ -23,7 +23,9 @@
         <div class="margin">1. “$scope”，对象类型。指向当前指令声明位置对应的<a href="directive/scope">作用域</a>变量</div>
         <div class="margin">2. “$module”，对象类型。指向当前<a href="module/namespace">名空间</a>下定义的<a href="module/introduction">模块</a>变量</div>
         <div class="margin">3. “$node”，对象类型。指向当前指令的<a href="directive/introduction">宿主元素</a>对象。</div>
-        <div class="margin">4. “$event”，对象类型。$event参数只在<a href="directive/eventHandler">事件处理指令</a>表达式中生效，指向当前被触发的事件对象。</div>
+        <div class="margin">4. “$event”，对象类型。$event只在<a href="directive/eventHandler">事件处理指令</a>表达式中生效，指向当前被触发的事件对象。</div>
+        <div class="margin">5. “$nextRoute”，对象类型。$nextRoute只在<a href="directive/sentry">+sentry</a>指令表达式中生效，指向作为跳转目标的路由对象。</div>
+        <div class="margin">6. “$entries”，对象类型。$entries$nextRoute只在<a href="directive/observer">监视器</a>指令表达式中生效，指向observe回调方法中的entries参数。</div>
         参考如下示例：
         <iframe height="300" style="width: 100%;" scrolling="no" title="[dagger-demo] directive expression callback parameters" src="https://codepen.io/dagger8224/embed/wvmvBeX?default-tab=html%2Cresult&editable=true" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
           See the Pen <a href="https://codepen.io/dagger8224/pen/wvmvBeX">
@@ -33,15 +35,52 @@
     </div>
     <h3 class="question">指令的执行结果</h3>
     <div class="answer">
-      <div>指令表达式执行完成后返回的有效值称为指令的执行结果。</div>
-      <div>请注意，如果指令表达式的返回值是一个<a target="_blank" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>，那么指令的执行结果是指此Promise处于已兑现（fulfilled）状态之后的结果值。</div>
-      <div>dagger.js会对指令表达式的执行结果进行后续处理以触发页面或数据更新。</div>
+      <div>指令表达式执行完成后的返回值称为指令的执行结果。</div>
+      <div>请注意，如果指令表达式的返回值是一个<a target="_blank" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>对象，那么指令的执行结果是指此Promise处于已兑现（fulfilled）状态之后的结果值。</div>
+      <div>dagger.js会对指令表达式的执行结果进行进一步处理以触发页面状态或数据更新。</div>
+      <div>对不同类型的指令表达式的执行结果有不同的处理方式，在后面的章节中我们会分别进行介绍。</div>
     </div>
   </template>
   <template *exist="language == 'enUS'">
-    <template *each="$['directive.checked.sections']">
-      <h3 class="question">${ item.question }</h3>
-      <div class="answer" *html="item.answer"></div>
-    </template>
+    <h2>Directive / Expression</h2>
+    <h3 class="question">What is an expression in a directive?</h3>
+    <div class="answer">
+      <div>The content inside the quotes on the right side of the directive equal sign is called an expression.</div>
+      <div>Any legal JavaScript expression can be used as the content of an expression (note that you should not add "return" or declare variables in the expression):
+        <div>✔️ Examples of valid expression content:</div>
+        <div class="code">
+          <div>+click="alert(123)" // Can call methods in the expression</div>
+          <div>+click="a = 1, b = 2" // Can use comma expressions</div>
+        </div>
+        <div>❌ Examples of invalid expression content:</div>
+        <div class="code">
+          <div>+click="a = 1; b = 2" // The content after the semicolon will be ignored</div>
+          <div>+click="return 1" // Cannot add return in the expression</div>
+          <div>+click="const a = 1" // Cannot declare variables in the expression</div>
+        </div>
+      </div>
+    </div>
+    <h3 class="question">Callback parameters in expression</h3>
+    <div class="answer">You can use the following callback parameters in an expression:
+        <div class="margin">1. “$scope”, object type. It points to the scope variable corresponding to the current directive declaration location.</div>
+        <div class="margin">2. “$module”, object type. It points to the module variable defined in the current <a href="module/namespace">namespace</a>.</div>
+        <div class="margin">3. “$node”, object type. It points to the host element of the current directive.</div>
+        <div class="margin">4. “$event”, object type. $event is only valid in event handling expressions, and it points to the event parameter of the event callback function.</div>
+        <div class="margin">5. “$nextRoute”, object type. $nextRoute is only valid in the +sentry directive expression, and it points to the route object that is the target of the redirection.</div>
+        <div class="margin">6. “$entries”, object type. $entries is only valid in the observer directive expression, and it points to the entries parameter in the observe callback method.</div>
+        For example:
+        <iframe height="300" style="width: 100%;" scrolling="no" title="[dagger-demo] directive expression callback parameters" src="https://codepen.io/dagger8224/embed/wvmvBeX?default-tab=html%2Cresult&editable=true" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+          See the Pen <a href="https://codepen.io/dagger8224/pen/wvmvBeX">
+          [dagger-demo] directive expression callback parameters</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
+          on <a href="https://codepen.io">CodePen</a>.
+        </iframe>
+    </div>
+    <h3 class="question">Execution result of a directive</h3>
+    <div class="answer">
+      <div>The return value of the directive expression is called the execution result of the directive.</div>
+      <div>Please note that if the return value of an expression is a <a target="_blank" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a> object, the execution result of the directive refers to the result value of the Promise after it is fulfilled.</div>
+      <div>dagger.js will further process the execution result of the directive expression to trigger page status or data updates.</div>
+      <div>The handling of the execution result of different types of directive expressions will be introduced in the subsequent chapters.</div>
+    </div>
   </template>
 </div>
