@@ -1,6 +1,7 @@
-<h2>${ $['directive.controller'] }</h2>
+
 <div class="content">
   <template *exist="language === 'zhCN'">
+    <h2>指令 / 控制指令</h2>
     <h3 class="question">什么是控制指令</h3>
     <div class="answer">
       <div>控制指令是当作用域下数据发生变化时由框架触发执行的一组指令的统称。</div>
@@ -18,14 +19,33 @@
           [dagger-demo] responsive dependency</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
           on <a href="https://codepen.io">CodePen</a>.
         </iframe>
-        当input元素的值发生变化时，span上指令“<a href="directive/text">*text</a>”的表达式（依赖了作用域下的变量“a”和“b”）将重新触发执行。
+        <div>当input元素的值发生变化时，span上指令“<a href="directive/text">*text</a>”的表达式（依赖了作用域下的变量“a”和“b”）将重新触发执行。</div>
       </div>
     </div>
   </template>
   <template *exist="language === 'enUS'">
-    <template *each="$['directive.controller.sections']">
-      <h3 class="question">${ item.question }</h3>
-      <div class="answer" *html="item.answer"></div>
-    </template>
+    <h2>Directive / Control Directive</h2>
+    <h3 class="question">What is a Control Directive?</h3>
+    <div class="answer">
+      <div>A control directive is a group of directives that are triggered when the data in the scope changes.</div>
+      <div>You can understand control directives as <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes">element attributes</a> with dynamic response capabilities.</div>
+    </div>
+    <h3 class="question">List of Control Directives</h3>
+    <div class="answer">
+      <a class="margin" href="directive/checked">*checked</a><a class="margin" href="directive/class">*class</a><a class="margin" href="directive/each">*each</a><a class="margin" href="directive/exist">*exist</a><a class="margin" href="directive/file">*file</a><a class="margin" href="directive/focus">*focus</a><a class="margin" href="directive/html">*html</a><a class="margin" href="directive/result">*result</a><a class="margin" href="directive/selected">*selected</a><a class="margin" href="directive/style">*style</a><a class="margin" href="directive/text">*text</a><a class="margin" href="directive/value">*value</a><a class="margin" href="directive/watch">*watch</a><a class="margin" href="directive/boolean">boolean</a><a class="margin" href="directive/general">general</a>
+    </div>
+    <h3 class="question">Trigger Conditions of Control Directives</h3>
+    <div class="answer">
+      <div>Control directives (except for <a href="directive/each">*each</a> and <a href="directive/exist">*exist</a>) will be triggered when the host element enters the loading phase for the first time.</div>
+      <div>In the lifeCycle of the host element, if the value of the scope field that the directive expression depends on changes, the control directive will be triggered again to update. This mechanism is called the response dependency of control directives on scope variables.</div>
+      <div>Let's take a look at an example of responsive dependency:
+        <iframe height="300" style="width: 100%;" scrolling="no" title="[dagger-demo] responsive dependency" src="https://codepen.io/dagger8224/embed/PoQmegw?default-tab=html%2Cresult&editable=true&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+          See the Pen <a href="https://codepen.io/dagger8224/pen/PoQmegw">
+          [dagger-demo] responsive dependency</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
+          on <a href="https://codepen.io">CodePen</a>.
+        </iframe>
+        <div>When the value of the input element changes, the expression of the "<a href="directive/text">*text</a>" directive on the span (which depends on the variables "a" and "b" in the scope) will be re-triggered.</div>
+      </div>
+    </div>
   </template>
 </div>
