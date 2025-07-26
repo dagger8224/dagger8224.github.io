@@ -11,7 +11,7 @@
     "menus": "./menus.json",
     "index": "./index.js",
     "overview_introduction": "./overview/introduction.html",
-    "overview_install": "./overview/install.html",
+    "overview_installation": "./overview/installation.html",
     "overview_application": "./overview/application.html",
     "directive_introduction": "./directive/introduction.html",
     "directive_decorator": "./directive/decorator.html",

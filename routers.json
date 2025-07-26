@@ -20,26 +20,26 @@
                 "title": "overview.introduction",
                 "template": "overview_introduction",
                 "previousLink": "",
-                "nextLink": "overview/install"
+                "nextLink": "overview/installation"
               },
               "modules": "overview_introduction"
             },
             {
-              "path": "install",
+              "path": "installation",
               "constants": {
-                "title": "overview.install",
-                "template": "overview_install",
+                "title": "overview.installation",
+                "template": "overview_installation",
                 "previousLink": "overview/introduction",
                 "nextLink": "overview/application"
               },
-              "modules": "overview_install"
+              "modules": "overview_installation"
             },
             {
               "path": "application",
               "constants": {
                 "title": "overview.application",
                 "template": "overview_application",
-                "previousLink": "overview/install",
+                "previousLink": "overview/installation",
                 "nextLink": "directive/introduction"
               },
               "modules": "overview_application"
