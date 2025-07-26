@@ -1,19 +1,21 @@
-<template *exist="language == 'zhCN'">
-  <h2>${ $['directive.introduction'] }</h2>
-  <div class="content">
+<div class="content">
+  <template *exist="language == 'zhCN'">
+    <h2>指令 / 介绍</h2>
     <h3 class="question">什么是指令</h3>
     <div class="answer">
+      <div>语法上，指令是具有特定结构的<a target="_blank" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Attributes">元素属性</a>。在运行时当中，指令将转化为一个回调函数，由框架在满足条件时触发调用。</div>
       <div>从技术上来说，dagger.js是一个指令驱动开发框架（DDD），指令是用户代码执行的唯一入口。如果把页面看做是一辆汽车，那么dagger.js相当于车辆的发动机，指令则是遍布车身底盘的传动齿轮。</div>
-      <div>形式上，指令是具有特定结构的<a target="_blank" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Attributes">元素属性</a>。在运行时当中，指令将转化为一个回调函数，由框架在满足条件时触发调用。</div></div>
+    </div>
     <h3 class="question">宿主元素与平凡元素</h3>
     <div class="answer">
-      <div>声明了指令的DOM元素称为该条指令的宿主元素。</div>
-      <div>在一个元素上可以声明任意条指令，没有声明任何指令的元素称为平凡元素。</div>
+      <div>声明了指令的DOM元素称为该条指令的宿主元素，在一个宿主元素上可以声明任意条指令。</div>
     </div>
     <h3 class="question">指令的结构</h3>
-    <div class="answer">一个典型的指令由“ 前缀 + 名称 + <a href="directive/decorator">修饰符</a>（可选）+ <a href="directive/expression">表达式</a> ” 四部分组成，下面的input元素上声明了一个名为“value”的<a href="directive/controller">控制指令</a>：
+    <div class="answer">一个典型的指令由“ 前缀 + 名称 + <a href="directive/decorator">修饰符</a>（可选）+ <a href="directive/expression">表达式</a> ” 四部分组成。
+      <br>
+      下面是一个声明了名为“value”的<a href="directive/controller">控制指令</a>的input元素：
       <div class="code">&lt;input *value#number="expression"&gt;</div>
-      在上面的html片段中，input元素是指令的宿主元素，“$”是指令前缀，“value”是指令名称，“number”是指令修饰符，“expression”是指令表达式。
+      在上面的html标签中，input元素是指令的宿主元素，“*”是控制指令前缀，“value”是指令名称，“number”是指令修饰符，“expression”是指令表达式。
     </div>
     <h3 class="question">指令的类型</h3>
     <div class="answer">dagger.js定义了四种不同类型的指令：</div>
@@ -39,11 +41,11 @@
         </tr>
         <tr>
           <td><a href="directive/controller">控制指令</a></td>
-          <td>$</td>
+          <td>*</td>
           <td>✔️</td>
           <td class="trigger">依赖数据发生变化</td>
           <td>多次</td>
-          <td class="directive"><a href="directive/each">*each</a></td>
+          <td class="directive"><a href="directive/value">*value</a></td>
         </tr>
         <tr>
           <td><a href="directive/eventHandler">事件指令</a></td>
@@ -63,15 +65,76 @@
         </tr>
       </tbody>
     </table>
-    上面表格中列举了不同指令之间的差异，方便读者进行直观比较。每种指令的定义和使用方法将在后面的相关章节中进行具体讲解。
-  </div>
-</template>
-<template *exist="language == 'enUS'">
-  <h2>${ $['directive.introduction'] }</h2>
-  <div class="content">
-    <template *each="$['directive.introduction.sections']">
-      <h3 class="question">${ item.question }</h3>
-      <div class="answer" *html="item.answer"></div>
-    </template>
-  </div>
-</template>
+    <div>上面表格中列举了不同指令之间的差异，方便读者进行直观比较。</div>
+    <div>接下来我们来分别介绍不同类型指令的定义和使用方法。</div>
+  </template>
+  <template *exist="language == 'enUS'">
+    <h2>Directive / Introduction</h2>
+    <h3 class="question">What is a directive?</h3>
+    <div class="answer">
+      <div>Syntactically, a directive is an attribute that has a specific structure. It will be transformed into a callback function that is triggered by dagger.js under certain conditions in the runtime.</div>
+      <div>From a technical perspective, dagger.js is a directive-driven development framework (DDD). Directives are the only entry point for user code. Imaging the page as a car, then dagger.js is the engine of the car, and directives are the gears that drive the car's wheels.</div>
+      </div>
+    <h3 class="question">Host element and ordinary element</h3>
+    <div class="answer">
+      <div>The DOM element that has a directive declared is called the host element. It can declare any number of directives on a host element.</div>
+      </div>
+    <h3 class="question">Structure of a directive</h3>
+    <div class="answer">A typical directive consists of a "prefix + name + <a href="directive/decorator">decorator</a> (optional) + <a href="directive/expression">expression</a>" structure.
+      <br>
+      Here is an example of declaring a "value" <a href="directive/controller">control directive</a> for an input element:
+      <div class="code">&lt;input *value#number="expression"&gt;</div>
+      In the above HTML tag, the input element is the host element for the directive, "*" is the control directive prefix, "value" is the directive name, "number" is the directive decorator, and "expression" is the directive expression.
+    </div>
+    <h3 class="question">Types of directives</h3>
+    <div class="answer">dagger.js defines four types of directives:</div>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Prefix</th>
+          <th>Support Decorator</th>
+          <th>Trigger Condition</th>
+          <th>Trigger Times</th>
+          <th>Example</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><a href="directive/lifeCycle">Life cycle directive</a></td>          
+          <td>+</td>
+          <td>✔️</td>
+          <td class="trigger">Element creation or destruction</td>
+          <td>Once</td>
+          <td class="directive"><a href="directive/load">+load</a></td>
+        </tr>
+        <tr>
+          <td><a href="directive/controller">Control directive</a></td>
+          <td>*</td>
+          <td>✔️</td>
+          <td class="trigger">Data dependency changes</td>
+          <td>Multiple</td>
+          <td class="directive"><a href="directive/value">*value</a></td>
+        </tr>
+        <tr>
+          <td><a href="directive/eventHandler">Event directive</a></td>
+          <td>+</td>
+          <td>✔️</td>
+          <td class="trigger">User action or system event</td>
+          <td>Multiple</td>
+          <td class="directive"><span>+click</span></td>
+        </tr>
+        <tr>
+          <td><a href="directive/meta">Meta directive</a></td>
+          <td>@</td>
+          <td>❌</td>
+          <td class="trigger">Framework parsing of page elements</td>
+          <td>Once</td>
+          <td><a href="directive/raw">@raw</a></td>
+        </tr>
+      </tbody>
+    </table>
+    <div>The table above lists the differences between different types of directives, making it easy for readers to compare them.</div>
+    <div>Next, we will introduce the definition and usage of different types of directives.</div>
+  </template>
+</div>
