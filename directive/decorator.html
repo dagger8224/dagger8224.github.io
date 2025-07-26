@@ -1,12 +1,12 @@
-<h2>${ $['directive.decorator'] }</h2>
 <div class="content">
   <template *exist="language == 'zhCN'">
+    <h2>指令 / 指令修饰符</h2>
     <h3 class="question">指令修饰符的作用</h3>
     <div class="answer">
       <div>指令修饰符（后文中简称为修饰符）用于对指令的工作方式进行约束声明。</div>
       <div>修饰符由框架解析和使用，在<a href="directive/expression">指令表达式</a>中无法访问修饰符对象的内容。</div>
-      <div>除去<a href="directive/raw">元指令@raw</a>之外，您可以在任意指令上声明修饰符。</div>
-      <div>修饰符是指令的可选组成部分，您也可以选择先了解后文中指令实例的内容之后再回来参阅本章节。</div>
+      <div>除去<a href="directive/meta">元指令</a>之外，您可以在任意指令上声明修饰符。</div>
+      <div>修饰符是指令的可选组成部分，您也可以选择先了解后文中关于指令实例的内容之后再回来参阅本章节。</div>
     </div>
     <h3 class="question">指令修饰符的结构</h3>
     <div class="answer">
@@ -18,8 +18,8 @@
         <div class="code">#key(:true) // 括号内容为修饰符缺省值</div>
       </div>
       <div>在一个指令上可以同时添加多个修饰符：
-        <div class="code">*value#input#trim:false</div>
-        上面的代码在指令“value”上声明了两个修饰符：“input”（值为true）和“trim”（值为false）。
+        <div class="code">*value#input#trim</div>
+        上面的代码在指令“value”上声明了两个修饰符：“input”和“trim”。
       </div>
     </div>
     <h3 class="question">指令修饰符的编码</h3>
@@ -29,11 +29,11 @@
         <div class="code">+click#every:['%43aps%4cock','%53hift']</div>
         dagger.js对以上代码解码后将创建一个名为“every”，值为字符串数组“['CapsLock', 'Shift']”的修饰符对象。
       </div>
-      <div>对于大写字母，一个可读性更好的编码方式是在字母前加上“-”符号前缀作为转换标记，例如：
+      <div>对于指令中要使用大写字母的位置，一个可读性更好也更简单的编码方式是在字母前加上“-”符号前缀作为转换标记，例如：
         <div class="code">+click#every:['-caps-lock','-shift']</div>
         <div>dagger.js对以上代码解码后将创建一个名为“every”，值为字符串数组“['CapsLock', 'Shift']”的修饰符对象。</div>
         <div>请注意，dagger.js在解析修饰符时会先对具有“-”前缀的字母做大小写转换后再进行解码。因此，修饰符“-caps-lock”将解码为“CapsLock”，而“%2dcaps%2dlock”将解码为“-caps-lock”。</div>
-        <div>除修饰符外，您也可以在指令名称中使用中横线“-”作为字符大小写转换标记。在<a href="directive/boolean">布尔指令</a>中我们将看到相关用法。</div>
+        <div>除指令修饰符外，您也可以在指令名称中使用中横线“-”作为字符大小写转换标记。在<a href="directive/boolean">布尔指令</a>中我们将看到相关用法。</div>
       </div>
     </div>
     <h3 class="question">通用预定义指令修饰符</h3>
@@ -53,16 +53,70 @@
             [dagger-demo] decorator (name/remove decorators)</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
             on <a href="https://codepen.io">CodePen</a>.
           </iframe>
-          您可以使用这个功能来移除不再需要的高频事件处理方法（如mousemove等）。
+          您可以使用这个功能来动态移除不再需要的高频事件处理方法（如mousemove等）。
         </div>
-        除去上述的通用修饰符之外，dagger.js对于某些指令也定义了一些专有的预定义修饰符。这些修饰符我们将在后文的指令实例章节中进行讲解。
+        除去上述的通用修饰符之外，dagger.js对于某些指令也定义了一些专有的预定义修饰符，我们将在后文的指令实例章节中进行讲解。
       </div>
     </div>
   </template>
   <template *exist="language == 'enUS'">
-    <template *each="$['directive.decorator.sections']">
-      <h3 class="question">${ item.question }</h3>
-      <div class="answer" *html="item.answer"></div>
-    </template>
+    <h2>Directive / Decorator</h2>
+    <h3 class="question">What is the purpose of directive decorator?</h3>
+    <div class="answer">
+      <div>Directive decorator is used to constrain the way a directive works.</div>
+      <div>The decorator is parsed and used by the framework, and the content of the decorator cannot be accessed in the <a href="directive/expression">directive expression</a>.</div>
+      <div>Except for <a href="directive/meta">meta directive</a>, you can declare decorators on any directive.</div>
+      <div>The decorators are an optional part of a directive. You may also choose to read the directive content in the following sections first and then return to this section.</div>
+    </div>
+    <h3 class="question">Structure of directive decorator</h3>
+    <div class="answer">
+      <div>The directive decorator is declared after the directive name, and there is no space allowed in between.</div>
+      <div>A complete directive decorator starts with a symbol "#" as a prefix, and the content is separated by ":" from the key-value pairs (which are called the name and value of the decorator):
+        <div class="code">#key:value</div>
+      </div>
+      <div>You can use any legal JavaScript literal as the value of the decorator. If the value of the decorator is true, you can omit the colon and the value content:
+        <div class="code">#key(:true) // the content in the parentheses is the default value of the decorator</div>
+      </div>
+      <div>You can add multiple decorators to a directive:
+        <div class="code">*value#input#trim</div>
+        The above code declares two decorators on the "value" directive: "input" and "trim".
+      </div>
+    </div>
+    <h3 class="question">Encoding of directive decorator</h3>
+    <div class="answer">
+      <div>Due to the syntax rules of DOM tag attributes and directive declaration, some special characters cannot be used directly as the content of the decorator, which will cause DOM parsing failure or unexpected processing results.</div>
+      <div>Specifically, if you need to use "<", ">", ":", "#", "\", "/", space or uppercase letters in the content of the directive decorator, you need to <a target="_blank" href="https://developer.mozilla.org/zh-cn/docs/Web/JavaScript/Reference/Global_Objects/encodeURIComponent">encode</a> the content, and dagger.js will <a target="_blank" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/decodeURIComponent">decode</a> the content when parsing. For example:
+        <div class="code">+click#every:['%43aps%4cock','%53hift']</div>
+        dagger.js will decode the above code to create a decorator object with a name of "every" and a value of a string array "['CapsLock', 'Shift']".
+      </div>
+      <div>For the position where you need to use uppercase letters, a more readable and simpler encoding method is to add a "-" prefix before the letter as a conversion mark. For example:
+        <div class="code">+click#every:['-caps-lock','-shift']</div>
+        <div>dagger.js will decode the above code to create a decorator object with a name of "every" and a value of a string array "['CapsLock', 'Shift']".</div>
+        <div>Please note that dagger.js will first convert the letter with a "-" prefix to uppercase before decoding. Therefore, the decorator "-caps-lock" will be decoded as "CapsLock", and "%2dcaps%2dlock" will be decoded as "-caps-lock".</div>
+        <div>In addition to directive decorator, you can also use a hyphen "-" in the directive name as a character case conversion mark. We will see related usage in <a href="directive/boolean">boolean directive</a>.</div>
+      </div>
+    </div>
+    <h3 class="question">Common predefined directive decorators</h3>
+    <div class="answer">You can use the following common predefined directive decorators in <a href="directive/controller">control directive</a> and <a href="directive/eventHandler">event handling directive</a>:
+      <div class="margin">1. "once", boolean type. The "once" value of true means that the decorated directive will only be executed once during the entire life cycle of the host element. Let's take a look at an example:
+        <iframe height="300" style="width: 100%;" scrolling="no" title="Untitled" src="https://codepen.io/dagger8224/embed/RwQZKQK?default-tab=html%2Cresult&editable=true&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+          See the Pen <a href="https://codepen.io/dagger8224/pen/RwQZKQK">
+          Untitled</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
+          on <a href="https://codepen.io">CodePen</a>.
+        </iframe>
+      </div>
+      <div class="margin">2. "name", string type. You can use the "name" decorator to name control directives and event handling directives.</div>
+      <div class="margin">
+        <div>3. "remove", string or string array type. You can use the "remove" field to specify one or more directive names (except for the <a href="directive/each">*each</a> directive), and dagger.js will dynamically remove the specified directive from the host element when the execution result of the current directive expression is true or its equivalent value. Let's take a look at an example:
+          <iframe height="300" style="width: 100%;" scrolling="no" title="[dagger-demo] decorator (name/remove decorators)" src="https://codepen.io/dagger8224/embed/poarKmd?default-tab=html%2Cresult&editable=true&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+            See the Pen <a href="https://codepen.io/dagger8224/pen/poarKmd">
+            [dagger-demo] decorator (name/remove decorators)</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
+            on <a href="https://codepen.io">CodePen</a>.
+          </iframe>
+          You can use this feature to dynamically remove unnecessary high-frequency event handling methods (such as mousemove, etc.).
+        </div>
+        Other than the common predefined decorators, dagger.js also defines some specific predefined decorators for some directives, which we will introduce in the directive instance chapter.
+      </div>
+    </div>
   </template>
 </div>
