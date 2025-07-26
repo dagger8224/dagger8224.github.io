@@ -14,5 +14,8 @@ export const sentry = ($scope, $nextRoute) => {
         return true;
     } else {
         $scope.isLoading = true;
+        setTimeout(() => {
+            $scope.isLoading = false;
+        }, 1000);
     }
 };

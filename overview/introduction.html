@@ -1,26 +1,38 @@
-
-<h2>${ $['overview.introduction'] }</h2>
 <div class="content">
   <template *exist="language == 'zhCN'">
-      <h3 class="question">dagger.js是什么</h3>
-      <div class="answer">
-        <div>dagger.js是一个基于html的开源（<a target="_blank" href="https://opensource.org/licenses/MIT">MIT</a>）web前端技术框架。</div>
-        <div>在dagger.js的帮助下，您无须依赖任何第三方工具或代码就可以轻松完成网站（无论是单页应用还是普通动态网站）前端页面的开发工作。</div>
-      </div>
-      <h3 class="question">dagger.js适合哪些开发者</h3>
-      <div class="answer">无论您是一个富有经验的专业开发人员，还是对web前端开发领域感兴趣的业余爱好者，只要具备原生<a target="_blank" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML">html</a>/<a target="_blank" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript">javaScript</a>/<a target="_blank" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS">css</a>背景知识作为基础，都可以在短时间内理解和掌握dagger.js。</div>
-      <h3 class="question">学习路线</h3>
-      <div class="answer">
-        <div>dagger.js中的核心概念包括：<a href="directive/introduction">指令</a>，<a href="directive/scope">作用域</a>，<a href="module/introduction">模块</a>，<a href="router/introduction">路由</a>。同时，框架也提供了少量的<a href="api/introduction">api方法</a>（dagger.js以声明方式工作，在大多数业务场景下，开发者不需要调用这些api即可完成开发任务）。</div>
-        <div>本文档围绕以上概念来组织章节结构。为便于您更加直观地理解和体验dagger.js，我们在各章节内提供了相关内容的示例代码，您可以随意修改和执行示例代码以进行练习。</div>
-        现在让我们一起开始dagger.js的体验之旅吧！
-      </div>
+    <h2>概览/介绍</h2>
+    <h3 class="question">一分钟了解dagger.js是什么</h3>
+    <div class="answer">
+      <div>dagger.js 是一个<strong>零构建 · 零API · 零第三方依赖 · 纯运行时</strong>的轻量级开源（<a target="_blank" href="https://opensource.org/licenses/MIT">MIT</a>）web前端开发框架，为开发者构建网页应用提供了直观高效的一体化解决方案。</div>
+      <div>dagger.js基于声明方式工作。只要在入口HTML文件里添加一行script标签，即可上手开发。它允许您通过简单的配置来定义路由和资源模块，在HTML标签属性上创建和修改作用域数据，添加生命周期回调和用户交互事件。</div>
+      <div>dagger.js让开发者摆脱繁琐的脚手架配置、打包过程和第三方工具依赖，从而能够更专注于业务逻辑的实现，而无需过多关注底层实现细节。</div>
+      <div>除此以外，dagger.js为<a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Web_components" target="_blank">web组件</a>提供了完善的支持，例如<a href="https://shoelace.style/" target="_blank">Shoelace</a>等。参见<a href="https://codepen.io/collection/yyLOGj" target="_blank">示例。</a></div>
+    </div>
+    <h3 class="question">dagger.js适合哪些开发者</h3>
+    <div class="answer">无论您是一个富有经验的专业开发人员，还是对web前端开发感兴趣的业余爱好者，只要具备原生<a target="_blank" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML">html</a> / <a target="_blank" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript">javaScript</a> / <a target="_blank" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS">css</a>背景知识作为基础，都可以在短时间内理解和掌握dagger.js。</div>
+    <h3 class="question">学习路线</h3>
+    <div class="answer">
+      <div>dagger.js中的核心概念包括：<a href="directive/introduction">指令</a>，<a href="directive/scope">作用域</a>，<a href="module/introduction">模块</a>，<a href="router/introduction">路由</a>等。</div>
+      <div>本文档围绕以上概念组织章节，并配备可修改的示例代码，方便你边读边练。</div>
+      <strong>现在让我们一起开始dagger.js的学习和体验之旅吧！</strong>
     </div>
   </template>
   <template *exist="language == 'enUS'">
-      <template *each="$['overview.introduction.sections']">
-        <h3 class="question">${ item.question }</h3>
-        <div class="answer" *html="item.answer"></div>
-      </template>
+    <h2>Overview / Introduction</h2>
+    <h3 class="question">One‑minute overview: What is dagger.js?</h3>
+    <div class="answer">
+      <div>dagger.js is a<strong>zero‑build · zero‑API · zero third‑party dependencies · runtime‑only</strong>, lightweight, (<a target="_blank" href="https://opensource.org/licenses/MIT">MIT‑licensed</a>) web front‑end framework that provides an intuitive and efficient all‑in‑one solution for building web applications.</div>
+      <div>dagger.js works declaratively. Add a single script tag to your entry HTML file and start developing immediately. With simple configuration you can define routes and resource modules, create and modify scoped data directly on HTML tag attributes, and attach lifecycle callbacks and user interaction events.</div>
+      <div>dagger.js frees developers from cumbersome scaffolding, build steps, and third‑party tool dependencies, allowing you to focus on business logic instead of low‑level implementation details.</div>
+      <div>In addition, dagger.js offers comprehensive support for <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_components" target="_blank">Web Components</a>, such as <a href="https://shoelace.style/" target="_blank">Shoelace</a>. See the <a href="https://codepen.io/collection/yyLOGj" target="_blank">examples</a>.</div>
+    </div>
+    <h3 class="question">Who is dagger.js for?</h3>
+    <div class="answer">Whether you’re an experienced professional developer or a hobbyist interested in web front‑end development, if you have a basic background in native <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/HTML">html</a> / <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript">javaScript</a> / <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/CSS">css</a>, you can understand and master dagger.js in a short time.</div>
+    <h3 class="question">Learning RoadMap</h3>
+    <div class="answer">
+      <div>Core concepts in dagger.js include: <a href="directive/introduction">directive</a>，<a href="directive/scope">scope</a>，<a href="module/introduction">module</a>，<a href="router/introduction">router</a>.</div>
+      <div>This documentation is organized around these concepts and includes editable sample code so you can read and practice as you go.</div>
+      <strong>Now let’s begin the journey of learning and experiencing dagger.js together!</strong>
+    </div>
   </template>
 </div>
