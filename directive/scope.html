@@ -1,59 +1,124 @@
-<template *exist="language == 'zhCN'">
-    <h2>${ $['directive.scope'] }</h2>
-    <div class="content">
-      <h3 class="question">什么是作用域</h3>
-      <div class="answer">在dagger.js中，作用域特指指令表达式中回调参数“$scope”所指向的对象。</div>
-      <h3 class="question">根作用域</h3>
-      <div class="answer"><div>根作用域是由框架所创建和维护的顶层作用域对象。根作用域对象中只包括<a href="router/introduction">路由对象$route</a>和<a href="miscellaneous/introduction">验证器函数$validator</a>。</div><div>如果某条指令的宿主元素及其上层元素的指令从未创建过作用域，那么该指令表达式中的“$scope”将指向根作用域。<div>参考如下示例：</div></div></div>
+<div class="content">
+  <template *exist="language == 'zhCN'">
+    <h2>指令 / 作用域</h2>
+    <h3 class="question">什么是作用域</h3>
+    <div class="answer">在dagger.js中，指令表达式中回调参数“$scope”所指向的对象称为当前指令的作用域。</div>
+    <h3 class="question">根作用域</h3>
+    <div class="answer">
+      <div>根作用域是由dagger.js所创建和维护的顶层作用域对象。根作用域对象中只包括当前路由对象<a href="router/introduction">$route</a>。</div>
+      <div>如果某条指令的宿主元素及其上层元素的指令从未创建过作用域，那么该指令表达式中的“$scope”将指向根作用域。</div>
+      <div>参考如下示例：</div>
       <iframe height="300" style="width: 100%;" scrolling="no" title="Untitled" src="https://codepen.io/dagger8224/embed/RwQowmb?default-tab=html%2Cresult&editable=true&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
         See the Pen <a href="https://codepen.io/dagger8224/pen/RwQowmb">
         Untitled</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
         on <a href="https://codepen.io">CodePen</a>.
       </iframe>
-      <h3 class="question">自定义作用域</h3>
-      <div class="answer"><div>可以通过<a href="directive/load">+load</a>和<a href="directive/each">*each</a>指令创建新的作用域对象实例。</div><div>由指令创建出的作用域称为自定义作用域，创建出自定义作用域的指令称为该作用域的源指令。</div><div>如果在某条指令的宿主元素或其上层元素的指令中创建过自定义作用域，那么该指令表达式中的“$scope”将指向其最近层级元素上的源指令所创建出的作用域对象。</div></div>
-      <h3 class="question">如何销毁作用域</h3>
-      <div class="answer">自定义作用域对象在其源指令的宿主元素被销毁时自动销毁。根作用域在页面的生存期内永远不会被销毁。</div>
-      <h3 class="question">作用域的工作方式</h3>
-      <div class="answer">
-        <div>dagger.js作用域的工作方式与原生javaScript<a target="_blank" href="https://developer.mozilla.org/zh-CN/docs/Glossary/Scope">作用域</a>非常接近。请记住如下几个规则：</div>
-        <div class="margin">1. 某一层级源指令创建的自定义作用域将在该源指令宿主元素的其它指令（“<a href="directive/each">*each</a>”和“<a href="directive/exist">*exist</a>”指令除外，参见相关章节）及宿主元素子层级元素上的所有指令上生效。</div>
-        <div class="margin">2. 高层级宿主元素上声明的指令无法访问其子层级宿主元素的源指令创建出的自定义作用域。</div>
-        <div class="margin">3. 低层级源指令上创建的作用域对象继承自高层级源指令上创建的作用域。这意味着您可以通过指令中的“$scope”访问上层作用域变量上那些未被覆盖的字段。</div>
-        <div>下面的演示动画直观展示了作用域的工作方式：
-          <iframe height="300" style="width: 100%;" scrolling="no" title="[dagger-demo] animation" src="https://codepen.io/dagger8224/embed/YzeNmRz?default-tab=result&editable=true&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
-            See the Pen <a href="https://codepen.io/dagger8224/pen/YzeNmRz">
-            [dagger-demo] animation</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
-            on <a href="https://codepen.io">CodePen</a>.
-          </iframe>
-        </div>
-      </div>
-      <h3 class="question">作用域字段的匿名访问</h3>
-      <div class="answer">在实际开发过程中，您可以匿名访问作用域下的字段使代码更加精简：
-        <div class="code">
-          +click="alert($scope.value)" // 具名方式访问
-          <br>
-          +click="alert(value)" // 匿名方式访问
-        </div>
-        请注意，如果在指令表达式的作用域链和全局作用域中都没有声明字段“value”，那么您将不能使用匿名方式进行访问。否则将导致一个<a target="_blank" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/ReferenceError">ReferenceError</a>。
-      </div>
-      <h3 class="question">作用域示例</h3>
-      <div class="answer">我们通过下面的示例来体验下作用域的用法：
-        <iframe height="300" style="width: 100%;" scrolling="no" title="[dagger-demo] $scope (the default rootScope)" src="https://codepen.io/dagger8224/embed/xxYZaPg?default-tab=html%2Cresult&editable=true&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
-          See the Pen <a href="https://codepen.io/dagger8224/pen/xxYZaPg">
-          [dagger-demo] $scope (the default rootScope)</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
+    </div>
+    <h3 class="question">如何创建作用域</h3>
+    <div class="answer">
+      <div>可以通过<a href="directive/load">+load</a>和<a href="directive/each">*each</a>指令创建新的作用域对象。</div>
+      <div>新创建的作用域对象将继承自其上层元素的作用域对象。</div>
+    </div>
+    <h3 class="question">如何销毁作用域</h3>
+    <div class="answer">
+      <div>自定义作用域对象在创建它的宿主元素被销毁时自动销毁。</div>
+      <div>根作用域对象在页面的生存期内永远不会被销毁。</div>
+    </div>
+    <h3 class="question">作用域的工作方式</h3>
+    <div class="answer">
+      <div>dagger.js作用域的工作方式与原生javaScript<a target="_blank" href="https://developer.mozilla.org/zh-CN/docs/Glossary/Scope">作用域</a>非常接近。请记住如下几个规则：</div>
+      <div class="margin">1. 某宿主元素创建的作用域将在该元素的其它指令（“<a href="directive/each">*each</a>”和“<a href="directive/exist">*exist</a>”指令除外，参见相关章节）及宿主元素子级元素上的所有指令上生效。</div>
+      <div class="margin">2. 父级宿主元素上声明的指令无法访问子级宿主元素创建出的作用域。</div>
+      <div class="margin">3. 子级宿主元素创建的作用域对象继承自父级宿主元素上创建的作用域。这意味着您可以通过指令表达式中的“$scope”访问上层作用域变量中的字段。</div>
+      <div>一句话来说，子级作用域对象可以访问父级作用域对象中的字段，但反过来则不行。</div>
+      <div>下面的演示动画直观展示了作用域的工作方式：
+        <iframe height="300" style="width: 100%;" scrolling="no" title="[dagger-demo] animation" src="https://codepen.io/dagger8224/embed/YzeNmRz?default-tab=result&editable=true&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+          See the Pen <a href="https://codepen.io/dagger8224/pen/YzeNmRz">
+          [dagger-demo] animation</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
           on <a href="https://codepen.io">CodePen</a>.
         </iframe>
       </div>
     </div>
-  </template>
-  <template *exist="language == 'enUS'">
-    <h2>${ $['directive.scope'] }</h2>
-    <div class="content">
-      <template *each="$['directive.load.sections']">
-        <h3 class="question">${ item.question }</h3>
-        <div class="answer" *html="item.answer"></div>
-      </template>
+    <h3 class="question">作用域字段的匿名访问</h3>
+    <div class="answer">在实际开发过程中，您可以匿名访问作用域下的字段使代码更加精简：
+      <div class="code">
+        +click="alert($scope.value)" // 具名方式访问
+        <br>
+        +click="alert(value)" // 匿名方式访问
+      </div>
+      请注意，如果在指令表达式的作用域链和全局作用域中都没有声明字段“value”，那么您将不能使用匿名方式进行访问。否则将导致一个<a target="_blank" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/ReferenceError">ReferenceError</a>。
+    </div>
+    <h3 class="question">作用域示例</h3>
+    <div class="answer">我们通过下面的示例来体验下作用域的用法：
+      <iframe height="300" style="width: 100%;" scrolling="no" title="[dagger-demo] $scope (the default rootScope)" src="https://codepen.io/dagger8224/embed/xxYZaPg?default-tab=html%2Cresult&editable=true&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+        See the Pen <a href="https://codepen.io/dagger8224/pen/xxYZaPg">
+        [dagger-demo] $scope (the default rootScope)</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
+        on <a href="https://codepen.io">CodePen</a>.
+      </iframe>
+    </div>
+    <h3 class="question">作用域的意义</h3>
+    <div class="answer">
+      <div>作用域是dagger.js中的核心概念之一。它使指令表达式拥有了独立的执行上下文环境，实现了<a href="module/introduction">模块</a>的可复用性。只有正确理解了作用域的概念，才能真正掌握dagger.js的设计思想和使用方式。</div>
+      <div>在接下来的章节中，我们将结合具体的指令和示例，更加深入地了解作用域的用法。</div>
     </div>
   </template>
-  
+  <template *exist="language == 'enUS'">
+    <h2>Directive / Scope</h2>
+    <h3 class="question">What is Scope?</h3>
+    <div class="answer">In dagger.js, the object pointed to by the callback parameter "$scope" in a directive expression is called the current directive's scope.</div>
+    <h3 class="question">Root Scope</h3>
+    <div class="answer">
+      <div>The root scope is a top-level scope object created and maintained by dagger.js. The root scope object includes only the current route object <a href="router/introduction">$route</a>.</div>
+      <div>If a directive's host element and its parent element's directives have never created a scope, then the "$scope" in the directive expression will point to the root scope.</div>
+      <div>For example:</div>
+      <iframe height="300" style="width: 100%;" scrolling="no" title="Untitled" src="https://codepen.io/dagger8224/embed/RwQowmb?default-tab=html%2Cresult&editable=true&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+        See the Pen <a href="https://codepen.io/dagger8224/pen/RwQowmb">
+        Untitled</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
+        on <a href="https://codepen.io">CodePen</a>.
+      </iframe>
+    </div>
+    <h3 class="question">How to create a scope</h3>
+    <div class="answer">
+      <div>You can create a new scope object using the <a href="directive/load">+load</a> and <a href="directive/each">*each</a> directives.</div>
+      <div>The new scope object will inherit from the scope object of its parent element.</div>
+    </div>
+    <h3 class="question">How to destroy a scope</h3>
+    <div class="answer">
+      <div>Custom scope objects are destroyed automatically when their host element is destroyed.</div>
+      <div>The root scope object is never destroyed during the lifetime of the page.</div>
+    </div>
+    <h3 class="question">How scope works</h3>
+    <div class="answer">
+      <div>The working mechanism of the scope in dagger.js is similar to the native JavaScript <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Glossary/Scope">scope</a>. Please remember the following rules:</div>
+      <div class="margin">1. The scope created by a host element will be effective for all other directives (except for the <a href="directive/each">*each</a> and <a href="directive/exist">*exist</a> directives, see related chapters) and all child elements of the host element.</div>
+      <div class="margin">2. Parent host elements' directives cannot access the scope created by child host elements.</div>
+      <div class="margin">3. The scope object created by a child host element inherits from the scope object of its parent host element. This means that you can access fields in the upper scope using the "$scope" in the directive expression.</div>
+      <div>In a nutshell, the child scope object can access fields in the parent scope object, but the reverse is not true.</div>
+      <div>The following animation demonstrates the working mechanism of the scope:
+        <iframe height="300" style="width: 100%;" scrolling="no" title="[dagger-demo] animation" src="https://codepen.io/dagger8224/embed/YzeNmRz?default-tab=result&editable=true&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true"></iframe>
+      </div>
+    </div>
+    <h3 class="question">Anonymous access to scope fields</h3>
+    <div class="answer">In practical development, you can use anonymous access to scope fields to simplify your code:
+      <div class="code">
+        +click="alert($scope.value)" // named access
+        <br>
+        +click="alert(value)" // anonymous access
+      </div>
+      Note that if the "value" field is not declared in the scope chain and global scope, you will not be able to use anonymous access. This will result in a <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ReferenceError">ReferenceError</a>.
+    </div>
+    <h3 class="question">Scope example</h3>
+    <div class="answer">Let's experience the usage of scope by the following example:
+      <iframe height="300" style="width: 100%;" scrolling="no" title="[dagger-demo] $scope (the default rootScope)" src="https://codepen.io/dagger8224/embed/xxYZaPg?default-tab=html%2Cresult&editable=true&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+        See the Pen <a href="https://codepen.io/dagger8224/pen/xxYZaPg">
+        [dagger-demo] $scope (the default rootScope)</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
+        on <a href="https://codepen.io">CodePen</a>.
+      </iframe>
+    </div>
+    <h3 class="question">The meaning of scope</h3>
+    <div class="answer">
+      <div>Scope is one of the core concepts in dagger.js. It provides directive expressions with an independent execution context, enabling <a href="module/introduction">module</a> reusability. Only with a proper understanding of scope can you truly grasp dagger.js’s design philosophy and usage patterns.</div>
+      <div> In the following sections, we’ll dive deeper into scope through concrete directives and examples.</div>
+    </div>
+  </template>
+</div>
