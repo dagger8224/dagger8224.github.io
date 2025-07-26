@@ -1,6 +1,6 @@
 <h2>${ $['directive.exist'] }</h2>
   <div class="content">
-    <template *exist="language == 'zhCN'">
+    <template *exist="language === 'zhCN'">
       <h3 class="question">*exist指令的作用</h3>
       <div class="answer">*exist指令用于切换宿主元素及其子级元素的存在状态。</div>
       <h3 class="question">*exist指令表达式的执行结果</h3>
@@ -22,7 +22,7 @@
         </iframe>
       </div>
     </template>
-    <template *exist="language == 'enUS'">
+    <template *exist="language === 'enUS'">
       <template *each="$['directive.exist.sections']">
         <h3 class="question">${ item.question }</h3>
         <div class="answer" *html="item.answer"></div>

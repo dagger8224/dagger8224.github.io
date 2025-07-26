@@ -1,6 +1,6 @@
 <h2>${ $['directive.sentry'] }</h2>
 <div class="content">
-  <template *exist="language == 'zhCN'">
+  <template *exist="language === 'zhCN'">
     <h3 class="question">+sentry指令的作用</h3>
     <div class="answer">
       <div>“+sentry”指令在即将发生页面内路由跳转时由框架触发调用。</div>
@@ -10,7 +10,7 @@
     <h3 class="question">+sentry指令示例</h3>
     <div class="answer">“+sentry”指令示例将在<a href="router/introduction">路由</a>章节中演示。</div>
   </template>
-  <template *exist="language == 'enUS'">
+  <template *exist="language === 'enUS'">
     <template *each="$['directive.sentry.sections']">
       <h3 class="question">${ item.question }</h3>
       <div class="answer" *html="item.answer"></div>

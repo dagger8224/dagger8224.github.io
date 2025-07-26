@@ -1,6 +1,6 @@
 <h2>${ $['module.style'] }</h2>
 <div class="content">
-  <template *exist="language == 'zhCN'">
+  <template *exist="language === 'zhCN'">
     <h3 class="question">什么是样式模块</h3>
     <div class="answer">
       <div>样式模块是一组可复用的样式片段。</div>
@@ -18,7 +18,7 @@
       上例中，<a href="module/template">模板模块</a>“view_module”关联了两个样式模块“style1”和“style2”，其中“style1”中的按钮文字颜色声明是全局生效的，而“style2”中的边框样式声明仅对“view_module”内部的按钮元素生效。
     </div>
   </template>
-  <template *exist="language == 'enUS'">
+  <template *exist="language === 'enUS'">
     <template *each="$['module.style.sections']">
       <h3 class="question">${ item.question }</h3>
       <div class="answer" *html="item.answer"></div>

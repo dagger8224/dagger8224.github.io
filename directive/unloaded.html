@@ -1,6 +1,6 @@
-<h2>${ $['directive.unloaded'] }</h2>
 <div class="content">
-  <template *exist="language == 'zhCN'">
+  <template *exist="language === 'zhCN'">
+    <h2>指令 / +unloaded</h2>
     <h3 class="question">+unloaded指令的作用</h3>
     <div class="answer">
       <div>“+unloaded”指令在宿主元素从DOM树移除之后（卸载完成阶段）由框架触发调用，用于完成进一步的清理工作。</div>
@@ -17,10 +17,22 @@
       </iframe>
     </div>
   </template>
-  <template *exist="language == 'enUS'">
-    <template *each="$['directive.unloaded.sections']">
-      <h3 class="question">${ item.question }</h3>
-      <div class="answer" *html="item.answer"></div>
-    </template>
+  <template *exist="language === 'enUS'">
+    <h2>Directive / +unloaded</h2>
+    <h3 class="question">What is the usage of the +unloaded directive?</h3>
+    <div class="answer">
+      <div>The "+unloaded" directive is called by the framework when the host element is removed from the DOM tree (unload completed stage).</div>
+      <div>In the "+unloaded" directive expression, "$scope" refers to the parent element's scope, and "$node" is null.</div>
+    </div>
+    <h3 class="question">What is the result of executing the +unloaded directive?</h3>
+    <div class="answer">dagger.js does not process the execution result of the "+unloaded" directive expression.</div>
+    <h3 class="question">Example of +unloaded directive</h3>
+    <div class="answer">Here is an example of the "+unloaded" directive:
+      <iframe height="300" style="width: 100%;" scrolling="no" title="[dagger-demo] +unloaded directive" src="https://codepen.io/dagger8224/embed/PoQbQbQ?default-tab=html%2Cresult&editable=true&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+        See the Pen <a href="https://codepen.io/dagger8224/pen/PoQbQbQ">
+        [dagger-demo] +unloaded directive</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
+        on <a href="https://codepen.io">CodePen</a>.
+      </iframe>
+    </div>
   </template>
 </div>

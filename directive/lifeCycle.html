@@ -1,5 +1,5 @@
 <div class="content">
-  <template *exist="language == 'zhCN'">
+  <template *exist="language === 'zhCN'">
     <h2>指令 / 生命周期指令</h2>
     <h3 class="question">元素的生命周期</h3>
     <div class="answer">
@@ -94,7 +94,7 @@
       现在只要了解各个生命周期方法的触发时机和调用顺序就好，每个指令的具体功能和用法将在后面的章节中讲解。
     </div>
   </template>
-  <template *exist="language == 'enUS'">
+  <template *exist="language === 'enUS'">
     <h2>Directive / LifeCycle Directives</h2>
     <h3 class="question">What is an element's lifeCycle?</h3>
     <div class="answer">The lifeCycle of an element in dagger.js is the entire process of creating an element to its destruction.</div>

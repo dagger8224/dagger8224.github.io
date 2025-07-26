@@ -1,6 +1,6 @@
 <h2>${ $['directive.result'] }</h2>
 <div class="content">
-  <template *exist="language == 'zhCN'">
+  <template *exist="language === 'zhCN'">
     <h3 class="question">*result指令的作用</h3>
     <div class="answer">*result指令用于绑定本地文件的上传状态和结果，适用于类型为file的input元素。</div>
     <h3 class="question">*result指令的执行结果</h3>
@@ -33,5 +33,5 @@
           </iframe>
     </div>
   </template>
-  <template *exist="language == 'enUS'"></template>
+  <template *exist="language === 'enUS'"></template>
 </div>

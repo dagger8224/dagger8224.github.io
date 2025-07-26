@@ -1,6 +1,6 @@
 <h2>${ $['directive.checked'] }</h2>
 <div class="content">
-  <template *exist="language == 'zhCN'">
+  <template *exist="language === 'zhCN'">
     <h3 class="question">*checked指令的作用</h3>
     <div class="answer">“*checked”指令用于绑定宿主元素的选中状态，适用于类型为“radio”和“checkbox”的input元素，以及option元素。</div>
     <h3 class="question">*checked指令表达式的执行结果</h3>
@@ -35,7 +35,7 @@
       </div>
     </div>
   </template>
-  <template *exist="language == 'enUS'">
+  <template *exist="language === 'enUS'">
     <template *each="$['directive.checked.sections']">
       <h3 class="question">${ item.question }</h3>
       <div class="answer" *html="item.answer"></div>

@@ -1,6 +1,6 @@
 <h2>${ $['directive.focus'] }</h2>
 <div class="content">
-  <template *exist="language == 'zhCN'">
+  <template *exist="language === 'zhCN'">
     <h3 class="question">*focus指令的作用</h3>
     <div class="answer">focus指令用于为宿主元素设置焦点。</div>
     <h3 class="question">*focus指令表达式的执行结果</h3>
@@ -20,7 +20,7 @@
       </iframe>
     </div>
   </template>
-  <template *exist="language == 'enUS'">
+  <template *exist="language === 'enUS'">
     <template *each="$['directive.focus.sections']">
       <h3 class="question">${ item.question }</h3>
       <div class="answer" *html="item.answer"></div>

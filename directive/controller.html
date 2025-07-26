@@ -1,6 +1,6 @@
 <h2>${ $['directive.controller'] }</h2>
 <div class="content">
-  <template *exist="language == 'zhCN'">
+  <template *exist="language === 'zhCN'">
     <h3 class="question">什么是控制指令</h3>
     <div class="answer">
       <div>控制指令是当作用域下数据发生变化时由框架触发执行的一组指令的统称。</div>
@@ -22,7 +22,7 @@
       </div>
     </div>
   </template>
-  <template *exist="language == 'enUS'">
+  <template *exist="language === 'enUS'">
     <template *each="$['directive.controller.sections']">
       <h3 class="question">${ item.question }</h3>
       <div class="answer" *html="item.answer"></div>

@@ -1,6 +1,6 @@
 <h2>${ $['directive.text'] }</h2>
 <div class="content">
-  <template *exist="language == 'zhCN'">
+  <template *exist="language === 'zhCN'">
     <h3 class="question">*text指令的作用</h3>
     <div class="answer">*text指令用于在宿主元素下动态创建文本内容。</div>
     <h3 class="question">*text指令表达式的执行结果</h3>
@@ -24,7 +24,7 @@
     <h3 class="question">*text指令的使用限制</h3>
     <div class="answer">不要将“*text”指令或者原地模板字符串用于<a href="module/introduction">模块</a>宿主元素。</div>
   </template>
-  <template *exist="language == 'enUS'">
+  <template *exist="language === 'enUS'">
     <template *each="$['directive.text.sections']">
       <h3 class="question">${ item.question }</h3>
       <div class="answer" *html="item.answer"></div>

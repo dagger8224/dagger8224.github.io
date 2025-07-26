@@ -1,5 +1,5 @@
 <div class="content">
-  <template *exist="language == 'zhCN'">
+  <template *exist="language === 'zhCN'">
     <h2>指令 / +loaded</h2>
     <h3 class="question">+loaded指令的作用</h3>
     <div class="answer">“+loaded”指令在宿主元素连接到DOM树之后（加载完成阶段）由框架触发调用，主要用于对宿主元素和作用域变量进行初始化操作。</div>
@@ -13,7 +13,7 @@
       on <a href="https://codepen.io">CodePen</a>.
     </iframe>
   </template>
-  <template *exist="language == 'enUS'">
+  <template *exist="language === 'enUS'">
     <h2>Directive / +loaded</h2>
     <h3 class="question">What is the +loaded directive?</h3>
     <div class="answer">The "+loaded" directive is called by the framework after the host element is connected to the DOM tree (loading complete stage). It is mainly used to initialize the host element and scope variables.</div>

@@ -1,6 +1,6 @@
 <h2>${ $['router.introduction'] }</h2>
 <div class="content">
-  <template *exist="language == 'zhCN'">
+  <template *exist="language === 'zhCN'">
     <h3 class="question">什么是路由管理器</h3>
     <div class="answer">
       dagger.js内置了基于url <a target="_blank" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Location/hash">hash</a>实现的页面内路由状态管理器。当路由管理器侦测到页面“location.hash”发生变化时，将当前hash内容与已注册路由场景进行匹配，进而触发页面视图更新（通常与“<a href="directive/html">*html</a>”指令配合工作）。
@@ -40,7 +40,7 @@
       <div>请注意，如果当前页面存在多个“+sentry”指令实例，在路由跳转前每个“+sentry”实例将独立进行守卫逻辑判断，任何一个“+sentry”指令执行结果为true则此次跳转将被阻塞。</div>
     </div>
   </template>
-  <template *exist="language == 'enUS'">
+  <template *exist="language === 'enUS'">
     <template *each="$['router.introduction.sections']">
       <h3 class="question">${ item.question }</h3>
       <div class="answer" *html="item.answer"></div>

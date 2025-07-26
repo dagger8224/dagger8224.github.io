@@ -1,5 +1,5 @@
 <div class="content">
-  <template *exist="language == 'zhCN'">
+  <template *exist="language === 'zhCN'">
     <h2>指令 / 作用域</h2>
     <h3 class="question">什么是作用域</h3>
     <div class="answer">在dagger.js中，指令表达式中回调参数“$scope”所指向的对象称为当前指令的作用域。</div>
@@ -62,7 +62,7 @@
       <div>在接下来的章节中，我们将结合具体的指令和示例，更加深入地了解作用域的用法。</div>
     </div>
   </template>
-  <template *exist="language == 'enUS'">
+  <template *exist="language === 'enUS'">
     <h2>Directive / Scope</h2>
     <h3 class="question">What is Scope?</h3>
     <div class="answer">In dagger.js, the object pointed to by the callback parameter "$scope" in a directive expression is called the current directive's scope.</div>

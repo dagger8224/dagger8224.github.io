@@ -1,6 +1,6 @@
 <h2>${ $['module.template'] }</h2>
 <div class="content">
-  <template *exist="language == 'zhCN'">
+  <template *exist="language === 'zhCN'">
     <h3 class="question">什么是模板模块</h3>
     <div class="answer">
       <div>模板是可复用的html片段。</div>
@@ -75,7 +75,7 @@
       上例中，样式模块“style”将仅在“view_module”模板内的元素上生效。样式模块的更多详细内容参见<a href="module/style">相关章节</a>。
     </div>
   </template>
-  <template *exist="language == 'enUS'">
+  <template *exist="language === 'enUS'">
     <template *each="$['module.template.sections']">
       <h3 class="question">${ item.question }</h3>
       <div class="answer" *html="item.answer"></div>

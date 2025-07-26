@@ -1,6 +1,6 @@
 <h2>${ $['directive.watch'] }</h2>
 <div class="content">
-  <template *exist="language == 'zhCN'">
+  <template *exist="language === 'zhCN'">
     <h3 class="question">*watch指令的作用</h3>
     <div class="answer">
       <div>*watch指令定义了变量之间的约束关系（左表达式变量受控于右表达式中的变量），用于在依赖变量的值发生变化时动态更新关联数据。</div>
@@ -16,7 +16,7 @@
     <h3 class="question">*watch指令表达式的执行结果</h3>
     <div class="answer">*watch指令表达式的执行结果无意义。</div>
   </template>
-  <template *exist="language == 'enUS'">
+  <template *exist="language === 'enUS'">
     <template *each="$['directive.watch.sections']">
       <h3 class="question">${ item.question }</h3>
       <div class="answer" *html="item.answer"></div>

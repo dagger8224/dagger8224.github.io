@@ -1,6 +1,6 @@
 <h2>${ $['module.string'] }</h2>
 <div class="content">
-  <template *exist="language == 'zhCN'">
+  <template *exist="language === 'zhCN'">
     <h3 class="question">什么是字符串模块</h3>
     <div class="answer">
       <div>字符串模块是可复用的字符串资源。</div>
@@ -17,7 +17,7 @@
       </div>
     </div>
   </template>
-  <template *exist="language == 'enUS'">
+  <template *exist="language === 'enUS'">
     <template *each="$['module.string.sections']">
       <h3 class="question">${ item.question }</h3>
       <div class="answer" *html="item.answer"></div>

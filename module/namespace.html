@@ -1,6 +1,6 @@
 <h2>${ $['module.namespace'] }</h2>
 <div class="content">
-  <template *exist="language == 'zhCN'">
+  <template *exist="language === 'zhCN'">
     <h3 class="question">什么是名空间模块</h3>
     <div class="answer">
       <div>一个可复用部件（widget）通常由<a href="module/template">模板</a>模块、<a href="module/script">脚本</a>模块和<a href="module/style">样式</a>模块等不同类型的模块共同组成。我们将由若干子模块组合成的复合模块称为名空间模块。名空间模块下可以包含任意类型和数量的子模块，包括其他的名空间模块。</div>
@@ -37,7 +37,7 @@
       您可以修改上例配置项中“explicit”字段的内容查看对应的执行结果。
     </div>
   </template>
-  <template *exist="language == 'enUS'">
+  <template *exist="language === 'enUS'">
     <template *each="$['module.namespace.sections']">
       <h3 class="question">${ item.question }</h3>
       <div class="answer" *html="item.answer"></div>

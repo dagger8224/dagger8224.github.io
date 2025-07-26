@@ -1,5 +1,5 @@
 <div class="content">
-  <template *exist="language == 'zhCN'">
+  <template *exist="language === 'zhCN'">
     <h2>指令 / +load</h2>
     <h3 class="question">+load指令的作用</h3>
     <div class="answer">“+load”指令在宿主元素挂载到DOM树之前（加载中阶段）由框架触发调用，主要用于创建<a href="directive/scope">作用域</a>对象。</div>
@@ -25,7 +25,7 @@
       <div>可以删除掉root修饰符对比修改前后的结果。</div>
     </div>
   </template>
-  <template *exist="language == 'enUS'">
+  <template *exist="language === 'enUS'">
     <h2>Directive / +load</h2>
     <h3 class="question">What is the usage of the +load directive?</h3>
     <div class="answer">The "+load" directive is called by the framework before the host element is mounted to the DOM tree (loading stage). It is mainly used to create a <a href="directive/scope">scope</a> object.</div>

@@ -1,6 +1,6 @@
 <h2>${ $['module.introduction'] }</h2>
 <div class="content">
-  <template *exist="language == 'zhCN'">
+  <template *exist="language === 'zhCN'">
     <h3 class="question">什么是模块</h3>
     <div class="answer">
       <div>在dagger.js中，我们把html模板，脚本，层叠样式表等可复用的代码片段统称为模块。</div>
@@ -221,7 +221,7 @@
     </div>
   </div>
   </template>
-  <template *exist="language == 'enUS'">
+  <template *exist="language === 'enUS'">
     <template *each="$['module.introduction.sections']">
       <h3 class="question">${ item.question }</h3>
       <div class="answer" *html="item.answer"></div>

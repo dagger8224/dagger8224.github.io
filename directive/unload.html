@@ -1,6 +1,6 @@
 
 <div class="content">
-  <template *exist="language == 'zhCN'">
+  <template *exist="language === 'zhCN'">
     <h2>指令 / +unload</h2>
     <h3 class="question">+unload指令的作用</h3>
     <div class="answer">“+unload”指令在宿主元素从DOM树移除之前（卸载中阶段）由框架触发调用，用于对宿主元素或者作用域变量进行清理操作（清除不再需要的定时器ID等）。</div>
@@ -16,7 +16,7 @@
       </iframe>
     </div>
   </template>
-  <template *exist="language == 'enUS'">
+  <template *exist="language === 'enUS'">
     <h2>Directive / +unload</h2>
     <h3 class="question">What does the +unload directive do?</h3>
     <div class="answer">The "+unload" directive is called by the framework before the host element is removed from the DOM tree (during the unloading process). It is used to perform cleanup operations on the host element or scope variables (e.g. clear timer IDs that are no longer needed).</div>

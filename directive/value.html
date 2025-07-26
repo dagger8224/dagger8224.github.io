@@ -1,6 +1,6 @@
 <h2>${ $['directive.value'] }</h2>
 <div class="content">
-  <template *exist="language == 'zhCN'">
+  <template *exist="language === 'zhCN'">
     <h3 class="question">*value指令的作用</h3>
     <div class="answer">*value指令用于绑定宿主元素的value属性。</div>
     <h3 class="question">*value指令表达式的执行结果</h3>
@@ -43,7 +43,7 @@
       </iframe>
     </div>
   </template>
-  <template *exist="language == 'enUS'">
+  <template *exist="language === 'enUS'">
     <template *each="$['directive.value.sections']">
       <h3 class="question">${ item.question }</h3>
       <div class="answer" *html="item.answer"></div>

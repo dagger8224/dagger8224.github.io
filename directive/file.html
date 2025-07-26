@@ -1,6 +1,6 @@
 <h2>${ $['directive.file'] }</h2>
 <div class="content">
-  <template *exist="language == 'zhCN'">
+  <template *exist="language === 'zhCN'">
     <h3 class="question">*file指令的作用</h3>
     <div class="answer">*file指令用于将用户选择的本地文件信息绑定到作用域变量上。</div>
     <h3 class="question">*file指令的宿主元素</h3>
@@ -16,7 +16,7 @@
       </iframe>
     </div>
   </template>
-  <template *exist="language == 'enUS'">
+  <template *exist="language === 'enUS'">
     <template *each="$['directive.file.sections']">
       <h3 class="question">${ item.question }</h3>
       <div class="answer" *html="item.answer"></div>

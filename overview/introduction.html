@@ -1,5 +1,5 @@
 <div class="content">
-  <template *exist="language == 'zhCN'">
+  <template *exist="language === 'zhCN'">
     <h2>概览 / 介绍</h2>
     <h3 class="question">一分钟了解dagger.js是什么</h3>
     <div class="answer">
@@ -17,7 +17,7 @@
       <strong>现在让我们一起开始dagger.js的学习和体验之旅吧！</strong>
     </div>
   </template>
-  <template *exist="language == 'enUS'">
+  <template *exist="language === 'enUS'">
     <h2>Overview / Introduction</h2>
     <h3 class="question">One‑minute overview: What is dagger.js?</h3>
     <div class="answer">

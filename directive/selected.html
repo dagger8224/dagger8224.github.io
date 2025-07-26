@@ -1,6 +1,6 @@
 <h2>${ $['directive.selected'] }</h2>
 <div class="content">
-  <template *exist="language == 'zhCN'">
+  <template *exist="language === 'zhCN'">
     <h3 class="question">*selected指令的作用</h3>
     <div class="answer">*selected指令用于绑定宿主元素的选中值，适用于类型为“radio”和“checkbox”的input元素，以及select元素。</div>
     <h3 class="question">*selected指令表达式的执行结果</h3>
@@ -49,7 +49,7 @@
       <div>请注意，不要在一个元素上同时声明*selected指令和*checked指令，否则可能导致元素的选中状态与数据不一致。</div>
     </div>
   </template>
-  <template *exist="language == 'enUS'">
+  <template *exist="language === 'enUS'">
     <template *each="$['directive.selected.sections']">
       <h3 class="question">${ item.question }</h3>
       <div class="answer" *html="item.answer"></div>

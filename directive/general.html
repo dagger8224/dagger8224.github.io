@@ -1,6 +1,6 @@
 <h2>${ $['directive.general'] }</h2>
 <div class="content">
-  <template *exist="language == 'zhCN'">
+  <template *exist="language === 'zhCN'">
     <h3 class="question">一般指令的作用</h3>
     <div class="answer">一般指令用于绑定宿主元素的普通同名属性。例如，您可以使用“$id”指令绑定宿主元素的id属性，“$src”指令绑定宿主元素的src属性。</div>
     <h3 class="question">一般指令表达式的执行结果</h3>
@@ -13,7 +13,7 @@
       </iframe>
     </div>
   </template>
-  <template *exist="language == 'enUS'">
+  <template *exist="language === 'enUS'">
     <template *each="$['directive.general.sections']">
       <h3 class="question">${ item.question }</h3>
       <div class="answer" *html="item.answer"></div>

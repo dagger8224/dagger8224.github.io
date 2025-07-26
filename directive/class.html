@@ -1,6 +1,6 @@
 <h2>${ $['directive.class'] }</h2>
 <div class="content">
-  <template *exist="language == 'zhCN'">
+  <template *exist="language === 'zhCN'">
     <h3 class="question">*class指令的作用</h3>
     <div class="answer">*class指令用于绑定宿主元素的class属性。</div>
     <h3 class="question">*class指令表达式的执行结果</h3>
@@ -31,7 +31,7 @@
     <h3 class="question">*class指令与class属性的关系</h3>
     <div class="answer">*class指令表达式的计算结果将与宿主元素class属性的内容融合后作为最终的className。</div>
   </template>
-  <template *exist="language == 'enUS'">
+  <template *exist="language === 'enUS'">
     <template *each="$['directive.class.sections']">
       <h3 class="question">${ item.question }</h3>
       <div class="answer" *html="item.answer"></div>

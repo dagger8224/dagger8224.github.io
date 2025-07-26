@@ -1,5 +1,5 @@
 <div class="content">
-  <template *exist="language == 'zhCN'">
+  <template *exist="language === 'zhCN'">
     <h2>指令 / 介绍</h2>
     <h3 class="question">什么是指令</h3>
     <div class="answer">
@@ -68,7 +68,7 @@
     <div>上面表格中列举了不同指令之间的差异，方便读者进行直观比较。</div>
     <div>接下来我们来分别介绍不同类型指令的定义和使用方法。</div>
   </template>
-  <template *exist="language == 'enUS'">
+  <template *exist="language === 'enUS'">
     <h2>Directive / Introduction</h2>
     <h3 class="question">What is a directive?</h3>
     <div class="answer">

@@ -1,6 +1,6 @@
 <h2>${ $['directive.eventHandler'] }</h2>
 <div class="content">
-  <template *exist="language == 'zhCN'">
+  <template *exist="language === 'zhCN'">
     <h3 class="question">事件处理指令的作用</h3>
     <div class="answer">
       <div>事件处理指令用于为宿主元素添加同名事件监听方法。</div>
@@ -91,7 +91,7 @@
       </div>
     </div>
   </template>
-  <template *exist="language == 'enUS'">
+  <template *exist="language === 'enUS'">
     <template *each="$['directive.eventHandler.sections']">
       <h3 class="question">${ item.question }</h3>
       <div class="answer" *html="item.answer"></div>
