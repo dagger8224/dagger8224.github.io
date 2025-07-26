@@ -29,7 +29,7 @@
     <div id="header">
       <h1>🗡️ dagger.js</h1>
       <a id="github-link" href="https://github.com/dagger8224/dagger.js">${ $.viewOnGithub }</a>
-      <select id="language-select" *value="language" +change="localStorage.setItem('language', language) || ($ = languages[language])">
+      <select id="language-select" *value="language" +change="localStorage.setItem('$language', language) || ($ = languages[language])">
         <option *each="$.languages" *text="item" *value="key"></option>
       </select>
     </div>
