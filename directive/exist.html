@@ -1,32 +1,63 @@
-<h2>${ $['directive.exist'] }</h2>
-  <div class="content">
-    <template *exist="language === 'zhCN'">
-      <h3 class="question">*exist指令的作用</h3>
-      <div class="answer">*exist指令用于切换宿主元素及其子级元素的存在状态。</div>
-      <h3 class="question">*exist指令表达式的执行结果</h3>
-      <div class="answer">
-        <div>当指令表达式的执行结果为true或其他等效值，且宿主元素处于未创建（或已销毁）状态时，宿主元素将进入创建过程。</div>
-        <div>当指令表达式的执行结果为false或其他等效值，且宿主元素处于已创建或创建中状态时，宿主元素将被销毁。</div>
-      </div>
-      <h3 class="question">*exist指令的触发顺序</h3>
-      <div class="answer">
-        <div>*exist指令是在宿主元素的创建阶段之前执行的（但是晚于相同宿主元素上声明的“*each”指令执行）。</div>
-        <div>每当*exist表达式的执行结果状态发生切换时，对应的生命周期方法将会被触发（创建过程“+load/+loaded”指令执行，销毁过程“+unload/+unloaded”指令执行）。</div>
-      </div>
-      <h3 class="question">*exist指令的示例</h3>
-      <div class="answer">下面我们来看*exist的例子：
-        <iframe height="300" style="width: 100%;" scrolling="no" title="[dagger-demo] *exist directive" src="https://codepen.io/dagger8224/embed/vYdgdVJ?default-tab=html%2Cresult&editable=true&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+<div class="content">
+  <template *exist="language === 'zhCN'">
+    <h2>指令 / *exist</h2>
+    <h3 class="question">*exist指令的作用</h3>
+    <div class="answer">*exist指令用于决定宿主元素在DOM树中的存在状态。</div>
+    <h3 class="question">*exist指令表达式的执行结果</h3>
+    <div class="answer">
+      <div>当指令表达式的执行结果为true或其他等效值，且宿主元素处于未创建（或已销毁）状态时，宿主元素将进入创建过程。</div>
+      <div>当指令表达式的执行结果为false或其他等效值，且宿主元素处于已创建或创建中状态时，宿主元素将被销毁。</div>
+      <div>每当*exist表达式的执行结果状态发生切换时，对应的生命周期方法将会被触发（创建过程“+load/+loaded”指令执行，销毁过程“+unload/+unloaded”指令执行）。</div>
+      <div>下面我们来看*exist的例子：
+        <iframe height="300" style="width: 100%;" scrolling="no" title="[dagger-demo] *exist directive"
+          src="https://codepen.io/dagger8224/embed/vYdgdVJ?default-tab=html%2Cresult&editable=true&theme-id=dark"
+          frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
           See the Pen <a href="https://codepen.io/dagger8224/pen/vYdgdVJ">
-          [dagger-demo] *exist directive</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
+            [dagger-demo] *exist directive</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
           on <a href="https://codepen.io">CodePen</a>.
         </iframe>
       </div>
-    </template>
-    <template *exist="language === 'enUS'">
-      <template *each="$['directive.exist.sections']">
-        <h3 class="question">${ item.question }</h3>
-        <div class="answer" *html="item.answer"></div>
-      </template>
-    </template>
-  </div>
-</template>
+    </div>
+    <h3 class="question">*exist指令的触发顺序</h3>
+    <div class="answer">
+      <div>*exist指令是在宿主元素的创建阶段之前执行的（但是晚于相同宿主元素上声明的“*each”指令执行）。</div>
+      <div>我们来看一个*each和*exist指令配合使用的示例：</div>
+      <iframe height="300" style="width: 100%;" scrolling="no" title="[dagger-demo] *each + *exist directives" src="https://codepen.io/dagger8224/embed/zxvKjeY?default-tab=html%2Cresult" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+        See the Pen <a href="https://codepen.io/dagger8224/pen/zxvKjeY">
+        [dagger-demo] *each + *exist directives</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
+        on <a href="https://codepen.io">CodePen</a>.
+      </iframe>
+    </div>
+  </template>
+  <template *exist="language === 'enUS'">
+    <h2>Directive / *exist</h2>
+    <h3 class="question">What is the usage of the *exist directive?</h3>
+    <div class="answer">The *exist directive is used to determine the existence status of the host element in the DOM tree.</div>
+    <h3 class="question">What is the execution result of the *exist directive expression?</h3>
+    <div class="answer">
+      <div>When the execution result of the directive expression is true or any equivalent value, and the host element is in an uncreated or destroyed state, the host element enters the creation process.</div>
+      <div>When the execution result of the directive expression is false or any equivalent value, and the host element is in a created or creating state, the host element is destroyed.</div>
+      <div>Whenever the status of the *exist expression execution result changes, the corresponding lifecycle method will be triggered ("+load/+loaded" directives for creation, while "+unload/+unloaded" directives for destruction).</div>
+      <div>Here is an example of *exist:
+        <iframe height="300" style="width: 100%;" scrolling="no" title="[dagger-demo] *exist directive"
+          src="https://codepen.io/dagger8224/embed/vYdgdVJ?default-tab=html%2Cresult&editable=true&theme-id=dark"
+          frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+          See the Pen <a href="https://codepen.io/dagger8224/pen/vYdgdVJ">
+            [dagger-demo] *exist directive</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
+          on <a href="https://codepen.io">CodePen</a>.
+        </iframe>
+      </div>
+    </div>
+    <h3 class="question">What is the trigger order of the *exist directive?</h3>
+    <div class="answer">
+      <div>*exist directive is executed before the host element is created (but after the *each directive declared on the same host element is executed).</div>
+      <div>The *exist directive runs before the creation phase of its host element, but after the *each directive declared on the same host element has run.</div>
+      <div>Here is an example of *each and *exist directives working together:</div>
+      <iframe height="300" style="width: 100%;" scrolling="no" title="[dagger-demo] *each + *exist directives" src="https://codepen.io/dagger8224/embed/zxvKjeY?default-tab=html%2Cresult" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+        See the Pen <a href="https://codepen.io/dagger8224/pen/zxvKjeY">
+        [dagger-demo] *each + *exist directives</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
+        on <a href="https://codepen.io">CodePen</a>.
+      </iframe>
+    </div>
+  </template>
+</div>

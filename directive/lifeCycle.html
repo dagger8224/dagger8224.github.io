@@ -93,6 +93,23 @@
       <div>“+sentry”指令在页面<a href="router/introduction">路由</a>即将发生切换时触发。</div>
       现在只要了解各个生命周期方法的触发时机和调用顺序就好，每个指令的具体功能和用法将在后面的章节中讲解。
     </div>
+    <h3 class="question">生命周期指令表达式的简写形式</h3>
+    <div class="answer">
+      <div>对于“+sentry”指令，其指令表达式和参数的简写形式如下：</div>
+      <div class="code">
+        +sentry="$module.sentry($scope, $module, $nextRoute)" // 完整形式
+      </div>
+      <div class="code">
+        +sentry // 简写形式
+      </div>
+      <div>对于其他的生命周期指令，其指令表达式和参数的简写形式如下（以+load作为示例）：</div>
+      <div class="code">
+        +load="$module.load($scope, $module, $node)" // 完整形式
+      </div>
+      <div class="code">
+        +load // 简写形式
+      </div>
+    </div>
   </template>
   <template *exist="language === 'enUS'">
     <h2>Directive / LifeCycle Directives</h2>
@@ -186,6 +203,23 @@
       </div>
       The "+sentry" directive is triggered when the page is about to switch <a href="router/introduction">routes</a>.
       For now, just understand when each lifecycle method is triggered and the order in which they’re called; the specific functionality and usage of each directive will be explained in later sections.
+    </div>
+    <h3 class="question">Simplified form of lifeCycle directive expressions</h3>
+    <div class="answer">
+      <div>For the "+sentry" directive, the simplified form of its expression and parameters is as follows:</div>
+      <div class="code">
+        +sentry="$module.sentry($scope, $module, $nextRoute)" // Full form
+      </div>
+      <div class="code">
+        +sentry // Simplified form
+      </div>
+      <div>For other lifeCycle directives, the simplified form of their expression and parameters is as follows (for "+load" as an example):</div>
+      <div class="code">
+        +load="$module.load($scope, $module, $node)" // Full form
+      </div>
+      <div class="code">
+        +load // Simplified form
+      </div>
     </div>
   </template>
 </div>

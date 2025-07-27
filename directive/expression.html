@@ -33,6 +33,25 @@
           on <a href="https://codepen.io">CodePen</a>.
         </iframe>
     </div>
+    <h3 class="question">指令表达式的缺省值</h3>
+    <div class="answer">
+      <div>当指令表达式的内容符合特定条件时可以简写，规则如下：</div>
+      <div class="margin">1. 对于<a href="directive/controller">控制指令</a>，如果指令表达式的内容是与指令名相同的作用域变量，可以省略表达式内容。例如：</div>
+      <div class="code">
+        *value="$scope.value" // 完整形式
+      </div>
+      <div class="code">
+        *value // 等价的简写形式
+      </div>
+      <div class="margin">2. 对于<a href="directive/lifeCycle">生命周期指令</a>和<a href="directive/eventHandler">事件处理指令</a>，如果指令表达式的内容是与指令名相同的方法调用，可以省略表达式内容，框架会自动调用该方法并传入相应的参数。示例：</div>
+      <div class="code">
+        +load="$module.load($scope, $module, $node)" // 完整形式
+      </div>
+      <div class="code">
+        +load // 等价的简写形式
+      </div>
+      <div>不同类型的缺省指令表达式的参数列表有所不同，具体请参考相应的章节。</div>
+    </div>
     <h3 class="question">指令的执行结果</h3>
     <div class="answer">
       <div>指令表达式执行完成后的返回值称为指令的执行结果。</div>
@@ -74,6 +93,25 @@
           [dagger-demo] directive expression callback parameters</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
           on <a href="https://codepen.io">CodePen</a>.
         </iframe>
+    </div>
+    <h3 class="question">Default value of expression in directive</h3>
+    <div class="answer">
+      <div>When the content of an expression in a directive meets certain conditions, it can be simplified, according to the following rules:</div>
+      <div class="margin">1. For <a href="directive/controller">control directives</a>, if the content of the expression is the same as the name of the corresponding scope variable, you can omit the expression content. For example:</div>
+      <div class="code">
+        *value="$scope.value" // Full form
+      </div>
+      <div class="code">
+        *value // Equivalent simplified form
+      </div>
+      <div class="margin">2. For <a href="directive/lifeCycle">life cycle directives</a> and <a href="directive/eventHandler">event handling directives</a>, if the content of the expression is a method call with the same name as the directive, you can omit the expression content, and the framework will automatically call the method and pass in the corresponding parameters. For example:</div>
+      <div class="code">
+        +load="$module.load($scope, $module, $node)" // Full form
+      </div>
+      <div class="code">
+        +load // Equivalent simplified form
+      </div>
+      <div>The parameter list of the default expression of different types is different, please refer to the corresponding chapter for details.</div>
     </div>
     <h3 class="question">Execution result of a directive</h3>
     <div class="answer">

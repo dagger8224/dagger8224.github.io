@@ -138,7 +138,7 @@ h3.question {
     margin: 10px 0;
 }
 h3::before {
-    content: "😕";
+    content: "🤔";
     margin-right: 10px;
 }
 .answer::before {
