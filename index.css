@@ -153,7 +153,11 @@ h3::before {
     margin-top: 10px;
 }
 .answer .margin {
-    margin-left: 10px;
+    margin-left: 30px;
+}
+.answer .margin::before {
+    content: "⭐";
+    font-size: 20px;
 }
 .answer::before {
     position: absolute;

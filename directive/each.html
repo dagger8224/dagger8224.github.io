@@ -1,49 +1,99 @@
-<h2>${ $['directive.each'] }</h2>
-  <div class="content">
-    <template *exist="language === 'zhCN'">
-      <h3 class="question">*each指令的作用</h3>
-      <div class="answer">*each指令用于循环渲染具有相同视图模板的数组，对象，或者其他<a target="_blank" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Iteration_protocols">可迭代变量</a>。</div>
-      <h3 class="question">*each指令的触发顺序</h3>
-      <div class="answer">*each指令将先于其宿主元素上所有的生命周期方法和其他控制指令执行。</div>
-      <h3 class="question">*each指令表达式的执行结果</h3>
-      <div class="answer">
-        <div>当*each指令的计算结果是一个可迭代数据结构时，框架会以其宿主元素（包含其子级元素）作为模板循环渲染出多个元素实例，并基于循环体内容为每个元素实例创建一个新的切片作用域变量。这个切片作用域变量下定义了如下几个字段：</div>
-        <div class="margin">“item”，任意类型，指向循环体子项数据内容。</div>
-        <div class="margin">“index”，整数类型，指向子项数据在循环体中的索引。</div>
-        <div class="margin">“key”，字符串类型，指向子项数据在父级数据中的字段名。</div>
-        <div>下面我们来看一个计算结果为数组的*each指令示例：
-          <iframe height="300" style="width: 100%;" scrolling="no" title="Untitled" src="https://codepen.io/dagger8224/embed/NWydpzg?default-tab=html%2Cresult&editable=true&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
-            See the Pen <a href="https://codepen.io/dagger8224/pen/NWydpzg">
-            Untitled</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
-            on <a href="https://codepen.io">CodePen</a>.
-          </iframe>
-        </div>
-      </div>
-      <h3 class="question">*each指令的预定义修饰符</h3>
-      <div class="answer">*each指令支持如下预定义修饰符：
-        <div class="margin">1. “root”，布尔类型。root为true代表当前指令创建的切片作用域直接继承自<a href="directive/scope">根作用域</a>而非其父级作用域。</div>
-        <div class="margin">2. 上文中提到的切片作用域下的“item”、“index”和“key”三个字段都可以使用同名修饰符重新命名以避免命名冲突。我们看下面的例子：
-          <iframe height="300" style="width: 100%;" scrolling="no" title="Untitled" src="https://codepen.io/dagger8224/embed/LYQxyOZ?default-tab=html%2Cresult&editable=true&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
-            See the Pen <a href="https://codepen.io/dagger8224/pen/LYQxyOZ">
-            Untitled</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
-            on <a href="https://codepen.io">CodePen</a>.
-          </iframe>
-        </div>
-      </div>
-      <h3 class="question">*each嵌套使用示例</h3>
-      <div class="answer">不同宿主元素上声明的*each指令可以嵌套使用，下面是一个例子：
-        <iframe height="300" style="width: 100%;" scrolling="no" title="Untitled" src="https://codepen.io/dagger8224/embed/ZErLJxo?default-tab=html%2Cresult&editable=true&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
-          See the Pen <a href="https://codepen.io/dagger8224/pen/ZErLJxo">
+
+<div class="content">
+  <template *exist="language === 'zhCN'">
+    <h2>指令 / *each</h2>
+    <h3 class="question">*each指令的作用</h3>
+    <div class="answer">*each指令用于循环渲染具有相同视图模板的数组，对象，或者其他<a target="_blank" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Iteration_protocols">可迭代数据</a>。</div>
+    <h3 class="question">*each指令的触发顺序</h3>
+    <div class="answer">*each指令将先于其宿主元素上所有的生命周期方法和其他控制指令执行。</div>
+    <h3 class="question">*each指令表达式的执行结果</h3>
+    <div class="answer">
+      <div>当*each指令的计算结果是一个可迭代数据结构时，框架会以其宿主元素（包含其子级元素）作为模板循环渲染出多个元素实例，并为每个元素实例创建一个新的切片作用域。这个切片作用域下包含如下几个字段：</div>
+      <div class="margin">“item”，任意类型。指向循环体子项数据内容。</div>
+      <div class="margin">“index”，整数类型，从0开始。指向子项数据在循环体中的索引。</div>
+      <div class="margin">“key”，字符串类型。指向子项数据在父级数据中的字段名。</div>
+      <div>请注意，“*each”和生命周期指令“+load”是dagger.js中唯二具有创建作用域能力的指令。当在一个宿主元素上同时声明了*each和+load指令时，+load指令将在*each指令创建的每个切片上下文中执行。</div>
+      <div>下面我们来看一个*each指令示例：
+        <iframe height="300" style="width: 100%;" scrolling="no" title="Untitled" src="https://codepen.io/dagger8224/embed/NWydpzg?default-tab=html%2Cresult&editable=true&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+          See the Pen <a href="https://codepen.io/dagger8224/pen/NWydpzg">
           Untitled</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
           on <a href="https://codepen.io">CodePen</a>.
         </iframe>
       </div>
-    </template>
-    <template *exist="language === 'enUS'">
-      <template *each="$['directive.each.sections']">
-        <h3 class="question">${ item.question }</h3>
-        <div class="answer" *html="item.answer"></div>
-      </template>
+    </div>
+    <h3 class="question">*each指令的预定义修饰符</h3>
+    <div class="answer">*each指令支持如下预定义修饰符：
+      <div class="margin">1. “root”，布尔类型。root为true代表当前指令创建的切片作用域直接继承自<a href="directive/scope">根作用域</a>而非其父级作用域。
+        <div>我们看下面的例子：</div>
+        <iframe height="300" style="width: 100%;" scrolling="no" title="[dagger-demo] *each directive (root decorator)" src="https://codepen.io/dagger8224/embed/EaVgLbq?default-tab=html%2Cresult" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+          See the Pen <a href="https://codepen.io/dagger8224/pen/EaVgLbq">
+          [dagger-demo] *each directive (root decorator)</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
+          on <a href="https://codepen.io">CodePen</a>.
+        </iframe>
+      </div>
+      <div class="margin">2. 上文中提到的切片作用域下的“item”、“index”和“key”三个字段都可以使用对应的修饰符重新命名以避免命名冲突。
+        <div>我们看下面的例子：</div>
+        <iframe height="300" style="width: 100%;" scrolling="no" title="Untitled" src="https://codepen.io/dagger8224/embed/LYQxyOZ?default-tab=html%2Cresult&editable=true&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+          See the Pen <a href="https://codepen.io/dagger8224/pen/LYQxyOZ">
+          Untitled</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
+          on <a href="https://codepen.io">CodePen</a>.
+        </iframe>
+      </div>
+    </div>
+    <h3 class="question">*each嵌套使用示例</h3>
+    <div class="answer">具有层级关系的宿主元素上声明的*each指令将嵌套生效，相当于多层循环操作。下面是一个例子：
+      <iframe height="300" style="width: 100%;" scrolling="no" title="Untitled" src="https://codepen.io/dagger8224/embed/ZErLJxo?default-tab=html%2Cresult&editable=true&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+        See the Pen <a href="https://codepen.io/dagger8224/pen/ZErLJxo">
+        Untitled</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
+        on <a href="https://codepen.io">CodePen</a>.
+      </iframe>
+    </div>
+  </template>
+  <template *exist="language === 'enUS'">
+    <h2>Directive / *each</h2>
+    <h3 class="question">What is the usage of the *each directive?</h3>
+    <div class="answer">The *each directive is used to loop through an array, object, or other <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols">iterable data</a> and render multiple instances of the same view template.</div>
+    <h3 class="question">When is the *each directive executed?</h3>
+    <div class="answer">The *each directive is executed before any other lifecycle methods or control directives on the host element.</div>
+    <h3 class="question">What is the result of the *each directive expression?</h3>
+    <div class="answer">
+      <div>When the *each directive expression evaluates to an iterable data structure, the framework will render multiple instances of the host element (including its child elements) as a template loop, and create a new slice scope for each element instance. The slice scope contains the following fields:</div>
+      <div class="margin">“item”, any type. Points to the data content of the loop item.</div>
+      <div class="margin">“index”, integer type, starting from 0. Points to the index of the loop item in the loop body.</div>
+      <div class="margin">“key”, string type. Points to the field name of the loop item in the parent data.</div>
+      <div>Note that “*each” and the “+load” lifecycle directive are the only directives in dagger.js that can create a scope. When both the *each and +load directives are declared on the same host element, the +load directive will execute in each slice context created by the *each directive.</div>
+      <div>Here's an example of the *each directive:</div>
+      <iframe height="300" style="width: 100%;" scrolling="no" title="Untitled" src="https://codepen.io/dagger8224/embed/NWydpzg?default-tab=html%2Cresult&editable=true&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+        See the Pen <a href="https://codepen.io/dagger8224/pen/NWydpzg">
+        Untitled</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
+        on <a href="https://codepen.io">CodePen</a>.
+      </iframe>
+    </div>
+    <h3 class="question">Predefined decorators for the *each directive</h3>
+    <div class="answer">The *each directive supports the following predefined decorators:
+      <div class="margin">1. “root”, boolean type. root is true if the current slice scope is created directly from the <a href="directive/scope">root scope</a> instead of its parent scope.
+        <div>Here's an example:</div>
+        <iframe height="300" style="width: 100%;" scrolling="no" title="[dagger-demo] *each directive (root decorator)" src="https://codepen.io/dagger8224/embed/EaVgLbq?default-tab=html%2Cresult" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+          See the Pen <a href="https://codepen.io/dagger8224/pen/EaVgLbq">
+          [dagger-demo] *each directive (root decorator)</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
+          on <a href="https://codepen.io">CodePen</a>.
+        </iframe>
+      </div>
+      <div class="margin">2. The fields “item”, “index”, and “key” in the slice scope can be renamed using corresponding decorators to avoid naming conflicts.
+        <div>Here's an example:</div>
+        <iframe height="300" style="width: 100%;" scrolling="no" title="Untitled" src="https://codepen.io/dagger8224/embed/LYQxyOZ?default-tab=html%2Cresult&editable=true&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+          See the Pen <a href="https://codepen.io/dagger8224/pen/LYQxyOZ">
+          Untitled</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
+          on <a href="https://codepen.io">CodePen</a>.
+        </iframe>
+      </div>
+    </div>
+    <h3 class="question">Nested *each usage example</h3>
+    <div class="answer">Multiple *each directives can be declared on host elements with a hierarchical relationship, and this is equivalent to multiple layers of loops. Here's an example:</div>
+    <iframe height="300" style="width: 100%;" scrolling="no" title="Untitled" src="https://codepen.io/dagger8224/embed/ZErLJxo?default-tab=html%2Cresult&editable=true&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+      See the Pen <a href="https://codepen.io/dagger8224/pen/ZErLJxo">
+      Untitled</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
+      on <a href="https://codepen.io">CodePen</a>.
+    </iframe>
   </template>
 </div>
-    
