@@ -1,8 +1,9 @@
-<h2>${ $['directive.focus'] }</h2>
+
 <div class="content">
   <template *exist="language === 'zhCN'">
+    <h2>指令 / *focus</h2>
     <h3 class="question">*focus指令的作用</h3>
-    <div class="answer">focus指令用于为宿主元素设置焦点。</div>
+    <div class="answer">*focus指令用于为宿主元素设置焦点。</div>
     <h3 class="question">*focus指令表达式的执行结果</h3>
     <div class="answer">
       <div>当指令表达式返回true或者其他等效值时宿主元素将获取焦点。</div>
@@ -21,9 +22,24 @@
     </div>
   </template>
   <template *exist="language === 'enUS'">
-    <template *each="$['directive.focus.sections']">
-      <h3 class="question">${ item.question }</h3>
-      <div class="answer" *html="item.answer"></div>
-    </template>
+    <h2>Directive / *focus</h2>
+    <h3 class="question">What does the *focus directive do?</h3>
+    <div class="answer">The *focus directive sets focus to the host element.</div>
+    <h3 class="question">What is the execution result of the *focus directive expression?</h3>
+    <div class="answer">
+      <div>When the directive expression returns true or any other equivalent value, the host element will be focused.</div>
+      <div>When the content of the directive expression is a valid <a target="_blank" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators#%E5%B7%A6%E8%A1%A8%E8%BE%BE%E5%BC%8F">left-hand expression</a>, user actions on the host element will cause the expression result to be synchronized with the scope data and the DOM element attributes, enabling two-way data binding.</div>
+    </div>
+    <h3 class="question">What are the pre-defined decorators of the *focus directive?</h3>
+    <div class="answer">The *focus directive supports two decorators:
+      <div class="margin">1. "oneway", boolean type. A value of true means that the current directive is one-way bound, and user actions on the host element will not update the associated scope data.</div>
+      <div class="margin">2. "prevent", boolean type. A value of true means that <a target="_blank" href="https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLElement/focus">the element that prevents focus from being set will be scrolled into the current browser viewport</a>.</div>
+      Let's take a look at an example of the *focus directive:
+      <iframe height="300" style="width: 100%;" scrolling="no" title="[dagger-demo] *focus directive" src="https://codepen.io/dagger8224/embed/abqWRKx?default-tab=html%2Cresult&editable=true&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+        See the Pen <a href="https://codepen.io/dagger8224/pen/abqWRKx">
+        [dagger-demo] *focus directive</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
+        on <a href="https://codepen.io">CodePen</a>.
+      </iframe>
+    </div>
   </template>
 </div>
