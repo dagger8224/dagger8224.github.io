@@ -1,12 +1,17 @@
-<h2>${ $['directive.checked'] }</h2>
 <div class="content">
   <template *exist="language === 'zhCN'">
+    <h2>指令 / *checked</h2>
     <h3 class="question">*checked指令的作用</h3>
-    <div class="answer">“*checked”指令用于绑定宿主元素的选中状态，适用于类型为“radio”和“checkbox”的input元素，以及option元素。</div>
+    <div class="answer">
+      <div>“*checked”指令用于绑定宿主元素的选中状态，适用于类型为“radio”和“checkbox”的input元素。</div>
+      <div>另外，“*checked”也适用于部分web组件库的自定义元素，如<a href="https://shoelace.style/components/checkbox" target="_blank">sl-checkbox</a>和<a href="https://shoelace.style/components/switch" target="_blank">sl-switch</a>等。我们将在<a href="web-component/introduction">相关章节</a>中进一步介绍。</div>
+    </div>
     <h3 class="question">*checked指令表达式的执行结果</h3>
     <div class="answer">
       <div>“*checked”指令的执行结果是布尔值。值为true代表元素处于选中状态，值为false代表元素处于取消选中状态。</div>
-      <div>当该指令表达式的内容是合法的<a target="_blank" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators#%E5%B7%A6%E8%A1%A8%E8%BE%BE%E5%BC%8F">左表达式</a>时，用户对宿主元素的操作将导致表达式计算结果同步变化，实现作用域数据与DOM元素属性之间的的双向绑定。</div>
+      <div>当指令表达式的内容是可被赋值的<a target="_blank" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators#%E5%B7%A6%E8%A1%A8%E8%BE%BE%E5%BC%8F">左表达式</a>时，用户对宿主元素的操作将导致表达式计算结果同步变化，实现作用域数据与DOM元素属性之间的的双向绑定。</div>
+      <div>如果表达式的内容是不可赋值的，则会导致报错。此时可以使用“oneway”修饰符来禁用双向绑定。</div>
+      <div>另外需要注意的是，同组radio元素的选中状态是互斥的，因此当用户点击某个radio元素时，其同组的radio元素将自动变为非选中态。由于“*checked”指令的双向数据绑定特性，radio标签的选中状态变化也会同步修改关联的作用域数据。</div>
       <div>我们来看*checked指令的示例：
         <iframe height="300" style="width: 100%;" scrolling="no" title="[ dagger-demo] *checked directive for radio" src="https://codepen.io/dagger8224/embed/yLvVmrx?default-tab=html%2Cresult&editable=true&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
           See the Pen <a href="https://codepen.io/dagger8224/pen/yLvVmrx">
@@ -36,9 +41,41 @@
     </div>
   </template>
   <template *exist="language === 'enUS'">
-    <template *each="$['directive.checked.sections']">
-      <h3 class="question">${ item.question }</h3>
-      <div class="answer" *html="item.answer"></div>
-    </template>
+    <h2>Directive / *checked</h2>
+    <h3 class="question">What is the usage of the *checked directive?</h3>
+    <div class="answer">
+      <div>The *checked directive is used to bind the checked state of the host element, which is suitable for input elements of type "radio" and "checkbox".</div>
+      <div>In addition, *checked can also be used for custom elements in web component libraries, such as <a href="https://shoelace.style/components/checkbox" target="_blank">sl-checkbox</a> and <a href="https://shoelace.style/components/switch" target="_blank">sl-switch</a>. We will introduce it in the <a href="web-component/introduction">corresponding chapter</a>.</div>
+    </div>
+    <h3 class="question">What is the execution result of the *checked directive expression?</h3>
+    <div class="answer">
+      <div>The execution result of the *checked directive is a boolean value. True means that the element is in the checked state, and false means that the element is in the unchecked state.</div>
+      <div>When the content of the directive expression is assignable, the user's operation on the host element will cause the expression to be calculated and synchronized, resulting in the bidirectional binding of scope data and DOM element attributes.</div>
+      <div>If the content of the directive expression is not assignable, an error will occur. In this case, the "oneway" decorator can be used to disable the bidirectional binding.</div>
+      <div>Another thing to note is that the checked state of radio elements in the same group are mutually exclusive. When a user clicks a radio element, the radio elements in the same group will automatically become unchecked. Since the *checked directive has a bidirectional data binding feature, the change in the checked state of the radio tag will also modify the corresponding scope data.</div>
+      <div>Let's take a look at the *checked directive example:</div>
+      <iframe height="300" style="width: 100%;" scrolling="no" title="[dagger-demo] *checked directive for radio" src="https://codepen.io/dagger8224/embed/yLvVmrx?default-tab=html%2Cresult&editable=true&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+        See the Pen <a href="https://codepen.io/dagger8224/pen/yLvVmrx">
+        [dagger-demo] *checked directive for radio</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
+        on <a href="https://codepen.io">CodePen</a>.
+      </iframe>
+    </div>
+    <h3 class="question">What are the pre-defined decorators of the *checked directive?</h3>
+    <div class="answer">
+      <div>The *checked directive supports two pre-defined decorators:
+        <div class="margin">1. "oneway", boolean type. True means that the current directive is one-way binding, and the user's operation on the host element will not update the corresponding scope data. For example:</div>
+        <iframe height="300" style="width: 100%;" scrolling="no" title="[dagger-demo] *checked directive (oneway decorator)" src="https://codepen.io/dagger8224/embed/xxYLEzL?default-tab=html%2Cresult&editable=true&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+          See the Pen <a href="https://codepen.io/dagger8224/pen/xxYLEzL">
+          [dagger-demo] *checked directive (oneway decorator)</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
+          on <a href="https://codepen.io">CodePen</a>.
+        </iframe>
+        <div class="margin">2. "indeterminate", boolean type. This decorator only applies to checkbox elements. Indeterminate is true, the framework will set the checkbox to <a target="_blank" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/input/checkbox">indeterminate</a> state when the directive execution result is null or undefined. For example:</div>
+        <iframe height="300" style="width: 100%;" scrolling="no" title="[dagger-demo] *checked directive (indeterminate decorator)" src="https://codepen.io/dagger8224/embed/poarEOj?default-tab=html%2Cresult&editable=true&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+          See the Pen <a href="https://codepen.io/dagger8224/pen/poarEOj">
+          [dagger-demo] *checked directive (indeterminate decorator)</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
+          on <a href="https://codepen.io">CodePen</a>.
+        </iframe>
+      </div>
+    </div>
   </template>
 </div>
