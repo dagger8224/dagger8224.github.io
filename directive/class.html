@@ -1,25 +1,25 @@
-<h2>${ $['directive.class'] }</h2>
 <div class="content">
   <template *exist="language === 'zhCN'">
+    <h2>指令 / *class</h2>
     <h3 class="question">*class指令的作用</h3>
     <div class="answer">*class指令用于绑定宿主元素的class属性。</div>
     <h3 class="question">*class指令表达式的执行结果</h3>
     <div class="answer">
-      <div>当*class指令表达式的执行结果为字符串时，字符串的内容将被识别为宿主对象的className。示例如下：
+      <div>当*class指令表达式的执行结果为字符串时，字符串的内容将被识别为宿主元素的className。示例如下：
         <iframe height="300" style="width: 100%;" scrolling="no" title="[dagger-demo] *class directive" src="https://codepen.io/dagger8224/embed/jOZyrLP?default-tab=html%2Cresult&editable=true&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
           See the Pen <a href="https://codepen.io/dagger8224/pen/jOZyrLP">
           [dagger-demo] *class directive</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
           on <a href="https://codepen.io">CodePen</a>.
         </iframe>
       </div>
-      <div>当执行结果为数组时，每一个数组成员将转换为字符串并拼接后作为宿主对象的className。示例如下：
+      <div>当执行结果为数组时，每一个数组成员将转换为字符串并拼接后作为宿主元素的className。示例如下：
         <iframe height="300" style="width: 100%;" scrolling="no" title="Untitled" src="https://codepen.io/dagger8224/embed/rNJjMXP?default-tab=html%2Cresult&editable=true&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
           See the Pen <a href="https://codepen.io/dagger8224/pen/rNJjMXP">
           Untitled</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
           on <a href="https://codepen.io">CodePen</a>.
         </iframe>
       </div>
-      <div>当执行结果为对象时，将所有值为true或者等效值的字段名作为宿主对象的className。示例如下：
+      <div>当执行结果为对象时，将所有值为true或者等效值的字段名作为宿主元素的className。示例如下：
         <iframe height="300" style="width: 100%;" scrolling="no" title="Untitled" src="https://codepen.io/dagger8224/embed/MWQJbWz?default-tab=html%2Cresult&editable=true&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
           See the Pen <a href="https://codepen.io/dagger8224/pen/MWQJbWz">
           Untitled</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
@@ -28,13 +28,36 @@
       </div>
       <div>其余情况下，执行结果将转换为字符串处理。</div>
     </div>
-    <h3 class="question">*class指令与class属性的关系</h3>
+    <h3 class="question">*class指令与宿主元素class属性的关系</h3>
     <div class="answer">*class指令表达式的计算结果将与宿主元素class属性的内容融合后作为最终的className。</div>
   </template>
   <template *exist="language === 'enUS'">
-    <template *each="$['directive.class.sections']">
-      <h3 class="question">${ item.question }</h3>
-      <div class="answer" *html="item.answer"></div>
-    </template>
+    <h2>Directive / *class</h2>
+    <h3 class="question">What is the usage of the *class directive?</h3>
+    <div class="answer">The *class directive is used to bind the className property of the host element.</div>
+    <h3 class="question">What is the execution result of the *class directive expression?</h3>
+    <div class="answer">
+      <div>When the execution result of the *class directive expression is a string, the string will be recognized as the className of the host element. For example:</div>
+      <iframe height="300" style="width: 100%;" scrolling="no" title="[dagger-demo] *class directive" src="https://codepen.io/dagger8224/embed/jOZyrLP?default-tab=html%2Cresult&editable=true&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+        See the Pen <a href="https://codepen.io/dagger8224/pen/jOZyrLP">
+        [dagger-demo] *class directive</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
+        on <a href="https://codepen.io">CodePen</a>.
+      </iframe>
+      <div>When the execution result is an array, each array member will be converted to a string and concatenated to become the className of the host element. For example:</div>
+      <iframe height="300" style="width: 100%;" scrolling="no" title="Untitled" src="https://codepen.io/dagger8224/embed/rNJjMXP?default-tab=html%2Cresult&editable=true&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+        See the Pen <a href="https://codepen.io/dagger8224/pen/rNJjMXP">
+        Untitled</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
+        on <a href="https://codepen.io">CodePen</a>.
+      </iframe>
+      <div>When the execution result is an object, all fields with values of true or equivalent values will be recognized as the className of the host element. For example:</div>
+      <iframe height="300" style="width: 100%;" scrolling="no" title="Untitled" src="https://codepen.io/dagger8224/embed/MWQJbWz?default-tab=html%2Cresult&editable=true&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+        See the Pen <a href="https://codepen.io/dagger8224/pen/MWQJbWz">
+        Untitled</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
+        on <a href="https://codepen.io">CodePen</a>.
+      </iframe>
+      <div>Otherwise, the execution result will be converted to a string and processed.</div>
+    </div>
+    <h3 class="question">How does the *class directive relate to the host element's class attribute?</h3>
+    <div class="answer">The execution result of the *class directive expression will be merged with the content of the class attribute of the host element to form the final className.</div>
   </template>
 </div>
