@@ -1,13 +1,12 @@
-<h2>${ $['directive.html'] }</h2>
 <div class="content">
   <template *exist="language === 'zhCN'">
+    <h2>指令 / *html</h2>
     <h3 class="question">*html指令的作用</h3>
-    <div class="answer">*html指令用于在宿主元素下动态创建子级元素。</div>
+    <div class="answer">*html指令用于在宿主元素下动态创建子内容。</div>
     <h3 class="question">*html指令表达式的执行结果</h3>
     <div class="answer">
-      <div>指令表达式的执行结果是字符串，dagger.js在表达式执行完成后将结果内容转换为宿主元素的子级元素。</div>
-      <div>您同样可以在这些动态创建出的元素上声明各种指令，这些指令表达式中的作用域对象默认指向*html宿主元素的作用域。</div>
-      <div>如果有需要，您也可以在动态元素上继续声明*html指令来创建新的动态节点。</div>
+      <div>指令表达式的执行结果是字符串，dagger.js在表达式执行完成后将结果内容转换为宿主元素的内容。</div>
+      <div>动态创建出的元素上同样可以声明各种指令，这些指令表达式中的作用域默认指向当前*html指令宿主元素的作用域。</div>
       我们来看一个示例：
       <iframe height="300" style="width: 100%;" scrolling="no" title="[dagger-demo] *html directive" src="https://codepen.io/dagger8224/embed/vYdZKgx?default-tab=html%2Cresult&editable=true" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
         See the Pen <a href="https://codepen.io/dagger8224/pen/vYdZKgx">
@@ -18,13 +17,66 @@
     <h3 class="question">*html指令的使用场景</h3>
     <div class="answer">
       <div>*html指令通常与<a href="router/introduction">路由配置项</a>结合使用，在路由发生切换时动态更新视图内容。我们将在路由章节演示相关的使用示例。</div>
-      <div>请注意，不要将*html指令用于<a href="module/introduction">模块</a>宿主元素。</div>
+      <div>请注意，不要将*html指令用于<a href="module/view">视图模块</a>宿主元素。</div>
+    </div>
+    <h3 class="question">*html指令的简写方式</h3>
+    <div class="answer">
+      当*html指令表达式的内容是一组空标签时，可以直接返回标签名称作为表达式内容，简写方式如下：
+      <div class="code">
+        &lt;div *html="'&lt;div&gt;&lt;/div&gt;'"&gt;&lt;/div&gt; // 完整标签形式
+      </div>
+      <div class="code">
+        &lt;div *html="'div'"&gt;&lt;/div&gt; // 简写形式
+      </div>
+      更进一步，当指令表达式的内容是作用域下名为html的变量时，可以省略表达式内容：
+      <div class="code">
+        &lt;div *html&gt;&lt;/div&gt; // 简写形式
+      </div>
+    </div>
+    <h3 class="question">*html指令的预定义修饰符</h3>
+    <div class="answer">
+      <div>*html指令支持名为strict的预定义修饰符，用于控制指令表达式内容是否支持简写推断。</div>
+      <div>当strict修饰符值为true时，dagger.js将不会对表达式内容进行简写推断。这个修饰符用于避免可能出现的简写二义性。</div>
     </div>
   </template>
   <template *exist="language === 'enUS'">
-    <template *each="$['directive.html.sections']">
-      <h3 class="question">${ item.question }</h3>
-      <div class="answer" *html="item.answer"></div>
-    </template>
+    <h2>Directive / *html</h2>
+    <h3 class="question">What is the usage of the *html directive?</h3>
+    <div class="answer">The *html directive is used to dynamically create child content within the host element.</div>
+    <h3 class="question">What is the execution result of the *html directive expression?</h3>
+    <div class="answer">
+      <div>The execution result of the directive expression is a string, and dagger.js converts the result content to the content of the host element.</div>
+      <div>The directives declared on the dynamically created elements are also available, and the scope of the directive expressions defaults to the scope of the host element of the *html directive.</div>
+      Let's take a look at an example:
+      <iframe height="300" style="width: 100%;" scrolling="no" title="[dagger-demo] *html directive" src="https://codepen.io/dagger8224/embed/vYdZKgx?default-tab=html%2Cresult&editable=true" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+        See the Pen <a href="https://codepen.io/dagger8224/pen/vYdZKgx">
+        [dagger-demo] *html directive</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
+        on <a href="https://codepen.io">CodePen</a>.
+      </iframe>
+    </div>
+    <h3 class="question">When to use the *html directive?</h3>
+    <div class="answer">
+      <div>The *html directive is typically used together with <a href="router/introduction">routing configuration</a>, and it updates the view content dynamically when the route changes. We will demonstrate the usage of the *html directive in the routing chapter.</div>
+      <div>Please note that do not use the *html directive for the host element which is a <a href="module/view">view module</a>.</div>
+    </div>
+    <h3 class="question">The shorthand of the *html directive</h3>
+    <div class="answer">
+      When the content of the *html directive expression is a group of empty tags, you can directly return the tag name as the expression content, and the shorthand is as follows:
+      <div class="code">
+        &lt;div *html="'&lt;div&gt;&lt;/div&gt;'"&gt;&lt;/div&gt; // full tag form
+      </div>
+      <div class="code">
+        &lt;div *html="'div'"&gt;&lt;/div&gt; // shorthand form
+      </div>
+      Further, when the content of the directive expression is a variable named html in the scope, you can omit the expression content:
+      <div class="code">
+        &lt;div *html&gt;&lt;/div&gt; // shorthand form
+      </div>
+    </div>
+    <h3 class="question">The predefined decorator of the *html directive</h3>
+    <div class="answer">
+      <div>The *html directive supports a predefined decorator named strict, which controls whether the directive expression content supports shorthand inference.</div>
+      <div>When the strict decorator is set to true, dagger.js will not perform shorthand inference on the expression content. This decorator is used to avoid ambiguity in the case of shorthand.</div>
+    </div>
   </template>
 </div>
