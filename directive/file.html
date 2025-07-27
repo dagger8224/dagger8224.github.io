@@ -1,10 +1,10 @@
-<h2>${ $['directive.file'] }</h2>
 <div class="content">
   <template *exist="language === 'zhCN'">
+    <h2>指令 / *file</h2>
     <h3 class="question">*file指令的作用</h3>
     <div class="answer">*file指令用于将用户选择的本地文件信息绑定到作用域变量上。</div>
-    <h3 class="question">*file指令的宿主元素</h3>
-    <div class="answer">*file指令只能用于类型为“file”的input元素。</div>
+    <h3 class="question">*file指令的适用场景</h3>
+    <div class="answer">*file指令只能以类型为“file”的input元素作为宿主元素。</div>
     <h3 class="question">*file指令表达式的执行结果</h3>
     <div class="answer">当*file指令表达式的内容是合法的<a target="_blank" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators#%E5%B7%A6%E8%A1%A8%E8%BE%BE%E5%BC%8F">左表达式</a>时，用户使用宿主元素进行文件选择操作之后，表达式变量将指向保存选中文件信息的File（单文件选择器）或者FileList（多文件选择器）。</div>
     <h3 class="question">*file指令示例</h3>
@@ -17,9 +17,20 @@
     </div>
   </template>
   <template *exist="language === 'enUS'">
-    <template *each="$['directive.file.sections']">
-      <h3 class="question">${ item.question }</h3>
-      <div class="answer" *html="item.answer"></div>
-    </template>
+    <h2>Directive / *file</h2>
+    <h3 class="question">What is the usage of the *file directive?</h3>
+    <div class="answer">The *file directive binds the selected local file information to the scope variable.</div>
+    <h3 class="question">What are the applicable scenarios for the *file directive?</h3>
+    <div class="answer">The *file directive can only be used with an input element of type "file" as the host element.</div>
+    <h3 class="question">What is the execution result of the *file directive expression?</h3>
+    <div class="answer">The execution result of the *file directive expression is a File object (single file selection) or a FileList object (multiple file selection) when the content of the expression is a valid <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators#left-hand_side_expressions">left-hand side expression</a>.</div>
+    <h3 class="question">Example of the *file directive</h3>
+    <div class="answer">Here is an example of the *file directive.
+      <iframe height="300" style="width: 100%;" scrolling="no" title="[dagger-demo] *file directive" src="https://codepen.io/dagger8224/embed/rNJmZKz?default-tab=html%2Cresult&editable=true&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+        See the Pen <a href="https://codepen.io/dagger8224/pen/rNJmZKz">
+        [dagger-demo] *file directive</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
+        on <a href="https://codepen.io">CodePen</a>.
+      </iframe>
+    </div>
   </template>
 </div>
