@@ -1,11 +1,11 @@
-<h2>${ $['directive.style'] }</h2>
 <div class="content">
   <template *exist="language === 'zhCN'">
+    <h2>指令 / *style</h2>
     <h3 class="question">*style指令的作用</h3>
     <div class="answer">*style指令用于绑定宿主元素的style属性。</div>
     <h3 class="question">*style指令表达式的执行结果</h3>
     <div class="answer">
-      <div>当*style指令表达式的计算结果为字符串时，字符串的内容将被识别为style属性。示例如下：
+      <div>当*style指令表达式的计算结果为字符串时，字符串的内容将被识别为宿主元素的style属性。示例如下：
         <iframe height="300" style="width: 100%;" scrolling="no" title="[dagger-demo] *style directive (return string)" src="https://codepen.io/dagger8224/embed/RwQKoKp?default-tab=html%2Cresult&editable=true&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
           See the Pen <a href="https://codepen.io/dagger8224/pen/RwQKoKp">
           [dagger-demo] *style directive (return string)</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
@@ -30,9 +30,32 @@
     <div class="answer">*style指令表达式的计算结果将与宿主元素的style属性内容融合后作为最终的内联style。</div>
   </template>
   <template *exist="language === 'enUS'">
-    <template *each="$['directive.style.sections']">
-      <h3 class="question">${ item.question }</h3>
-      <div class="answer" *html="item.answer"></div>
-    </template>
+    <h2>Directive / *style</h2>
+    <h3 class="question">What is the usage of the *style directive?</h3>
+    <div class="answer">The *style directive is used to bind the style property of the host element.</div>
+    <h3 class="question">What is the execution result of the *style directive expression?</h3>
+    <div class="answer">
+      <div>When the *style directive expression returns a string, the string will be recognized as the style property of the host element. For example:</div>
+        <iframe height="300" style="width: 100%;" scrolling="no" title="[dagger-demo] *style directive (return string)" src="https://codepen.io/dagger8224/embed/RwQKoKp?default-tab=html%2Cresult&editable=true&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+          See the Pen <a href="https://codepen.io/dagger8224/pen/RwQKoKp">
+          [dagger-demo] *style directive (return string)</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
+          on <a href="https://codepen.io">CodePen</a>.
+        </iframe>
+      <div>When the result is an array, the array members will be converted to strings and concatenated as the style property of the host element. For example:</div>
+        <iframe height="300" style="width: 100%;" scrolling="no" title="Untitled" src="https://codepen.io/dagger8224/embed/NWydbwB?default-tab=html%2Cresult&editable=true&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+          See the Pen <a href="https://codepen.io/dagger8224/pen/NWydbwB">
+          Untitled</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
+          on <a href="https://codepen.io">CodePen</a>.
+        </iframe>
+      <div>When the result is an object, the key-value pairs of the object will be concatenated as the style property of the host element. For example:</div>
+        <iframe height="300" style="width: 100%;" scrolling="no" title="[dagger-demo] *style directive (return object)" src="https://codepen.io/dagger8224/embed/WNMRoMa?default-tab=html%2Cresult&editable=true&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+          See the Pen <a href="https://codepen.io/dagger8224/pen/WNMRoMa">
+          [dagger-demo] *style directive (return object)</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
+          on <a href="https://codepen.io">CodePen</a>.
+        </iframe>
+      <div>Otherwise, the execution result will be converted to a string.</div>
+    </div>
+    <h3 class="question">What is the relationship between the *style directive and the style property?</h3>
+    <div class="answer">The *style directive expression's execution result will be merged with the content of the style property of the host element to form the final inline style.</div>
   </template>
 </div>
