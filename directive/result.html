@@ -1,24 +1,26 @@
-<h2>${ $['directive.result'] }</h2>
 <div class="content">
   <template *exist="language === 'zhCN'">
+    <h2>指令 / *result</h2>
     <h3 class="question">*result指令的作用</h3>
-    <div class="answer">*result指令用于绑定本地文件的上传状态和结果，适用于类型为file的input元素。</div>
+    <div class="answer">
+      <div>*result指令用于绑定本地文件的上传状态和结果，适用于类型为file的input元素。</div>
+    </div>
     <h3 class="question">*result指令的执行结果</h3>
     <div class="answer">
-        <div>对于单选文件选择元素来说，*result的执行结果是一个包含如下字段的对象：
+        <div>对于单文件选择元素来说，*result的执行结果是一个包含如下字段的对象：
             <div class="margin">1. “file”，<a target="_blank" href="https://developer.mozilla.org/zh-CN/docs/Web/API/File">File</a>类型。指向用户当前选择的文件对象。</div>
             <div class="margin">2. “content”，字符串或者ArrayBuffer类型。指向从当前文件对象读取出的内容。</div>
             <div class="margin">3. “state”，字符串类型。指向当前文件的读取状态，包括“initialized”（初始化），“loading”（加载中），“loaded”（加载完成），“error”（加载错误），“abort”（取消加载）等几种。</div>
             <div class="margin">4. “progress”，数字类型。指向当前文件的读取进度（0到100之间的整数）。</div>
             <div class="margin">5. “loaded”，数字类型。指向当前文件已加载内容的字节数。</div>
-            我们来看示例：
-            <iframe height="300" style="width: 100%;" scrolling="no" title="Untitled" src="https://codepen.io/dagger8224/embed/dydzvQe?default-tab=html%2Cresult&editable=true&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
-                See the Pen <a href="https://codepen.io/dagger8224/pen/dydzvQe">
-                Untitled</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
-                on <a href="https://codepen.io">CodePen</a>.
-              </iframe>
         </div>
-        <div>对于多文件选择元素来说，*result的执行结果是一个对象数组，每个数组项对象的结构与单文件选择的情况一致。</div>
+        <div>对于多文件选择元素来说，*result的执行结果是一个对象数组，数组中每一项的结构与单文件元素的执行结果一致。</div>
+        我们来看示例：
+        <iframe height="300" style="width: 100%;" scrolling="no" title="Untitled" src="https://codepen.io/dagger8224/embed/dydzvQe?default-tab=html%2Cresult&editable=true&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+            See the Pen <a href="https://codepen.io/dagger8224/pen/dydzvQe">
+            Untitled</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
+            on <a href="https://codepen.io">CodePen</a>.
+          </iframe>
     </div>
     <h3 class="question">*result指令的预定义修饰符</h3>
     <div class="answer">*result指令支持如下几个预定义修饰符：
@@ -30,8 +32,42 @@
             See the Pen <a href="https://codepen.io/dagger8224/pen/bGLrqyb">
             [dagger-demo] *result directive (decorators)</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
             on <a href="https://codepen.io">CodePen</a>.
-          </iframe>
+        </iframe>
     </div>
   </template>
-  <template *exist="language === 'enUS'"></template>
+  <template *exist="language === 'enUS'">
+    <h2>Directive / *result</h2>
+    <h3 class="question">What is the usage of the *result directive?</h3>
+    <div class="answer">
+      <div>*result directive is used to bind the upload status and result of local files, and it is applicable to input elements of type file.</div>
+    </div>
+    <h3 class="question">What is the execution result of the *result directive?</h3>
+    <div class="answer">
+        <div>For single-file selection elements, the execution result of *result is an object containing the following fields:</div>
+        <div class="margin">1. “file”, <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/API/File">File</a> type. It points to the file object selected by the user.</div>
+        <div class="margin">2. “content”, string or ArrayBuffer type. It points to the content read from the current file object.</div>
+        <div class="margin">3. “state”, string type. It points to the reading status of the current file, including “initialized” (initialized), “loading” (loading), “loaded” (loaded), “error” (loading error), “abort” (cancel loading) and other types.</div>
+        <div class="margin">4. “progress”, number type. It points to the reading progress of the current file (an integer between 0 and 100).</div>
+        <div class="margin">5. “loaded”, number type. It points to the number of bytes of the current file that have been loaded.</div>
+        <div>For multiple-file selection elements, the execution result of *result is an array of objects, where each object has the same structure as the execution result of a single-file selection element.</div>
+        Here is an example:
+        <iframe height="300" style="width: 100%;" scrolling="no" title="Untitled" src="https://codepen.io/dagger8224/embed/dydzvQe?default-tab=html%2Cresult&editable=true&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+            See the Pen <a href="https://codepen.io/dagger8224/pen/dydzvQe">
+            Untitled</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
+            on <a href="https://codepen.io">CodePen</a>.
+          </iframe>
+    </div>
+    <h3 class="question">Predefined decorators of the *result directive</h3>
+    <div class="answer">The *result directive supports the following predefined decorators:
+        <div class="margin">1. “buffer”, boolean type. It is true if the current file should be loaded using <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/API/FileReader/readAsArrayBuffer">ArrayBuffer</a>.</div>
+        <div class="margin">2. “data”, boolean type. It is true if the current file should be loaded using <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/API/FileReader/readAsDataURL">DataURL</a>.</div>
+        <div class="margin">3. “encoding”, string type. It is used to specify the encoding type used when reading the current file in text mode (default is “utf-8”).</div>
+        Here is an example:
+        <iframe height="300" style="width: 100%;" scrolling="no" title="[dagger-demo] *result directive (decorators)" src="https://codepen.io/dagger8224/embed/bGLrqyb?default-tab=html%2Cresult&editable=true&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+            See the Pen <a href="https://codepen.io/dagger8224/pen/bGLrqyb">
+            [dagger-demo] *result directive (decorators)</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
+            on <a href="https://codepen.io">CodePen</a>.
+        </iframe>
+    </div>
+  </template>
 </div>
