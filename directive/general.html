@@ -1,6 +1,6 @@
-<h2>${ $['directive.general'] }</h2>
 <div class="content">
   <template *exist="language === 'zhCN'">
+    <h2>指令 / 一般指令</h2>
     <h3 class="question">一般指令的作用</h3>
     <div class="answer">一般指令用于绑定宿主元素的普通同名属性。例如，您可以使用“*id”指令绑定宿主元素的id属性，“*src”指令绑定宿主元素的src属性。</div>
     <h3 class="question">一般指令表达式的执行结果</h3>
@@ -14,9 +14,15 @@
     </div>
   </template>
   <template *exist="language === 'enUS'">
-    <template *each="$['directive.general.sections']">
-      <h3 class="question">${ item.question }</h3>
-      <div class="answer" *html="item.answer"></div>
-    </template>
+    <h2>Directive / General Directives</h2>
+    <h3 class="question">What is the purpose of general directives?</h3>
+    <div class="answer">General directives are used to bind the regular same-named attributes of the host element. For example, you can use the "*id" directive to bind the id attribute of the host element, and the "*src" directive to bind the src attribute of the host element.</div>
+    <h3 class="question">What is the execution result of the general directive expression?</h3>
+    <div class="answer">The execution result of the general directive expression will be converted to a string and assigned to the same-named attribute of the host element. Let's take a look at an example:</div>
+    <iframe height="300" style="width: 100%;" scrolling="no" title="Untitled" src="https://codepen.io/dagger8224/embed/gOvREdo?default-tab=html%2Cresult&editable=true&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+      See the Pen <a href="https://codepen.io/dagger8224/pen/gOvREdo">
+      Untitled</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
+      on <a href="https://codepen.io">CodePen</a>.
+    </iframe>
   </template>
 </div>
