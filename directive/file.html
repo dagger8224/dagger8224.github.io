@@ -3,8 +3,11 @@
     <h2>指令 / *file</h2>
     <h3 class="question">*file指令的作用</h3>
     <div class="answer">*file指令用于将用户选择的本地文件信息绑定到作用域变量上。</div>
-    <h3 class="question">*file指令的适用场景</h3>
-    <div class="answer">*file指令只能以类型为“file”的input元素作为宿主元素。</div>
+    <h3 class="question">*file指令的适用元素</h3>
+    <div class="answer">
+      <div>*file指令适用于类型为“file”的input元素作为宿主元素。</div>
+      <div>对于其他元素，*file指令将退化为<a href="directive/general" target="_blank">一般指令</a>。</div>
+    </div>
     <h3 class="question">*file指令表达式的执行结果</h3>
     <div class="answer">当*file指令表达式的内容是合法的<a target="_blank" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators#%E5%B7%A6%E8%A1%A8%E8%BE%BE%E5%BC%8F">左表达式</a>时，用户使用宿主元素进行文件选择操作之后，表达式变量将指向保存选中文件信息的File（单文件选择器）或者FileList（多文件选择器）。</div>
     <h3 class="question">*file指令示例</h3>
@@ -20,8 +23,11 @@
     <h2>Directive / *file</h2>
     <h3 class="question">What is the usage of the *file directive?</h3>
     <div class="answer">The *file directive binds the selected local file information to the scope variable.</div>
-    <h3 class="question">What are the applicable scenarios for the *file directive?</h3>
-    <div class="answer">The *file directive can only be used with an input element of type "file" as the host element.</div>
+    <h3 class="question">What are the applicable host element for the *file directive?</h3>
+    <div class="answer">
+      <div>The *file directive is applicable for an input element of type "file" as the host element.</div>
+      <div>For other elements, *file directive degrades to <a href="directive/general" target="_blank">general directive</a>.</div>
+    </div>
     <h3 class="question">What is the execution result of the *file directive expression?</h3>
     <div class="answer">The execution result of the *file directive expression is a File object (single file selection) or a FileList object (multiple file selection) when the content of the expression is a valid <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators#left-hand_side_expressions">left-hand side expression</a>.</div>
     <h3 class="question">Example of the *file directive</h3>
