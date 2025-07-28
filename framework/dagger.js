@@ -562,7 +562,7 @@ export default (({ asserter, logger, groupStarter, groupEnder, warner } = ((mess
         (data == null) ? node.removeAttribute(name) : node.setAttribute(name, textResolver(data));
     }
 }, nodeUpdater = {
-    $boolean: (data, node, _, { name }) => node.toggleAttribute(name, !!data),
+    $boolean: (data, node, _, { name, decorators }) => node.toggleAttribute(isShoelace(node.tagName) || decorators.raw ? name : attributeNameResolver(name), !!data),
     checked: (data, node, _, { decorators }) => {
         const { tagName, type } = node;
         if (Object.is(tagName, 'INPUT')) {
@@ -1286,7 +1286,7 @@ export default (({ asserter, logger, groupStarter, groupEnder, warner } = ((mess
         } else {
             value || (value = attributeNameResolver(name)); // shorthand
             if (Object.is(name, 'watch')) {
-                decorators.lazy && (value = `${ value.substring(value.indexOf('(') + 1, value.indexOf(')')).trim() || 'null' }, $node => { 'use strict';\n ${ decorators.debug ? 'debugger;\n\r' : '' }return ${ value }; }`);
+                decorators.lazy && (value = `${ value.substring(value.indexOf('(') + 1, value.indexOf(')')).trim() || 'null' }, $node => { 'use strict';\n ${ decorators.debug ? 'debugger;\n\r' : '' }${ decorators.clear ? 'console.clear();\n\r' : '' }return ${ value }; }`);
             } else {
                 fields.name = name;
             }

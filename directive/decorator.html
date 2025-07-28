@@ -55,8 +55,11 @@
           </iframe>
           您可以使用这个功能来动态移除不再需要的高频事件处理方法（如mousemove等）。
         </div>
-        除去上述的通用修饰符之外，dagger.js对于某些指令也定义了一些专有的预定义修饰符，我们将在后文的指令实例章节中进行讲解。
       </div>
+      <div class="margin">4. “raw”，布尔类型。raw值为true代表其所修饰的指令名无需进行大写字母转换。</div>
+      <div class="margin">5. “debug”，布尔类型。debug值为true代表其所修饰的指令表达式在执行时将进入断点调试。这个修饰符用于开发阶段，在release版本中无效。</div>
+      <div class="margin">6. “clear”，布尔类型。clear值为true代表其所修饰的指令表达式在执行前先清理控制台打印的日志。这个修饰符用于开发阶段，在release版本中无效。</div>
+      <div>除去上述的通用修饰符之外，dagger.js对于某些指令也定义了一些专有的预定义修饰符，我们将在后文的指令实例章节中进行讲解。</div>
     </div>
   </template>
   <template *exist="language === 'enUS'">
@@ -117,6 +120,9 @@
         </div>
         Other than the common predefined decorators, dagger.js also defines some specific predefined decorators for some directives, which we will introduce in the directive instance chapter.
       </div>
+      <div class="margin">4. "raw", boolean type. The "raw" value of true means that the name of the decorated directive does not need to be converted to uppercase letters.</div>
+      <div class="margin">5. "debug", boolean type. The "debug" value of true means that the decorated directive expression will enter breakpoint debugging when executed. This decorator is used in the development stage, and it is invalid in the release version.</div>
+      <div class="margin">6. "clear", boolean type. The "clear" value of true means that the decorated directive expression will clear the console log before execution. This decorator is used in the development stage, and it is invalid in the release version.</div>
     </div>
   </template>
 </div>

@@ -444,7 +444,7 @@ export default ((context = Symbol('context'), currentController = null, daggerCh
         (data == null) ? node.removeAttribute(name) : node.setAttribute(name, textResolver(data));
     }
 }, nodeUpdater = {
-    $boolean: (data, node, _, { name }) => node.toggleAttribute(name, !!data),
+    $boolean: (data, node, _, { name, decorators }) => node.toggleAttribute(isShoelace(node.tagName) || decorators.raw ? name : attributeNameResolver(name), !!data),
     checked: (data, node, _, { decorators }) => {
         const { tagName, type } = node;
         if (Object.is(tagName, 'INPUT')) {
@@ -1311,8 +1311,8 @@ export default ((context = Symbol('context'), currentController = null, daggerCh
     let redirectPath = aliases[path];
     if (Object.is(redirectPath)) {
         if (rootRouter.match(routes, params, paths)) {
+            redirectPath = routes[0]?.redirectPath;
             routes.reverse();
-            redirectPath = routes.find(route => route.redirectPath || Object.is(route.redirectPath, ''))?.redirectPath;
         } else if (Reflect.has(routerConfigs, 'default')) {
             redirectPath = routerConfigs.default;
         } else {

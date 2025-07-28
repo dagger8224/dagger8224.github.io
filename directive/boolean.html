@@ -1,13 +1,13 @@
-<h2>${ $['directive.boolean'] }</h2>
 <div class="content">
   <template *exist="language === 'zhCN'">
+    <h2>指令 / 布尔指令</h2>
     <h3 class="question">布尔指令的作用</h3>
-    <div class="answer">布尔指令用于对宿主元素的<a target="_blank" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Attributes#%E5%B8%83%E5%B0%94%E5%80%BC%E5%B1%9E%E6%80%A7">布尔值属性</a>进行绑定。</div>
+    <div class="answer">布尔指令用于绑定宿主元素的<a target="_blank" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Attributes#%E5%B8%83%E5%B0%94%E5%80%BC%E5%B1%9E%E6%80%A7">布尔值属性</a>。</div>
     <h3 class="question">布尔指令表达式的执行结果</h3>
     <div class="answer">
       <div>布尔指令表达式的执行结果将转换为布尔值后绑定到元素的属性（property）上。</div>
       <div>当转换后的执行结果为true时，在宿主元素上添加同名的布尔属性，否则移除此布尔属性。</div>
-      <div>请注意，元素的property是小驼峰方式命名的，而指令名由全小写字符组成。为匹配含有大写字符的property，部分指令名需要进行<a href="directive/decorator">编码</a>。dagger.js将中横线“-”作为指令名称的字符大小写转换标记，为绑定宿主元素的“readOnly”属性，您需要将指令名声明为“$read-only”。</div>
+      <div>请注意，元素的property是小驼峰方式命名的，而指令名由全小写字符组成。为匹配含有大写字符的property，部分指令名需要进行<a href="directive/decorator">编码</a>。dagger.js将中横线“-”作为指令名称的字符大小写转换标记，为绑定宿主元素的“readOnly”属性，需要将指令名声明为“*read-only”。</div>
       <div>我们来看下面的例子：
         <iframe height="300" style="width: 100%;" scrolling="no" title="[dagger-demo] boolean directive (IDL)" src="https://codepen.io/dagger8224/embed/LYQLaWp?default-tab=html%2Cresult&editable=true&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
           See the Pen <a href="https://codepen.io/dagger8224/pen/LYQLaWp">
@@ -16,11 +16,36 @@
         </iframe>
       </div>
     </div>
+    <h3 class="question">布尔指令的预定义修饰符</h3>
+    <div class="answer">
+      在大多数情况下，dagger.js可以自动识别出宿主元素上声明的布尔指令。您也可以通过设置“bool”修饰符为true来显示声明布尔指令。例如：
+      <div class="code">
+        *accessible#bool="expression" // 声明一个名为accessible的布尔指令，表达式为“expression”
+      </div>
+    </div>
   </template>
   <template *exist="language === 'enUS'">
-    <template *each="$['directive.boolean.sections']">
-      <h3 class="question">${ item.question }</h3>
-      <div class="answer" *html="item.answer"></div>
-    </template>
+    <h2>Directive / Boolean Directive</h2>
+    <h3 class="question">What is the usage of Boolean Directive?</h3>
+    <div class="answer">Boolean Directive is used to bind the <a target="_blank" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Attributes#%E5%B8%83%E5%B0%94%E5%80%BC%E5%B1%9E%E6%80%A7">boolean property</a> of the host element.</div>
+    <h3 class="question">What is the execution result of Boolean Directive expression?</h3>
+    <div class="answer">
+      <div>The execution result of Boolean Directive expression will be converted to boolean value and bind to the property of the host element.</div>
+      <div>When the converted execution result is true, a boolean attribute with the same name will be added to the host element, otherwise the boolean attribute will be removed.</div>
+      <div>Please note that the property of the host element is named in small camel case, and the directive name consists of lowercase characters. To match the property with uppercase characters, some directive names need to be <a href="directive/decorator">encoded</a>. dagger.js uses the hyphen “-” as a character case conversion marker to bind the “readOnly” property of the host element, so the directive name should be declared as “*read-only”.</div>
+      <div>Let's take a look at the following example:</div>
+      <iframe height="300" style="width: 100%;" scrolling="no" title="[dagger-demo] boolean directive (IDL)" src="https://codepen.io/dagger8224/embed/LYQLaWp?default-tab=html%2Cresult&editable=true&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+        See the Pen <a href="https://codepen.io/dagger8224/pen/LYQLaWp">
+        [dagger-demo] boolean directive (IDL)</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
+        on <a href="https://codepen.io">CodePen</a>.
+      </iframe>
+    </div>
+    <h3 class="question">Predefined decorators of Boolean Directive</h3>
+    <div class="answer">
+      In most cases, dagger.js can automatically recognize Boolean Directive declared on the host element. You can also set the "bool" decorator to true to display the declared Boolean Directive. For example:
+      <div class="code">
+        *accessible#bool="expression" // Declare a Boolean Directive named "accessible", with the expression "expression"
+      </div>
+    </div>
   </template>
 </div>

@@ -17,7 +17,8 @@
     <h3 class="question">*html指令的使用场景</h3>
     <div class="answer">
       <div>*html指令通常与<a href="router/introduction">路由配置项</a>结合使用，在路由发生切换时动态更新视图内容。我们将在路由章节演示相关的使用示例。</div>
-      <div>请注意，不要将*html指令用于<a href="module/view">视图模块</a>宿主元素。</div>
+      <div>不要将*html指令用于<a href="module/view">视图模块</a>宿主元素。</div>
+      <div>另外，请注意不要将用户输入的内容直接作为*html指令表达式内容，以避免受到<a href="https://developer.mozilla.org/en-US/docs/Web/Security/Attacks/XSS" target="_blank">XSS攻击</a>。</div>
     </div>
     <h3 class="question">*html指令的简写方式</h3>
     <div class="answer">
@@ -57,7 +58,8 @@
     <h3 class="question">When to use the *html directive?</h3>
     <div class="answer">
       <div>The *html directive is typically used together with <a href="router/introduction">routing configuration</a>, and it updates the view content dynamically when the route changes. We will demonstrate the usage of the *html directive in the routing chapter.</div>
-      <div>Please note that do not use the *html directive for the host element which is a <a href="module/view">view module</a>.</div>
+      <div>Please do not use the *html directive for the host element which is a <a href="module/view">view module</a>.</div>
+      <div>Please note that it is not recommended to use user input as the content of the *html directive expression, as it can be vulnerable to <a href="https://developer.mozilla.org/en-US/docs/Web/Security/Attacks/XSS" target="_blank">XSS attacks</a>.</div>
     </div>
     <h3 class="question">The shorthand of the *html directive</h3>
     <div class="answer">
