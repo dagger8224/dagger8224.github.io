@@ -313,7 +313,7 @@
               "path": "eventHandler",
               "constants": {
                 "title": "directive.eventHandler",
-                "template": "directive_event-handler",
+                "template": "directive_event__handler",
                 "previousLink": "directive/general",
                 "nextLink": "directive/meta"
               },
