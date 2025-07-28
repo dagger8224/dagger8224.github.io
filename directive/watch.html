@@ -1,9 +1,11 @@
-<h2>${ $['directive.watch'] }</h2>
+
 <div class="content">
   <template *exist="language === 'zhCN'">
+    <h2>指令 / *watch</h2>
     <h3 class="question">*watch指令的作用</h3>
     <div class="answer">
-      <div>*watch指令定义了变量之间的约束关系（左表达式变量受控于右表达式中的变量），用于在依赖变量的值发生变化时动态更新关联数据。</div>
+      <div>*watch指令用于声明变量之间的约束关系（左表达式变量依赖于右表达式中的变量），当右侧依赖变量的值发生变化时动态更新左表达式的值。</div>
+      <div>*watch指令没有对应的副作用，指令表达式的计算结果不会对宿主元素产生影响。</div>
       <div>在同一个宿主元素上可以声明多个*watch指令（需要使用不同的修饰符以避免名称重复）。我们来看下面的示例：
         <iframe height="300" style="width: 100%;" scrolling="no" title="Untitled" src="https://codepen.io/dagger8224/embed/JjpJxzq?default-tab=html%2Cresult&editable=true&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
           See the Pen <a href="https://codepen.io/dagger8224/pen/JjpJxzq">
@@ -11,15 +13,46 @@
           on <a href="https://codepen.io">CodePen</a>.
         </iframe>
       </div>
-      <div>在上面的例子中，我们通过两个*watch指令声明了两组数据约束关系。当响应依赖项发生变化时，指令将触发执行，保证数据约束关系生效。</div>
+      <div>在上面的例子中，我们通过两个*watch指令声明了两组数据约束关系。当响应依赖项发生变化时，指令将触发执行，保证变量间约束关系生效。</div>
     </div>
-    <h3 class="question">*watch指令表达式的执行结果</h3>
-    <div class="answer">*watch指令表达式的执行结果无意义。</div>
+    <h3 class="question">*watch指令表达式的预定义修饰符</h3>
+    <div class="answer">
+      <div>*watch指令表达式支持预定义修饰符“lazy”。具有lazy修饰符的指令表达式在指令初次执行时不会触发约束条件计算过程，有助于在某些场景下避免冗余计算。</div>
+      <div>具有lazy修饰符的指令表达式不支持内联写法，需要使用模块函数调用方式。</div>
+      我们来看一个示例：
+      <iframe height="300" style="width: 100%;" scrolling="no" title="[dagger-demo] *watch directive (lazy decorator)" src="https://codepen.io/dagger8224/embed/MYajMYb?default-tab=html%2Cresult" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+        See the Pen <a href="https://codepen.io/dagger8224/pen/MYajMYb">
+        [dagger-demo] *watch directive (lazy decorator)</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
+        on <a href="https://codepen.io">CodePen</a>.
+      </iframe>
+      <div>上面的例子中使用了当前还没有提及的<a href="module/script">脚本模块</a>，可以在了解完脚本模块的用法后再回来看这个示例。</div>
+    </div>
   </template>
   <template *exist="language === 'enUS'">
-    <template *each="$['directive.watch.sections']">
-      <h3 class="question">${ item.question }</h3>
-      <div class="answer" *html="item.answer"></div>
-    </template>
+    <h2>Directive / *watch</h2>
+    <h3 class="question">What is the function of the *watch directive?</h3>
+    <div class="answer">
+      <div>*watch directive is used to declare the constraint relationship between variables (the left expression variable depends on the variable in the right expression), and dynamically update the value of the left expression when the value of the dependent variable changes.</div>
+      <div>*watch directive has no corresponding side effect, and the calculation result of the directive expression does not affect the host element.</div>
+      <div>Multiple *watch directives can be declared on the same host element (different decorators need to be used to avoid name conflicts). Let's take a look at the following example:</div>
+      <iframe height="300" style="width: 100%;" scrolling="no" title="Untitled" src="https://codepen.io/dagger8224/embed/JjpJxzq?default-tab=html%2Cresult&editable=true&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+        See the Pen <a href="https://codepen.io/dagger8224/pen/JjpJxzq">
+        Untitled</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
+        on <a href="https://codepen.io">CodePen</a>.
+      </iframe>
+      <div>In the above example, we declared two sets of data constraints using two *watch directives. When the dependent item changes, the directive triggers the execution, ensuring that the constraint between variables is effective.</div>
+    </div>
+    <h3 class="question">Predefined decorators for *watch directive expressions</h3>
+    <div class="answer">
+      <div>The *watch directive expression supports the predefined decorator "lazy". The directive expression with the lazy decorator does not trigger the constraint condition calculation process for the first time, which helps to avoid redundant calculation in some scenarios.</div>
+      <div>The directive expression with the lazy decorator does not support inline writing, and needs to be called using the module function.</div>
+      Let's take a look at an example:
+      <iframe height="300" style="width: 100%;" scrolling="no" title="[dagger-demo] *watch directive (lazy decorator)" src="https://codepen.io/dagger8224/embed/MYajMYb?default-tab=html%2Cresult" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+        See the Pen <a href="https://codepen.io/dagger8224/pen/MYajMYb">
+        [dagger-demo] *watch directive (lazy decorator)</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
+        on <a href="https://codepen.io">CodePen</a>.
+      </iframe>
+      <div>In the above example, we used a script module that has not been mentioned yet, so we will come back to this example after understanding the script module usage.</div>
+    </div>
   </template>
 </div>
