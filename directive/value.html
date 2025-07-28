@@ -1,12 +1,12 @@
-<h2>${ $['directive.value'] }</h2>
 <div class="content">
   <template *exist="language === 'zhCN'">
+    <h2>指令 / *value</h2>
     <h3 class="question">*value指令的作用</h3>
-    <div class="answer">*value指令用于绑定宿主元素的value属性。</div>
+    <div class="answer">*value指令用于绑定宿主元素的值。</div>
     <h3 class="question">*value指令表达式的执行结果</h3>
     <div class="answer">
-      <div>*value指令表达式的执行结果将作为宿主元素的value属性。适用于input，textarea以及option元素。</div>
-      <div>当*selected指令表达式的内容是合法的<a target="_blank" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators#%E5%B7%A6%E8%A1%A8%E8%BE%BE%E5%BC%8F">左表达式</a>时，用户对宿主元素的操作将导致表达式计算结果同步变化，实现作用域数据与DOM元素属性之间的的双向绑定。如果input元素的类型为number，则执行结果将自动转换为number类型。我们来看下面的示例：
+      <div>*value指令表达式的执行结果将作为宿主元素的value属性。适用于除去类型为file的input元素之外的所有元素。</div>
+      <div>当*value指令表达式的内容是合法的<a target="_blank" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators#%E5%B7%A6%E8%A1%A8%E8%BE%BE%E5%BC%8F">左表达式</a>时，用户对宿主元素的操作将导致表达式计算结果同步变化，实现作用域数据与DOM元素属性之间的的双向绑定。如果input元素的类型为number，则执行结果将自动转换为number类型。我们来看下面的示例：
         <iframe height="300" style="width: 100%;" scrolling="no" title="Untitled" src="https://codepen.io/dagger8224/embed/zYRzeNj?default-tab=html%2Cresult&editable=true&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
           See the Pen <a href="https://codepen.io/dagger8224/pen/zYRzeNj">
           Untitled</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
@@ -22,9 +22,9 @@
             on <a href="https://codepen.io">CodePen</a>.
           </iframe>
         </div>
-        <div class="margin">2. “number”，布尔类型。用于将用户输入字符串转换为数字格式。</div>
-        <div class="margin">3. “trim”，布尔类型。用于去除用户输入字符串的首尾空白字符。</div>
-        <div class="margin">4. “input”，布尔类型。框架默认在输入框失去焦点后将用户输入字符串更新到指令表达式的执行结果上（监听change事件），声明该修饰符的指令将监听输入框的input事件，在用户输入任意字符后立刻触发表达式更新。</div>
+        <div class="margin">2. “number”，布尔类型。用于将用户输入字符串自动转换为数字格式。</div>
+        <div class="margin">3. “trim”，布尔类型。用于自动去除用户输入字符串的首尾空白字符。</div>
+        <div class="margin">4. “change”，布尔类型。框架默认在输入框内容发生变化时（监听input事件）将更新后的内容同步到表达式的执行结果上。声明change修饰符的指令则在输入框失去焦点后再更新指令表达式的执行结果（监听change事件）。</div>
         <div>我们来看这几个修饰符的例子：
           <iframe height="300" style="width: 100%;" scrolling="no" title="Untitled" src="https://codepen.io/dagger8224/embed/mdXwvXy?default-tab=html%2Cresult&editable=true&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
             See the Pen <a href="https://codepen.io/dagger8224/pen/mdXwvXy">
@@ -34,19 +34,60 @@
         </div>
       </div>
     </div>
-    <h3 class="question">*value指令与*selected指令的关系</h3>
-    <div class="answer">如果宿主元素上同时声明了*value指令和<a href="directive/selected">*selected</a>指令，则*selected执行结果将与*value指令表达式返回的对象进行匹配。下面我们来看一个示例：
-      <iframe height="300" style="width: 100%;" scrolling="no" title="Untitled" src="https://codepen.io/dagger8224/embed/JjpJxXB?default-tab=html%2Cresult&editable=true&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
-        See the Pen <a href="https://codepen.io/dagger8224/pen/JjpJxXB">
-        Untitled</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
+    <h3 class="question">select宿主元素上的*value指令与*selected指令的关系</h3>
+    <div class="answer">
+      <div>在<a href="directive/selected">*selected指令</a>中，我们提到select元素的*value指令和option元素上绑定的*selected指令存在联动关系。</div>
+      我们来看一个示例：
+      <iframe height="300" style="width: 100%;" scrolling="no" title="[dagger-demo] *selected directive (oneway decorator)" src="https://codepen.io/dagger8224/embed/MWQvjNb?default-tab=html%2Cresult" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+        See the Pen <a href="https://codepen.io/dagger8224/pen/MWQvjNb">
+        [dagger-demo] *selected directive (oneway decorator)</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
         on <a href="https://codepen.io">CodePen</a>.
       </iframe>
+      <div>再次强调一下，除非明确了解指令间的联动效果，请不要在同一个业务场景中同时使用*value和*selected指令。</div>
     </div>
   </template>
   <template *exist="language === 'enUS'">
-    <template *each="$['directive.value.sections']">
-      <h3 class="question">${ item.question }</h3>
-      <div class="answer" *html="item.answer"></div>
-    </template>
+    <h2>Directive / *value</h2>
+    <h3 class="question">What is the usage of the *value directive?</h3>
+    <div class="answer">The *value directive is used to bind the value of the host element.</div>
+    <h3 class="question">What is the execution result of the *value directive expression?</h3>
+    <div class="answer">
+      <div>The execution result of the *value directive expression will be the value property of the host element. It can be applied to all elements except for input elements of type "file".</div>
+      <div>When the content of the *value directive expression is a valid <a target="_blank" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators#%E5%B7%A6%E8%A1%A8%E8%BE%BE%E5%BC%8F">left expression</a>, user operations on the host element will cause the expression to be recalculated and the result will be synchronized with the value property of the host element. If the type of the input element is number, the execution result will be automatically converted to a number type. Let's take a look at the following example:</div>      
+      <iframe height="300" style="width: 100%;" scrolling="no" title="Untitled" src="https://codepen.io/dagger8224/embed/zYRzeNj?default-tab=html%2Cresult&editable=true&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+        See the Pen <a href="https://codepen.io/dagger8224/pen/zYRzeNj">
+        Untitled</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
+        on <a href="https://codepen.io">CodePen</a>.
+      </iframe>
+      <h3 class="question">Predefined decorators of the *value directive</h3>
+      <div class="answer">The *value directive supports several predefined decorators:
+        <div class="margin">1. "oneway", boolean type. The value is true, the current directive is one-way binding, and user operations on the host element will not update the associated scope data. For example:</div>
+        <iframe height="300" style="width: 100%;" scrolling="no" title="[dagger-demo] *value directive (oneway decorator)" src="https://codepen.io/dagger8224/embed/MWQvbym?default-tab=html%2Cresult&editable=true&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+          See the Pen <a href="https://codepen.io/dagger8224/pen/MWQvbym">
+          [dagger-demo] *value directive (oneway decorator)</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
+          on <a href="https://codepen.io">CodePen</a>.
+        </iframe>
+        <div class="margin">2. "number", boolean type. Used to automatically convert user input strings to number format.</div>
+        <div class="margin">3. "trim", boolean type. Used to automatically remove the white space at the beginning and end of user input strings.</div>
+        <div class="margin">4. "change", boolean type. The framework will update the execution result of the directive expression when the input box content changes (listens to the input event). If the "change" decorator is declared, the directive expression will be updated only when the input box loses focus (listens to the change event).</div>
+        <div>Let's take a look at these decorators in action:</div>
+        <iframe height="300" style="width: 100%;" scrolling="no" title="Untitled" src="https://codepen.io/dagger8224/embed/mdXwvXy?default-tab=html%2Cresult&editable=true&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+          See the Pen <a href="https://codepen.io/dagger8224/pen/mdXwvXy">
+          Untitled</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
+          on <a href="https://codepen.io">CodePen</a>.
+        </iframe>
+      </div>
+    </div>
+    <h3 class="question">Relationship between *value and *selected directives on the select host element</h3>
+    <div class="answer">
+      <div>In the <a href="directive/selected">*selected directive</a>, we mentioned that the *value directive on the select element and the *selected directive on the option element have a coupling relationship.</div>
+      Let's take a look at an example:
+      <iframe height="300" style="width: 100%;" scrolling="no" title="[dagger-demo] *selected directive (oneway decorator)" src="https://codepen.io/dagger8224/embed/MWQvjNb?default-tab=html%2Cresult" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+        See the Pen <a href="https://codepen.io/dagger8224/pen/MWQvjNb">
+        [dagger-demo] *selected directive (oneway decorator)</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
+        on <a href="https://codepen.io">CodePen</a>.
+      </iframe>
+      <div>Please note that it is not recommended to use both *value and *selected directives together unless you understand the coupling effect clearly between them.</div>
+    </div>
   </template>
 </div>
