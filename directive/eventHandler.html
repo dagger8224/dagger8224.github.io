@@ -243,8 +243,7 @@
         </iframe>
       </div>
       
-      <div class="margin">
-        9. "every", String or String Array type. Used to declare a set of filtering conditions. If any of the conditions is not satisfied, the event listener will not be triggered. 
+      <div class="margin">9. "every", String or String Array type. Used to declare a set of filtering conditions. If any of the conditions is not satisfied, the event listener will not be triggered. 
         <div>The value of "every" is an array of <a target="_blank" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/RegExp">regular expression literals</a>. The array item matches any of the values of $event's "code/key/button" or <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/getModifierState">modifier key state</a>. You can also add "!" before the literal to reverse the condition. For example, adding "!" before "Shift" means that the Shift key must be not pressed to trigger the current directive expression. </div>
         Let's look at an example:
           <iframe height="300" style="width: 100%;" scrolling="no" title="[dagger-demo] eventHandler (every decorator)" src="https://codepen.io/dagger8224/embed/XWZgLEv?default-tab=html%2Cresult&editable=true&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
@@ -254,8 +253,7 @@
           </iframe>
         </div>
       </div>
-      <div class="margin">
-        10. "some", String or String Array type. Used to declare a set of filtering conditions. If any of the conditions is satisfied, the event listener will be triggered. 
+      <div class="margin">10. "some", String or String Array type. Used to declare a set of filtering conditions. If any of the conditions is satisfied, the event listener will be triggered. 
         <div>The value of "some" is an array of <a target="_blank" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/RegExp">regular expression literals</a>. The array item matches any of the values of $event's "code/key/button" or <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/getModifierState">modifier key state</a>. You can also add "!" before the literal to reverse the condition. For example, adding "!" before "Shift" means that the Shift key must be not pressed to trigger the current directive expression. </div>
         Let's look at an example:
           <iframe height="300" style="width: 100%;" scrolling="no" title="[dagger-demo] eventHandler (some decorator)" src="https://codepen.io/dagger8224/embed/vYdJBXM?default-tab=html%2Cresult&editable=true&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
