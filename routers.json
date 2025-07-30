@@ -363,26 +363,26 @@
                 "title": "module.introduction",
                 "template": "module_introduction",
                 "previousLink": "directive/dynamic",
-                "nextLink": "module/template"
+                "nextLink": "module/view"
               },
               "modules": "module_introduction"
             },
             {
-              "path": "template",
+              "path": "view",
               "constants": {
-                "title": "module.template",
-                "template": "module_template",
+                "title": "module.view",
+                "template": "module_view",
                 "previousLink": "module/introduction",
                 "nextLink": "module/style"
               },
-              "modules": "module_template"
+              "modules": "module_view"
             },
             {
               "path": "style",
               "constants": {
                 "title": "module.style",
                 "template": "module_style",
-                "previousLink": "module/template",
+                "previousLink": "module/view",
                 "nextLink": "module/script"
               },
               "modules": "module_style"

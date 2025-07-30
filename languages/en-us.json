@@ -7,11 +7,11 @@
     "try": "Try it yourself:",
     "run": "run",
     "reset": "reset",
-    "view": "View the result:",
+    "view": "view",
     "overview": "Overview",
     "overview.application": "Overview/application",
     "directive": "Directive",
-    "directive.dynamic": "Directive/@directive",
+    "directive.dynamic": "Directive / @directive",
     "index": "Index",
     "version": "Version",
     "next": "Next",
@@ -321,7 +321,7 @@
         "answer": "<span>It's valid to declare them both on the same element. The difference is, eventHandler expression works under the context scope chain of the related element, while the builtin event attribute expression could visit variables under the global scope only.</span>"
     }, {
         "question": "The restriction of eventHandler directive",
-        "answer": "<span>It's valid to declare multiple eventHandler directives with different decorators on the same element. The default listener target is the related element, you may specify another target with the decorator.<br/>Please note that virtual elements (<a href='module/template'>template</a> module etc.) are not valid listener target.</span>"
+        "answer": "<span>It's valid to declare multiple eventHandler directives with different decorators on the same element. The default listener target is the related element, you may specify another target with the decorator.<br/>Please note that virtual elements (<a href='module/view'>template</a> module etc.) are not valid listener target.</span>"
     }],
     "directive.decorator": "Directive/decorator",
     "directive.decorator.sections": [{
@@ -361,7 +361,7 @@
         "answer": "<span>1. \"base\" (string), which is used to specify the baseURI of the relative uri path for the related module config and its children (in case existing);<br/>2. \"candidates\" (object array), which is used to specify an object array, each item of the array includes optional \"media/condition\", the framework will merge the first matched slice config with the current config before parsing;<br/>3. \"integrity\" (string), which is used to validate the <a target='_blank' href='https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity'>sha256 subResource Integrity</a> of remote resource content;<br/>4. \"prefetch\" (string), which is used to declare the current module resource should be pre-fetched without blocking rendering views for the current <a href='router/introduction'>routing scenarios</a>. The framework will convert the \"prefetch\" value as a regExp to match with the current hash path, only the matched routing scenarios will be blocked.</span>"
     }, {
         "question": "The list of module types",
-        "answer": "<span class='list'><a href='module/template'>template</a><a href='module/script'>script</a><a href='module/style'>style</a><a href='module/json'>json</a><a href='module/string'>string</a><a href='module/namespace'>namespace</a></span>"
+        "answer": "<span class='list'><a href='module/view'>template</a><a href='module/script'>script</a><a href='module/style'>style</a><a href='module/json'>json</a><a href='module/string'>string</a><a href='module/namespace'>namespace</a></span>"
     }, {
         "question": "Declaring multiple module configs with the same type as a group",
         "answer": "<span>The type name with \"@\" prefix is used to declare a group of module configs with the specified type. For instance, the config \"@namespace: { a: {...}, b: {...} }\" will declare two namespace modules named \"a\" and \"b\".</span>"
@@ -375,7 +375,7 @@
         "question": "The order of module loading and view rendering",
         "answer": "<span>The framework will load and parse the modules declared within current router scenarios at the time of page loading or router changing. The view will start rendering right after all the modules loaded. The resolved modules will be cached at runtime and won't be loaded and parsed again when router changed.</span>"
     }],
-    "module.template": "Module/template",
+    "module.view": "module / view",
     "module.template.sections": [{
         "question": "What is template module",
         "answer": "<span>Template is reusable view module composed of html tags (including builtin DOM elements and other template modules).</span>"
@@ -398,7 +398,7 @@
         "answer": "<span>The module without specified type would be inferred as namespace module in case the <a target='_blank' href='https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Type'>Content-Type</a> of remote response contains \"text/html\" and the root element of the resource document is the html tag (otherwise will be inferred as \"template\").</span>"
     }, {
         "question": "The config fields of namespace module",
-        "answer": "<span>Besides the common config fields of module, there is a \"customTags\" field (should be string array) to indicate the custom tag names under current namespace. The framework will treat the tag names declared in the customTags as builtin html tags, otherwise will take them as <a href='module/template'>template</a> module for further processing (replace the tag with the module content).</span>"
+        "answer": "<span>Besides the common config fields of module, there is a \"customTags\" field (should be string array) to indicate the custom tag names under current namespace. The framework will treat the tag names declared in the customTags as builtin html tags, otherwise will take them as <a href='module/view'>template</a> module for further processing (replace the tag with the module content).</span>"
     }, {
         "question": "The restriction of namespace module",
         "answer": "<span>Namespace module will parse and load its sub modules recursively based on the <a href='miscellaneous/introduction'>configs</a> of the resource template, circular reference of namespaces is illegal.</span>"
@@ -412,7 +412,7 @@
         "answer": "<span>The module without specified type would be inferred as style module in case the resource container is style tag with type attribute \"dagger/style\" (for embedded mode), or the <a target='_blank' href='https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Type'>Content-Type</a> of remote response contains \"text/css\".</span>"
     }, {
         "question": "The config fields of style module",
-        "answer": "<span>Besides the common config fields of module, there is a \"scoped\" field (boolean, default value is true) to specify if the style is scoped to the related <a href='module/template'>template</a> or takes effect globally.</span>"
+        "answer": "<span>Besides the common config fields of module, there is a \"scoped\" field (boolean, default value is true) to specify if the style is scoped to the related <a href='module/view'>template</a> or takes effect globally.</span>"
     }, {
         "question": "The restriction of style module",
         "answer": "<span>It's illegal to use the character \"$\" in the path of style module.</span>"

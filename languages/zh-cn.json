@@ -29,7 +29,7 @@
     "script": "脚本",
     "style": "样式",
     "namespace": "名空间",
-    "template": "模板",
+    "view": "视图",
     "expression": "指令表达式",
     "scope": "作用域",
     "router": "路由",
@@ -76,7 +76,7 @@
     "directive.eventHandler": "指令/事件处理指令",
     "directive.meta": "指令/元指令",
     "module.introduction": "模块/介绍",
-    "module.template": "模块/模板",
+    "module.view": "模块/视图",
     "module.style": "模块/样式",
     "module.script": "模块/脚本",
     "module.string": "模块/字符串",
@@ -84,7 +84,7 @@
     "module.namespace": "模块/名空间",
     "module.namespace.sections": [{
         "question": "名空间模块的类别推断规则",
-        "answer": "<span>对于未指定类别的模块，如果资源内容的容器是类型为“dagger/namespace”的script标签（嵌入方式），或者远程请求响应头的<a target='_blank' href='https://developer.mozilla.org/zh-cn/docs/Web/HTTP/Headers/Content-Type'>Content-Type</a>包含“text/html”且资源内容是完整的html文档（否则将被识别为模板类别），则模块类别将被推断为名空间。</span>"
+        "answer": "<span>对于未指定类别的模块，如果资源内容的容器是类型为“dagger/namespace”的script标签（嵌入方式），或者远程请求响应头的<a target='_blank' href='https://developer.mozilla.org/zh-cn/docs/Web/HTTP/Headers/Content-Type'>Content-Type</a>包含“text/html”且资源内容是完整的html文档（否则将被识别为视图类别），则模块类别将被推断为名空间。</span>"
     }, {
         "question": "名空间模块的使用限制",
         "answer": "<span>名空间模块资源加载后将根据资源模板<a href='miscellaneous/introduction'>配置项</a>递归解析子级模块，各级名空间模块之间不能出现循环引用。</span>"

@@ -3,7 +3,7 @@
   <template *exist="language === 'zhCN'">
     <h3 class="question">什么是名空间模块</h3>
     <div class="answer">
-      <div>一个可复用部件（widget）通常由<a href="module/template">模板</a>模块、<a href="module/script">脚本</a>模块和<a href="module/style">样式</a>模块等不同类型的模块共同组成。我们将由若干子模块组合成的复合模块称为名空间模块。名空间模块下可以包含任意类型和数量的子模块，包括其他的名空间模块。</div>
+      <div>一个可复用部件（widget）通常由<a href="module/view">模板</a>模块、<a href="module/script">脚本</a>模块和<a href="module/style">样式</a>模块等不同类型的模块共同组成。我们将由若干子模块组合成的复合模块称为名空间模块。名空间模块下可以包含任意类型和数量的子模块，包括其他的名空间模块。</div>
       <div>名空间模块配置项的“type”值为“namespace”。</div>
       <div>我们来看一个例子：
         <iframe height="300" style="width: 100%;" scrolling="no" title="[dagger-demo] namespace module" src="https://codepen.io/dagger8224/embed/GRQBvmw?default-tab=html%2Cresult&editable=true" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
@@ -11,7 +11,7 @@
           [dagger-demo] namespace module</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
           on <a href="https://codepen.io">CodePen</a>.
         </iframe>
-        上例中，我们注册了一个名为“namespace_module”的名空间模块，您可以通过“namespace_module.template”（名空间“namespace_module”下的模板模块路径）在当前上下文创建名空间实例。下面是该名空间模块资源的内容：
+        上例中，我们注册了一个名为“namespace_module”的名空间模块，您可以通过“namespace_module.view”（名空间“namespace_module”下的视图模块路径）在当前上下文创建名空间实例。下面是该名空间模块资源的内容：
         <iframe height="300" style="width: 100%;" scrolling="no" title="[dagger-demo] namespace module (resource)" src="https://codepen.io/dagger8224/embed/rNJrzzj?default-tab=html&editable=true" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
           See the Pen <a href="https://codepen.io/dagger8224/pen/rNJrzzj">
           [dagger-demo] namespace module (resource)</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)

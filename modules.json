@@ -44,7 +44,7 @@
     "directive_raw": "./directive/raw.html",
     "directive_dynamic": "./directive/dynamic.html",
     "module_introduction": "./module/introduction.html",
-    "module_template": "./module/template.html",
+    "module_view": "./module/view.html",
     "module_style": "./module/style.html",
     "module_script": "./module/script.html",
     "module_json": "./module/json.html",
