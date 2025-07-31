@@ -2,12 +2,12 @@
   <template *exist="language === 'zhCN'">
     <h2>指令 / @directive</h2>
     <h3 class="question">@directive指令的作用</h3>
-    <div class="answer">在某些情况下，您可能需要根据不同条件来动态构造指令或指令修饰符的内容，此时您可以使用“@directive”指令。</div>
+    <div class="answer">您可以使用“@directive”元指令来动态构造指令。</div>
     <h3 class="question">@directive的执行结果</h3>
     <div class="answer">
       <div>dagger.js将“@directive”指令的执行结果转换为宿主元素上的指令。</div>
       <div>“@directive”指令的执行结果支持多种形式：
-        <div class="margin">1. 字符串类型。框架将字符串的内容作为一条完整的指令声明来处理。我们来看例子：
+        <div class="margin">1. 字符串类型。框架将字符串的内容作为一条指令声明来处理。我们来看例子：
           <iframe height="300" style="width: 100%;" scrolling="no" title="[dagger-demo] @directive directive (string)" src="https://codepen.io/dagger8224/embed/oNEoaZo?default-tab=html%2Cresult&editable=true&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
             See the Pen <a href="https://codepen.io/dagger8224/pen/oNEoaZo">
             [dagger-demo] @directive directive (string)</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
@@ -29,13 +29,40 @@
           </iframe>
         </div>
       </div>
-      <div>请注意，元指令本身是不支持动态创建的。这意味着您不能使用“@directive”指令来声明相同宿主元素上的“<a target="_blank" href="directive/raw">@raw</a>”或者另一个“@directive”指令。</div>
+      <div>请注意，“@directive”指令不支持修饰符，您也不能使用“@directive”指令来声明相同宿主元素上的“<a target="_blank" href="directive/raw">@raw</a>”或者另一个“@directive”指令。</div>
     </div>
   </template>
   <template *exist="language === 'enUS'">
-    <template *each="$['directive.controller.sections']">
-      <h3 class="question">${ item.question }</h3>
-      <div class="answer" *html="item.answer"></div>
-    </template>
+    <h2>Directive / @directive</h2>
+    <h3 class="question">What is the usage of the @directive directive?</h3>
+    <div class="answer">You can use the "@directive" meta-directive to dynamically construct directives.</div>
+    <h3 class="question">What is the execution result of the @directive directive?</h3>
+    <div class="answer">
+      <div>dagger.js converts the execution result of the "@directive" directive to a directive on the host element.</div>
+      <div>The execution result of the "@directive" directive supports various forms:
+        <div class="margin">1. String type. The framework treats the string content as a directive declaration. Let's take a look at an example:
+          <iframe height="300" style="width: 100%;" scrolling="no" title="[dagger-demo] @directive (string)" src="https://codepen.io/dagger8224/embed/oNEoaZo?default-tab=html%2Cresult&editable=true&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+            See the Pen <a href="https://codepen.io/dagger8224/pen/oNEoaZo">
+            [dagger-demo] @directive (string)</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
+            on <a href="https://codepen.io">CodePen</a>.
+          </iframe>
+        </div>
+        <div class="margin">2. Object type. The object needs to contain two fields, "name" and "value", which point to the directive name (including prefix and decorators), and the content of the directive expression. Let's take a look at an example:
+          <iframe height="300" style="width: 100%;" scrolling="no" title="[dagger-demo] @directive (object)" src="https://codepen.io/dagger8224/embed/ExQbOpO?default-tab=html%2Cresult&editable=true&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+            See the Pen <a href="https://codepen.io/dagger8224/pen/ExQbOpO">
+            [dagger-demo] @directive (object)</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
+            on <a href="https://codepen.io">CodePen</a>.
+          </iframe>
+        </div>
+        <div class="margin">3. Array type. You can mix the above two forms, as long as the items in the array are valid dynamic directive content. Let's take a look at an example:
+          <iframe height="300" style="width: 100%;" scrolling="no" title="[dagger-demo] @directive (mixed)" src="https://codepen.io/dagger8224/embed/qBxVJop?default-tab=html%2Cresult&editable=true&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+            See the Pen <a href="https://codepen.io/dagger8224/pen/qBxVJop">
+            [dagger-demo] @directive (mixed)</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
+            on <a href="https://codepen.io">CodePen</a>.
+          </iframe>
+        </div>
+      </div>
+      <div>Note that the "@directive" directive does not support decorators, and you cannot use "@directive" to declare the same host element with the "<a target="_blank" href="directive/raw">@raw</a>" or another "@directive" directive.</div>
+    </div>
   </template>
 </div>
