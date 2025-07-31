@@ -3,21 +3,32 @@
     <h2>指令 / @raw</h2>
     <h3 class="question">@raw指令的作用</h3>
     <div class="answer">
-      <div>dagger.js将“@raw”指令的宿主元素及其子级元素作为平凡元素处理（无论宿主元素上是否存在其他指令声明），不再进行进一步的解析或执行其他指令。</div>
-      <div>您可以在平凡子树的根元素上声明“@raw”指令以提升页面解析性能。我们来看例子：
+      <div>dagger.js将声明了“@raw”指令的宿主元素及其子元素视为普通DOM元素，不再进行进一步的指令解析和执行。</div>
+      <div>请注意，“@raw”指令没有表达式部分，也不能添加任何修饰符，否则指令将失去作用。</div>
+      <div>您可以在平凡子树的根元素上声明“@raw”指令以提升页面解析性能。</div>
+      <div>我们来看例子：
         <iframe height="300" style="width: 100%;" scrolling="no" title="[dagger-demo] @raw directive" src="https://codepen.io/dagger8224/embed/vYdWZeY?default-tab=html%2Cresult&editable=true&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
           See the Pen <a href="https://codepen.io/dagger8224/pen/vYdWZeY">
           [dagger-demo] @raw directive</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
           on <a href="https://codepen.io">CodePen</a>.
         </iframe>
       </div>
-      <div>请注意，“@raw”指令没有表达式部分，也不能添加任何修饰符，否则指令将失去作用。</div>
     </div>
   </template>
   <template *exist="language === 'enUS'">
-    <template *each="$['directive.raw.sections']">
-      <h3 class="question">${ item.question }</h3>
-      <div class="answer" *html="item.answer"></div>
-    </template>
+    <h2>Directive / @raw</h2>
+    <h3 class="question">What is the usage of the @raw directive?</h3>
+    <div class="answer">
+      <div>The @raw directive declared by the host element and its child elements is treated as a normal DOM element and is no longer subject to further directive parsing and execution.</div>
+      <div>Please note that the @raw directive has no expression part and cannot have any decorator, otherwise the directive will lose its effect.</div>
+      <div>You can declare the @raw directive on the root element of a simple subtree to improve page parsing performance.</div>
+      <div>Let's take a look at an example:
+        <iframe height="300" style="width: 100%;" scrolling="no" title="[dagger-demo] @raw directive" src="https://codepen.io/dagger8224/embed/vYdWZeY?default-tab=html%2Cresult&editable=true&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+          See the Pen <a href="https://codepen.io/dagger8224/pen/vYdWZeY">
+          [dagger-demo] @raw directive</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
+          on <a href="https://codepen.io">CodePen</a>.
+        </iframe>
+      </div>
+    </div>
   </template>
 </div>
