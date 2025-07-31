@@ -1,21 +1,24 @@
-<h2>${ $['module.introduction'] }</h2>
 <div class="content">
   <template *exist="language === 'zhCN'">
+    <h2>模块 / 介绍</h2>
     <h3 class="question">什么是模块</h3>
     <div class="answer">
-      <div>在dagger.js中，我们把html模板，脚本，层叠样式表等可复用的代码片段统称为模块。</div>
-      <div>模块内容是只读的，不允许在运行时进行修改。</div>
+      <div>在dagger.js中，我们把视图模板（html），脚本（script），层叠样式表（style）等可复用的代码片段统称为模块。</div>
+      <div>模块内容是只读的，不允许在指令表达式中修改。</div>
     </div>
     <h3 class="question">模块类型列表</h3>
-    <div class="answer"><a class="margin" href="module/view">模板</a><a class="margin" href="module/script">脚本</a><a class="margin" href="module/style">样式</a><a class="margin" href="module/json">json</a><a class="margin" href="module/string">字符串</a><a class="margin" href="module/namespace">名空间</a></div>
+    <div class="answer"><a class="margin" href="module/view">视图</a><a class="margin" href="module/script">脚本</a><a class="margin" href="module/style">样式</a><a class="margin" href="module/json">json</a><a class="margin" href="module/string">字符串</a><a class="margin" href="module/namespace">名空间</a></div>
     <h3 class="question">模块的加载时机</h3>
-    <div class="answer">dagger.js内部维护了一个运行时模块管理器，当应用程序首次加载或者页面内路由发生切换时将触发注册模块的动态加载、解析和执行。已经加载过的模块会在运行时缓存。我们将在<a href="router/introduction">路由</a>章节对模块配置项与路由配置项的对应关系进行讲解。</div>
+    <div class="answer">
+      <div>当应用程序首次加载或者页面<a href="router/introduction">路由</a>发生变化时将触发模块的动态加载、解析和执行。已经加载过的模块会在运行时缓存。</div>
+      我们将在<a href="router/introduction">路由</a>章节对模块配置项与路由配置项的对应关系进行讲解。
+    </div>
     <h3 class="question">如何注册模块</h3>
     <div class="answer">
-      <div>在<a href="overview/installation">安装</a>章节中我们曾经提到，项目的入口页面要添加一个类型为“dagger/modules”的script标签作为应用程序配置项。在使用模块前，您需要先在配置项中对其进行注册。一个典型的模块注册项（内容为json格式）包括如下信息：
-        <div class="margin">1. 模块名。由注册项的键指定。合法的模块名称（除去<a href="module/view">模板</a>模块之外）由“$”，“-”，“_”，大小写字母和数字组成，首字符不能是数字。</div>
-        <div class="margin">2. 模块的资源加载位置。由注册项值的“uri”字段指定。其内容可以是url地址（远程资源），DOM选择器（本地资源），也可以是另一个模块的路径（引用资源）。</div>
-        <div class="margin">3. 模块的类型。由注册项值的“type”字段指定。</div>
+      <div>在<a href="overview/installation">安装</a>章节中我们曾经提到，项目的入口页面要添加一个类型为“dagger/modules”的script标签作为模块配置项。模块注册项的内容为json格式，一个典型的模块配置项包含如下信息：
+        <div class="margin">1. 模块名称。由注册项的键指定。合法的模块名称由中横线，下划线，大小写字母和数字组成，首字符必须是小写字母或者下划线。</div>
+        <div class="margin">2. 模块资源位置。由注册项值的“uri”字段指定。其内容可以是url地址（远程资源）或者DOM选择器（本地资源）。</div>
+        <div class="margin">3. 模块类型。由注册项值的“type”字段指定。</div>
       </div>
       <div>我们来看示例：
         <iframe height="300" style="width: 100%;" scrolling="no" title="[dagger-demo] $module (uri)" src="https://codepen.io/dagger8224/embed/zYRpYpa?default-tab=html%2Cresult&editable=true&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
@@ -23,15 +26,20 @@
           [dagger-demo] $module (uri)</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
           on <a href="https://codepen.io">CodePen</a>.
         </iframe>
-        <div>在上面的例子中，我们通过配置项注册了三个模块：
-          <div class="margin">1. <a class="margin" href="module/script">脚本</a>模块“remote_script”，其内容加载自远程url<a target="_blank" href="https://codepen.io/dagger8224/pen/zYRpYpa.js">https://codepen.io/dagger8224/pen/zYRpYpa.js</a>。</div>
-          <div class="margin">2. <a class="margin" href="module/json">json</a>模块“embedded_json”，其内容加载自DOM选择器“#json”对应的本地元素。</div>
-          <div class="margin">3. <a class="margin" href="module/json">json</a>模块“json_alias”，其内容与模块“embedded_json”相同。</div>
+        <div>在上面的例子中，我们通过配置项注册了四个模块：
+          <div class="margin">1. <a href="module/view">视图</a>模块“local_view_module”，其内容加载自DOM选择器“#view”对应的本地template元素。在页面中使用视图模块的方式和引入原生DOM标签一样：
+            <div class="code">
+              &lt;local_view_module&gt;&lt;/local_view_module&gt;
+            </div>
+          </div>
+          <div class="margin">2. <a href="module/style">样式</a>模块“local_style_module”，其内容加载自DOM选择器“#style”对应的本地元素（类型为“dagger/style”的style标签）。引入的样式模块将自动在当前的<a href="module/namespace">名空间</a>下生效。</div>
+          <div class="margin">3. <a href="module/script">脚本</a>模块“remote_script_module”，其内容加载自<a target="_blank" href="https://codepen.io/dagger8224/pen/zYRpYpa.js">远程url</a>。</div>
+          <div class="margin">4. <a href="module/json">json</a>模块“local_json_module”，其内容加载自DOM选择器“#json”对应的本地元素（类型为“dagger/json”的script标签）。</div>
         </div>
       </div>
     </div>
     <h3 class="question">如何使用模块</h3>
-    <div class="answer">您可以在指令表达式中通过回调参数对象“$module”访问模块内容（<a href="module/view">模板</a>和<a href="module/style">样式</a>模块除外）。与<a href="directive/scope">作用域</a>类似，您也可以通过匿名方式访问$module下的字段：
+    <div class="answer">您可以在指令表达式中通过回调参数对象“$module”访问<a href="module/script">脚本</a>，<a href="module/json">json</a>和<a href="module/string">string</a>模块的内容。与<a href="directive/scope">作用域</a>类似，您也可以通过匿名方式访问$module下的字段：
       <div class="code">
         +click="$module.func($scope.value)" // 具名方式访问模块和作用域对象
         <br>
