@@ -1,27 +1,42 @@
-<h2>${ $['module.style'] }</h2>
 <div class="content">
   <template *exist="language === 'zhCN'">
+    <h2>模块 / 样式</h2>
     <h3 class="question">什么是样式模块</h3>
     <div class="answer">
-      <div>样式模块是一组可复用的样式片段。</div>
+      <div>样式模块是一组可复用的CSS片段。</div>
       <div>样式模块配置项的“type”值为“style”。</div>
       <div>样式模块的名称中不能包含符号“$”。</div>
       <div>样式模块由框架本身维护，不支持在指令表达式中通过“$module”变量进行访问。</div>
     </div>
     <h3 class="question">样式模块的配置项字段</h3>
-    <div class="answer">除模块的通用配置项字段外，样式模块还支持布尔类型的“scoped”字段。“scoped”为true（默认值）代表此样式模块仅对其关联<a href="module/view">模板模块</a>的内容生效，否则样式模块将在当前应用程序页面内全局生效。我们来看例子：
+    <div class="answer">除模块的通用配置项字段外，样式模块还支持布尔类型的“scoped”字段。“scoped”为true（默认值）代表此样式模块仅对其所在<a href="module/namespace">名空间</a>下的<a href="module/view">视图模块</a>的内容生效，否则样式模块将在当前应用程序页面内全局生效。我们来看例子：
       <iframe height="300" style="width: 100%;" scrolling="no" title="[dagger-demo] template module (scoped css)" src="https://codepen.io/dagger8224/embed/vYdaxJz?default-tab=html%2Cresult&editable=true&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
         See the Pen <a href="https://codepen.io/dagger8224/pen/vYdaxJz">
         [dagger-demo] template module (scoped css)</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
         on <a href="https://codepen.io">CodePen</a>.
       </iframe>
-      上例中，<a href="module/view">模板模块</a>“view_module”关联了两个样式模块“style1”和“style2”，其中“style1”中的按钮文字颜色声明是全局生效的，而“style2”中的边框样式声明仅对“view_module”内部的按钮元素生效。
+      上例中，<a href="module/view">样式模块</a>“view_module”关联了两个样式模块“global_style”和“scoped_style”，其中“global_style”中的样式是全局生效的，而“scoped_style”中的样式仅在当前的<a href="module/namespace">名空间</a>下生效。
+      <div>本示例中，两个样式模块都定义在根名空间下，所以无论scoped为true还是false，它们的生效范围是一致的。在之后的名空间章节中，我们将看到基于本示例的修改版本。</div>
     </div>
   </template>
   <template *exist="language === 'enUS'">
-    <template *each="$['module.style.sections']">
-      <h3 class="question">${ item.question }</h3>
-      <div class="answer" *html="item.answer"></div>
-    </template>
+    <h2>Module / Style</h2>
+    <h3 class="question">What is a style module?</h3>
+    <div class="answer">
+      <div>A style module is a group of reusable CSS snippets.</div>
+      <div>The "type" field of a style module is set to "style".</div>
+      <div>The name of a style module cannot contain the symbol "$".</div>
+      <div>A style module is maintained by the framework itself and does not support accessing it through the "$module" variable in directive expressions.</div>
+    </div>
+    <h3 class="question">The configuration item fields of a style module</h3>
+    <div class="answer">A style module supports a boolean type "scoped" field, which is set to true by default. If "scoped" is true, the styles in this module only apply to the content of the <a href="module/namespace">namespace</a> and <a href="module/view">view module</a> it is associated with. Otherwise, the styles in this module apply globally to the current application page. Let's take a look at an example:
+      <iframe height="300" style="width: 100%;" scrolling="no" title="[dagger-demo] template module (scoped css)" src="https://codepen.io/dagger8224/embed/vYdaxJz?default-tab=html%2Cresult&editable=true&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+        See the Pen <a href="https://codepen.io/dagger8224/pen/vYdaxJz">
+        [dagger-demo] template module (scoped css)</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
+        on <a href="https://codepen.io">CodePen</a>.
+      </iframe>
+      In this example, the <a href="module/view">view module</a> "view_module" is associated with two style modules "global_style" and "scoped_style". The styles in "global_style" are global, while the styles in "scoped_style" only apply to the current <a href="module/namespace">namespace</a>.
+      <div>In this example, both style modules are defined in the root namespace, so their effective scope is the same. In the subsequent namespace chapter, we will see modified versions based on this example.</div>
+    </div>
   </template>
 </div>
