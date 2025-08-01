@@ -2,18 +2,13 @@
 <html>
   <script type="dagger/modules">
     {
-      "template": {
-          "uri": "#template",
-          "style": "style"
+      "view": {
+          "uri": "#view"
       },
-      "style": "#style",
-      "demo": {
-          "uri": "./structure_demo.json",
-          "type": "string"
-      }
+      "style": "#style"
     }
   </script>
-  <template id="template">
+  <template id="view">
     <h2>${ $['router.structure'] }</h2>
     <div class="content">
       <template *each="$['router.structure.sections']">
