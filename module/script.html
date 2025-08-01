@@ -1,6 +1,6 @@
-<h2>${ $['module.script'] }</h2>
 <div class="content">
   <template *exist="language === 'zhCN'">
+    <h2>模块 / 脚本</h2>
     <h3 class="question">什么是脚本模块</h3>
     <div class="answer">
       <div>脚本模块是一组可复用的javaScript代码片段。</div>
@@ -26,9 +26,29 @@
     </div>
   </template>
   <template *exist="language === 'enUS'">
-    <template *each="$['module.script.sections']">
-      <h3 class="question">${ item.question }</h3>
-      <div class="answer" *html="item.answer"></div>
-    </template>
+    <h2>Module / Script</h2>
+    <h3 class="question">What is a script module?</h3>
+    <div class="answer">
+      <div>A script module is a group of reusable JavaScript code snippets.</div>
+      <div>The "type" field of the script module configuration item is set to "script".</div>
+      <div>You can access the content of the script module through the "$module" variable in the instruction expression.</div>
+    <h3 class="question">Script module syntax</h3>
+    <div class="answer">The script module is implemented based on the standard <a target="_blank" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Modules">esm</a> syntax specification. If you need, you can also import other JavaScript scripts in the script module code. Let's take a look at an example:
+      <iframe height="300" style="width: 100%;" scrolling="no" title="[dagger-demo] script module (import/export)" src="https://codepen.io/dagger8224/embed/vYdamoK?default-tab=html%2Cresult&editable=true&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+        See the Pen <a href="https://codepen.io/dagger8224/pen/vYdamoK">
+        [dagger-demo] script module (import/export)</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
+        on <a href="https://codepen.io">CodePen</a>.
+      </iframe>
+    </div>
+    <h3 class="question">Script module configuration item fields</h3>
+    <div class="answer">
+      <div>In addition to the common configuration item fields of the module, the script module also supports a boolean type "anonymous" field. When "anonymous" is true (the default value), you can directly access the exported methods of the module through the "$module" variable without specifying the module name explicitly. Anonymous access can make the instruction code more concise.</div>
+      If there are multiple script modules with the same method name, you need to set "anonymous" to false to avoid conflicts. Let's take a look at an example:
+      <iframe height="300" style="width: 100%;" scrolling="no" title="[dagger-demo] script module (anonymous)" src="https://codepen.io/dagger8224/embed/PoQBmZq?default-tab=html%2Cresult&editable=true&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+        See the Pen <a href="https://codepen.io/dagger8224/pen/PoQBmZq">
+        [dagger-demo] script module (anonymous)</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
+        on <a href="https://codepen.io">CodePen</a>.
+      </iframe>
+    </div>
   </template>
 </div>
