@@ -20,22 +20,21 @@
         <div class="margin">2. 模块资源位置。由注册项值的“uri”字段指定。其内容可以是url地址（远程资源）或者DOM选择器（本地资源）。</div>
         <div class="margin">3. 模块类型。由注册项值的“type”字段指定。</div>
       </div>
-      <div>我们来看示例：
-        <iframe height="300" style="width: 100%;" scrolling="no" title="[dagger-demo] $module (uri)" src="https://codepen.io/dagger8224/embed/zYRpYpa?default-tab=html%2Cresult&editable=true&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
-          See the Pen <a href="https://codepen.io/dagger8224/pen/zYRpYpa">
-          [dagger-demo] $module (uri)</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
-          on <a href="https://codepen.io">CodePen</a>.
-        </iframe>
-        <div>在上面的例子中，我们通过配置项注册了四个模块：
-          <div class="margin">1. <a href="module/view">视图</a>模块“local_view_module”，其内容加载自DOM选择器“#view”对应的本地template元素。在页面中使用视图模块的方式和引入原生DOM标签一样：
-            <div class="code">
-              &lt;local_view_module&gt;&lt;/local_view_module&gt;
-            </div>
+      <div>我们来看示例：</div>
+      <iframe height="300" style="width: 100%;" scrolling="no" title="[dagger-demo] $module (uri)" src="https://codepen.io/dagger8224/embed/zYRpYpa?default-tab=html%2Cresult&editable=true&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+        See the Pen <a href="https://codepen.io/dagger8224/pen/zYRpYpa">
+        [dagger-demo] $module (uri)</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
+        on <a href="https://codepen.io">CodePen</a>.
+      </iframe>
+      <div>在上面的例子中，我们通过配置项注册了四个模块：
+        <div class="margin">1. <a href="module/view">视图</a>模块“local_view_module”，其内容加载自DOM选择器“#view”对应的本地template元素。在页面中使用视图模块的方式和引入原生DOM标签一样：
+          <div class="code">
+            &lt;local_view_module&gt;&lt;/local_view_module&gt;
           </div>
-          <div class="margin">2. <a href="module/style">样式</a>模块“local_style_module”，其内容加载自DOM选择器“#style”对应的本地元素（类型为“dagger/style”的style标签）。引入的样式模块将自动在当前的<a href="module/namespace">名空间</a>下生效。</div>
-          <div class="margin">3. <a href="module/script">脚本</a>模块“remote_script_module”，其内容加载自<a target="_blank" href="https://codepen.io/dagger8224/pen/zYRpYpa.js">远程url</a>。</div>
-          <div class="margin">4. <a href="module/json">json</a>模块“local_json_module”，其内容加载自DOM选择器“#json”对应的本地元素（类型为“dagger/json”的script标签）。</div>
         </div>
+        <div class="margin">2. <a href="module/style">样式</a>模块“local_style_module”，其内容加载自DOM选择器“#style”对应的本地元素（类型为“dagger/style”的style标签）。引入的样式模块将自动在当前的<a href="module/namespace">名空间</a>下生效。</div>
+        <div class="margin">3. <a href="module/script">脚本</a>模块“remote_script_module”，其内容加载自<a target="_blank" href="https://assets.codepen.io/5782383/zYRpYpa.js">远程url</a>。</div>
+        <div class="margin">4. <a href="module/json">json</a>模块“remote_json_module”，其内容加载自<a target="_blank" href="https://assets.codepen.io/5782383/demo.json">远程url</a>。</div>
       </div>
     </div>
     <h3 class="question">如何使用模块</h3>
@@ -152,7 +151,7 @@
         [dagger-demo] $module (conditional script module)</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
         on <a href="https://codepen.io">CodePen</a>.
       </iframe>
-      上面的例子中。当页面初始化的窗口大小触发“media”阈值时，您将看到不同颜色的文本内容。
+      上面的例子中，当页面初始化的窗口大小触发“media”阈值时，您将看到不同颜色的文本内容。
       <div>需要说明的是，dagger.js中的模块筛选条件仅在模块配置项加载时生效，请不要将它作为页面动态<a target="_blank" href="https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Core/CSS_layout/Responsive_Design">响应式设计</a>的依赖条件。</div>
     </div>
     <h3 class="question">为模块指定多个资源地址</h3>
@@ -187,18 +186,19 @@
     <h3 class="question">模块配置项中的其他可选通用字段</h3>
     <div class="answer">
       <div class="margin">1. “base”，字符串类型，用于指定当前模块中远程资源相对路径的<a target="_blank" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Node/baseURI">baseURI</a>值，如果未指定，子模块的“base”将默认继承自其父级<a href="module/namespace">名空间</a>模块。如果当前模块位于根名空间下，则其“base”默认指向当前页面的document.baseURI。我们来看例子：
-        <iframe height="300" style="width: 100%;" scrolling="no" title="[dagger-demo]  module configs (base)" src="https://codepen.io/dagger8224/embed/RwMrPrG?default-tab=html%2Cresult&editable=true" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
-          See the Pen <a href="https://codepen.io/dagger8224/pen/RwMrPrG">
-          [dagger-demo]  module configs (base)</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
+        <iframe height="300" style="width: 100%;" scrolling="no" title="[dagger-demo] $module (base field)" src="https://codepen.io/dagger8224/embed/YPyNgxv?default-tab=html%2Cresult" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+          See the Pen <a href="https://codepen.io/dagger8224/pen/YPyNgxv">
+          [dagger-demo] $module (base field)</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
           on <a href="https://codepen.io">CodePen</a>.
         </iframe>
       </div>
-      <div class="margin">2. “candidates” ，对象数组类型。用于指定备选配置内容，框架将从数组中筛选出首个满足“match”字段表达式条件的子项，融合到当前配置项下再进行解析。我们来看例子：
+      <div class="margin">2. “candidates” ，对象数组类型。用于指定备选配置内容，框架将从数组中筛选出首个满足“media”字段表达式条件的子项，融合到当前配置项下再进行解析。我们来看例子：
         <iframe height="300" style="width: 100%;" scrolling="no" title="[dagger-demo] $module (match)" src="https://codepen.io/dagger8224/embed/bGLvbyz?default-tab=html%2Cresult&editable=true" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
           See the Pen <a href="https://codepen.io/dagger8224/pen/bGLvbyz">
           [dagger-demo] $module (match)</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
           on <a href="https://codepen.io">CodePen</a>.
         </iframe>
+        <div>“candidates”字段和前文提到的条件加载模块资源使用方式类似，差别在于“candidates”中只包括配置项中有差异的部分，而条件资源数组中每一项都是完整的资源配置。</div>
       </div>
       <div class="margin">3. “integrity”，字符串类型。用于对远程资源内容进行<a target='_blank' href='https://developer.mozilla.org/zh-CN/docs/Web/Security/%E5%AD%90%E8%B5%84%E6%BA%90%E5%AE%8C%E6%95%B4%E6%80%A7'>sha256子资源完整性校验</a>。您应该在产品环境使用“integrity”校验第三方模块以提升产品安全性。我们来看例子：
         <iframe height="300" style="width: 100%;" scrolling="no" title="[dagger-demo]  module configs (base)" src="https://codepen.io/dagger8224/embed/xxWZGYG?default-tab=html%2Cresult&editable=true" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
@@ -207,14 +207,238 @@
           on <a href="https://codepen.io">CodePen</a>.
         </iframe>
       </div>
-      <div class="margin">4. “prefetch”，字符串类型。主要用于在不阻塞当前<a href='router/introduction'>路由场景</a>视图渲染的前提下提前加载耗时较长的模块资源内容。框架在解析时将“prefetch”内容转换为正则表达式与当前的hash path匹配，预加载模块将只阻塞满足匹配条件的路由场景视图渲染。我们将在<a href='router/introduction'>路由</a>章节中演示相关示例。</div>
+      <!--<div class="margin">4. “prefetch”，字符串类型，内容为与需要阻塞的<a href='router/introduction'>路由</a>匹配的正则表达式。主要用于在不阻塞当前路由（取决于是否与正则表达式的值相匹配）视图渲染的前提下提前加载耗时较长的模块资源内容。</div>-->
     </div>
-  </div>
+    <div>dagger.js的模块配置项支持的变体形式比较多。实际上，大多数情况下，用简写的key/value（模块名称/资源地址）形式的配置项就足以满足需求了。</div>
+    <div>我们来看一个简写形式的模块配置项示例：</div>
+    <iframe height="300" style="width: 100%;" scrolling="no" title="[dagger-demo] $module" src="https://codepen.io/dagger8224/embed/bNVgyWv?default-tab=html%2Cresult" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+      See the Pen <a href="https://codepen.io/dagger8224/pen/bNVgyWv">
+      [dagger-demo] $module</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
+      on <a href="https://codepen.io">CodePen</a>.
+    </iframe>
+    接下来，我们来了解不同类型模块的功能和使用方法。
   </template>
   <template *exist="language === 'enUS'">
-    <template *each="$['module.introduction.sections']">
-      <h3 class="question">${ item.question }</h3>
-      <div class="answer" *html="item.answer"></div>
-    </template>
+    <h2>Module / Introduction</h2>
+    <h3 class="question">What is a module?</h3>
+    <div class="answer">
+      <div>In dagger.js, we group reusable code snippets such as HTML templates, scripts, and stylesheets into modules.</div>
+      <div>Module content is read-only and cannot be modified in directive expressions.</div>
+    </div>
+    <h3 class="question">Module type list</h3>
+    <div class="answer"><a class="margin" href="module/view">View</a><a class="margin" href="module/script">Script</a><a class="margin" href="module/style">Style</a><a class="margin" href="module/json">Json</a><a class="margin" href="module/string">String</a><a class="margin" href="module/namespace">Namespace</a></div>
+    <h3 class="question">When to load module resources</h3>
+    <div class="answer">
+      <div>When the application is first loaded or the <a href="router/introduction">routing</a> changes, modules will be dynamically loaded, parsed, and executed. Modules that have already been loaded will be cached in memory.</div>
+      We will explain the relationship between module configuration items and routing configuration items in the <a href="router/introduction">routing</a> chapter.
+    </div>
+    <h3 class="question">How to register modules</h3>
+    <div class="answer">
+      <div>In the <a href="overview/installation">installation</a> chapter, we mentioned that the entry page of the project should have a script tag with a type of "dagger/modules" as the module configuration item. A typical module configuration item contains the following information:
+        <div class="margin">1. Module name. The key of the registration item specifies the module name. A valid module name consists of hyphens, underscores, lowercase letters, and numbers, and the first character must be a lowercase letter or an underscore.</div>
+        <div class="margin">2. Module resource location. The value of the "uri" field in the registration item specifies the location of the module resource. It can be a URL address (remote resource) or a DOM selector (local resource).</div>
+        <div class="margin">3. Module type. The value of the "type" field in the registration item specifies the type of the module.</div>
+      </div>
+      <div>Let's take a look at an example:</div>
+      <iframe height="300" style="width: 100%;" scrolling="no" title="[dagger-demo] $module (uri)" src="https://codepen.io/dagger8224/embed/zYRpYpa?default-tab=html%2Cresult&editable=true&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+        See the Pen <a href="https://codepen.io/dagger8224/pen/zYRpYpa">
+        [dagger-demo] $module (uri)</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
+        on <a href="https://codepen.io">CodePen</a>.
+      </iframe>
+      <div>In this example, we registered four modules:
+        <div class="margin">1. <a href="module/view">View</a> module "local_view_module", whose content is loaded from the local template element corresponding to the DOM selector "#view". To use the view module, you can use it in the same way as importing a native DOM tag:
+          <div class="code">
+            &lt;local_view_module&gt;&lt;/local_view_module&gt;
+          </div>
+        </div>
+        <div class="margin">2. <a href="module/style">Style</a> module "local_style_module", whose content is loaded from the local element (type "dagger/style" style tag). The imported style module will be automatically applied to the current <a href="module/namespace">namespace</a>.</div>
+        <div class="margin">3. <a href="module/script">Script</a> module "remote_script_module", whose content is loaded from the remote url <a target="_blank" href="https://assets.codepen.io/5782383/zYRpYpa.js">https://assets.codepen.io/5782383/zYRpYpa.js</a>.</div>
+        <div class="margin">4. <a href="module/json">Json</a> module "remote_json_module", whose content is loaded from the remote url <a target="_blank" href="https://assets.codepen.io/5782383/demo.json">https://assets.codepen.io/5782383/demo.json</a>.</div>
+      </div>
+    </div>
+    <h3 class="question">How to use modules</h3>
+    <div class="answer">
+      <div>In directive expressions, you can access the content of <a href="module/script">script</a>, <a href="module/json">json</a>, and <a href="module/string">string</a> modules through the callback parameter object "$module". Similar to <a href="directive/scope">scope</a>, you can also access the fields of $module anonymously:
+        <div class="code">
+          +click="$module.func($scope.value)" // named access to module and scope objects
+          <br>
+          +click="func(value)" // anonymous access to module and scope objects
+        </div>
+        Please note that if the "name" field of the "$module" and "$scope" callback parameter objects contains the same field name, please use the named access to avoid conflicts (the priority of accessing scope object fields is higher).
+      </div>
+    </div>
+    <h3 class="question">Automatic inference of module types</h3>
+    <div class="answer">
+      In most cases, you do not need to explicitly specify module types. dagger.js can infer module types automatically based on the content of the resource. Modules with omitted "type" field values can be degraded to string type by pointing to the resource location:
+      <div class="code">
+        { "local_view_module": "#view" } // key is module name, value is resource uri
+      </div>
+      <div>The inference rules for module types are as follows:</div>
+      <table>
+        <thead>
+          <tr>
+            <th>Resource category</th>
+            <th>Inference basis</th>
+            <th>Inference result</th>
+            <th>Example</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td rowspan="13">Remote resource</td>
+            <td>URL suffix is “.js” or “.mjs”</td>
+            <td rowspan="4"><a href="module/script">Script module</a></td>
+            <td rowspan="4"><a target="_blank" href="https://codepen.io/dagger8224/pen/bGLLjYN.js">./script.js</a></td>
+          </tr>
+          <tr>
+            <td>MIME type is “application/javascript”</td>
+          </tr>
+          <tr>
+            <td>MIME type is “javascript/esm”</td>
+          </tr>
+          <tr>
+            <td>MIME type is “text/javascript”</td>
+          </tr>
+          <tr>
+            <td>URL suffix is “.css”</td>
+            <td rowspan="2"><a href="module/style">Style module</a></td>
+            <td rowspan="2"><a target="_blank" href="https://codepen.io/dagger8224/pen/MWQQBQJ.css">./style.css</a></td>
+          </tr>
+          <tr>
+            <td>MIME type is “text/css”</td>
+          </tr>
+          <tr>
+            <td>URL suffix is “.html” and resource file content does not contain &lt;html&gt; tag</td>
+            <td rowspan="2"><a href="module/view">View module</a></td>
+            <td rowspan="2"><a target="_blank" href="https://codepen.io/dagger8224/pen/OJQQdgv.html">./view.html</a></td>
+          </tr>
+          <tr>
+            <td>MIME type is “text/html” and resource file content does not contain &lt;html&gt; tag</td>
+          </tr>
+          <tr>
+            <td>URL suffix is “.html” and resource file content contains &lt;html&gt; tag</td>
+            <td rowspan="2"><a href="module/namespace">Namespace module</a></td>
+            <td rowspan="2"><a target="_blank" href="https://codepen.io/dagger8224/pen/LYQQqjb">./namespace.html</a></td>
+          </tr>
+          <tr>
+            <td>MIME type is “text/html” and resource file content contains &lt;html&gt; tag</td>
+          </tr>
+          <tr>
+            <td>URL suffix is “.json”</td>
+            <td rowspan="2"><a href="module/json">Json module</a></td>
+            <td rowspan="2"><a target="_blank" href="https://assets.codepen.io/5782383/demo.json">./json.json</a></td>
+          </tr>
+          <tr>
+            <td>MIME type is “application/json”</td>
+          </tr>
+          <tr>
+            <td>Remote resource that does not meet the above conditions</td>
+            <td><a href="module/string">String module</a></td>
+            <td><a target="_blank" href="https://assets.codepen.io/5782383/string.txt">./string.txt</a></td>
+          </tr>
+          <tr>
+            <td rowspan="5">Local resource</td>
+            <td>Resource container is a &lt;script&gt; tag with type “dagger/script”</td>
+            <td><a href="module/script">Script module</a></td>
+            <td><a target="_blank" href="https://codepen.io/dagger8224/pen/YzeeBLr?editors=1000">#script</a></td>
+          </tr>
+          <tr>
+            <td>Resource container is a &lt;style&gt; tag with type “dagger/style”</td>
+            <td><a href="module/style">Style module</a></td>
+            <td><a target="_blank" href="https://codepen.io/dagger8224/pen/bGLLjYN.css">#style</a></td>
+          </tr>
+          <tr>
+            <td>Resource container is a &lt;div&gt; tag with type “dagger/view”</td>
+            <td><a href="module/view">View module</a></td>
+            <td><a target="_blank" href="https://codepen.io/dagger8224/pen/OJQQdgv.html">#view</a></td>
+          </tr>
+          <tr>
+            <td>Resource container is a &lt;div&gt; tag with type “dagger/namespace”</td>
+            <td><a href="module/namespace">Namespace module</a></td>
+            <td><a target="_blank" href="https://codepen.io/dagger8224/pen/LYQQqjb">#namespace</a></td>
+          </tr>
+          <tr>
+            <td>Resource container is a &lt;script&gt; tag with no type attribute</td>
+            <td><a href="module/script">Script module</a></td>
+            <td><a target="_blank" href="https://codepen.io/dagger8224/pen/YzeeBLr?editors=1000">#script</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <h3 class="question">Conditional loading of module resources</h3>
+    <div class="answer">You can specify an array of module configurations, each with a "media" field (used as <a target="_blank" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Window/matchMedia">media query</a>) as a filtering condition. dagger.js will use the first matched configuration item as the current module configuration.
+      <div>We can see an example:</div>
+      <iframe height="300" style="width: 100%;" scrolling="no" title="[dagger-demo] $module (conditional script module)" src="https://codepen.io/dagger8224/embed/poaaMow?default-tab=html%2Cresult&editable=true&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+        See the Pen <a href="https://codepen.io/dagger8224/pen/poaaMow">
+        [dagger-demo] $module (conditional script module)</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
+        on <a href="https://codepen.io">CodePen</a>.
+      </iframe>
+      In the example above, when the page is initialized at a window size that triggers the "media" threshold, you will see the corresponding text content in a different color.
+      <div>It should be noted that the module filtering conditions in dagger.js only take effect when the module configuration items are loaded. Please do not use it as a dependency for the dynamic <a target="_blank" href="https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Core/CSS_layout/Responsive_Design">responsive design</a> of the page. </div>
+    </div>
+
+    <h3 class="question">Specify multiple resource addresses for a module</h3>
+    <div class="answer">You can also set the "uri" field to an array. Dagger.js will try to load the resources specified in the list one by one until the module is successfully loaded. Specifying multiple alternative addresses for module resources in a production environment can improve the disaster recovery capabilities of the application. Let's take a look at an example:
+      <iframe height="300" style="width: 100%;" scrolling="no" title="Untitled" src="https://codepen.io/dagger8224/embed/BaYPpaw?default-tab=html%2Cresult&editable=true&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+        See the Pen <a href="https://codepen.io/dagger8224/pen/BaYPpaw">
+        Untitled</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
+        on <a href="https://codepen.io">CodePen</a>.
+      </iframe>
+      In the example above, the "uri" field of the script module "script_module1" matches an array. Dagger.js will first attempt to load the content at the address "./invalid2.js". If the request fails, it will continue to try to load the content at the address "#script". At this time, the resource loads successfully, so the backup resource address "./invalid3.js" will not be loaded. Open the browser console, and you will see a 404 error message when loading "./invalid2.js".
+    </div>
+    <h3 class="question">Declare module resource content directly in the configuration item</h3>
+    <div class="answer">You can also specify the "content" field in the configuration item to directly declare the content of the module resource (the "uri" field will be ignored in this case).
+      <div>Please note that if you use "content" to specify the module content, the automatic inference rules will fail and you must explicitly specify the module type through the "type" field.</div>
+      Let's look at an example:
+      <iframe height="300" style="width: 100%;" scrolling="no" title="[dagger-demo] $module (content)" src="https://codepen.io/dagger8224/embed/xxWwWQY?default-tab=html%2Cresult&editable=true" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+        See the Pen <a href="https://codepen.io/dagger8224/pen/xxWwWQY">
+        [dagger-demo] $module (content)</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
+        on <a href="https://codepen.io">CodePen</a>.
+      </iframe>
+      Defining module resources in separate files or DOM containers is more conducive to reuse. Generally speaking, you should avoid using the "content" field to specify resource content.
+    </div>
+    <h3 class="question">Merge declarations of multiple module configuration items of the same category</h3>
+    <div class="answer">You can use the "@" symbol plus the module category name as a key value to define multiple modules of the same category at the same time. Let's take a look at an example:
+      <iframe height="300" style="width: 100%;" scrolling="no" title="[dagger-demo] string module" src="https://codepen.io/dagger8224/embed/MWVKLeB?default-tab=html%2Cresult&editable=true" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+        See the Pen <a href="https://codepen.io/dagger8224/pen/MWVKLeB">
+        [dagger-demo] string module</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
+        on <a href="https://codepen.io">CodePen</a>.
+      </iframe>
+      In the above example, two <a href="module/string">string modules</a>, string1 and string2, are declared.
+    </div>
+    <h3 class="question">Other optional common fields in module configuration items</h3>
+    <div class="answer">
+      <div class="margin">1. "base", a string type, is used to specify the <a target="_blank" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Node/baseURI">baseURI</a> value of the relative path of the remote resource in the current module. If not specified, the "base" of the submodule will be inherited from its parent module by default. If the current module is in the root namespace, its "base" defaults to the document.baseURI of the current page. Let's take a look at an example:
+        <iframe height="300" style="width: 100%;" scrolling="no" title="[dagger-demo] $module (base field)" src="https://codepen.io/dagger8224/embed/YPyNgxv?default-tab=html%2Cresult" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+          See the Pen <a href="https://codepen.io/dagger8224/pen/YPyNgxv">
+          [dagger-demo] $module (base field)</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
+          on <a href="https://codepen.io">CodePen</a>.
+        </iframe>
+      </div>
+      <div class="margin">2. "candidates" is an object array type. It is used to specify alternative configuration content. The framework will filter out the first sub-item that meets the "media" field expression condition from the array, merge it into the current configuration item, and then parse it. Let's take a look at an example:
+        <iframe height="300" style="width: 100%;" scrolling="no" title="[dagger-demo] $module (match)" src="https://codepen.io/dagger8224/embed/bGLvbyz?default-tab=html%2Cresult&editable=true" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+          See the Pen <a href="https://codepen.io/dagger8224/pen/bGLvbyz">
+          [dagger-demo] $module (match)</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
+          on <a href="https://codepen.io">CodePen</a>.
+        </iframe>
+        <div>The "candidates" field is used in a similar way to the conditionally loaded module resources mentioned above. The difference is that "candidates" only includes the parts of the configuration items that are different, while each item in the conditional resource array is a complete resource configuration.</div>
+      </div>
+      <div class="margin">3. "integrity," a string type. Used to perform <a target='_blank' href='https://developer.mozilla.org/zh-CN/docs/Web/Security/%E5%AD%90%E8%B5%84%E6%BA%90%E5%AE%8C%E6%95%B4%E6%80%A7'>sha256 subresource integrity verification</a> on remote resource content. You should use "integrity" to verify third-party modules in production environments to improve product security. Let's take a look at an example:
+        <iframe height="300" style="width: 100%;" scrolling="no" title="[dagger-demo]  module configs (base)" src="https://codepen.io/dagger8224/embed/xxWZGYG?default-tab=html%2Cresult&editable=true" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+          See the Pen <a href="https://codepen.io/dagger8224/pen/xxWZGYG">
+          [dagger-demo]  module configs (base)</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
+          on <a href="https://codepen.io">CodePen</a>.
+        </iframe>
+      </div>
+      <!--<div class="margin">4. "prefetch", a string containing a regular expression that matches the <a href='router/introduction'>route to be blocked. This is primarily used to pre-load module resources that take a long time to render without blocking the current route (depending on whether it matches the regular expression value). </div>-->
+    </div>
+    <div>dagger.js supports many different configuration options for modules. In most cases, the abbreviated key/value (module name/resource address) format is sufficient.</div>
+    <div>Let's look at an example of a shorthand module configuration item:</div>
+    <iframe height="300" style="width: 100%;" scrolling="no" title="[dagger-demo] $module" src="https://codepen.io/dagger8224/embed/bNVgyWv?default-tab=html%2Cresult" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+      See the Pen <a href="https://codepen.io/dagger8224/pen/bNVgyWv">
+      [dagger-demo] $module</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
+      on <a href="https://codepen.io">CodePen</a>.
+    </iframe>
+    Next, let's learn about the functions and usage of different types of modules.
   </template>
 </div>
