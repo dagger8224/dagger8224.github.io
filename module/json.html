@@ -1,6 +1,6 @@
-<h2>${ $['module.json'] }</h2>
 <div class="content">
   <template *exist="language === 'zhCN'">
+    <h2>模块 / json</h2>
     <h3 class="question">什么是json模块</h3>
     <div class="answer">
       <div>json模块是json格式的可复用数据模块。</div>
@@ -16,12 +16,25 @@
       上例中，模块“json2”声明为“anonymous”，因此在指令中可以直接访问模块下“array”字段的内容。
     </div>
     <h3 class="question">json模块与作用域的差异</h3>
-    <div class="answer">json模块内容与<a href="directive/scope">作用域</a>都是对象结构，但json模块内容不具备作用域的响应依赖性，您应该将它作为静态数据（配置项）使用。</div>
+    <div class="answer">json模块内容与<a href="directive/scope">作用域</a>都是对象结构，但json模块内容不具备作用域的响应依赖性，您应该将它作为应用的静态配置数据使用。</div>
   </template>
   <template *exist="language === 'enUS'">
-    <template *each="$['module.json.sections']">
-      <h3 class="question">${ item.question }</h3>
-      <div class="answer" *html="item.answer"></div>
-    </template>
+    <h2>Module / json</h2>
+    <h3 class="question">What is the json module?</h3>
+    <div class="answer">
+      <div>The json module is a reusable data module in json format.</div>
+      <div>The "type" of the json module configuration item is "json".</div>
+      <div>You can access the content of the json module through the "$module" variable in the directive expression.</div>
+    <h3 class="question">The configuration item fields of the json module</h3>
+    <div class="answer">In addition to the common configuration item fields of the module, the json module also supports the boolean type "anonymous" field. The function of the "anonymous" field is the same as the "anonymous" field in the <a href="module/script">script module</a>. The difference is that the default value of the "anonymous" field in the json module is false (named access), while the default of the script module is anonymous access. Let's take a look at an example:
+      <iframe height="300" style="width: 100%;" scrolling="no" title="[dagger-demo] json module (anonymous)" src="https://codepen.io/dagger8224/embed/dydjRev?default-tab=html%2Cresult&editable=true&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+        See the Pen <a href="https://codepen.io/dagger8224/pen/dydjRev">
+        [dagger-demo] json module (anonymous)</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
+        on <a href="https://codepen.io">CodePen</a>.
+      </iframe>
+      In this example, the module "json2" is declared as "anonymous", so the content of the "array" field in the module can be accessed directly in the directive expression.
+    </div>
+    <h3 class="question">The difference between the json module and the scope</h3>
+    <div class="answer">The content of the json module is an object structure, but the content of the json module does not have the response dependency of the scope, which should be used as static configuration data for the application.</div>
   </template>
 </div>
