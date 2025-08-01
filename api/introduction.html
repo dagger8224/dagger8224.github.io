@@ -2,14 +2,13 @@
 <html>
   <script type="dagger/modules">
     {
-      "template": {
-          "uri": "#template",
-          "style": "style"
+      "view": {
+          "uri": "#view"
       },
       "style": "#style"
     }
   </script>
-  <template id="template">
+  <template id="view">
     <h2>${ $['api.introduction'] }</h2>
     <div class="content">
       <template *each="$['api.introduction.sections']">
