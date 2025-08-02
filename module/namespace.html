@@ -3,18 +3,40 @@
     <h2>模块 / 名空间</h2>
     <h3 class="question">什么是名空间模块</h3>
     <div class="answer">
-      <div>一个完整可复用的业务部件通常由<a href="module/view">视图模块</a>、<a href="module/script">脚本模块</a>和<a href="module/style">样式模块</a>等不同类型的模块共同组成。我们将由若干子模块组合成的复合模块称为名空间模块。</div>
-      <div>名空间模块下可以包含任意类型和数量的子模块，包括嵌套定义子级名空间模块。</div>
+      <div>一个完整可复用的业务部件通常由<a href="module/view">视图模块</a>、<a href="module/script">脚本模块</a>和<a href="module/style">样式模块</a>等组成。我们将由若干子模块组合成的复合模块称为名空间模块。</div>
+      <div>名空间模块下可以包含任意类型和数量的子模块，包括子级名空间模块。事实上，项目的入口html文件就是一个名空间模块，即项目的根名空间模块。</div>
       <div>名空间模块配置项的“type”值为“namespace”。</div>
+      <div>典型的名空间模块是一个定义了若干子级模块及其资源位置的html文件。</div>
       <div>我们来看一个例子：
-        <iframe height="300" style="width: 100%;" scrolling="no" title="[dagger-demo] namespace module" src="https://codepen.io/dagger8224/embed/GRQBvmw?default-tab=html%2Cresult&editable=true" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
-          See the Pen <a href="https://codepen.io/dagger8224/pen/GRQBvmw">
-          [dagger-demo] namespace module</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
+        <iframe height="300" style="width: 100%;" scrolling="no" title="[dagger-demo] namespace module (resource)" src="https://codepen.io/dagger8224/embed/XJmMpmX?default-tab=html%2Cresult" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+          See the Pen <a href="https://codepen.io/dagger8224/pen/XJmMpmX">
+          [dagger-demo] namespace module (resource)</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
           on <a href="https://codepen.io">CodePen</a>.
         </iframe>
-        上例中，我们注册了一个名为“namespace_module”的名空间模块，您可以通过“namespace_module.view”（名空间“namespace_module”下的视图模块路径）创建名空间实例。
-        <div>在当前名空间下，我们还定义了一个名为“scoped_style”的样式模块，该模块的“scoped”字段设置为true，表示该模块只对当前名空间有效。</div>
+        <div>示例代码是一个包含了名为“view”的视图模块，名为“script”的脚本模块，名为“style”的样式模块的名空间模块。</div>
+        <div>如果您的名空间模块配置项与示例中一致，也可以使用如下的简写形式（缺省的模块配置项与上例相同）：</div>
+        <iframe height="300" style="width: 100%;" scrolling="no" title="[dagger-demo] namespace module (inline resources)" src="https://codepen.io/dagger8224/embed/NPGpdbJ?default-tab=html%2Cresult" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+          See the Pen <a href="https://codepen.io/dagger8224/pen/NPGpdbJ">
+          [dagger-demo] namespace module (inline resources)</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
+          on <a href="https://codepen.io">CodePen</a>.
+        </iframe>
+        <div>dagger.js也支持在缺省配置项上进行扩展，以下是一个示例，我们在缺省配置项的基础上定义了第四个模块：</div>
+        <iframe height="300" style="width: 100%;" scrolling="no" title="[dagger-demo] namespace module (inline resources)" src="https://codepen.io/dagger8224/embed/QwjpddX?default-tab=html%2Cresult" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+          See the Pen <a href="https://codepen.io/dagger8224/pen/QwjpddX">
+          [dagger-demo] namespace module (inline resources)</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
+          on <a href="https://codepen.io">CodePen</a>.
+        </iframe>
       </div>
+    </div>
+    <h3 class="question">名空间模块的使用方式</h3>
+    <div class="answer">我们来看一个例子：
+      <iframe height="300" style="width: 100%;" scrolling="no" title="[dagger-demo] namespace module" src="https://codepen.io/dagger8224/embed/GRQBvmw?default-tab=html%2Cresult&editable=true" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+        See the Pen <a href="https://codepen.io/dagger8224/pen/GRQBvmw">
+        [dagger-demo] namespace module</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
+        on <a href="https://codepen.io">CodePen</a>.
+      </iframe>
+      上例中，我们在根名空间下注册了一个名为“namespace_module”的名空间模块，您可以通过“namespace_module.view”（名空间“namespace_module”下的视图模块路径）创建名空间实例。
+      <div>在当前名空间下，我们还定义了一个名为“scoped_style”的样式模块，该模块的“scoped”字段设置为true，表示该模块只对当前名空间有效。</div>
       <div>如果名空间下视图模块名称为“view”，那么您也可以直接通过名空间路径创建实例，我们来看上例的简写方式：
         <iframe height="300" style="width: 100%;" scrolling="no" title="[dagger-demo] namespace module (shortcut module path)" src="https://codepen.io/dagger8224/embed/qBopaLo?default-tab=html%2Cresult&editable=true" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
           See the Pen <a href="https://codepen.io/dagger8224/pen/qBopaLo">
@@ -36,28 +58,48 @@
     <h2>Module / Namespace</h2>
     <h3 class="question">What is a namespace module?</h3>
     <div class="answer">
-      <div>A reusable business component is usually composed of different types of modules such as <a href="module/view">view module</a>, <a href="module/script">script module</a>, and <a href="module/style">style module</a>. We call a composite module that is composed of several sub-modules a namespace module.</div>
-      <div>A namespace module can contain any type and number of sub-modules, including nested namespace modules.</div>
-      <div>The configuration item of a namespace module has a value of "namespace" for the "type" field.</div>
-      <div>Let's take an example:
-        <iframe height="300" style="width: 100%;" scrolling="no" title="[dagger-demo] namespace module" src="https://codepen.io/dagger8224/embed/GRQBvmw?default-tab=html%2Cresult&editable=true" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
-          See the Pen <a href="https://codepen.io/dagger8224/pen/GRQBvmw">
-          [dagger-demo] namespace module</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
-          on <a href="https://codepen.io">CodePen</a>.
-        </iframe>
-        In this example, we registered a namespace module named "namespace_module". You can create an instance of the namespace by using the path "namespace_module.view" (the path of the view module under the namespace "namespace_module").
-        <div>In the current namespace, we also defined a style module named "scoped_style" with the "scoped" field set to true, which means that this module is only valid for the current namespace.</div>
-      </div>
-      <div>If the name of the view module in the namespace is "view", you can also create an instance by using the namespace path, as shown in the following example:
-        <iframe height="300" style="width: 100%;" scrolling="no" title="[dagger-demo] namespace module (shortcut module path)" src="https://codepen.io/dagger8224/embed/qBopaLo?default-tab=html%2Cresult&editable=true" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
-          See the Pen <a href="https://codepen.io/dagger8224/pen/qBopaLo">
-          [dagger-demo] namespace module (shortcut module path)</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
-          on <a href="https://codepen.io">CodePen</a>.
-        </iframe>
-      </div>
+      <div>A reusable business widget typically consists of <a href="module/view">view module</a>, <a href="module/script">script module</a>, and <a href="module/style">style module</a> etc. We call a composite module that consists of several sub-modules a namespace module.</div>
+      <div>A namespace module can contain any type and quantity of sub-modules, including sub-namespace modules. In fact, the entry html file of the project is a namespace module, which is called the root namespace module.</div>
+      <div>The "type" field of the namespace module configuration item is "namespace".</div>
+      <div>A typical namespace module is an html file that defines the location of resources for several sub-modules.</div>
+      <div>Let's take a look at an example:</div>
+      <iframe height="300" style="width: 100%;" scrolling="no" title="[dagger-demo] namespace module (resource)" src="https://codepen.io/dagger8224/embed/XJmMpmX?default-tab=html%2Cresult" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+        See the Pen <a href="https://codepen.io/dagger8224/pen/XJmMpmX">
+        [dagger-demo] namespace module (resource)</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
+        on <a href="https://codepen.io">CodePen</a>.
+      </iframe>
+      <div>The example code is a namespace module that contains a view module named "view", a script module named "script", and a style module named "style".</div>
+      <div>If your namespace module configuration items are the same as in the example, you can also use the following abbreviated form (the default module configuration items are the same as in the above example):</div>
+      <iframe height="300" style="width: 100%;" scrolling="no" title="[dagger-demo] namespace module (inline resources)" src="https://codepen.io/dagger8224/embed/NPGpdbJ?default-tab=html%2Cresult" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+        See the Pen <a href="https://codepen.io/dagger8224/pen/NPGpdbJ">
+        [dagger-demo] namespace module (inline resources)</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
+        on <a href="https://codepen.io">CodePen</a>.
+      </iframe>
+      <div>dagger.js also supports extending the default configuration. Here is an example where we define a fourth module based on the default configuration:</div>
+      <iframe height="300" style="width: 100%;" scrolling="no" title="[dagger-demo] namespace module (inline resources)" src="https://codepen.io/dagger8224/embed/QwjpddX?default-tab=html%2Cresult" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+        See the Pen <a href="https://codepen.io/dagger8224/pen/QwjpddX">
+        [dagger-demo] namespace module (inline resources)</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
+        on <a href="https://codepen.io">CodePen</a>.
+      </iframe>
+    </div>
+    <h3 class="question">How to use a namespace module?</h3>
+    <div class="answer">We can take a look at an example:
+      <iframe height="300" style="width: 100%;" scrolling="no" title="[dagger-demo] namespace module" src="https://codepen.io/dagger8224/embed/GRQBvmw?default-tab=html%2Cresult" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+        See the Pen <a href="https://codepen.io/dagger8224/pen/GRQBvmw">
+        [dagger-demo] namespace module</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
+        on <a href="https://codepen.io">CodePen</a>.
+      </iframe>
+      <div>In this example, we registered a namespace module named "namespace_module" in the root namespace. We can create a namespace instance by using "namespace_module.view" (the path of the view module in the "namespace_module" namespace). </div>
+      <div>In the current namespace, we also defined a style module named "scoped_style" with the "scoped" field set to true, which means that this module is only valid for the current namespace.</div>
+      <div>If the name of the view module in the namespace is "view", you can also create an instance directly by using the namespace path, let's take a look at the short-hand form of the example:</div>
+      <iframe height="300" style="width: 100%;" scrolling="no" title="[dagger-demo] namespace module (shortcut module path)" src="https://codepen.io/dagger8224/embed/qBopaLo?default-tab=html%2Cresult&editable=true" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+        See the Pen <a href="https://codepen.io/dagger8224/pen/qBopaLo">
+        [dagger-demo] namespace module (shortcut module path)</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
+        on <a href="https://codepen.io">CodePen</a>.
+      </iframe>
     </div>
     <h3 class="question">Namespace module configuration item fields</h3>
-    <div class="answer">In addition to the common configuration item fields of modules, namespace modules also support a boolean type "explicit" field. When "explicit" is false (the default value), the content of sub-modules under the current namespace is not accessible to the outside. You can set "explicit" to true to expose the sub-modules of <a href="module/script">script module</a> and <a href="module/json">json module</a> under the namespace to the outer namespace. Let's take an example:
+    <div class="answer">In addition to the common configuration item fields of the module, the namespace module configuration item also supports a boolean type "explicit" field. When "explicit" is false (the default value), the content of the sub-modules in the current namespace is not accessible to the outside. You can set "explicit" to true to expose the sub-modules of the namespace module, such as <a href="module/script">script module</a> and <a href="module/json">json module</a>, to the outer namespace. Let's take a look at an example:</div>
       <iframe height="300" style="width: 100%;" scrolling="no" title="[dagger-demo] namespace module (explicit)" src="https://codepen.io/dagger8224/embed/RwMxGdE?default-tab=html%2Cresult&editable=true" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
         See the Pen <a href="https://codepen.io/dagger8224/pen/RwMxGdE">
         [dagger-demo] namespace module (explicit)</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
