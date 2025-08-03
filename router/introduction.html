@@ -1,22 +1,61 @@
-<h2>${ $['router.introduction'] }</h2>
 <div class="content">
   <template *exist="language === 'zhCN'">
-    <h3 class="question">什么是路由管理器</h3>
+    <h2>路由 / 介绍</h2>
+    <h3 class="question">路由状态管理</h3>
     <div class="answer">
-      dagger.js内置了基于url <a target="_blank" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Location/hash">hash</a>实现的页面内路由状态管理器。当路由管理器侦测到页面“location.hash”发生变化时，将当前hash内容与已注册路由场景进行匹配，进而触发页面视图更新（通常与“<a href="directive/html">*html</a>”指令配合工作）。
+      dagger.js内置支持基于url <a target="_blank" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Location/hash">hash</a>和<a target="_blank" href="https://developer.mozilla.org/zh-CN/docs/Web/API/History">history</a>两种模式实现的页面内路由状态管理。当用户点击页面内路由链接时，路由管理器会解析url中的hash或history信息，触发路由事件，加载模块资源，进行页面渲染更新。
     </div>
-    <h3 class="question">路由的注册方式</h3>
+    <h3 class="question">路由配置项</h3>
     <div class="answer">
-      与<a href="module/introduction">模块</a>一样，路由也是通过配置项来注册的。事实上，前文示例中入口页面的配置项是一种简写方式，代表模块注册在根路由上（缺省定义）。下面我们来看一个注册路由配置项的示例：
+      <div>与根名空间的<a href="module/introduction">模块配置项</a>类似，我们需要在项目入口页面添加一个类型为“dagger/routers”的script标签作为路由配置项。</div>
+      <div>一个完整的路由配置项包括如下字段：</div>
+      <div class="margin">1. “mode”，字符串类型，用于指定当前项目的路由模式。可选值为“hash”（缺省值）或“history”。</div>
+      <div class="margin">2. “prefix”，字符串类型，路由路径前缀。默认为字符串“#”。</div>
+      <div class="margin">3. “aliases”，对象类型，包含路由别名映射关系的键值对。当路由别名规则匹配时，将加载value对应的路由。</div>
+      <div class="margin">4. “default”，字符串类型，缺省路由路径。当路由匹配失败时，将加载该路由。</div>
+      <div class="margin">5. “routing”，对象类型，路由树结构。每个路由节点包含如下字段：</div>
+      <div style="margin-left: 20px;">
+        <div class="margin">5.1. “path”，字符串类型，路由路径。根路由对象的path为空字符串。</div>
+        <div class="margin">5.2. “tailable”，布尔类型，tailable为true时，代表当前路由路径可以作为路由匹配的终止节点。缺省情况下，只有路由树中的叶节点才可以作为终止节点。</div>
+        <div class="margin">5.3. “redirect”，字符串或者函数类型，重定向路由路径。当当前路由匹配失败时，将触发路由的重定向规则。</div>
+        <div class="margin">5.4. “modules”，字符串或者字符串数组类型，代表渲染当前路由所需要的模块路径。当路由匹配成功时，将加载这些模块。</div>
+        <div class="margin">5.5. “constants”，对象类型，用于定义当前路由的常量键值对。通常与“<a href="directive/html">*html</a>”指令配合工作，用于指定渲染当前路由视图时所需的常量。</div>
+        <div class="margin">5.6. “variables”，对象类型，用于定义当前路由的变量键值对。变量的值可以通过url参数设置。</div>
+        <div class="margin">5.7. “children”，数组类型，子路由节点数组。子路由节点的结构与父路由节点相同。</div>
+      </div>
+      <div>来看一个示例：</div>
       <iframe height="300" style="width: 100%;" scrolling="no" title="[dagger-demo] $route (view)" src="https://codepen.io/dagger8224/embed/zYRQrwP?default-tab=html%2Cresult&editable=true" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
         See the Pen <a href="https://codepen.io/dagger8224/pen/zYRQrwP">
         [dagger-demo] $route (view)</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
         on <a href="https://codepen.io">CodePen</a>.
       </iframe>
-      上例中我们可以看到，路由配置项由入口页面配置项下的“routing”字段定义，模块配置项由每个路由场景下的“modules”字段指定。这里先了解路由配置项与模块配置项之间的关系就好，在后续章节中，我们将详细介绍路由配置项下各字段的定义和使用方法。
+    </div>
+    <h3 class="question">根作用域下的$route对象</h3>
+    <div class="answer">
+      <div>在<a href="directive/scope">作用域</a>章节中提到，我们可以通过根作用域下的“$route”对象访问当前路由信息。这里的“$route”对象是从上文的路由配置项解析得到的。</div>
+      <div>“$route”对象包含如下属性：
+        <div class="margin">1. “mode”，字符串类型，路由模式。</div>
+        <div class="margin">2. “url”，字符串类型，当前路由对应的完整url。</div>
+        <div class="margin">3. “prefix”，字符串类型，当前路由路径前缀。</div>
+        <div class="margin">4. “path”，字符串类型，当前路由的完整路径。</div>
+        <div class="margin">5. “paths”，字符串数组类型，当前路由路径拆分后的路径分量数组。</div>
+        <div class="margin">6. “params”，对象类型，当前路由路径参数。</div>
+        <div class="margin">7. “modules”，集合类型，当前路由所需的模块名称集合。</div>
+        <div class="margin">8. “query”，字符串类型，当前路由的完整查询参数。</div>
+        <div class="margin">9. “queries”，对象类型，当前路由的查询参数拆分后的键值对。</div>
+        <div class="margin">10. “variables”，对象类型，当前路由的变量参数（可以通过url参数设置）。</div>
+        <div class="margin">11. “constants”，对象类型，当前路由的常量参数。</div>
+        <div class="margin">12. “anchor”，字符串类型，当前路由的锚点标记，当前版本中固定为“#@”。</div>
+      </div>
+      <div>下面的示例展示了路由配置项和“$route”对象之间的对应关系：</div>
+      <iframe height="300" style="width: 100%;" scrolling="no" title="[dagger-demo] $route (fields)" src="https://codepen.io/dagger8224/embed/Jjajxox?default-tab=html%2Cresult" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+        See the Pen <a href="https://codepen.io/dagger8224/pen/Jjajxox">
+        [dagger-demo] $route (fields)</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
+        on <a href="https://codepen.io">CodePen</a>.
+      </iframe>
     </div>
     <h3 class="question">路由跳转方式</h3>
-    <div class="answer">在dagger.js中，有两种典型的路由跳转方式：
+    <div class="answer">有两种典型的路由跳转方式：
       <div class="margin">1. 点击“href”属性指向url hash的链接标签触发路由跳转。请注意，由“./”或者“/”开头的相对路径链接将被识别为url路径而非hash，点击此类标签将跳转至url对应的独立页面。</div>
       <div class="margin">2. 在代码中使用语句命令式触发页面hash状态变化：
         <div class="code">location.hash = 'targetHash';</div>
@@ -28,9 +67,10 @@
         on <a href="https://codepen.io">CodePen</a>.
       </iframe>
     </div>
-    <h3 class="question">阻塞路由跳转</h3>
+    <h3 class="question">路由守卫</h3>
     <div class="answer">
-      在前面的章节中我们提到，生命周期指令“<a href="directive/sentry">+sentry</a>”主要用来进行路由守卫。我们来看一个通过“+sentry”指令阻止路由跳转的例子：
+      在前面的章节中我们提到，生命周期指令“<a href="directive/sentry">+sentry</a>”主要用来实现路由守卫逻辑。
+      <div>我们来看一个通过“+sentry”指令阻止路由跳转的例子：</div>
       <iframe height="300" style="width: 100%;" scrolling="no" title="[dagger-demo] $route (redirect blocked by sentry)" src="https://codepen.io/dagger8224/embed/wvmpgwe?default-tab=html%2Cresult&editable=true" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
         See the Pen <a href="https://codepen.io/dagger8224/pen/wvmpgwe">
         [dagger-demo] $route (redirect blocked by sentry)</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
@@ -41,9 +81,80 @@
     </div>
   </template>
   <template *exist="language === 'enUS'">
-    <template *each="$['router.introduction.sections']">
-      <h3 class="question">${ item.question }</h3>
-      <div class="answer" *html="item.answer"></div>
-    </template>
+    <h2>Router / Introduction</h2>
+    <h3 class="question">Routing State Management</h3>
+    <div class="answer">
+      In dagger.js, built-in support for page-based routing is provided by two modes: <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/API/Location/hash">hash</a> and <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/API/History">history</a>. When a user clicks a link in the page, the router manager parses the hash or history information in the url, triggers the routing event, loads module resources, and updates the page rendering.
+    </div>
+    <h3 class="question">Router Configuration</h3>
+    <div class="answer">
+      Similar to the <a href="module/introduction">module configuration</a> in the root namespace, we need to add a script tag of type "dagger/routers" as the router configuration item in the entry page of the project.
+      <div>A complete router configuration item includes the following fields:</div>
+      <div class="margin">1. "mode", string type, which specifies the routing mode of the current project. The optional values are "hash" (default) or "history".</div>
+      <div class="margin">2. "prefix", string type, the prefix of the routing path. The default value is "#". </div>
+      <div class="margin">3. "aliases", object type, which contains the key-value pairs of the routing alias mapping. When the routing alias rule matches, the corresponding value is loaded.</div>
+      <div class="margin">4. "default", string type, the default routing path. When the routing fails, the default route is loaded.</div>
+      <div class="margin">5. "routing", object type, the routing tree structure. Each routing node contains the following fields:</div>
+      <div style="margin-left: 20px;">
+        <div class="margin">5.1. "path", string type, the routing path. The root node's path is an empty string.</div>
+        <div class="margin">5.2. "tailable", boolean type, tailable is true if the current routing path can be used as a terminal node. By default, only leaf nodes can be used as terminal nodes.</div>
+        <div class="margin">5.3. "redirect", string or function type, the redirect routing path. When the current routing fails, the redirect rule of the route is triggered.</div>
+        <div class="margin">5.4. "modules", string or string array type, which represents the module paths required for rendering the current route. When the routing is successful, these modules are loaded.</div>
+        <div class="margin">5.5. "constants", object type, which defines the constant key-value pairs of the current route. Typically, it is used with the "<a href="directive/html">*html</a>" directive to specify the constant required for rendering the current route view.</div>
+        <div class="margin">5.6. "variables", object type, which defines the variable key-value pairs of the current route. The value of the variable can be set through the url parameter.</div>
+        <div class="margin">5.7. "children", array type, the child routing node array. The structure of the child node is the same as the parent node.</div>
+      </div>
+      <div>Let's take a look at an example:</div>
+      <iframe height="300" style="width: 100%;" scrolling="no" title="[dagger-demo] $route (view)" src="https://codepen.io/dagger8224/embed/zYRQrwP?default-tab=html%2Cresult&editable=true" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+        See the Pen <a href="https://codepen.io/dagger8224/pen/zYRQrwP">
+        [dagger-demo] $route (view)</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
+        on <a href="https://codepen.io">CodePen</a>.
+      </iframe>
+    </div>
+    <h3 class="question">Root Scope's $route Object</h3>
+    <div class="answer">
+      In the <a href="directive/scope">scope</a> chapter, we mentioned that we can access the current route information through the root scope's "$route" object. Here, the "$route" object is obtained by parsing the router configuration item.
+      <div>The "$route" object contains the following properties:</div>
+      <div class="margin">1. "mode", string type, the routing mode.</div>
+      <div class="margin">2. "url", string type, the complete url of the current route.</div>
+      <div class="margin">3. "prefix", string type, the prefix of the current routing path.</div>
+      <div class="margin">4. "path", string type, the complete path of the current route.</div>
+      <div class="margin">5. "paths", string array type, the path components of the current routing path.</div>
+      <div class="margin">6. "params", object type, the parameters in the current routing path.</div>
+      <div class="margin">7. "modules", collection type, the module names required for the current route.</div>
+      <div class="margin">8. "query", string type, the complete query parameters of the current route.</div>
+      <div class="margin">9. "queries", object type, the key-value pairs of the query parameters of the current route.</div>
+      <div class="margin">10. "variables", object type, the variable parameters of the current route (which can be set through the url parameter).</div>
+      <div class="margin">11. "constants", object type, the constant parameters of the current route.</div>
+      <div class="margin">12. "anchor", string type, the anchor mark of the current route, which is fixed to "#@" in the current version.</div>
+      <div>The following example shows the correspondence between the router configuration item and the "$route" object:</div>
+      <iframe height="300" style="width: 100%;" scrolling="no" title="[dagger-demo] $route (fields)" src="https://codepen.io/dagger8224/embed/Jjajxox?default-tab=html%2Cresult" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+        See the Pen <a href="https://codepen.io/dagger8224/pen/Jjajxox">
+        [dagger-demo] $route (fields)</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
+        on <a href="https://codepen.io">CodePen</a>.
+      </iframe>
+    </div>
+    <h3 class="question">Routing Jump</h3>
+    <div class="answer">There are two typical routing jump methods:
+      <ul>
+        <li>The "<a href="directive/link">link</a>" directive, which is used to create a hyperlink to a specified route.</li>
+        <li>The "$location" service, which is used to change the current url of the browser.</li>
+      </ul>
+      <div>The following example shows how to use the "<a href="directive/link">link</a>" directive to jump to a specified route:</div>
+      <iframe height="300" style="width: 100%;" scrolling="no" title="[dagger-demo] $route (redirect)" src="https://codepen.io/dagger8224/embed/NWYXbVv?default-tab=html%2Cresult&editable=true" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+        See the Pen <a href="https://codepen.io/dagger8224/pen/NWYXbVv">
+        [dagger-demo] $route (redirect)</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
+        on <a href="https://codepen.io">CodePen</a>.
+      </iframe>
+    </div>
+    <h3 class="question">Routing Guards</h3>
+    <div class="answer">Routing guards are used to control the access to the specified route. We can use the "<a href="directive/sentry">+sentry</a>" directive to define a routing guard for a specified route. The routing guard function is executed before the routing is started, and if it returns true, the routing is prevented.
+      <div>The following example shows how to define a routing guard for a specified route:</div>
+      <iframe height="300" style="width: 100%;" scrolling="no" title="[dagger-demo] $route (redirect blocked by sentry)" src="https://codepen.io/dagger8224/embed/wvmpgwe?default-tab=html%2Cresult&editable=true" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+        See the Pen <a href="https://codepen.io/dagger8224/pen/wvmpgwe">
+        [dagger-demo] $route (redirect blocked by sentry)</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
+        on <a href="https://codepen.io">CodePen</a>.
+      </iframe>
+    </div>
   </template>
 </div>

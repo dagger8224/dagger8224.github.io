@@ -132,9 +132,6 @@
     "sections": [{
         "text": "introduction",
         "href": "router/introduction"
-    }, {
-        "text": "structure",
-        "href": "router/structure"
     }]
 }, {
     "text": "api",

@@ -438,20 +438,9 @@
                 "title": "router.introduction",
                 "template": "router_introduction",
                 "previousLink": "module/namespace",
-                "nextLink": "router/structure"
-              },
-              "modules": "router_introduction"
-            },
-            {
-              "path": "structure",
-              "constants": {
-                "title": "router.structure",
-                "template": "router_structure",
-                "type": "router",
-                "previousLink": "router/introduction",
                 "nextLink": "api/introduction"
               },
-              "modules": "router_structure"
+              "modules": "router_introduction"
             }
           ]
         },
@@ -463,7 +452,7 @@
               "constants": {
                 "title": "api.introduction",
                 "template": "api_introduction",
-                "previousLink": "router/structure",
+                "previousLink": "router/introduction",
                 "nextLink": "miscellaneous/introduction"
               },
               "modules": "api_introduction"
