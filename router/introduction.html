@@ -136,11 +136,11 @@
     </div>
     <h3 class="question">Routing Jump</h3>
     <div class="answer">There are two typical routing jump methods:
-      <ul>
-        <li>The "<a href="directive/link">link</a>" directive, which is used to create a hyperlink to a specified route.</li>
-        <li>The "$location" service, which is used to change the current url of the browser.</li>
-      </ul>
-      <div>The following example shows how to use the "<a href="directive/link">link</a>" directive to jump to a specified route:</div>
+      <div class="margin">1. Clicking a link tag whose "href" attribute points to a URL hash triggers a route jump. Please note that relative path links starting with "./" or "/" will be recognized as URL paths rather than hashes. Clicking such tags will jump to the independent page corresponding to the URL.</div>
+      <div class="margin">2. Use following code to trigger the page hash state change:
+        <div class="code">location.hash = 'targetHash';</div>
+      </div>
+      <div>The following example shows how to jump to a specified route:</div>
       <iframe height="300" style="width: 100%;" scrolling="no" title="[dagger-demo] $route (redirect)" src="https://codepen.io/dagger8224/embed/NWYXbVv?default-tab=html%2Cresult&editable=true" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
         See the Pen <a href="https://codepen.io/dagger8224/pen/NWYXbVv">
         [dagger-demo] $route (redirect)</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
