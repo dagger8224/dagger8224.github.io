@@ -438,24 +438,9 @@
                 "title": "router.introduction",
                 "template": "router_introduction",
                 "previousLink": "module/namespace",
-                "nextLink": "api/introduction"
+                "nextLink": "miscellaneous/options"
               },
               "modules": "router_introduction"
-            }
-          ]
-        },
-        {
-          "path": "api",
-          "children": [
-            {
-              "path": "introduction",
-              "constants": {
-                "title": "api.introduction",
-                "template": "api_introduction",
-                "previousLink": "router/introduction",
-                "nextLink": "miscellaneous/introduction"
-              },
-              "modules": "api_introduction"
             }
           ]
         },
@@ -463,14 +448,31 @@
           "path": "miscellaneous",
           "children": [
             {
-              "path": "introduction",
+              "path": "options",
               "constants": {
-                "title": "miscellaneous.introduction",
-                "template": "miscellaneous_introduction",
-                "previousLink": "api/introduction",
-                "nextLink": ""
+                "title": "miscellaneous.options",
+                "template": "miscellaneous_options",
+                "previousLink": "router/introduction",
+                "nextLink": "miscellaneous/api"
               },
-              "modules": "miscellaneous_introduction"
+              "modules": "miscellaneous_options"
+            }, {
+              "path": "api",
+              "constants": {
+                "title": "miscellaneous.api",
+                "template": "miscellaneous_api",
+                "previousLink": "miscellaneous/options",
+                "nextLink": "miscellaneous/others"
+              },
+              "modules": "miscellaneous_api"
+            }, {
+              "path": "others",
+              "constants": {
+                "title": "miscellaneous.others",
+                "template": "miscellaneous_others",
+                "previousLink": "miscellaneous/api"
+              },
+              "modules": "miscellaneous_others"
             }
           ]
         }

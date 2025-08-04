@@ -5,7 +5,7 @@
     <div class="answer">
       <div>“*checked”指令用于绑定宿主元素的选中状态，适用于类型为“radio”和“checkbox”的input元素。</div>
       <div>对于其他元素，*checked指令将退化为<a href="directive/general" target="_blank">一般指令</a>。</div>
-      <div>另外，“*checked”也适用于部分web组件库的自定义元素，如<a href="https://shoelace.style/components/checkbox" target="_blank">sl-checkbox</a>和<a href="https://shoelace.style/components/switch" target="_blank">sl-switch</a>等。我们将在<a href="web-component/introduction">相关章节</a>中进一步介绍。</div>
+      <div>另外，“*checked”也适用于部分web组件库的自定义元素，如<a href="https://shoelace.style/components/checkbox" target="_blank">sl-checkbox</a>和<a href="https://shoelace.style/components/switch" target="_blank">sl-switch</a>等。查看<a target="_blank" href="https://codepen.io/collection/yyLOGj">示例</a>。</div>
     </div>
     <h3 class="question">*checked指令表达式的执行结果</h3>
     <div class="answer">
@@ -47,12 +47,12 @@
     <div class="answer">
       <div>The *checked directive is used to bind the checked state of the host element, which is suitable for input elements of type "radio" and "checkbox".</div>
       <div>For other elements, *checked directive degrades to <a href="directive/general" target="_blank">general directive</a>.</div>
-      <div>In addition, *checked can also be used for custom elements in web component libraries, such as <a href="https://shoelace.style/components/checkbox" target="_blank">sl-checkbox</a> and <a href="https://shoelace.style/components/switch" target="_blank">sl-switch</a>. We will introduce it in the <a href="web-component/introduction">corresponding chapter</a>.</div>
+      <div>In addition, *checked can also be used for custom elements in web component libraries, such as <a href="https://shoelace.style/components/checkbox" target="_blank">sl-checkbox</a> and <a href="https://shoelace.style/components/switch" target="_blank">sl-switch</a>. See <a target="_blank" href="https://codepen.io/collection/yyLOGj">demos</a>.</div>
     </div>
     <h3 class="question">What is the execution result of the *checked directive expression?</h3>
     <div class="answer">
       <div>The execution result of the *checked directive is a boolean value. True means that the element is in the checked state, and false means that the element is in the unchecked state.</div>
-      <div>When the content of the directive expression is assignable, the user's operation on the host element will cause the expression to be calculated and synchronized, resulting in the bidirectional binding of scope data and DOM element attributes.</div>
+      <div>When the content of the directive expression is <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators#left-hand-side_expressions">left-hand side expression</a>, the user's operation on the host element will cause the expression to be calculated and synchronized, resulting in the bidirectional binding of scope data and DOM element attributes.</div>
       <div>If the content of the directive expression is not assignable, an error will occur. In this case, the "oneway" decorator can be used to disable the bidirectional binding.</div>
       <div>Another thing to note is that the checked state of radio elements in the same group are mutually exclusive. When a user clicks a radio element, the radio elements in the same group will automatically become unchecked. Since the *checked directive has a bidirectional data binding feature, the change in the checked state of the radio tag will also modify the corresponding scope data.</div>
       <div>Let's take a look at the *checked directive example:</div>
@@ -71,7 +71,7 @@
           [dagger-demo] *checked directive (oneway decorator)</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
           on <a href="https://codepen.io">CodePen</a>.
         </iframe>
-        <div class="margin">2. "indeterminate", boolean type. This decorator only applies to checkbox elements. If indeterminate decorator is true, the framework will set the checkbox to <a target="_blank" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/input/checkbox">indeterminate</a> state when the directive execution result is null or undefined. For example:</div>
+        <div class="margin">2. "indeterminate", boolean type. This decorator only applies to checkbox elements. If indeterminate decorator is true, the framework will set the checkbox to <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/checkbox">indeterminate</a> state when the directive execution result is null or undefined. For example:</div>
         <iframe height="300" style="width: 100%;" scrolling="no" title="[dagger-demo] *checked directive (indeterminate decorator)" src="https://codepen.io/dagger8224/embed/poarEOj?default-tab=html%2Cresult&editable=true&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
           See the Pen <a href="https://codepen.io/dagger8224/pen/poarEOj">
           [dagger-demo] *checked directive (indeterminate decorator)</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)

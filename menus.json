@@ -134,15 +134,15 @@
         "href": "router/introduction"
     }]
 }, {
-    "text": "api",
-    "sections": [{
-        "text": "introduction",
-        "href": "api/introduction"
-    }]
-}, {
     "text": "miscellaneous",
     "sections": [{
-        "text": "introduction",
-        "href": "miscellaneous/introduction"
+        "text": "options",
+        "href": "miscellaneous/options"
+    }, {
+        "text": "api",
+        "href": "miscellaneous/api"
+    }, {
+        "text": "others",
+        "href": "miscellaneous/others"
     }]
 }]

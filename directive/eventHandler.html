@@ -157,14 +157,14 @@
     </div>
     <h3 class="question">What are the event handler directives?</h3>
     <div class="answer">
-      <div>Any valid <a target="_blank" href="https://developer.mozilla.org/zh-CN/docs/Web/Events#%E6%A0%87%E5%87%86%E4%BA%8B%E4%BB%B6">DOM standard event</a> name is a valid event handler directive name. We can see an example below:</div>
+      <div>Any valid <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/Events">DOM standard event</a> name is a valid event handler directive name. We can see an example below:</div>
       <iframe height="300" style="width: 100%;" scrolling="no" title="[dagger-demo] eventHandler directive (standard event)" src="https://codepen.io/dagger8224/embed/dydZvpX?default-tab=html%2Cresult&editable=true&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
         See the Pen <a href="https://codepen.io/dagger8224/pen/dydZvpX">
         [dagger-demo] eventHandler directive (standard event)</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
         on <a href="https://codepen.io">CodePen</a>.
       </iframe>
       <div>Besides the standard event support, dagger.js also pre-defines several special event handler directives:</div>
-      <div class="margin">1. "observe-intersection", which is equivalent to defining an <a target="_blank" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Intersection_Observer_API">IntersectionObserver</a> on the current host element. This event will be triggered when the element enters or leaves the visible range, and provide the <a target="_blank" href="https://developer.mozilla.org/zh-CN/docs/Web/API/IntersectionObserverEntry">$entries</a> callback parameter. “observe-intersection” supports three pre-defined string type directive decorators: "root", "margin" and "threshold" (corresponding to the root, rootMargin and threshold options of IntersectionObserver).
+      <div class="margin">1. "observe-intersection", which is equivalent to defining an <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API">IntersectionObserver</a> on the current host element. This event will be triggered when the element enters or leaves the visible range, and provide the <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/API/IntersectionObserverEntry">$entries</a> callback parameter. “observe-intersection” supports three pre-defined string type directive decorators: "root", "margin" and "threshold" (corresponding to the root, rootMargin and threshold options of IntersectionObserver).
         <div>Let's take a look at an example:</div>
         <iframe height="300" style="width: 100%;" scrolling="no" title="[dagger-demo] observe-intersection event handler" src="https://codepen.io/dagger8224/embed/JoYbrPY?default-tab=html%2Cresult" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
           See the Pen <a href="https://codepen.io/dagger8224/pen/JoYbrPY">
@@ -172,7 +172,7 @@
           on <a href="https://codepen.io">CodePen</a>.
         </iframe>
       </div>
-      <div class="margin">2. "observe-mutation", which is equivalent to defining a <a target="_blank" href="https://developer.mozilla.org/zh-CN/docs/Web/API/MutationObserver/observe">MutationObserver</a> on the current host element. This event will be triggered when the element's attributes and content change, and provide the <a target="_blank" href="https://developer.mozilla.org/zh-CN/docs/Web/API/MutationRecord">$entries</a> callback parameter. “observe-mutation” supports the following pre-defined boolean type directive decorators: "attributes", "attributeOld", "attributeFilter", "character", "characterOld", "childlist" and "subtree" (corresponding to the attributes, attributeOldValue, attributeFilter, characterData, characterDataOldValue, childlist and subtree options of MutationObserver).
+      <div class="margin">2. "observe-mutation", which is equivalent to defining a <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver/observe">MutationObserver</a> on the current host element. This event will be triggered when the element's attributes and content change, and provide the <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/API/MutationRecord">$entries</a> callback parameter. “observe-mutation” supports the following pre-defined boolean type directive decorators: "attributes", "attributeOld", "attributeFilter", "character", "characterOld", "childlist" and "subtree" (corresponding to the attributes, attributeOldValue, attributeFilter, characterData, characterDataOldValue, childlist and subtree options of MutationObserver).
         <div>Let's take a look at an example:</div>
         <iframe height="300" style="width: 100%;" scrolling="no" title="[dagger-demo] observe-mutation event handler" src="https://codepen.io/dagger8224/embed/qEOqxvX?default-tab=html%2Cresult" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
           See the Pen <a href="https://codepen.io/dagger8224/pen/qEOqxvX">
@@ -180,7 +180,7 @@
           on <a href="https://codepen.io">CodePen</a>.
         </iframe>
       </div>
-      <div class="margin">3. "observe-resize", which is equivalent to defining a <a target="_blank" href="https://developer.mozilla.org/zh-CN/docs/Web/API/ResizeObserver/ResizeObserver">ResizeObserver</a> on the current host element. This event will be triggered when the element's size changes, and provide the <a target="_blank" href="https://developer.mozilla.org/zh-CN/docs/Web/API/ResizeObserverEntry">$entries</a> callback parameter.
+      <div class="margin">3. "observe-resize", which is equivalent to defining a <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/API/ResizeObserver/ResizeObserver">ResizeObserver</a> on the current host element. This event will be triggered when the element's size changes, and provide the <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/API/ResizeObserverEntry">$entries</a> callback parameter.
         <div>Let's take a look at an example:</div>
         <iframe height="300" style="width: 100%;" scrolling="no" title="[dagger-demo] observe-mutation event handler" src="https://codepen.io/dagger8224/embed/OPybZPN?default-tab=html%2Cresult" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
           See the Pen <a href="https://codepen.io/dagger8224/pen/OPybZPN">
@@ -188,7 +188,7 @@
           on <a href="https://codepen.io">CodePen</a>.
         </iframe>
       </div>
-      <div>You can also declare a <a target="_blank" href="https://developer.mozilla.org/zh-CN/docs/Web/API/CustomEvent/CustomEvent">custom event</a> by prefixing a non-standard event name with a "+" character. In dagger.js, custom events are often used to isolate data communication between scopes. 
+      <div>You can also declare a <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent/CustomEvent">custom event</a> by prefixing a non-standard event name with a "+" character. In dagger.js, custom events are often used to isolate data communication between scopes. 
         <div>It should be noted that dagger.js uses event delegation for event response. For custom events, you must explicitly set the bubbles field to true when dispatching the event:</div>
         <div class="code">
           new CustomEvent(eventName, { bubbles: true, detail: ... })
@@ -203,7 +203,7 @@
     </div>
     <h3 class="question">What are the pre-defined directive decorators for event handler?</h3>
     <div class="answer">
-      <div class="margin">1. "target", string type. The content is a valid <a target="_blank" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Document/querySelector">querySelector</a>, which is used to specify the target element of the current event handler. If not specified, the current host element will be used as the target.
+      <div class="margin">1. "target", string type. The content is a valid <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelector">querySelector</a>, which is used to specify the target element of the current event handler. If not specified, the current host element will be used as the target.
         <div>Let's take a look at an example:</div> 
         <iframe height="300" style="width: 100%;" scrolling="no" title="[dagger-demo] eventHandler (target decorator)" src="https://codepen.io/dagger8224/embed/bGLRyMB?default-tab=html%2Cresult&editable=true&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
           See the Pen <a href="https://codepen.io/dagger8224/pen/bGLRyMB">
@@ -259,7 +259,7 @@
           on <a href="https://codepen.io">CodePen</a>.
         </iframe>
       </div>
-      <div class="margin">8. "capture/once/passive", Boolean type. Used to declare the options of the event listener (equivalent as calling <a target="_blank" href="https://developer.mozilla.org/zh-CN/docs/Web/API/EventTarget/addEventListener">event.addEventListener()</a> in JavaScript).
+      <div class="margin">8. "capture/once/passive", Boolean type. Used to declare the options of the event listener (equivalent as calling <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener">event.addEventListener()</a> in JavaScript).
         <div>Let's take a look at an example:</div>
         <iframe height="300" style="width: 100%;" scrolling="no" title="Untitled" src="https://codepen.io/dagger8224/embed/vYdZoNp?default-tab=html%2Cresult&editable=true&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
           See the Pen <a href="https://codepen.io/dagger8224/pen/vYdZoNp">
@@ -268,7 +268,7 @@
         </iframe>
       </div>
       <div class="margin">9. "every", String or String Array type. Used to declare a set of filtering conditions. If any of the conditions is not satisfied, the event listener will not be triggered. 
-        <div>The value of "every" is an array of <a target="_blank" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/RegExp">regular expression literals</a>. The array item matches any of the values of $event's "code/key/button" or <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/getModifierState">modifier key state</a>. You can also add "!" before the literal to reverse the condition. For example, adding "!" before "Shift" means that the Shift key must be not pressed to trigger the current directive expression. </div>
+        <div>The value of "every" is an array of <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp">regular expression literals</a>. The array item matches any of the values of $event's "code/key/button" or <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/getModifierState">modifier key state</a>. You can also add "!" before the literal to reverse the condition. For example, adding "!" before "Shift" means that the Shift key must be not pressed to trigger the current directive expression. </div>
         <div>Let's take a look at an example:</div>
         <iframe height="300" style="width: 100%;" scrolling="no" title="[dagger-demo] eventHandler (every decorator)" src="https://codepen.io/dagger8224/embed/XWZgLEv?default-tab=html%2Cresult&editable=true&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
           See the Pen <a href="https://codepen.io/dagger8224/pen/XWZgLEv">
@@ -277,7 +277,7 @@
         </iframe>
       </div>
       <div class="margin">10. "some", String or String Array type. Used to declare a set of filtering conditions. If any of the conditions is satisfied, the event listener will be triggered. 
-        <div>The value of "some" is an array of <a target="_blank" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/RegExp">regular expression literals</a>. The array item matches any of the values of $event's "code/key/button" or <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/getModifierState">modifier key state</a>. You can also add "!" before the literal to reverse the condition. For example, adding "!" before "Shift" means that the Shift key must be not pressed to trigger the current directive expression. </div>
+        <div>The value of "some" is an array of <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp">regular expression literals</a>. The array item matches any of the values of $event's "code/key/button" or <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/getModifierState">modifier key state</a>. You can also add "!" before the literal to reverse the condition. For example, adding "!" before "Shift" means that the Shift key must be not pressed to trigger the current directive expression. </div>
         <div>Let's take a look at an example:</div>
         <iframe height="300" style="width: 100%;" scrolling="no" title="[dagger-demo] eventHandler (some decorator)" src="https://codepen.io/dagger8224/embed/vYdJBXM?default-tab=html%2Cresult&editable=true&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
           See the Pen <a href="https://codepen.io/dagger8224/pen/vYdJBXM">

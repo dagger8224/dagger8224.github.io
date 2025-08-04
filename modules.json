@@ -51,6 +51,7 @@
     "module_string": "./module/string.html",
     "module_namespace": "./module/namespace.html",
     "router_introduction": "./router/introduction.html",
-    "api_introduction": "./api/introduction.html",
-    "miscellaneous_introduction": "./miscellaneous/introduction.html"
+    "miscellaneous_options": "./miscellaneous/options.html",
+    "miscellaneous_api": "./miscellaneous/api.html",
+    "miscellaneous_others": "./miscellaneous/others.html"
 }

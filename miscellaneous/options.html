@@ -1,0 +1,58 @@
+<div class="content">
+  <template *exist="language === 'zhCN'">
+    <h2>杂项 / 选项</h2>
+    <h3 class="question">选项的作用</h3>
+    <div class="answer">dagger.js提供了一些全局选项，开发者可以根据自己的需要修改选项以定制dagger.js的运行方式。</div>
+    <h3 class="question">选项的定义方式</h3>
+    <div class="answer">与<a href="module/introduction">模块配置项</a>和<a href="router/introduction">路由配置项</a>类似，你需要在入口html文件中添加一个类型为dagger/options的script标签作为选项的容器。</div>
+    <h3 class="question">选项的字段说明</h3>
+    <div class="answer">当前版本支持如下的选项字段：
+      <div class="margin">1. “rootSelectors”，字符串数组类型，用于指定dagger.js开始进行代码解析和渲染的根元素。默认值为['title', 'body']。</div>
+      <div class="margin">2. “integrity”，布尔类型，用于控制是否开启页面资源完整性检查。debug模式下默认值为false，生产模式下强制开启。</div>
+      <div class="margin">3. “debugDirective”，布尔类型，用于控制是否在宿主元素上展示指令调试attributes。仅在debug模式下生效，默认值为true。</div>
+      <div class="margin">4. “log”，布尔类型，用于控制是否开启日志输出。仅在debug模式下生效，默认值为true。</div>
+      <div class="margin">5. “warning”，布尔类型，用于控制是否开启警告输出。仅在debug模式下生效，默认值为true。</div>
+      <div class="margin">6. “logPlainStyle”，字符串类型，用于指定普通日志的样式。仅在debug模式下生效，默认值为'color: #337ab7'。</div>
+      <div class="margin">7. “logHighlightStyle”，字符串类型，用于指定高亮日志的样式。仅在debug模式下生效，默认值为'color: #9442d0'。</div>
+      <div class="margin">8. “warningPlainStyle”，字符串类型，用于指定普通警告的样式。仅在debug模式下生效，默认值为'color: #ff0000'。</div>
+      <div class="margin">9. “warningHighlightStyle”，字符串类型，用于指定高亮警告的样式。仅在debug模式下生效，默认值为'color: #b22222'。</div>
+      <div class="margin">10. “errorPlainStyle”，字符串类型，用于指定普通错误的样式。仅在debug模式下生效，默认值为'color: #ff0000'。</div>
+      <div class="margin">11. “errorHighlightStyle”，字符串类型，用于指定高亮错误的样式。仅在debug模式下生效，默认值为'color: #b22222'。</div>
+      我们来看一个设置全局选项的例子：
+      <iframe height="300" style="width: 100%;" scrolling="no" title="[dagger-demo] options configuration" src="https://codepen.io/dagger8224/embed/zxvZyNp?default-tab=html%2Cresult" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+        See the Pen <a href="https://codepen.io/dagger8224/pen/zxvZyNp">
+        [dagger-demo] options configuration</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
+        on <a href="https://codepen.io">CodePen</a>.
+      </iframe>
+      打开控制台，查看全局选项与输出的日志内容和样式的对应关系。
+    </div>
+  </template>
+  <template *exist="language === 'enUS'">
+    <h2>Miscellaneous / Options</h2>
+    <h3 class="question">What is the usage of options?</h3>
+    <div class="answer">dagger.js provides some global options, which can be modified according to the needs of developers to customize the running mode of dagger.js.</div>
+    <h3 class="question">How to define options?</h3>
+    <div class="answer">Similar to <a href="module/introduction">module configuration items</a> and <a href="router/introduction">router configuration items</a>, you need to add a script tag with type "dagger/options" as the container for options in the entry html file.</div>
+    <h3 class="question">Options fields</h3>
+    <div class="answer">The current version supports the following option fields:
+      <div class="margin">1. “rootSelectors”，string array type, which is used to specify the root element for dagger.js to start code parsing and rendering. The default value is ['title', 'body'].</div>
+      <div class="margin">2. “integrity”，boolean type, which is used to control whether the page resource integrity check is enabled. The default value is false in debug mode, and true in production mode.</div>
+      <div class="margin">3. “debugDirective”，boolean type, which is used to control whether the directive debugging attributes are displayed on the host element. It is only effective in debug mode, and the default value is true.</div>
+      <div class="margin">4. “log”，boolean type, which is used to control whether the log output is enabled. It is only effective in debug mode, and the default value is true.</div>
+      <div class="margin">5. “warning”，boolean type, which is used to control whether the warning output is enabled. It is only effective in debug mode, and the default value is true.</div>
+      <div class="margin">6. “logPlainStyle”，string type, which is used to specify the style of the normal log. It is only effective in debug mode, and the default value is 'color: #337ab7'.</div>
+      <div class="margin">7. “logHighlightStyle”，string type, which is used to specify the style of the highlighted log. It is only effective in debug mode, and the default value is 'color: #9442d0'.</div>
+      <div class="margin">8. “warningPlainStyle”，string type, which is used to specify the style of the normal warning. It is only effective in debug mode, and the default value is 'color: #ff0000'.</div>
+      <div class="margin">9. “warningHighlightStyle”，string type, which is used to specify the style of the highlighted warning. It is only effective in debug mode, and the default value is 'color: #b22222'.</div>
+      <div class="margin">10. “errorPlainStyle”，string type, which is used to specify the style of the normal error. It is only effective in debug mode, and the default value is 'color: #ff0000'.</div>
+      <div class="margin">11. “errorHighlightStyle”，string type, which is used to specify the style of the highlighted error. It is only effective in debug mode, and the default value is 'color: #b22222'.</div>
+      Let's take a look at an example of setting global options:
+      <iframe height="300" style="width: 100%;" scrolling="no" title="[dagger-demo] options configuration" src="https://codepen.io/dagger8224/embed/zxvZyNp?default-tab=html%2Cresult" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+        See the Pen <a href="https://codepen.io/dagger8224/pen/zxvZyNp">
+        [dagger-demo] options configuration</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
+        on <a href="https://codepen.io">CodePen</a>.
+      </iframe>
+      Open the console to view the relationship between global options and log content and style.
+    </div>
+  </template>
+</div>

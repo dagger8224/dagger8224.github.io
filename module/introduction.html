@@ -366,7 +366,7 @@
       </table>
     </div>
     <h3 class="question">Conditional loading of module resources</h3>
-    <div class="answer">You can specify an array of module configurations, each with a "media" field (used as <a target="_blank" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Window/matchMedia">media query</a>) as a filtering condition. dagger.js will use the first matched configuration item as the current module configuration.
+    <div class="answer">You can specify an array of module configurations, each with a "media" field (used as <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/API/Window/matchMedia">media query</a>) as a filtering condition. dagger.js will use the first matched configuration item as the current module configuration.
       <div>We can see an example:</div>
       <iframe height="300" style="width: 100%;" scrolling="no" title="[dagger-demo] $module (conditional script module)" src="https://codepen.io/dagger8224/embed/poaaMow?default-tab=html%2Cresult&editable=true&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
         See the Pen <a href="https://codepen.io/dagger8224/pen/poaaMow">
@@ -374,17 +374,17 @@
         on <a href="https://codepen.io">CodePen</a>.
       </iframe>
       In the example above, when the page is initialized at a window size that triggers the "media" threshold, you will see the corresponding text content in a different color.
-      <div>It should be noted that the module filtering conditions in dagger.js only take effect when the module configuration items are loaded. Please do not use it as a dependency for the dynamic <a target="_blank" href="https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Core/CSS_layout/Responsive_Design">responsive design</a> of the page. </div>
+      <div>It should be noted that the module filtering conditions in dagger.js only take effect when the module configuration items are loaded. Please do not use it as a dependency for the dynamic <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/CSS_layout/Responsive_Design">responsive design</a> of the page. </div>
     </div>
 
     <h3 class="question">Specify multiple resource addresses for a module</h3>
-    <div class="answer">You can also set the "uri" field to an array. Dagger.js will try to load the resources specified in the list one by one until the module is successfully loaded. Specifying multiple alternative addresses for module resources in a production environment can improve the disaster recovery capabilities of the application. Let's take a look at an example:
+    <div class="answer">You can also set the "uri" field to an array. dagger.js will try to load the resources specified in the list one by one until the module is successfully loaded. Specifying multiple alternative addresses for module resources in a production environment can improve the disaster recovery capabilities of the application. Let's take a look at an example:
       <iframe height="300" style="width: 100%;" scrolling="no" title="Untitled" src="https://codepen.io/dagger8224/embed/BaYPpaw?default-tab=html%2Cresult&editable=true&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
         See the Pen <a href="https://codepen.io/dagger8224/pen/BaYPpaw">
         Untitled</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
         on <a href="https://codepen.io">CodePen</a>.
       </iframe>
-      In the example above, the "uri" field of the script module "script_module1" matches an array. Dagger.js will first attempt to load the content at the address "./invalid2.js". If the request fails, it will continue to try to load the content at the address "#script". At this time, the resource loads successfully, so the backup resource address "./invalid3.js" will not be loaded. Open the browser console, and you will see a 404 error message when loading "./invalid2.js".
+      In the example above, the "uri" field of the script module "script_module1" matches an array. dagger.js will first attempt to load the content at the address "./invalid2.js". If the request fails, it will continue to try to load the content at the address "#script". At this time, the resource loads successfully, so the backup resource address "./invalid3.js" will not be loaded. Open the browser console, and you will see a 404 error message when loading "./invalid2.js".
     </div>
     <h3 class="question">Declare module resource content directly in the configuration item</h3>
     <div class="answer">You can also specify the "content" field in the configuration item to directly declare the content of the module resource (the "uri" field will be ignored in this case).
@@ -408,7 +408,7 @@
     </div>
     <h3 class="question">Other optional common fields in module configuration items</h3>
     <div class="answer">
-      <div class="margin">1. "base", a string type, is used to specify the <a target="_blank" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Node/baseURI">baseURI</a> value of the relative path of the remote resource in the current module. If not specified, the "base" of the submodule will be inherited from its parent module by default. If the current module is in the root namespace, its "base" defaults to the document.baseURI of the current page. Let's take a look at an example:
+      <div class="margin">1. "base", a string type, is used to specify the <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/API/Node/baseURI">baseURI</a> value of the relative path of the remote resource in the current module. If not specified, the "base" of the submodule will be inherited from its parent module by default. If the current module is in the root namespace, its "base" defaults to the document.baseURI of the current page. Let's take a look at an example:
         <iframe height="300" style="width: 100%;" scrolling="no" title="[dagger-demo] $module (base field)" src="https://codepen.io/dagger8224/embed/YPyNgxv?default-tab=html%2Cresult" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
           See the Pen <a href="https://codepen.io/dagger8224/pen/YPyNgxv">
           [dagger-demo] $module (base field)</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
@@ -423,7 +423,7 @@
         </iframe>
         <div>The "candidates" field is used in a similar way to the conditionally loaded module resources mentioned above. The difference is that "candidates" only includes the parts of the configuration items that are different, while each item in the conditional resource array is a complete resource configuration.</div>
       </div>
-      <div class="margin">3. "integrity," a string type. Used to perform <a target='_blank' href='https://developer.mozilla.org/zh-CN/docs/Web/Security/%E5%AD%90%E8%B5%84%E6%BA%90%E5%AE%8C%E6%95%B4%E6%80%A7'>sha256 subresource integrity verification</a> on remote resource content. You should use "integrity" to verify third-party modules in production environments to improve product security. Let's take a look at an example:
+      <div class="margin">3. "integrity," a string type. Used to perform <a target='_blank' href='https://developer.mozilla.org/en-US/docs/Web/Security/%E5%AD%90%E8%B5%84%E6%BA%90%E5%AE%8C%E6%95%B4%E6%80%A7'>sha256 subresource integrity verification</a> on remote resource content. You should use "integrity" to verify third-party modules in production environments to improve product security. Let's take a look at an example:
         <iframe height="300" style="width: 100%;" scrolling="no" title="[dagger-demo]  module configs (base)" src="https://codepen.io/dagger8224/embed/xxWZGYG?default-tab=html%2Cresult&editable=true" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
           See the Pen <a href="https://codepen.io/dagger8224/pen/xxWZGYG">
           [dagger-demo]  module configs (base)</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)

@@ -35,104 +35,13 @@
     "router": "路由",
     "structure": "结构",
     "miscellaneous": "杂项",
+    "options": "选项",
+    "others": "其他",
     "configs": "配置",
     "validator": "验证器",
     "version": "版本信息",
     "next": "下一页",
     "previous": "上一页",
     "period": "。",
-    "meta": "元指令",
-    "rootScope": "根作用域",
-    "directive.decorator": "指令/指令修饰符",
-    "directive.expression": "指令/指令表达式",
-    "directive.raw": "指令/@raw",
-    "directive.raw.sections": [{
-        "question": "@raw指令的作用效果",
-        "answer": "<span>@raw是当前版本中定义的唯一一个元指令，dagger.js不会对具有@raw指令的元素及其子节点进行解析，节点中所有的指令都将退化为普通属性。为无需解析的节点添加@raw指令可以提升页面响应性能。</span>"
-    }, {
-        "question": "可应用@raw指令的元素",
-        "answer": "<span>任何DOM元素都可以使用@raw指令。</span>"
-    }],
-    "directive.loaded": "指令/+loaded",
-    "directive.unload": "指令/+unload",
-    "directive.unloaded": "指令/+unloaded",
-    "directive.sentry": "指令/+sentry",
-    "directive.controller": "指令/控制指令",
-    "directive.checked": "指令/*checked",
-    "directive.class": "指令/*class",
-    "directive.each": "指令/*each",
-    "directive.exist": "指令/*exist",
-    "directive.file": "指令/*file",
-    "directive.focus": "指令/*focus",
-    "directive.html": "指令/*html",
-    "directive.result": "指令/*result",
-    "directive.selected": "指令/*selected",
-    "directive.style": "指令/*style",
-    "directive.text": "指令/*text",
-    "directive.value": "指令/*value",
-    "directive.boolean": "指令/布尔指令",
-    "directive.general": "指令/一般指令",
-    "directive.watch": "指令/*watch",
-    "directive.eventHandler": "指令/事件处理指令",
-    "directive.meta": "指令/元指令",
-    "module.introduction": "模块/介绍",
-    "module.view": "模块/视图",
-    "module.style": "模块/样式",
-    "module.script": "模块/脚本",
-    "module.string": "模块/字符串",
-    "module.json": "模块/json",
-    "module.namespace": "模块/名空间",
-    "module.namespace.sections": [{
-        "question": "名空间模块的类别推断规则",
-        "answer": "<span>对于未指定类别的模块，如果资源内容的容器是类型为“dagger/namespace”的script标签（嵌入方式），或者远程请求响应头的<a target='_blank' href='https://developer.mozilla.org/zh-cn/docs/Web/HTTP/Headers/Content-Type'>Content-Type</a>包含“text/html”且资源内容是完整的html文档（否则将被识别为视图类别），则模块类别将被推断为名空间。</span>"
-    }, {
-        "question": "名空间模块的使用限制",
-        "answer": "<span>名空间模块资源加载后将根据资源模板<a href='miscellaneous/introduction'>配置项</a>递归解析子级模块，各级名空间模块之间不能出现循环引用。</span>"
-    }],
-    "router.introduction": "路由/介绍",
-    "router.structure": "路由/结构",
-    "router.structure.sections": [{
-        "question": "全局路由配置项字段",
-        "answer": "<span>路由支持以下全局配置项字段：<div class=\"sub-answer\">1. “aliases”（可选，对象类型），用于指定路由别名。当发生页面内路由跳转时，将优先进行别名匹配。例如，“aliases: { '/alias1': '/router', '/alias2': '/router' }”将为路由“router”声明两个别名“alias1”和“alias2”，当目标hash值是“alias1”或者“alias2”时命中别名匹配，路由管理器将加载“router”配置项的内容并进行后续处理。匹配路由别名不会导致路由再次跳转；<br/>2. “redirects”（可选，对象类型），用于指定路由跳转关系。当发生页面内路由跳转时，如果目标路径命中了“redirects”配置项，则将根据匹配结果发生再次跳转（hash路径发生变化）。例如，设有“redirects: { '/router1': '/router2' }”，当页面路由切换到“router1”时发生了跳转匹配，页面hash将继续跳转到“router2”再进行路由匹配，此时页面的hash值切换为“router2”；<br/>3. “default”（可选，字符串类型），用于指定默认路由匹配项对应的路径，当页面hash无法匹配任何已定义路由时将匹配默认路由。例如，“default: '/default'”设定无效路径匹配到路径“/default”对应的路径配置项。匹配默认路由不会导致路由再次跳转；<br/>4. “hashPrefix”（可选，字符串类型，默认值为“#”），用于指定url hash路径的前缀；<br/>5. “overrideRelativeLinks”（可选，布尔类型，默认值为true），用于指定是否优先将链接中的相对路径url匹配为hash。如果关闭该选项，则按照浏览器默认的<a target='_blank' href='https://developer.mozilla.org/zh-CN/docs/Learn/Common_questions/What_is_a_URL'>url路径匹配规则</a>进行处理。</div></span>"
-    }, {
-        "question": "scenarios配置项字段和匹配规则",
-        "answer": "<span>“scenarios”（对象类型）字段用于描述路由场景的拓扑结构。页面的整体路由是一个由多个路由场景节点拼接成的树状结构，每个场景节点定义了路径匹配规则和渲染视图所需的静态资源（变量，模块等）的描述信息。<br/>当页面加载或者发生路由切换时，目标hash路径将被分解为由“/”分割的多个分量，每个路径分量与路由树中的节点按顺序进行匹配，如果每个路径分量都能与一棵连续路由子树上的对应节点匹配成功且最后一个路径分量匹配到的路由节点是“tailable”的，则视为路由匹配成功，否则将跳转到“default”字段对应的hash路径重新进行匹配。<br/>每个路由场景节点包括如下预定义字段：<div class=\"sub-answer\">1. “path”（可选，字符串或者对象类型，默认为空字符串），用于声明当前路由场景的名称和匹配规则。如果path字段值为字符串，则将path值作为场景名称，同时将值转换为正则表达式内容与对应路径分量进行匹配。如果path值为对象，则对象中键值对的键名将作为场景名称，值转换为正则表达式内容与对应路径分量进行匹配；<br/>2. “modules”（可选，对象类型），用于声明渲染当前路由场景视图需要的<a href='module/introduction'>模块</a>配置项。如果多个路由节点上声明了相同名称的模块配置项，则子级节点上的模块声明具有更高的优先级；<br/>3. “constants”（可选，对象类型），用于声明渲染当前路由场景视图需要的常量数据，如果多个路由节点上声明了相同名称的常量数据，则子级节点上的常量声明具有更高的优先级；<br/>4. “variables”（可选，对象类型），用于声明渲染当前路由场景视图需要的变量数据，变量数据的值可以由页面hash的同名<a target='_blank' href='https://developer.mozilla.org/zh-CN/docs/Web/API/URL/searchParams'>查询参数</a>重新赋值。如果多个路由节点上声明了相同名称的变量数据，则子级节点上的变量声明具有更高的优先级；<br/>5. “children” （可选，数组类型），用于声明当前场景节点的直接子节点数组，未定义“children”字段的节点是路由树的叶节点；<br/>6. “tailable”（可选，布尔类型，对于叶节点默认值为true，非叶节点默认值为false），用于指定当前路由场景是否可以作为路由匹配过程的终止结点。</div></span>"
-    }, {
-        "question": "运行时路由对象$route",
-        "answer": "<span>在路由与页面hash路径成功匹配后，框架将在运行时<a href='miscellaneous/introduction'>根作用域</a>下创建只读的“$route”变量，“$route”包含如下字段：<div class=\"sub-answer\">1. “hash”（字符串类型），记录当前场景下完整的hash值，包括路径和查询参数；<br/>2. “hashPrefix”（字符串类型），记录hash路径前缀；<br/>3. “path”（字符串类型），记录hash值的路径部分；<br/>4. “paths”（字符串数组），记录hash路径拆分后的各个分量（根路径为空字符串）；<br/>5. “query”（字符串类型），记录hash值的查询参数字符串部分；<br/>6. “queries”（对象类型），每个键值对记录hash值中的一组查询参数；<br/>7. “scenarios”（对象类型），记录场景名称与hash路径分量的映射关系；<br/>8. “constants”（对象类型），记录当前场景下声明的变量与常量值。相同路由层级下的常量声明优先级高于同名的变量声明；<br/>9. “identity”（<a target='_blank' href='https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Symbol'>Symbol</a>类型），每次路由切换后框架会创建一个唯一的“identity”作为当前路由场景的身份标识，可以在<a href='directive/controller'>控制指令</a>中对“$route.identity”进行依赖以确保路由更新后指令表达式被触发。</div></span>"
-    }],
-    "api.introduction": "API/介绍",
-    "api.introduction.sections": [{
-        "question": "框架提供的API接口",
-        "answer": "<span>在当前版本中，框架仅针对特殊使用场景提供了少量的API接口，封装在window.$dagger只读对象下。</span>"
-    }, {
-        "question": "$dagger.runtime接口",
-        "answer": "<span>dagger.js在载入之后，会在页面的head标签下查找类型为“dagger/modules”的script标签内容作为页面的根<a href='miscellaneous/introduction'>配置项</a>，并在文档的“DOMContentLoaded”事件触发后进行当前<a href='router/introduction'>路由场景</a>下的资源初始化和视图渲染。<br/>除默认的自动初始化方式外，用户也可以根据需要手动调用$dagger对象下的runtime方法手动进行运行时初始化（此模式下不要在页面head中声明类型为\"dagger/modules\"的script标签以避免重复初始化），runtime方法接收一个对象作为参数，对象的字段内容与根<a href='miscellaneous/introduction'>配置项</a>的内容一致。</span>"
-    }, {
-        "question": "$dagger.register接口",
-        "answer": "<span>dagger.js内置了对“Object/Array/Date/Map/Set/WeakMap/WeakSet”等原生javaScript对象实例方法的响应式支持，用户也可以使用$dagger.register接口对自定义类方法进行注册，注册后的类方法将具有运行时响应性，可以在<a href='directive/controller'>控制指令</a>表达式中进行动态依赖。<br/>调用$dagger.register接口需要提供两个必选参数，第一个参数是要注册的类对象本身，第二个参数是包含要注册的类对象<a target='_blank' href='https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Inheritance_and_the_prototype_chain'>原型</a>方法名称的字符串数组。</span>"
-    }, {
-        "question": "$dagger.version字段",
-        "answer": "<span>$dagger.version字段是指向当前dagger.js版本信息的字符串。</span>"
-    }],
-    "miscellaneous.introduction": "杂项/介绍",
-    "miscellaneous.introduction.sections": [{
-        "question": "根作用域",
-        "answer": "<span>dagger.js的根作用域是定义在运行时闭包最顶层的变量作用域，页面中所有元素上的指令表达式均可使用根作用域下的变量与方法。根作用域对象包括<a href='router/structure'>路由</a>对象“$route”，当前路由场景下的<a href='module/introduction'>模块</a>资源树对象“$module”，以及在debug模式下进行数据校验用的“$validator”方法。</span>"
-    }, {
-        "question": "验证器",
-        "answer": "<span>验证器是一个javaScript方法，支持如下几个调用参数：<div class=\"sub-answer\">1. “data”，用于指定要进行验证的变量数据；<br/>2. “path”，用于指定被校验数据在当前作用域下的访问路径或者名称；<br/>3. “validators”，验证对象，包含三个调用预定义字段：<div class=\"sub-answer\">a. “type”，验证变量所属的类型对象或者类型对象数组；<br/>b. “assert”，断言方法，接受data作为参数，返回true代表断言成功，false代表断言失败；<br/>c. “required”，为true代表要求待验证对象必须为有效值（不能是null，undefined或者NaN）。</div></div></span>"
-    }, {
-        "question": "预定义class名称dg-cloak",
-        "answer": "<span>“dg-cloak”是dagger.js预定义的class名称，用于隐藏未渲染完成的DOM元素，框架在宿主元素及其指令实例化完成后将自动移除“dg-cloak”声明。<br/>尽管dagger.js在运行时会创建动态的样式表确保这个class名称正常工作，仍然建议使用者在项目页面的head标签下手动插入如下样式标签以避免页面渲染过程中出现闪动：</span><br/><span style='font-style: italic; background-color: #eeeeee;'>&lt;style&gt;[dg-cloak] { display: none !important; }&lt;/style&gt;。</span>"
-    }, {
-        "question": "根配置项",
-        "answer": "<span>页面的根配置项通常声明为页面head标签下类型为“dagger/modules”的script标签（支持内联或外联内容），在手动初始化模式下，根配置项是$dagger.runtime接口方法的参数。根配置项支持如下字段：<div class=\"sub-answer\">1. “rootSelectors”（字符串数组），用于指定框架解析的根节点所对应的元素选择器，默认为['title', 'body']，页面的html标签不能作为解析的根元素；<br/>2. “customTags”，用于指定全局的<a href='module/namespace'>自定义标签</a>；<br/>3. “routing”，用于指定页面的<a href='router/structure'>路由配置项</a>；<br/>4. “options”，用于设定框架的运行时开关选项（均为布尔值），包括：<div class=\"sub-answer\">a. “commentNode”（默认值为false，值为false则模板解析过程将忽略注释节点）；<br/>b. “directiveAttribute”（默认值为false，值为true则指令初始化后将在宿主元素上添加对应的debug属性）；<br/>c. “moduleLog”（默认值为false，值为true则模块加载过程中将在控制台打印相关日志）；<br/>d. “routerLog”（默认值为false，值为true则路由跳转时将在控制台打印相关日志）；<br/>e. “integrity”（默认值为true，值为true则在远程模块加载时进行<a target='_blank' href='https://developer.mozilla.org/zh-CN/docs/Web/Security/%E5%AD%90%E8%B5%84%E6%BA%90%E5%AE%8C%E6%95%B4%E6%80%A7'>sha256子资源完整性校验</a>）。</div></div></span>"
-    }, {
-        "question": "debug版本和release版本的差别",
-        "answer": "<span>在release版本中，根配置项options只支持“commentNode”和“integrity”字段，验证器定义为空函数，另外移除了debug版本下的运行时断言以提升响应性能。</span>"
-    }, {
-        "question": "工程化方案",
-        "answer": "<span>dagger.js采用分布式模块复用技术方案，各<a href='module/introduction'>类型</a>模块基于原生语法实现，使用者很容易（尽管并非必须）利用现代前端开发技术链路上的其他<a target='_blank' href='https://developer.mozilla.org/en-US/docs/Learn/Tools_and_testing/Understanding_client-side_tools/Introducing_complete_toolchain'>实用工具</a>以获取更佳的开发体验，提升开发效率。</span>"
-    }]
+    "meta": "元指令"
 }

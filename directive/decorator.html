@@ -88,7 +88,7 @@
     <h3 class="question">Encoding of directive decorator</h3>
     <div class="answer">
       <div>Due to the syntax rules of DOM tag attributes and directive declaration, some special characters cannot be used directly as the content of the decorator, which will cause DOM parsing failure or unexpected processing results.</div>
-      <div>Specifically, if you need to use "<", ">", ":", "#", "\", "/", space or uppercase letters in the content of the directive decorator, you need to <a target="_blank" href="https://developer.mozilla.org/zh-cn/docs/Web/JavaScript/Reference/Global_Objects/encodeURIComponent">encode</a> the content, and dagger.js will <a target="_blank" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/decodeURIComponent">decode</a> the content when parsing. For example:
+      <div>Specifically, if you need to use "<", ">", ":", "#", "\", "/", space or uppercase letters in the content of the directive decorator, you need to <a target="_blank" href="https://developer.mozilla.org/zh-cn/docs/Web/JavaScript/Reference/Global_Objects/encodeURIComponent">encode</a> the content, and dagger.js will <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/decodeURIComponent">decode</a> the content when parsing. For example:
         <div class="code">+click#every:['%43aps%4cock','%53hift']</div>
         dagger.js will decode the above code to create a decorator object with a name of "every" and a value of a string array "['CapsLock', 'Shift']".
       </div>

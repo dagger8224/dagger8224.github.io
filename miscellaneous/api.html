@@ -1,0 +1,66 @@
+<div class="content">
+  <template *exist="language === 'zhCN'">
+    <h2>杂项 / api</h2>
+    <h3 class="question">注册接口</h3>
+    <div class="answer">
+      <div>dagger.js内置了对<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object" target="_blank">Object</a>、<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array" target="_blank">Array</a>、<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Date" target="_blank">Date</a>、<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Map" target="_blank">Map</a>、<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Set" target="_blank">Set</a>、<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/WeakMap" target="_blank">WeakMap</a>、<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/WeakSet" target="_blank">WeakSet</a>等原生javaScript对象的响应式支持。在绝大多数场景下，您无需调用任何API接口即可完成业务逻辑开发。</div>
+      <div>但是，对于用户自定义数据类型的读写接口方法调用，框架是无法自动获得依赖响应能力的。在这种情况下，您需要使用全局对象$dagger下的register方法对自定义类方法进行注册。注册后的自定义类方法将具有运行时依赖响应性。</div>
+      <div>$dagger.register接口需要提供两个必选参数，第一个参数是要注册的类对象，第二个参数是包含要注册的类对象原型方法名称的字符串数组。</div>
+      我们来看一个例子：
+      <iframe height="300" style="width: 100%;" scrolling="no" title="[dagger-demo] api call ($dagger.register)" src="https://codepen.io/dagger8224/embed/empvbxr?default-tab=html%2Cresult" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+        See the Pen <a href="https://codepen.io/dagger8224/pen/empvbxr">
+        [dagger-demo] api call ($dagger.register)</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
+        on <a href="https://codepen.io">CodePen</a>.
+      </iframe>
+      您可以注释掉示例代码中的$dagger.register方法调用，比较运行结果的差异。
+    </div>
+    <h3 class="question">校验接口</h3>
+    <div class="answer">
+      <div>在dagger.js的debug版本中，您可以通过调用全局对象$dagger下的validator方法进行数据校验。</div>
+      <div>$dagger.validator方法需要提供三个必选参数，第一个参数是要校验的对象，第二个参数是数据路径，第三个参数是校验规则。校验规则是一个对象，包含以下三个可选字段：
+        <div class="margin">1. “type”，字符串或者字符串数组类型，用于指定满足校验条件的数据类型</div>
+        <div class="margin">2. “required”，布尔值，用于指定数据是否必须已定义（不能为undefined，null或者NaN）</div>
+        <div class="margin">3. “assert”，函数或者函数数组，用于进行自定义校验。当校验函数返回false时，数据校验失败</div>
+        我们来看一个例子：
+        <iframe height="300" style="width: 100%;" scrolling="no" title="[dagger-demo] api call ($dagger.register)" src="https://codepen.io/dagger8224/embed/RNWpXVO?default-tab=html%2Cresult" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+          See the Pen <a href="https://codepen.io/dagger8224/pen/RNWpXVO">
+          [dagger-demo] api call ($dagger.register)</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
+          on <a href="https://codepen.io">CodePen</a>.
+        </iframe>
+        请注意，$dagger.validator仅在debug版本中提供，用于开发阶段的调试，在生产环境中不会生效。
+      </div>
+    </div>
+  </template>
+  <template *exist="language === 'enUS'">
+    <h2>Miscellaneous / API</h2>
+    <h3 class="question">Registration API</h3>
+    <div class="answer">
+      <div>dagger.js includes built-in responsive support for native JavaScript objects such as <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" target="_blank">Object</a>, <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array" target="_blank">Array</a>, <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date" target="_blank">Date</a>, <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map" target="_blank">Map</a>, <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set" target="_blank">Set</a>, <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakMap" target="_blank">WeakMap</a>, <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakSet" target="_blank">WeakSet</a>. In most scenarios, you can complete business logic development without calling any APIs.</div>
+      <div>However, the framework cannot automatically achieve dependency responsiveness for read and write method calls on user-defined data types. In such cases, you need to register your custom class methods using the register method under the global $dagger object. Registered custom class methods will be responsive at runtime.</div>
+      <div>The $dagger.register method requires two required parameters: the first is the class object to be registered, and the second is a string array containing the names of the prototype methods of the class object to be registered.</div>
+      Let's take a look at an example:
+      <iframe height="300" style="width: 100%;" scrolling="no" title="[dagger-demo] api call ($dagger.register)" src="https://codepen.io/dagger8224/embed/empvbxr?default-tab=html%2Cresult" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+        See the Pen <a href="https://codepen.io/dagger8224/pen/empvbxr">
+        [dagger-demo] api call ($dagger.register)</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
+        on <a href="https://codepen.io">CodePen</a>.
+      </iframe>
+      You can comment out the $dagger.register method call in the example code to compare the running results.
+    </div>
+    <h3 class="question">Validation API</h3>
+    <div class="answer">
+      <div>In the debug version of dagger.js, you can use the $dagger.validator method to perform data validation.</div>
+      <div>$dagger.validator method requires three required parameters: the first is the object to be validated, the second is the data path, and the third is the validation rule. The validation rule is an object that contains three optional fields:
+        <div class="margin">1. “type”, string or string array type, used to specify the data type that satisfies the validation condition</div>
+        <div class="margin">2. “required”, boolean value, used to specify whether the data must be defined (cannot be undefined, null or NaN)</div>
+        <div class="margin">3. “assert”, function or function array, used to perform custom validation. When the validation function returns false, the data validation fails</div>
+        Let's take a look at an example:
+        <iframe height="300" style="width: 100%;" scrolling="no" title="[dagger-demo] api call ($dagger.register)" src="https://codepen.io/dagger8224/embed/RNWpXVO?default-tab=html%2Cresult" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+          See the Pen <a href="https://codepen.io/dagger8224/pen/RNWpXVO">
+          [dagger-demo] api call ($dagger.register)</a> by Tony Peakman (<a href="https://codepen.io/dagger8224">@dagger8224</a>)
+          on <a href="https://codepen.io">CodePen</a>.
+        </iframe>
+        Note that $dagger.validator is only provided in the debug version, which is used for debugging in the development phase, and will not take effect in the production environment.
+      </div>
+    </div>
+  </template>
+</div>

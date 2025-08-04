@@ -1,0 +1,49 @@
+<div class="content">
+    <template *exist="language === 'zhCN'">
+        <h2>杂项 / 其他</h2>
+        <h3 class="question">全局对象</h3>
+        <div class="answer">
+            <div>在dagger.js加载完成后，将在window对象下挂载一个名为"$dagger"的全局对象。</div>
+            <div>$dagger下除去前文提到的register和validator两个接口之外，还包含当前的版本信息字段“version”。</div>
+        </div>
+        <h3 class="question">预定义class名称dg-cloak</h3>
+        <div class="answer">
+            <div>“dg-cloak”是dagger.js预定义的class名称，用于隐藏未渲染完成的DOM元素，框架在宿主元素及其指令实例化完成后将自动移除“dg-cloak”声明。</div>
+            <div>尽管dagger.js在运行时会创建动态的样式表确保这个class名称正常工作，仍然建议使用者在项目页面的head标签下手动插入如下样式标签以避免页面渲染过程中出现闪动：</div>
+            <div class="code">&lt;style&gt;[dg-cloak] { display: none !important; }&lt;/style&gt;</div>
+        </div>
+        <h3 class="question">debug版本和release版本的差别</h3>
+        <div class="answer">
+            <div>dagger.js的debug版本中提供了预置的全局验证器“$dagger.validator”，以及若干运行时断言用于帮助开发者定位问题。</div>
+            <div>release版本中不包含验证器，同时移除了运行时断言以提升响应性能。</div>
+            <div>另外，在release版本中，全局<a href="miscellaneous/options">选项</a>只支持“rootSelectors”字段。</div>
+            <div>推荐在开发阶段使用debug版本，在发布阶段使用release版本。</div>
+        </div>
+        <h3 class="question">问题和建议反馈</h3>
+        <div class="answer">dagger.js仍然在积极开发和迭代当中，我们十分期待获得您在使用中发现的问题或者有关改进的建议<a target="_blank"
+                href="https://github.com/dagger8224/dagger.js/issues">反馈</a>！</div>
+    </template>
+    <template *exist="language === 'enUS'">
+        <h2>Miscellaneous / Others</h2>
+        <h3 class="question">Global Object</h3>
+        <div class="answer">
+            <div>In dagger.js, a global object named "$dagger" will be attached to the window object after loading.</div>
+            <div>$dagger contains the two introduced interfaces "register" and "validator", and the version information field "version".</div>
+        </div>
+        <h3 class="question">The predefined className "dg-cloak"</h3>
+        <div class="answer">
+            <div>"dg-cloak" is a predefined className of dagger.js, which is used to hide the rendering DOM elements, the framework will remove the "dg-cloak" from the related elements after they are rendered successfully. </div>
+            <div>Though dagger.js will create dynamic styleSheet to ensure the className works as expected, it is recommended to manually insert the following style tag under the head of the page to avoid flickering during page rendering:</div>
+            <div class="code">&lt;style&gt;[dg-cloak] { display: none !important; }&lt;/style&gt;</div>
+        </div>
+        <h3 class="question">The difference between "debug" and "release" versions</h3>
+        <div class="answer">
+            <div>In dagger.js, the debug version provides a pre-defined global validator "$dagger.validator" and a few runtime assertions to help developers locate problems.</div>
+            <div>In the release version, the validator and the runtime assertions are removed to improve the performance.</div>
+            <div>In the release version, the global <a href="miscellaneous/options">options</a> only support the "rootSelectors" field.</div>
+            <div>It is recommended to use the debug version during development and the release version in the production environment.</div>
+        </div>
+        <h3 class="question">Feedback and suggestions</h3>
+        <div class="answer">dagger.js is still under active development and iteration, we are looking forward to receiving your feedback or suggestions on <a target="_blank" href="https://github.com/dagger8224/dagger.js/issues">issues</a>!</div>
+    </template>
+</div>

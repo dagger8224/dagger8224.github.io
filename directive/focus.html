@@ -28,12 +28,12 @@
     <h3 class="question">What is the execution result of the *focus directive expression?</h3>
     <div class="answer">
       <div>When the directive expression returns true or any other equivalent value, the host element will be focused.</div>
-      <div>When the content of the directive expression is a valid <a target="_blank" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators#%E5%B7%A6%E8%A1%A8%E8%BE%BE%E5%BC%8F">left-hand expression</a>, user actions on the host element will cause the expression result to be synchronized with the scope data and the DOM element attributes, enabling two-way data binding.</div>
+      <div>When the content of the directive expression is a valid <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators#left-hand-side_expressions">left-hand expression</a>, user actions on the host element will cause the expression result to be synchronized with the scope data and the DOM element attributes, enabling two-way data binding.</div>
     </div>
     <h3 class="question">What are the pre-defined decorators of the *focus directive?</h3>
     <div class="answer">The *focus directive supports two decorators:
       <div class="margin">1. "oneway", boolean type. A value of true means that the current directive is one-way bound, and user actions on the host element will not update the associated scope data.</div>
-      <div class="margin">2. "prevent", boolean type. A value of true means that <a target="_blank" href="https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLElement/focus">the element that prevents focus from being set will be scrolled into the current browser viewport</a>.</div>
+      <div class="margin">2. "prevent", boolean type. A value of true means that <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/focus">the element that prevents focus from being set will be scrolled into the current browser viewport</a>.</div>
       Let's take a look at an example of the *focus directive:
       <iframe height="300" style="width: 100%;" scrolling="no" title="[dagger-demo] *focus directive" src="https://codepen.io/dagger8224/embed/abqWRKx?default-tab=html%2Cresult&editable=true&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
         See the Pen <a href="https://codepen.io/dagger8224/pen/abqWRKx">
