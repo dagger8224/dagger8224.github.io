@@ -44,7 +44,7 @@
       <div class="bottom-switcher button" +click="isMenuClosed = !isMenuClosed"><span>${ isMenuClosed ? "》" : "《" }</span></div>
     </div>
     <div id="content">
-      <template *html="`<${ $route.constants.template }></${ $route.constants.template }>`"></template>
+      <template *html="$route.constants.template"></template>
     </div>
     <div id="footer">
       <a *exist="$route.constants.previousLink" *href="$route.constants.previousLink">${ $.previous }</a>
