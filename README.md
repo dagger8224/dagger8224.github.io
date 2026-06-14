@@ -1,5 +1,5 @@
 # dagger8224.github.io
-This is the homepage project for ***dagger.js***
+This is the homepage project for ***dagger.js*** frontend framework.
 
 Please refer to the following nginx configs to setup the homepage locally:
 
